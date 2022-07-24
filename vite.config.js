@@ -38,5 +38,12 @@ export default defineConfig({
     vueJsx({
     // 配置选项
     })
-  ]
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: "@use './src/assets/styles/styles.scss' as *;"
+      }
+    }
+  }
 })

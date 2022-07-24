@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import uvUI from '../packages/index'
-import uvUI from 'uv-ui'
-import '../node_modules/uv-ui/dist/style.css'
+import uvUI from '../packages/index'
+// import uvUI from 'uv-ui'
+// import '../node_modules/uv-ui/dist/style.css'
 import router from './router'
 import 'normalize.css'
 

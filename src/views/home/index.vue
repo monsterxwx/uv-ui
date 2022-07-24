@@ -7,7 +7,7 @@
         :class="{active:activeIndex===index}"
         @click="switchMenu(item,index)"
       >
-        {{ item.name }}
+        {{ item.meta.name }}
       </li>
     </div>
     <div class="router-view">
@@ -37,19 +37,25 @@ const switchMenu = (item, index) => {
   height: 100vh;
   .left-menu {
     overflow-y: auto;
+    padding: 10px;
     width: 200px;
     height: auto;
     border-right: 1px solid #f0f0f0;
     li {
       padding: 0 10px;
+      font-size: 13px;
+      border-radius: 8px;
       list-style: none;
       line-height: 40px;
       cursor: pointer;
+      &:hover {
+        color: #409eff;
+      }
     }
     li.active {
-      border-right: 4px solid #0e80eb;
+      font-weight: 700;
       color: #0e80eb;
-      background: rgb(14 128 235 / 10%);
+      background: #ecf5ff;
     }
   }
   .router-view {

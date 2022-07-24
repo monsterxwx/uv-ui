@@ -14,5 +14,7 @@
 
 <preview compName='button' demoName='demo1'  ></preview>
 
-### 成功状态
+### 禁用状态
 <demo2></demo2>
+
+<preview compName='button' demoName='demo2'  ></preview>
