@@ -4,27 +4,105 @@
       :class="uvClass"
       :disabled="disabled"
       @click="clickEvent"
+      :style="{backgroundColor:bgColor,color:color}"
     >
-      <slot />
+      <div class="flex">
+        <div
+          v-if="icon && iconPosition==='left'"
+          class="iconLeft"
+        >
+          <svgIcon
+            :name="icon"
+            :color="iconColor"
+            :icon-size="iconSize"
+          />
+        </div>
+        <div
+          v-if="loading"
+          class="loading"
+        /><slot />
+        <div
+          v-if="icon && iconPosition==='right'"
+          class="iconRight"
+        >
+          <svgIcon
+            :name="icon"
+            :color="iconColor"
+            :icon-size="iconSize"
+          />
+        </div>
+      </div>
     </button>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-
+import svgIcon from '@/components/svgIcon'
 const props = defineProps({
   type: {
     type: String,
     default: 'default'
   },
+  bgColor: {
+    type: String,
+    default: ''
+  },
+  color: {
+    type: String,
+    default: ''
+  },
   disabled: {
     type: Boolean,
     default: false
+  },
+  round: {
+    type: Boolean,
+    default: false
+  },
+  square: {
+    type: Boolean,
+    default: false
+  },
+  size: {
+    type: String,
+    default: 'normal'
+  },
+  block: {
+    type: Boolean,
+    default: false
+  },
+  loading: {
+    type: Boolean,
+    default: false
+  },
+  icon: {
+    type: String,
+    default: ''
+  },
+  iconColor: {
+    type: String,
+    default: ''
+  },
+  iconSize: {
+    type: Number,
+    default: 16
+  },
+  iconPosition: {
+    type: String,
+    default: 'left'
   }
 })
 const uvClass = computed(() => {
-  return ['uv-button', props.type ? (props.disabled ? '' : `uv-button-${props.type}`) : '', props.disabled ? `uv-button-${props.type}-disabled` : '']
+  return [
+    'uv-button',
+    props.type ? (props.disabled ? '' : `uv-button-${props.type}`) : '',
+    props.disabled ? `uv-button-${props.type}-disabled` : '',
+    props.round ? 'uv-button-round' : '',
+    props.square ? 'uv-button-square' : '',
+    props.size ? `uv-button-size-${props.size}` : '',
+    props.block ? 'uv-button-block' : ''
+  ]
 })
 
 const clickEvent = () => {
@@ -38,7 +116,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .uv-button {
-  padding: 10px;
   font-size: 13px;
   border: 0;
   border-radius: 4px;
@@ -59,6 +136,12 @@ export default {
     &:active {
       opacity: 1;
     }
+  }
+  &-round {
+    border-radius: 999px;
+  }
+  &-square {
+    border-radius: 0;
   }
 
   @mixin base($type) {
@@ -114,6 +197,56 @@ export default {
   }
   &-warning-disabled {
     @include disabled($warning);
+  }
+  &-size-normal {
+    padding: 10px;
+  }
+  &-size-small {
+    padding: 5px;
+    font-size: 12px;
+  }
+  &-size-mini {
+    padding: 2px;
+    font-size: 12px;
+  }
+  &-block {
+    width: 100%;
+    button {
+      display: block;
+      margin: 0 auto;
+      width: 95%;
+    }
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+    .iconLeft {
+      margin-right: 5px;
+    }
+    .iconRight {
+      margin-left: 5px;
+    }
+    .loading {
+      position: relative;
+      margin-right: 5px;
+      width: 15px;
+      height: 15px;
+      border: 2px solid #ffffff;
+      border-top-color: #ffffff;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 100%;
+      animation: circle infinite  0.75s linear;
+    }
+  }
+
+  @keyframes circle {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
 </style>

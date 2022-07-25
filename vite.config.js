@@ -5,6 +5,7 @@ import Markdown from 'vite-plugin-md'
 
 // import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
+import { svgBuilder } from './src/utils/svgBuilder'
 
 export default defineConfig({
   resolve: {
@@ -34,6 +35,7 @@ export default defineConfig({
     vue({
       include: [/\.md$/, /\.vue$/]
     }),
+    svgBuilder('./src/assets/SVG/'),
     Markdown(),
     vueJsx({
     // 配置选项

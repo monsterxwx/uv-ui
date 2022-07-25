@@ -135,6 +135,7 @@ onMounted(() => {
     align-items: center;
     width: 100%;
     font-size: 14px;
+    border-radius: 4px;
     text-align: center;
     color: #505050;
     background: #f9f9f9;
@@ -154,6 +155,13 @@ onMounted(() => {
   }
   &:hover {
     box-shadow: 0 16px 15px -16px rgb(0 0 0 / 10%);
+  }
+  .language-html {
+    font-size: 14px;
+    line-height: 22px;
+    font-family: "JetBrains Mono";
+    border-radius: 20px;
+    background-color: #f8f8f8;
   }
 }
 </style>
