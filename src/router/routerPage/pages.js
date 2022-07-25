@@ -17,7 +17,7 @@ export default [
         path: '',
         name: 'button',
         meta: {
-          name: 'button 按钮'
+          name: 'Button 按钮'
         },
         component: () => import('/packages/button/doc/doc.md')
       },
@@ -25,7 +25,7 @@ export default [
         path: 'input',
         name: 'input',
         meta: {
-          name: 'input 输入框'
+          name: 'Input 输入框'
         },
         component: () => import('/packages/input/doc/doc.md')
       }
