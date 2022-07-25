@@ -4,6 +4,7 @@ import uvUI from '../packages/index'
 // import uvUI from 'uv-ui'
 // import '../node_modules/uv-ui/dist/style.css'
 import router from './router'
+import store from './store'
 import 'normalize.css'
 
 // 代码高亮
@@ -21,4 +22,4 @@ app.directive('highlight', function (el) {
 
 app.use(uvUI)
 
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')

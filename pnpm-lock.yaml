@@ -12,6 +12,7 @@ specifiers:
   eslint-plugin-vue: ^9.1.1
   highlight.js: ^11.6.0
   normalize.css: ^8.0.1
+  pinia: ^2.0.17
   postcss: ^8.4.14
   postcss-html: ^1.5.0
   sass: ^1.53.0
@@ -32,6 +33,7 @@ dependencies:
   dayjs: 1.11.3
   highlight.js: 11.6.0
   normalize.css: 8.0.1
+  pinia: 2.0.17_vue@3.2.37
   uv-ui: 0.0.3
   vite-plugin-md: 0.12.4_vite@2.9.12
   vue: 3.2.37
@@ -578,6 +580,10 @@ packages:
 
   /@vue/devtools-api/6.1.4:
     resolution: {integrity: sha512-IiA0SvDrJEgXvVxjNkHPFfDx6SXw0b/TUkqMcDZWNg9fnCAHbTpoo59YfJ9QLFkwa3raau5vSlRVzMSLDnfdtQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/@vue/devtools-api/-/devtools-api-6.1.4.tgz}
+    dev: false
+
+  /@vue/devtools-api/6.2.1:
+    resolution: {integrity: sha512-OEgAMeQXvCoJ+1x8WyQuVZzFo0wcyCmUR3baRVLmKBo1LmYZWMlRiXlux5jd0fqVJu6PfDbOrZItVqUEzLobeQ==}
     dev: false
 
   /@vue/reactivity-transform/3.2.37:
@@ -2433,6 +2439,23 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
+  /pinia/2.0.17_vue@3.2.37:
+    resolution: {integrity: sha512-AtwLwEWQgIjofjgeFT+nxbnK5lT2QwQjaHNEDqpsi2AiCwf/NY78uWTeHUyEhiiJy8+sBmw0ujgQMoQbWiZDfA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.2.1
+      vue: 3.2.37
+      vue-demi: 0.13.5_vue@3.2.37
+    dev: false
+
   /postcss-html/1.5.0:
     resolution: {integrity: sha512-kCMRWJRHKicpA166kc2lAVUGxDZL324bkj/pVOb6RhjB0Z5Krl7mN0AsVkBhVIRZZirY0lyQXG38HCVaoKVNoA==}
     engines: {node: ^12 || >=14}
@@ -3108,6 +3131,21 @@ packages:
       sass: 1.53.0
     optionalDependencies:
       fsevents: 2.3.2
+
+  /vue-demi/0.13.5_vue@3.2.37:
+    resolution: {integrity: sha512-tO3K2bML3AwiHmVHeKCq6HLef2st4zBXIV5aEkoJl6HZ+gJWxWv2O8wLH8qrA3SX3lDoTDHNghLX1xZg83MXvw==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.37
+    dev: false
 
   /vue-eslint-parser/9.0.2_eslint@8.18.0:
     resolution: {integrity: sha512-uCPQwTGjOtAYrwnU+76pYxalhjsh7iFBsHwBqDHiOPTxtICDaraO4Szw54WFTNZTAEsgHHzqFOu1mmnBOBRzDA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/vue-eslint-parser/-/vue-eslint-parser-9.0.2.tgz}

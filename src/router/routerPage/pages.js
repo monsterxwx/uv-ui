@@ -1,6 +1,15 @@
 export default [
   {
     path: '/',
+    redirect: '/uv-ui'
+  },
+  {
+    path: '/uv-ui',
+    name: 'uv-ui',
+    component: () => import('@views/index')
+  },
+  {
+    path: '/components',
     name: 'home',
     component: () => import('@views/home'),
     children: [

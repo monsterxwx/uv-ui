@@ -17,7 +17,8 @@ module.exports = {
         'rule-empty-line-before': 'never',
         'font-family-no-missing-generic-family-keyword': null,
         'block-opening-brace-space-before': 'always',
-        'property-no-unknown': null,
+        'property-no-unknown': null,    
+        'selector-class-pattern':null,
         'no-empty-source': null,
         'selector-pseudo-class-no-unknown': [
             true,
