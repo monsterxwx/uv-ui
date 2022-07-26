@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-import headerBlock from '@/components/header-block'
 import menuList from '@/router/routerPage/pages.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -70,9 +69,14 @@ const switchMenu = (item, index) => {
     }
     .router-view {
       overflow-y: auto;
-      padding: 0 15px;
+
+      // padding: 0 15px;
+
+      // flex: 1;
+      width: 360px;
       height: auto;
-      flex: 1;
+      border: 1px solid #f7f8fa;
+      background-color: #f6f7f9;
     }
   }
 }

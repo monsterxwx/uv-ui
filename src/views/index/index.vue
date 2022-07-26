@@ -1,13 +1,26 @@
 <template>
   <div>
     <headerBlock />
-    <div>首页</div>
+    <div>
+      <uv-button
+        type="success"
+        loading
+      >
+        test
+      </uv-button>
+      <uv-button
+        icon="user"
+        :icon-size="18"
+        type="success"
+      >
+        添加
+      </uv-button>
+    </div>
   </div>
 </template>
 
 <script setup>
 
-import headerBlock from '@/components/header-block'
 </script>
 
 <style lang="scss" scoped>

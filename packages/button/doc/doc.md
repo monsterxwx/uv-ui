@@ -3,7 +3,6 @@
     import demo1 from "./demo1.vue";
     import demo2 from "./demo2.vue";
     import demo3 from "./demo3.vue";
-    import preview from '@/components/preview.vue'
 </script>
 
 

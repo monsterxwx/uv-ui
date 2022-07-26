@@ -24,7 +24,7 @@ specifiers:
   stylelint-config-standard-scss: ^5.0.0
   stylelint-order: ^5.0.0
   svg-sprite-loader: ^6.0.11
-  uv-ui: ^0.0.3
+  uv-ui: ^0.0.4
   vite: ^2.9.9
   vite-plugin-md: 0.12.4
   vue: ^3.2.25
@@ -35,7 +35,7 @@ dependencies:
   highlight.js: 11.6.0
   normalize.css: 8.0.1
   pinia: 2.0.17_vue@3.2.37
-  uv-ui: 0.0.3
+  uv-ui: 0.0.4_vite@2.9.12
   vite-plugin-md: 0.12.4_vite@2.9.12
   vue: 3.2.37
   vue-router: 4.0.13_vue@3.2.37
@@ -3981,6 +3981,23 @@ packages:
       uv-ui: 0.0.2
       vue: 3.2.37
       vue-router: 4.0.13_vue@3.2.37
+    dev: false
+
+  /uv-ui/0.0.4_vite@2.9.12:
+    resolution: {integrity: sha512-l50xgGlAkJAfigrXNok2CJODlbPFbD73T/wGk6FFl8pWbC0fMJh1xd5s6/GlxkFj9G5oqb6LzAxUPXm2FqMIkg==}
+    dependencies:
+      dayjs: 1.11.3
+      highlight.js: 11.6.0
+      normalize.css: 8.0.1
+      pinia: 2.0.17_vue@3.2.37
+      uv-ui: 0.0.3
+      vite-plugin-md: 0.12.4_vite@2.9.12
+      vue: 3.2.37
+      vue-router: 4.0.13_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - typescript
+      - vite
     dev: false
 
   /v8-compile-cache/2.3.0:

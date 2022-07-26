@@ -28,6 +28,30 @@ export default [
           name: 'Input 输入框'
         },
         component: () => import('/packages/input/doc/doc.md')
+      },
+      {
+        path: 'cell',
+        name: 'cell',
+        meta: {
+          name: 'Cell 单元格'
+        },
+        component: () => import('/packages/cell/doc/doc.md')
+      },
+      {
+        path: 'overlay',
+        name: 'overlay',
+        meta: {
+          name: 'Overlay 遮罩层'
+        },
+        component: () => import('/packages/overlay/doc/doc.md')
+      },
+      {
+        path: 'popup',
+        name: 'popup',
+        meta: {
+          name: 'Popup 弹出层'
+        },
+        component: () => import('/packages/popup/doc/doc.md')
       }
 
     ]

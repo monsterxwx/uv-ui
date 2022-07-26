@@ -125,34 +125,5 @@
 </script>
 
 <style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  .flex {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .title {
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #9eaaab;
-  }
-  .tip {
-    margin-bottom: 10px;
-    font-size: 13px;
-    color: #34495e;
-    .code {
-      display: inline-block;
-      margin: 2px 5px;
-      padding: 5px;
-      font-weight: 700;
-      border-radius: 4px;
-      color: #58727e;
-      background-color: #f8f8f8;
-    }
-  }
-}
+
 </style>

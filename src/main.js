@@ -7,6 +7,10 @@ import router from './router'
 import store from './store'
 import 'normalize.css'
 
+import headerBlock from '@/components/header-block'
+import preview from '@/components/preview'
+import svgIcon from '@/components/svgIcon'
+
 // 代码高亮
 import hljs from 'highlight.js'
 import 'highlight.js/styles/color-brewer.css'
@@ -19,6 +23,11 @@ app.directive('highlight', function (el) {
     hljs.highlightBlock(block)
   })
 })
+
+// 全局注册组件
+app.component('HeaderBlock', headerBlock)
+app.component('Preview', preview)
+app.component('SvgIcon', svgIcon)
 
 app.use(uvUI)
 

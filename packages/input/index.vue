@@ -12,7 +12,7 @@
 const emit = defineEmits(['update:modelValue'])
 defineProps({
   modelValue: {
-    type: String || Number,
+    type: [String, Number],
     default: ''
   }
 })

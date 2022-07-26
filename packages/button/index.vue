@@ -3,7 +3,6 @@
     <button
       :class="uvClass"
       :disabled="disabled"
-      @click="clickEvent"
       :style="{backgroundColor:bgColor,color:color}"
     >
       <div class="flex">
@@ -105,9 +104,6 @@ const uvClass = computed(() => {
   ]
 })
 
-const clickEvent = () => {
-  console.log('ee')
-}
 </script>
 <script>
 export default {
@@ -219,6 +215,7 @@ export default {
   }
   .flex {
     display: flex;
+    justify-content: center;
     align-items: center;
     .iconLeft {
       margin-right: 5px;
