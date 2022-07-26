@@ -8,6 +8,7 @@ const install = app => {
   app.use(uvButton)
   app.use(uvInput)
   app.use(uvCell)
+  app.use(uvOverlay)
   app.use(uvPopup)
 }
 const uvUI = {
