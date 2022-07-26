@@ -5,7 +5,7 @@
       :disabled="disabled"
       :style="{backgroundColor:bgColor,color:color}"
     >
-      <div class="flex">
+      <div class="content-flex">
         <div
           v-if="icon && iconPosition==='left'"
           class="iconLeft"
@@ -213,7 +213,7 @@ export default {
       width: 95%;
     }
   }
-  .flex {
+  .content-flex {
     display: flex;
     justify-content: center;
     align-items: center;
