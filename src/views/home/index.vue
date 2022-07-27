@@ -3,16 +3,31 @@
     <headerBlock />
 
     <div class="content">
-      <div class="left-menu">
-        <li
-          v-for="(item,index) in menuList[2].children"
-          :key="index"
-          :class="{active:activeIndex===index}"
-          @click="switchMenu(item,index)"
+      <transition>
+        <div
+          class="left-menu"
+          v-show="!store.openMenu"
         >
-          {{ item.meta.name }}
-        </li>
-      </div>
+          <template
+            v-for="(item,index) in menuList[2].children"
+            :key="index"
+          >
+            <div
+              class="menuTitle"
+              v-if="item.meta.title"
+              @click.stop
+            >
+              {{ item.meta.title }}
+            </div>
+            <li
+              :class="{active:activeIndex===index}"
+              @click="switchMenu(item,index)"
+            >
+              {{ item.meta.name }}
+            </li>
+          </template>
+        </div>
+      </transition>
       <div class="router-view">
         <router-view />
       </div>
@@ -24,6 +39,8 @@
 import menuList from '@/router/routerPage/pages.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import useStore from '@/store/common'
+const store = useStore()
 const router = useRouter()
 const activeIndex = ref(0)
 const switchMenu = (item, index) => {
@@ -31,6 +48,7 @@ const switchMenu = (item, index) => {
     name: item.name
   })
   activeIndex.value = index
+  store.changeMenu()
 }
 </script>
 
@@ -45,11 +63,22 @@ const switchMenu = (item, index) => {
     width: 100%;
     height: calc(100vh - 64px);
     .left-menu {
+      position: absolute;
+      z-index: 999;
       overflow-y: auto;
       padding: 10px;
-      width: 200px;
-      height: auto;
+      width: 180px;
+      height: 100%;
       border-right: 1px solid #f0f0f0;
+      white-space: nowrap;
+      background-color: #ffffff;
+      .menuTitle {
+        margin-bottom: 10px;
+        padding: 0 10px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #455a64;
+      }
       li {
         padding: 0 10px;
         font-size: 13px;
@@ -68,16 +97,22 @@ const switchMenu = (item, index) => {
       }
     }
     .router-view {
+      overflow-x: hidden;
       overflow-y: auto;
-
-      // padding: 0 15px;
-
-      // flex: 1;
-      width: 360px;
+      padding: 0 10px;
       height: auto;
       border: 1px solid #f7f8fa;
       background-color: #f6f7f9;
+      flex: 1;
     }
   }
+}
+.v-enter-active,
+.v-leave-active {
+  transition: transform 0.3s;
+}
+.v-enter-from,
+.v-leave-to {
+  transform: translate(-100%, 0);
 }
 </style>

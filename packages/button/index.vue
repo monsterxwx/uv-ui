@@ -4,11 +4,12 @@
       :class="uvClass"
       :disabled="disabled"
       :style="{backgroundColor:bgColor,color:color}"
+      @click="clickEvent"
     >
-      <div class="content-flex">
+      <div class="uv-button-content">
         <div
           v-if="icon && iconPosition==='left'"
-          class="iconLeft"
+          class="uv-button-content-icon-left"
         >
           <svgIcon
             :name="icon"
@@ -18,11 +19,11 @@
         </div>
         <div
           v-if="loading"
-          class="loading"
+          class="uv-button-content-loading"
         /><slot />
         <div
           v-if="icon && iconPosition==='right'"
-          class="iconRight"
+          class="uv-button-content-icon-right"
         >
           <svgIcon
             :name="icon"
@@ -92,6 +93,7 @@ const props = defineProps({
     default: 'left'
   }
 })
+const emit = defineEmits(['click'])
 const uvClass = computed(() => {
   return [
     'uv-button',
@@ -103,7 +105,9 @@ const uvClass = computed(() => {
     props.block ? 'uv-button-block' : ''
   ]
 })
-
+const clickEvent = () => {
+  emit('click')
+}
 </script>
 <script>
 export default {
@@ -213,17 +217,17 @@ export default {
       width: 95%;
     }
   }
-  .content-flex {
+  .uv-button-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    .iconLeft {
+    &-icon-left {
       margin-right: 5px;
     }
-    .iconRight {
+    &-icon-right {
       margin-left: 5px;
     }
-    .loading {
+    &-loading {
       position: relative;
       margin-right: 5px;
       width: 15px;

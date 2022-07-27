@@ -90,7 +90,7 @@ const props = defineProps({
 const uvClass = computed(() => {
   return [
     'uv-cell',
-    props.card ? 'card' : ''
+    props.card ? 'uv-cell-card' : ''
   ]
 })
 </script>
@@ -119,7 +119,7 @@ export default {
     }
   }
 }
-.card {
+.uv-cell-card {
   margin: 0 auto;
   width: 95%;
   border-radius: 8px;

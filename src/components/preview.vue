@@ -1,10 +1,15 @@
 <template>
   <div class="pre-code-box">
     <span
+      style="margin-top: 10px;"
       class="m-copy"
       v-if="showCode"
       @click="copyCode"
-    ><i class="m-icon-copy" /></span>
+    ><svgIcon
+      name="copy"
+      icon-size="25"
+      color="#8e8e8e"
+    /></span>
     <transition name="slide-fade">
       <pre
         class="language-html"
@@ -16,8 +21,8 @@
       class="showCode"
       @click="showOrhideCode"
     >
-      <span>{{ showCode ? "隐藏代码" : "显示代码" }}</span>
-      <i class="m-icon-code" />
+      <span style="margin-right: 5px;">{{ showCode ? "隐藏代码" : "显示代码" }}</span>
+      <svgIcon name="code" />
     </div>
     <textarea id="inputCopy" />
   </div>
@@ -138,7 +143,7 @@ onMounted(() => {
     border-radius: 4px;
     text-align: center;
     color: #505050;
-    background: #ffffff;
+    background-color: #ffffff !important;
     box-shadow: 0 16px 15px -16px rgb(0 0 0 / 10%);
     line-height: 40px;
     cursor: pointer;
@@ -161,7 +166,7 @@ onMounted(() => {
     line-height: 22px;
     font-family: "JetBrains Mono";
     border-radius: 20px;
-    background-color: #f8f8f8;
+    background-color: fff;
   }
 }
 </style>

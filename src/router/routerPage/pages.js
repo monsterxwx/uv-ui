@@ -15,6 +15,12 @@ export default [
     children: [
       {
         path: '',
+        meta: {
+          title: '基础组件'
+        }
+      },
+      {
+        path: 'button',
         name: 'button',
         meta: {
           name: 'Button 按钮'
