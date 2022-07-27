@@ -58,6 +58,14 @@ export default [
           name: 'Popup 弹出层'
         },
         component: () => import('/packages/popup/doc/doc.md')
+      },
+      {
+        path: 'toast',
+        name: 'toast',
+        meta: {
+          name: 'Toast 轻提示'
+        },
+        component: () => import('/packages/toast/doc/doc.md')
       }
 
     ]

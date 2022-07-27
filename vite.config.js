@@ -47,5 +47,8 @@ export default defineConfig({
         additionalData: "@use './src/assets/styles/styles.scss' as *;"
       }
     }
+  },
+  server: {
+    host: '0.0.0.0'
   }
 })
