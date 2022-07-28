@@ -30,6 +30,8 @@ export default {
 .uv-cell-group {
   overflow: hidden;
   margin: 0 auto;
+  border-top: 1px solid #f5f6f7;
+  border-bottom: 1px solid #f5f6f7;
   background-color: #ffffff;
 }
 .uv-cell-group-card {
