@@ -25,22 +25,21 @@
       卡片式
     </div>
     <div class="tip">
-      通过<span class="code">card</span>  设置
+      通过使用<span class="code">uv-cell-group</span> 组件包裹，并传入<span class="code">card</span>属性即可,两边需要间隙可以开启<span class="code">gap</span>属性
     </div>
-
-    <uv-cell
-      style="margin-top: 20px ;"
+    <uv-cell-group
       card
-      radius="8px 8px 0 0"
-      title="test"
-      value="内容"
-    />
-    <uv-cell
-      card
-      radius="0 0 8px 8px "
-      title="test"
-      value="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-    />
+      gap
+    >
+      <uv-cell
+        title="test"
+        value="内容"
+      />
+      <uv-cell
+        title="test"
+        value="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+      />
+    </uv-cell-group>
     <div class="title">
       字体大小
     </div>
@@ -49,7 +48,6 @@
     </div>
 
     <uv-cell
-      style="margin-top: 20px ;"
       card
       size="16"
       title="test"
@@ -82,7 +80,6 @@
       value="内容"
     />
     <uv-cell
-      style="margin-top: 20px ;"
       card
       arrow
       arrow-direction="down"

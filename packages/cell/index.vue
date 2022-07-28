@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="uvClass"
-    :style="{backgroundColor:bgColor,fontSize:size+'px',borderRadius:radius}"
+    class="uv-cell"
+    :style="{backgroundColor:bgColor,fontSize:size+'px'}"
   >
     <div
       class="cell"
@@ -36,8 +36,7 @@
 
 <script setup>
 import svgIcon from '@/components/svgIcon'
-import { computed } from 'vue'
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: ''
@@ -57,14 +56,6 @@ const props = defineProps({
   size: {
     type: [String, Number],
     default: '14'
-  },
-  card: {
-    type: Boolean,
-    default: false
-  },
-  radius: {
-    type: String,
-    default: ''
   },
   icon: {
     type: String,
@@ -87,12 +78,7 @@ const props = defineProps({
     default: 'right'
   }
 })
-const uvClass = computed(() => {
-  return [
-    'uv-cell',
-    props.card ? 'uv-cell-card' : ''
-  ]
-})
+
 </script>
 <script>
 export default {
@@ -118,11 +104,6 @@ export default {
       color: #969799;
     }
   }
-}
-.uv-cell-card {
-  margin: 0 auto;
-  width: 95%;
-  border-radius: 8px;
 }
 
 </style>

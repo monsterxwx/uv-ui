@@ -73,7 +73,7 @@ const switchMenu = (item, index) => {
       white-space: nowrap;
       background-color: #ffffff;
       .menuTitle {
-        margin-bottom: 10px;
+        margin: 10px 0;
         padding: 0 10px;
         font-size: 15px;
         font-weight: 700;

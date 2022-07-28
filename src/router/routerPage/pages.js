@@ -27,14 +27,7 @@ export default [
         },
         component: () => import('/packages/button/doc/doc.md')
       },
-      {
-        path: 'input',
-        name: 'input',
-        meta: {
-          name: 'Input 输入框'
-        },
-        component: () => import('/packages/input/doc/doc.md')
-      },
+
       {
         path: 'cell',
         name: 'cell',
@@ -66,6 +59,20 @@ export default [
           name: 'Toast 轻提示'
         },
         component: () => import('/packages/toast/doc/doc.md')
+      },
+      {
+        path: '',
+        meta: {
+          title: '表单组件'
+        }
+      },
+      {
+        path: 'input',
+        name: 'input',
+        meta: {
+          name: 'Input 输入框'
+        },
+        component: () => import('/packages/input/doc/doc.md')
       }
 
     ]
