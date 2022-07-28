@@ -2,8 +2,8 @@
   <svg
     :class="['svg-icon', $attrs.class]"
     :style="{
-      width: iconSize + 'px',
-      height: iconSize + 'px',
+      width: size + 'px',
+      height: size + 'px',
     }"
     aria-hidden="true"
   >
@@ -24,7 +24,7 @@ defineProps({
     type: String,
     default: ''
   },
-  iconSize: {
+  size: {
     type: [Number, String],
     default: 14
   }

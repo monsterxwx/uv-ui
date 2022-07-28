@@ -14,7 +14,7 @@
           <svgIcon
             :name="icon"
             :color="iconColor"
-            :icon-size="iconSize"
+            :size="iconSize"
           />
         </div>
         <div
@@ -28,7 +28,7 @@
           <svgIcon
             :name="icon"
             :color="iconColor"
-            :icon-size="iconSize"
+            :size="iconSize"
           />
         </div>
       </div>

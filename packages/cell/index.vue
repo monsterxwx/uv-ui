@@ -3,28 +3,37 @@
     class="uv-cell"
     :style="{backgroundColor:bgColor,fontSize:size+'px'}"
   >
-    <div class="cell-title">
-      <slot name="title">
-        <span
-          v-if="icon!==''"
-          style="margin-right: 5px;"
-        ><svgIcon
-          :name="icon"
-          :color="iconColor"
-          :icon-size="iconSize"
-        /></span> {{ title }}
-      </slot>
+    <div class="uv-cell-content">
+      <div class="uv-cell-content-title">
+        <slot name="title">
+          <span
+            v-if="icon!==''"
+            style="margin-right: 5px;"
+          ><svgIcon
+            :name="icon"
+            :color="iconColor"
+            :size="iconSize"
+          /></span> {{ title }}
+        </slot>
+      </div>
+      <div class="uv-cell-content-value">
+        <slot name="value">
+          {{ value }} <span
+            v-if="arrow"
+            style="margin-left: 2px;"
+          ><svgIcon
+            :name="'arrow-'+arrowDirection"
+            color="#9699a6"
+          /></span>
+        </slot>
+      </div>
     </div>
-    <div class="cell-value">
-      <slot name="value">
-        {{ value }} <span
-          v-if="arrow"
-          style="margin-left: 2px;"
-        ><svgIcon
-          :name="'arrow-'+arrowDirection"
-          color="#9699a6"
-        /></span>
-      </slot>
+
+    <div
+      v-if="tips"
+      class="uv-cell-tips"
+    >
+      <slot name="tips" />
     </div>
   </div>
 </template>
@@ -67,6 +76,10 @@ defineProps({
   arrowDirection: {
     type: String,
     default: 'right'
+  },
+  tips: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -81,8 +94,10 @@ export default {
 .uv-cell {
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+
+  // justify-content: space-between;
+  // align-items: center;
   overflow: hidden;
   padding: 10px 15px;
   &::after {
@@ -99,14 +114,22 @@ export default {
   &:last-child::after {
     display: none;
   }
-  &-title {
-    margin-right: 20px;
-    white-space: nowrap;
-  }
-  &-value {
-    white-space: wrap;
-    color: #969799;
+  .uv-cell-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-title {
+      margin-right: 20px;
+      white-space: nowrap;
+    }
+    &-value {
+      white-space: wrap;
+      color: #969799;
+    }
   }
 }
-
+.uv-cell-tips {
+  display: flex;
+  margin-left: 96px;
+}
 </style>
