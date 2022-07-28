@@ -10,7 +10,7 @@
       >
         <svgIcon
           :name="type"
-          icon-size="30"
+          icon-size="36"
           :color="type==='success'?'#07c160':'#f56c6c'"
         />
       </div>
@@ -75,7 +75,7 @@ export default {
   .uv-toast-value {
     display: inline-block;
     padding: 8px 10px;
-    max-width: 100px;
+    max-width: 150px;
     border-radius: 4px;
     text-align: center;
     animation: face 0.5s;
@@ -85,6 +85,10 @@ export default {
     .loading-icon {
       position: relative;
       animation: rotate 3s linear infinite;
+      margin-bottom: 10px;
+    }
+    .message {
+      font-size: 13px;
     }
   }
 }

@@ -30,7 +30,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-// import Message from '../../packages/message/index'
+import { Toast } from '../../packages'
 const props = defineProps({
   compName: {
     type: String,
@@ -75,15 +75,15 @@ const copyCode = () => {
   input.select()
   if (document.execCommand('copy')) {
     document.execCommand('copy')
-    // Message({
-    //   type: 'success',
-    //   text: '代码复制成功'
-    // })
+    Toast({
+      message: '代码复制成功',
+      type: 'success'
+    })
   } else {
-    // Message({
-    //   type: 'error',
-    //   text: '代码复制成功'
-    // })
+    Toast({
+      message: '代码复制失败',
+      type: 'error'
+    })
   }
 }
 onMounted(() => {
