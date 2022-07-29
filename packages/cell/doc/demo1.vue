@@ -1,7 +1,14 @@
 <template>
   <div>
+    <div class="title">
+      点击反馈
+    </div>
+    <div class="tip">
+      通过<span class="code">clickable</span> 属性开启
+    </div>
     <div>
       <uv-cell
+        clickable
         title="test"
         value="内容"
       />

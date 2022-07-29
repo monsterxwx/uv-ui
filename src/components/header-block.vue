@@ -4,7 +4,7 @@
       <a
         @click="toHome"
       >UV UI</a>
-      <span>V 0.0.4</span>
+      <span>V 0.0.5</span>
     </div>
     <div class="toolsBox">
       <div

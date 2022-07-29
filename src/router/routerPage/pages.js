@@ -73,6 +73,14 @@ export default [
           name: 'Input 输入框'
         },
         component: () => import('/packages/input/doc/doc.md')
+      },
+      {
+        path: 'checkbox',
+        name: 'checkbox',
+        meta: {
+          name: 'checkbox 复选框'
+        },
+        component: () => import('/packages/checkbox/doc/doc.md')
       }
 
     ]

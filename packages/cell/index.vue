@@ -1,9 +1,13 @@
 <template>
   <div
     class="uv-cell"
+
     :style="{backgroundColor:bgColor,fontSize:size+'px'}"
   >
-    <div class="uv-cell-content">
+    <div
+      class="uv-cell-content"
+      :class="clickable?'uv-cell-clickable':''"
+    >
       <div class="uv-cell-content-title">
         <slot name="title">
           <span
@@ -80,6 +84,10 @@ defineProps({
   tips: {
     type: Boolean,
     default: false
+  },
+  clickable: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -95,11 +103,7 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-
-  // justify-content: space-between;
-  // align-items: center;
   overflow: hidden;
-  padding: 10px 15px;
   &::after {
     position: absolute;
     right: 15px;
@@ -114,10 +118,16 @@ export default {
   &:last-child::after {
     display: none;
   }
+  .uv-cell-clickable {
+    &:active {
+      background-color: #f2f3f5;
+    }
+  }
   .uv-cell-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 15px;
     &-title {
       margin-right: 20px;
       white-space: nowrap;

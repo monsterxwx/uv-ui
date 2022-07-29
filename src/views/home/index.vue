@@ -26,6 +26,10 @@
               {{ item.meta.name }}
             </li>
           </template>
+          <div
+            class="mask"
+            @click.stop="()=>store.changeMenu()"
+          />
         </div>
       </transition>
       <div class="router-view">
@@ -64,6 +68,7 @@ const switchMenu = (item, index) => {
     height: calc(100vh - 64px);
     .left-menu {
       position: absolute;
+      top: 64px;
       z-index: 999;
       overflow-y: auto;
       padding: 10px;
@@ -94,6 +99,14 @@ const switchMenu = (item, index) => {
         font-weight: 700;
         color: #0e80eb;
         background: #ecf5ff;
+      }
+      .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
       }
     }
     .router-view {

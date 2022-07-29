@@ -5,6 +5,7 @@ import uvCellGroup from './cell-group/index.js'
 import uvOverlay from './overlay/index.js'
 import uvPopup from './popup/index.js'
 import Toast from './toast/index.js'
+import uvCheckbox from './checkbox/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -14,6 +15,7 @@ const install = app => {
   app.use(uvOverlay)
   app.use(uvPopup)
   app.use(Toast)
+  app.use(uvCheckbox)
 }
 const uvUI = {
   install
@@ -25,7 +27,8 @@ export {
   uvCellGroup,
   uvOverlay,
   uvPopup,
-  Toast
+  Toast,
+  uvCheckbox
 }
 
 export default uvUI
