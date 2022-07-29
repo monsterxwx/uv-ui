@@ -40,7 +40,7 @@
           :style="{
             border:border?'1px solid #eeeeee':'',
             textAlign:inputAlign,
-            height:autosize && autosize.minHeight ? autosize.minHeight+'px':'26px'
+            height:autosize && autosize.minHeight ? autosize.minHeight+'px':'28px'
           }"
           :disabled="disabled"
           :value="modelValue"
@@ -52,7 +52,10 @@
           @focus="handleFocus"
           @keydown="handleKeydown"
         />
-        <span v-if="showWordLimit && maxlength">
+        <span
+          class="showWordLimit"
+          v-if="showWordLimit && maxlength"
+        >
           {{ textLength }} / {{ maxlength }}
         </span>
         <!-- 自定义输入框右边内容 -->
@@ -144,16 +147,6 @@ const props = defineProps({
     default: false
   }
 })
-const handleInput = (e) => {
-  let { value } = e.target
-  if (props.formatter && props.formatTrigger === 'change') {
-    value = props.formatter(value)
-    emit('update:modelValue', value)
-  } else {
-    emit('update:modelValue', value)
-  }
-  emit('input', value)
-}
 
 const showTips = ref(false)
 
@@ -164,14 +157,16 @@ const clearValueEvent = () => {
   }
 }
 
-const textLength = computed(() => Array.from(props.modelValue).length)
-
 const textareaRef = ref(null)
 
 watch(() => props.modelValue, (newValue) => {
+  if (props.maxlength) {
+    updateValue(newValue)
+  }
   if (props.errorMsg && newValue) {
     showTips.value = false
   }
+  // textarea自动高度
   if (props.autosize && props.type === 'textarea') {
     nextTick(() => {
       if (typeof (props.autosize) === 'boolean') {
@@ -183,6 +178,41 @@ watch(() => props.modelValue, (newValue) => {
     })
   }
 })
+
+// 限制输入字数
+const textLength = computed(() => Array.from(props.modelValue).length) // 获取文字长度
+const getModelValue = () => String(props.modelValue ?? '') // 获取输入值
+const cutString = (str, maxlength) => {
+  console.log(maxlength)
+  return [...str].slice(0, maxlength).join('')
+}
+const limitValueLength = (value) => {
+  const { maxlength } = props
+  if (maxlength && textLength.value > maxlength) {
+    const modelValue = getModelValue()
+    if (modelValue && textLength.value === +maxlength) {
+      return modelValue
+    }
+    return cutString(value, +maxlength)
+  }
+  return value
+}
+const updateValue = (e) => {
+  let value = e
+  value = limitValueLength(value)
+  if (props.formatter && props.formatTrigger === 'change') {
+    value = props.formatter(value)
+    emit('update:modelValue', value)
+  } else {
+    emit('update:modelValue', value)
+  }
+}
+
+const handleInput = (e) => {
+  const { value } = e.target
+  updateValue(value)
+  emit('input', value)
+}
 
 const handleBlur = (e) => {
   if (props.formatter && props.formatTrigger === 'blur') {
@@ -225,6 +255,7 @@ export default {
   line-height: 26px;
 }
 .uv-input {
+  position: relative;
   display: flex;
   align-items: center;
   input,
@@ -242,13 +273,21 @@ export default {
   textarea {
     resize: none;
   }
-  input,
+  input::placeholder,
   textarea::placeholder {
     color: #d3c9d6;
   }
-  input,
+  input:disabled,
   textarea:disabled {
     color: #d3c9d6;
+  }
+  .showWordLimit {
+    position: absolute;
+    right: 10px;
+    bottom: -8px;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #646566;
   }
 }
 .uv-input-title-disabled {
