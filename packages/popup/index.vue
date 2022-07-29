@@ -19,7 +19,7 @@
             <svgIcon
               @click="closeEvent"
               name="close"
-              icon-size="24"
+              size="24"
               color="#c8c9cc"
             />
           </div>

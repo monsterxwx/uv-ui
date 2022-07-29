@@ -105,6 +105,60 @@
         v-model="value5"
       />
     </uv-cell-group>
+    <div class="title">
+      输入框内容对齐方式
+    </div>
+    <div class="tip">
+      通过 <span class="code">inputAlign</span>设置，有<span class="code">center</span><span class="code">right</span>
+    </div>
+    <uv-cell-group card>
+      <uv-input
+        label="center"
+        input-align="center"
+        v-model="value5"
+      />
+      <uv-input
+        label="right"
+        input-align="right"
+        v-model="value5"
+      />
+    </uv-cell-group>
+    <div class="title">
+      自动高度
+    </div>
+    <div class="tip">
+      通过 <span class="code">autosize</span>设置，只对 textarea 有效，需将类型设置为<span class="code">textarea</span>,可传入对象,如 { maxHeight: 100, minHeight: 50 }，单位为px
+    </div>
+    <uv-cell-group card>
+      <uv-input
+        label="center"
+        type="textarea"
+        autosize
+        v-model="value6"
+      />
+      <uv-input
+        label="center"
+        type="textarea"
+        :autosize="{maxHeight:100,minHeight:50}"
+        v-model="value7"
+      />
+    </uv-cell-group>
+    <div class="title">
+      显示字数统计
+    </div>
+    <div class="tip">
+      通过 <span class="code">showWordLimit</span>设置，需要传入<span class="code">maxlength</span>属性设置最大字数限制
+    </div>
+    <uv-cell-group card>
+      <uv-input
+        label="center"
+        type="textarea"
+        show-word-limit
+        :maxlength="60"
+        autosize
+        v-model="value8"
+      />
+    </uv-cell-group>
   </div>
 </template>
 
@@ -117,6 +171,9 @@ const value2 = ref('只能看，不能填哦')
 const value3 = ref('')
 const value4 = ref('')
 const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
 
 const formatterF = (test) => {
   return `$ ${test}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')

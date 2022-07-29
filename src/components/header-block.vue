@@ -22,7 +22,7 @@
       >
         <svgIcon
           name="modular"
-          icon-size="20"
+          size="20"
           :color="!store.openMenu?'#0e80eb':''"
         />
       </div>

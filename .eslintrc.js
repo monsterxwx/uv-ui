@@ -16,6 +16,7 @@ module.exports = {
   ],
   rules: {
     'vue/multi-word-component-names': 'off',
-    'import/no-absolute-path': 'off'
+    'import/no-absolute-path': 'off',
+    'vue/require-default-prop': 'off'
   }
 }

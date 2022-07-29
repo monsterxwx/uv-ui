@@ -1,26 +1,6 @@
 <template>
   <div>
     <div class="title">
-      是否显示遮罩
-    </div>
-    <div class="tip">
-      通过 <span class="code">overlay</span>设置开启或关闭，默认开启
-    </div>
-    <uv-button
-      type="primary"
-      @click="show1=true"
-    >
-      打开
-    </uv-button>
-    <uv-popup
-      round
-      :overlay="false"
-      position="bottom"
-      v-model="show1"
-    >
-      <div>标标题标标题标题标标标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题</div>
-    </uv-popup>
-    <div class="title">
       开启关闭图标
     </div>
     <div class="tip">
@@ -40,6 +20,28 @@
     >
       <div>标标题标标题标题标标标标标题标标题标标题标题</div>
     </uv-popup>
+    <div class="title">
+      是否显示遮罩
+    </div>
+    <div class="tip">
+      通过 <span class="code">overlay</span>设置开启或关闭，默认开启
+    </div>
+    <uv-button
+      type="primary"
+      @click="show1=true"
+    >
+      打开
+    </uv-button>
+    <uv-popup
+      round
+      close
+      :overlay="false"
+      position="bottom"
+      v-model="show1"
+    >
+      <div>标标题标标题标题标标标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题</div>
+    </uv-popup>
+
     <div class="title">
       允许点击遮罩后关闭popup
     </div>

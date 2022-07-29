@@ -22,7 +22,8 @@
     <template #value>
       <div class="uv-input">
         <input
-          :style="{border:border?'1px solid #eeeeee':''}"
+          v-if="type!=='textarea'"
+          :style="{border:border?'1px solid #eeeeee':'',textAlign:inputAlign}"
           :disabled="disabled"
           :type="type"
           :value="modelValue"
@@ -33,6 +34,27 @@
           @focus="handleFocus"
           @keydown="handleKeydown"
         >
+        <textarea
+          v-else
+          ref="textareaRef"
+          :style="{
+            border:border?'1px solid #eeeeee':'',
+            textAlign:inputAlign,
+            height:autosize && autosize.minHeight ? autosize.minHeight+'px':'26px'
+          }"
+          :disabled="disabled"
+          :value="modelValue"
+          :placeholder="placeholder"
+          :readonly="readonly"
+          :autoHeight="true"
+          @input="handleInput"
+          @blur="handleBlur"
+          @focus="handleFocus"
+          @keydown="handleKeydown"
+        />
+        <span v-if="showWordLimit && maxlength">
+          {{ textLength }} / {{ maxlength }}
+        </span>
         <!-- 自定义输入框右边内容 -->
         <slot name="right">
           <svgIcon
@@ -59,7 +81,7 @@
 <script setup>
 
 import svgIcon from '@/components/svgIcon'
-import { ref, watch } from 'vue'
+import { ref, watch, nextTick, computed } from 'vue'
 import uvCell from '../cell'
 const emit = defineEmits(['update:modelValue', 'input', 'change', 'blur', 'focus', 'keydown'])
 const props = defineProps({
@@ -99,13 +121,27 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  // eslint-disable-next-line vue/require-default-prop
   formatter: {
     type: Function
   },
   formatTrigger: {
     type: String,
     default: 'change'
+  },
+  inputAlign: {
+    type: String,
+    default: 'left'
+  },
+  autosize: {
+    type: [Boolean, Object],
+    default: false
+  },
+  maxlength: {
+    type: Number
+  },
+  showWordLimit: {
+    type: Boolean,
+    default: false
   }
 })
 const handleInput = (e) => {
@@ -128,9 +164,23 @@ const clearValueEvent = () => {
   }
 }
 
+const textLength = computed(() => Array.from(props.modelValue).length)
+
+const textareaRef = ref(null)
+
 watch(() => props.modelValue, (newValue) => {
   if (props.errorMsg && newValue) {
     showTips.value = false
+  }
+  if (props.autosize && props.type === 'textarea') {
+    nextTick(() => {
+      if (typeof (props.autosize) === 'boolean') {
+        textareaRef.value.style.height = textareaRef.value.scrollHeight + 'px'
+      } else if (Object.prototype.toString.call(props.autosize) === '[object Object]') {
+        const { maxHeight } = props.autosize
+        textareaRef.value.style.height = textareaRef.value.scrollHeight < maxHeight ? textareaRef.value.scrollHeight + 'px' : maxHeight + 'px'
+      }
+    })
   }
 })
 
@@ -165,17 +215,20 @@ export default {
 }
 :deep(.uv-cell-content) {
   justify-content: flex-start;
+  align-items: flex-start !important;
 }
 :deep(.uv-cell-content-value) {
   flex: 1;
 }
 :deep(.uv-cell-content-title) {
   margin: 0 !important;
+  line-height: 26px;
 }
 .uv-input {
   display: flex;
   align-items: center;
-  input {
+  input,
+  textarea {
     padding: 5px 8px;
     width: 100%;
     border: none;
@@ -183,10 +236,18 @@ export default {
     background-color: #ffffff;
     outline: none;
   }
-  input::placeholder {
+  input {
+    height: 26px;
+  }
+  textarea {
+    resize: none;
+  }
+  input,
+  textarea::placeholder {
     color: #d3c9d6;
   }
-  input:disabled {
+  input,
+  textarea:disabled {
     color: #d3c9d6;
   }
 }

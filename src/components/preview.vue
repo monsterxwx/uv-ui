@@ -7,7 +7,7 @@
       @click="copyCode"
     ><svgIcon
       name="copy"
-      icon-size="25"
+      size="25"
       color="#8e8e8e"
     /></span>
     <transition name="slide-fade">

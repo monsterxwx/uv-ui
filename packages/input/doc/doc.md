@@ -7,3 +7,5 @@
 ### 基本使用
 <demo1></demo1>
 
+<preview compName='input' demoName='demo1'  ></preview>
+

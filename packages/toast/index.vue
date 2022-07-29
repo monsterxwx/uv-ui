@@ -10,7 +10,7 @@
       >
         <svgIcon
           :name="type"
-          icon-size="36"
+          size="36"
           :color="type==='success'?'#07c160':'#f56c6c'"
         />
       </div>
@@ -20,7 +20,7 @@
       >
         <svgIcon
           name="loading"
-          icon-size="30"
+          size="30"
           color="#e6e6e6"
         />
       </div>
