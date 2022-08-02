@@ -61,6 +61,14 @@ export default [
         component: () => import('/packages/toast/doc/doc.md')
       },
       {
+        path: 'message',
+        name: 'message',
+        meta: {
+          name: 'message 消息提示框'
+        },
+        component: () => import('/packages/message/doc/doc.md')
+      },
+      {
         path: '',
         meta: {
           title: '表单组件'

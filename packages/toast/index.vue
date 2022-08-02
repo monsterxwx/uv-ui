@@ -108,11 +108,11 @@ export default {
     opacity: 1;
   }
 }
-.uv-toast-value.reomve {
-  animation: reomve 0.5s;
+.uv-toast-value.remove {
+  animation: remove 0.5s;
 }
 
-@keyframes reomve {
+@keyframes remove {
   0% { opacity: 1; }
   100% {
     opacity: 0;
