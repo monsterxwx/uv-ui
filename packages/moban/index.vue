@@ -1,6 +1,6 @@
 <template>
   <div
-    class="uv-test"
+    class="uv"
   />
 </template>
 

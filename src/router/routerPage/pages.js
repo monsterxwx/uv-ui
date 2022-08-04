@@ -97,6 +97,14 @@ export default [
           name: 'NumInput 数字键盘'
         },
         component: () => import('/packages/num-input/doc/doc.md')
+      },
+      {
+        path: 'picker',
+        name: 'picker',
+        meta: {
+          name: 'Picker 选择器'
+        },
+        component: () => import('/packages/picker/doc/doc.md')
       }
 
     ]
