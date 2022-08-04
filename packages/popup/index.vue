@@ -1,7 +1,7 @@
 <template>
   <div>
     <overLay
-      v-if="overlay"
+      :overlay="overlay"
       :show="modelValue"
       @click="closePop"
     />
@@ -9,7 +9,7 @@
       <div
         v-show="modelValue"
         :class="uvClass"
-        :style="{height:height}"
+        :style="{height:height,backgroundColor:bgColor}"
       >
         <div class="uv-popup-content">
           <div
@@ -60,6 +60,10 @@ const props = defineProps({
   position: {
     type: String,
     default: 'bottom'
+  },
+  bgColor: {
+    type: String,
+    default: '#fff'
   },
   round: {
     type: Boolean,
@@ -133,7 +137,6 @@ export default {
   overflow-y: auto;
   padding: 10px;
   max-height: 100%;
-  background-color: #ffffff;
   transition: transform 0.3s;
   &-bottom {
     bottom: 0;

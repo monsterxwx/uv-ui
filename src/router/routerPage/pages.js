@@ -64,7 +64,7 @@ export default [
         path: 'message',
         name: 'message',
         meta: {
-          name: 'message 消息提示框'
+          name: 'Message 消息提示框'
         },
         component: () => import('/packages/message/doc/doc.md')
       },
@@ -86,9 +86,17 @@ export default [
         path: 'checkbox',
         name: 'checkbox',
         meta: {
-          name: 'checkbox 复选框'
+          name: 'Checkbox 复选框'
         },
         component: () => import('/packages/checkbox/doc/doc.md')
+      },
+      {
+        path: 'num-input',
+        name: 'num-input',
+        meta: {
+          name: 'NumInput 数字键盘'
+        },
+        component: () => import('/packages/num-input/doc/doc.md')
       }
 
     ]

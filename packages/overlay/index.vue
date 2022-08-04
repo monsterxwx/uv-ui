@@ -2,7 +2,7 @@
   <Transition>
     <div
       class="uv-overlay"
-      :style="{zIndex:zIndex}"
+      :style="{zIndex:zIndex,background:overlay?'rgba(0,0,0,.7)':'transparent'}"
       v-show="show"
     >
       <slot />
@@ -19,6 +19,10 @@ defineProps({
   zIndex: {
     type: String,
     default: '1'
+  },
+  overlay: {
+    type: Boolean,
+    default: true
   }
 })
 </script>
@@ -36,7 +40,6 @@ export default {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: rgb(0 0 0 / 70%);
 }
 .v-enter-active,
 .v-leave-active {
