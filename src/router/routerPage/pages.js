@@ -105,6 +105,14 @@ export default [
           name: 'Picker 选择器'
         },
         component: () => import('/packages/picker/doc/doc.md')
+      },
+      {
+        path: 'search',
+        name: 'search',
+        meta: {
+          name: 'Search 搜索框'
+        },
+        component: () => import('/packages/search/doc/doc.md')
       }
 
     ]

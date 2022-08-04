@@ -10,6 +10,7 @@ import uvCheckbox from './checkbox/index.js'
 import uvCheckboxGroup from './checkbox-group/index.js'
 import uvNumInput from './num-input/index.js'
 import uvPicker from './picker/index.js'
+import uvSearch from './search/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -24,6 +25,7 @@ const install = app => {
   app.use(uvCheckboxGroup)
   app.use(uvNumInput)
   app.use(uvPicker)
+  app.use(uvSearch)
 }
 const uvUI = {
   install
@@ -40,7 +42,8 @@ export {
   uvCheckbox,
   uvCheckboxGroup,
   uvNumInput,
-  uvPicker
+  uvPicker,
+  uvSearch
 }
 
 export default uvUI
