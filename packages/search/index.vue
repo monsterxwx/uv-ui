@@ -112,6 +112,7 @@ export default {
 
 <style lang="scss" scoped>
 .uv-search {
+  position: relative;
   padding: 10px;
   .uv-search-content {
     display: flex;
@@ -140,4 +141,5 @@ export default {
     border-radius: 40px;
   }
 }
+
 </style>
