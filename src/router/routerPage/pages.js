@@ -113,6 +113,14 @@ export default [
           name: 'Search 搜索框'
         },
         component: () => import('/packages/search/doc/doc.md')
+      },
+      {
+        path: 'icon',
+        name: 'icon',
+        meta: {
+          name: 'Icon 图标'
+        },
+        component: () => import('/packages/icon/doc/doc.md')
       }
 
     ]
