@@ -20,7 +20,7 @@
         class="menu"
         @click.stop="menuChange"
       >
-        <svgIcon
+        <uv-icon
           name="modular"
           size="20"
           :color="!store.openMenu?'#0e80eb':''"

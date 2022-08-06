@@ -5,7 +5,7 @@
       class="m-copy"
       v-if="showCode"
       @click="copyCode"
-    ><svgIcon
+    ><uv-icon
       name="copy"
       size="25"
       color="#8e8e8e"
@@ -22,7 +22,7 @@
       @click="showOrhideCode"
     >
       <span style="margin-right: 5px;">{{ showCode ? "隐藏代码" : "显示代码" }}</span>
-      <svgIcon name="code" />
+      <uv-icon name="code" />
     </div>
     <textarea id="inputCopy" />
   </div>

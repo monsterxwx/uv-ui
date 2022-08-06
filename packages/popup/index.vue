@@ -16,7 +16,7 @@
             v-if="close"
             class="uv-popup-content-close"
           >
-            <svgIcon
+            <uv-icon
               @click="closeEvent"
               name="close"
               size="24"
@@ -51,6 +51,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import uvIcon from '../icon'
 import overLay from '../overlay'
 const props = defineProps({
   modelValue: {
