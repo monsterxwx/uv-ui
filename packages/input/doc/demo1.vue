@@ -51,6 +51,34 @@
       />
     </uv-cell-group>
     <div class="title">
+      自定义右边内容
+    </div>
+    <div class="tip">
+      通过插槽名称 <span class="code">right</span>设置
+    </div>
+    <uv-cell-group card>
+      <uv-input
+        label="文本2"
+        v-model="value1"
+      >
+        <template #right>
+          <div
+            style="
+          margin-left: 5px;
+          width: 40px;
+          height: 20px;
+          border-radius: 4px;
+          text-align: center;
+          background-color: #eeeeee;
+          line-height: 20px;"
+          >
+            m
+          </div>
+        </template>
+      </uv-input>
+    </uv-cell-group>
+
+    <div class="title">
       是否开启错误提示
     </div>
     <div class="tip">

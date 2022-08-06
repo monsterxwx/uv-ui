@@ -13,7 +13,7 @@
           <span
             v-if="icon!==''"
             style="margin-right: 5px;"
-          ><svgIcon
+          ><uv-icon
             :name="icon"
             :color="iconColor"
             :size="iconSize"
@@ -25,7 +25,7 @@
           {{ value }} <span
             v-if="arrow"
             style="margin-left: 2px;"
-          ><svgIcon
+          ><uv-icon
             :name="'arrow-'+arrowDirection"
             color="#9699a6"
           /></span>
@@ -43,7 +43,7 @@
 </template>
 
 <script setup>
-import svgIcon from '@/components/svgIcon'
+import uvIcon from '../icon'
 defineProps({
   title: {
     type: String,

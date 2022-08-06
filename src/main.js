@@ -9,7 +9,6 @@ import 'normalize.css'
 
 import headerBlock from '@/components/header-block'
 import preview from '@/components/preview'
-import svgIcon from '@/components/svgIcon'
 
 // 代码高亮
 import hljs from 'highlight.js'
@@ -27,7 +26,6 @@ app.directive('highlight', function (el) {
 // 全局注册组件
 app.component('HeaderBlock', headerBlock)
 app.component('Preview', preview)
-app.component('SvgIcon', svgIcon)
 
 app.use(uvUI)
 

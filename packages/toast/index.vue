@@ -8,7 +8,7 @@
         class="icon"
         v-if="type==='success' || type==='error'"
       >
-        <svgIcon
+        <uv-icon
           :name="type"
           size="36"
           :color="type==='success'?'#07c160':'#f56c6c'"
@@ -18,7 +18,7 @@
         class="loading-icon"
         v-if="type==='loading'"
       >
-        <svgIcon
+        <uv-icon
           name="loading"
           size="30"
           color="#e6e6e6"
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import svgIcon from '../../src/components/svgIcon'
+import uvIcon from '../icon'
 defineProps({
   message: {
     type: String,

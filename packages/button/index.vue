@@ -11,7 +11,7 @@
           v-if="icon && iconPosition==='left'"
           class="uv-button-content-icon-left"
         >
-          <svgIcon
+          <uv-icon
             :name="icon"
             :color="iconColor"
             :size="iconSize"
@@ -25,7 +25,7 @@
           v-if="icon && iconPosition==='right'"
           class="uv-button-content-icon-right"
         >
-          <svgIcon
+          <uv-icon
             :name="icon"
             :color="iconColor"
             :size="iconSize"
@@ -38,7 +38,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import svgIcon from '@/components/svgIcon'
+import uvIcon from '../icon'
 const props = defineProps({
   type: {
     type: String,

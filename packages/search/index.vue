@@ -9,7 +9,7 @@
       :style="{backgroundColor:searchBgColor}"
     >
       <div>
-        <svgIcon
+        <uv-icon
           name="search"
           size="22"
           color="#99a0ac"
@@ -33,7 +33,7 @@
         v-if="clearable && modelValue"
         class="uv-search-content-close"
       >
-        <svgIcon
+        <uv-icon
           name="error"
           size="22"
           color="#99a0ac"
@@ -45,7 +45,7 @@
 
 <script setup>
 
-import svgIcon from '@/components/svgIcon'
+import uvIcon from '../icon'
 import { computed } from 'vue'
 
 const props = defineProps({

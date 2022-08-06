@@ -58,15 +58,15 @@
         >
           {{ textLength }} / {{ maxlength }}
         </span>
+
+        <uv-icon
+          v-if="modelValue && clearable"
+          @click="clearValueEvent"
+          name="error"
+          size="22"
+        />
         <!-- 自定义输入框右边内容 -->
-        <slot name="right">
-          <svgIcon
-            v-if="modelValue && clearable"
-            @click="clearValueEvent"
-            name="error"
-            size="22"
-          />
-        </slot>
+        <slot name="right" />
       </div>
     </template>
     <template #tips>
@@ -83,7 +83,7 @@
 
 <script setup>
 
-import svgIcon from '@/components/svgIcon'
+import uvIcon from '../icon'
 import { ref, watch, nextTick, computed } from 'vue'
 import uvCell from '../cell'
 const emit = defineEmits(['update:modelValue', 'input', 'change', 'blur', 'focus', 'keydown'])

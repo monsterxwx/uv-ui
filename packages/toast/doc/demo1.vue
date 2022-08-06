@@ -60,7 +60,7 @@ const openToast = () => {
 }
 const openToast1 = (e) => {
   Toast({
-    message: '状态',
+    message: e + '状态',
     type: e
   })
 }

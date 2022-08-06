@@ -29,7 +29,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: '20'
+    default: '14'
   },
   dot: {
     type: Boolean,

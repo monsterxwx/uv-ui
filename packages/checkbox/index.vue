@@ -15,7 +15,7 @@
       :style="uvStyle"
       :class="uvIconClass"
     >
-      <svgIcon
+      <uv-icon
         v-if="modelValue"
         name="select"
         :color="disabled?'#c8c9cc':'#fff'"
@@ -37,7 +37,7 @@
 
 <script setup>
 
-import svgIcon from '@/components/svgIcon'
+import uvIcon from '../icon'
 import { computed } from 'vue'
 const props = defineProps({
   modelValue: {
