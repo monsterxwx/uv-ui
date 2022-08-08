@@ -40,7 +40,7 @@ defineProps({
   },
   duration: {
     type: Number,
-    default: 2000
+    default: 1600
   },
   bgColor: {
     type: String,
@@ -88,6 +88,7 @@ export default {
       margin-bottom: 10px;
     }
     .message {
+      min-width: 70px;
       font-size: 13px;
     }
   }

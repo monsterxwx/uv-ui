@@ -2,7 +2,7 @@ import Toast from './index.vue'
 import { createVNode, render } from 'vue'
 
 const defaultOpt = { // 创建默认参数
-  duration: 3000
+  duration: 1600
 }
 
 const ToastVNode = (options) => {
