@@ -13,6 +13,7 @@ import uvNumInput from './num-input/index.js'
 import uvPicker from './picker/index.js'
 import uvSearch from './search/index.js'
 import uvSlider from './slider/index.js'
+import uvStepper from './stepper/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -30,6 +31,7 @@ const install = app => {
   app.use(uvPicker)
   app.use(uvSearch)
   app.use(uvSlider)
+  app.use(uvStepper)
 }
 const uvUI = {
   install
@@ -49,7 +51,8 @@ export {
   uvNumInput,
   uvPicker,
   uvSearch,
-  uvSlider
+  uvSlider,
+  uvStepper
 }
 
 export default uvUI

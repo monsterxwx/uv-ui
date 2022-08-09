@@ -83,7 +83,6 @@ function touchmove (e) {
   if (props.disabled) return
   touchMoveValue.value = e.touches[0].clientX
   const difference = touchMoveValue.value - sliderValueWidth.value
-  console.log('速度')
   let percent = parseInt((difference / sliderWidth.value) * 100)
   if (percent < props.min) {
     percent = props.min

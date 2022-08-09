@@ -129,6 +129,14 @@ export default [
           name: 'Slider 滑块'
         },
         component: () => import('/packages/slider/doc/doc.md')
+      },
+      {
+        path: 'stepper',
+        name: 'stepper',
+        meta: {
+          name: 'Stepper 步进器'
+        },
+        component: () => import('/packages/stepper/doc/doc.md')
       }
 
     ]
