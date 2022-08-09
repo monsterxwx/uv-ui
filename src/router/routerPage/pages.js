@@ -121,6 +121,14 @@ export default [
           name: 'Search 搜索框'
         },
         component: () => import('/packages/search/doc/doc.md')
+      },
+      {
+        path: 'slider',
+        name: 'slider',
+        meta: {
+          name: 'Slider 滑块'
+        },
+        component: () => import('/packages/slider/doc/doc.md')
       }
 
     ]

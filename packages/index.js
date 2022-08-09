@@ -1,5 +1,6 @@
 import uvButton from './button/index.js'
 import uvInput from './input/index.js'
+import uvIcon from './icon/index.js'
 import uvCell from './cell/index.js'
 import uvCellGroup from './cell-group/index.js'
 import uvOverlay from './overlay/index.js'
@@ -11,11 +12,12 @@ import uvCheckboxGroup from './checkbox-group/index.js'
 import uvNumInput from './num-input/index.js'
 import uvPicker from './picker/index.js'
 import uvSearch from './search/index.js'
-import uvIcon from './icon/index.js'
+import uvSlider from './slider/index.js'
 
 const install = app => {
   app.use(uvButton)
   app.use(uvInput)
+  app.use(uvIcon)
   app.use(uvCell)
   app.use(uvCellGroup)
   app.use(uvOverlay)
@@ -27,7 +29,7 @@ const install = app => {
   app.use(uvNumInput)
   app.use(uvPicker)
   app.use(uvSearch)
-  app.use(uvIcon)
+  app.use(uvSlider)
 }
 const uvUI = {
   install
@@ -35,6 +37,7 @@ const uvUI = {
 export {
   uvButton,
   uvInput,
+  uvIcon,
   uvCell,
   uvCellGroup,
   uvOverlay,
@@ -46,7 +49,7 @@ export {
   uvNumInput,
   uvPicker,
   uvSearch,
-  uvIcon
+  uvSlider
 }
 
 export default uvUI
