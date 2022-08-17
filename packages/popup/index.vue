@@ -184,12 +184,14 @@ export default {
     }
   }
   &-slide-top-enter-active,
+  &-slide-center-enter-active,
   &-slide-left-enter-active,
   &-slide-right-enter-active,
   &-slide-bottom-enter-active {
     transition-timing-function: ease-out;
   }
   &-slide-top-leave-active,
+  &-slide-center-enter-active,
   &-slide-left-leave-active,
   &-slide-right-leave-active,
   &-slide-bottom-leave-active {
@@ -210,6 +212,10 @@ export default {
   &-slide-left-enter-from,
   &-slide-left-leave-active {
     transform: translate3d(-100%, 0, 0);
+  }
+  &-slide-center-enter-from,
+  &-slide-center-leave-active {
+    opacity: 0;
   }
   .uv-popup-content {
     // display: flex;

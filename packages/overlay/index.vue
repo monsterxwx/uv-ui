@@ -1,5 +1,5 @@
 <template>
-  <Transition>
+  <Transition name="overlay">
     <div
       class="uv-overlay"
       :style="{zIndex:zIndex,background:overlay?'rgba(0,0,0,.7)':'transparent'}"
@@ -41,12 +41,12 @@ export default {
   width: 100%;
   height: 100%;
 }
-.v-enter-active,
-.v-leave-active {
+.overlay-enter-active,
+.overlay-leave-active {
   transition: opacity 0.5s ease;
 }
-.v-enter-from,
-.v-leave-to {
+.overlay-enter-from,
+.overlay-leave-to {
   opacity: 0;
 }
 </style>
