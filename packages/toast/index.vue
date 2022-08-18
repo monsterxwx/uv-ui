@@ -110,7 +110,7 @@ export default {
   }
 }
 .uv-toast-value.remove {
-  animation: remove 0.5s;
+  animation: remove 0.6s;
 }
 
 @keyframes remove {
