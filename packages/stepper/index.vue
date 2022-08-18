@@ -4,37 +4,46 @@
   >
     <div
       class="uv-stepper-minus"
-      :class="min===modelValue?'uv-stepper-disabled':''"
-      @click="subClick"
+      :style="{width:size+'px',height:size+'px'}"
+      :class="min===current || disabled?'uv-stepper-disabled':''"
+      @click.stop="subClick"
     >
       <uv-icon
         size="20"
         name="minus"
-        :color="min===modelValue?'c8c9cc':'#323233'"
+        :color="min===current || disabled?'c8c9cc':'#323233'"
       />
     </div>
 
-    <div class="uv-stepper-input">
+    <div
+      @click.stop
+      class="uv-stepper-input"
+      :style="{width:inputWidth,height:size+'px'}"
+    >
       <input
+        :style="{ color: disabled?'#d0c9cc':'#323233'}"
+        :disabled="disableInput || disabled"
         @input="handleInput"
-        :value="modelValue"
+        v-model="current"
       >
     </div>
     <div
       class="uv-stepper-add"
-      :class="max===modelValue?'uv-stepper-disabled':''"
-      @click="addClick"
+      :style="{width:size+'px',height:size+'px'}"
+      :class="max===current || disabled?'uv-stepper-disabled':''"
+      @click.stop="addClick"
     >
       <uv-icon
         size="20"
         name="add"
-        :color="max===modelValue?'c8c9cc':'#323233'"
+        :color="max===current || disabled?'c8c9cc':'#323233'"
       />
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, watch } from 'vue'
 const props = defineProps({
   modelValue: {
     type: Number
@@ -45,30 +54,64 @@ const props = defineProps({
   min: {
     type: Number,
     default: 0
+  },
+  integer: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  disableInput: {
+    type: Boolean,
+    default: false
+  },
+  inputWidth: {
+    type: String,
+    default: '28px'
+  },
+  size: {
+    type: Number,
+    default: 28
   }
 
 })
 const emit = defineEmits(['update:modelValue', 'add', 'sub'])
+const current = ref(1)
+
+watch(() => props.modelValue, (newValue) => {
+  current.value = newValue
+}, {
+  immediate: true
+})
+
 function subClick () {
-  if (props.modelValue - 1 < props.min) return
-  emit('add', props.modelValue - 1)
-  emit('update:modelValue', props.modelValue - 1)
+  if ((props.min && current.value - 1 < props.min) || props.disabled) return
+  current.value = current.value - 1
+  emit('add', current.value)
+  emit('update:modelValue', current.value)
 }
 function addClick () {
-  if (props.max && props.modelValue + 1 > props.max) return
-  emit('add', props.modelValue + 1)
-  emit('update:modelValue', props.modelValue + 1)
+  if ((props.max && current.value + 1 > props.max) || props.disabled) return
+  current.value = current.value + 1
+  emit('add', current.value)
+  emit('update:modelValue', current.value)
+}
+
+function filter (value) {
+  value = String(value).replace(/[^0-9.-]/g, '')
+  if (props.integer && value.indexOf('.') !== -1) {
+    value = value.split('.')[0]
+  }
+  return value
 }
 
 function handleInput (e) {
   const { value } = e.target
-  const reg = /^[0-9]+.{0,1}[0-9]{0,2}$/
-  const isNum = reg.test(value)
-  if (!isNum) {
-    return
-  }
-  emit('update:modelValue', value - 0)
-  console.log('是否数字', isNum)
+  const formatted = filter(value)
+  current.value = Number(formatted)
+  emit('update:modelValue', current.value)
 }
 </script>
 <script>
@@ -97,8 +140,6 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 2px;
-    width: 26px;
-    height: 28px;
     background-color: #f2f3f5;
   }
   .uv-stepper-minus {
