@@ -14,6 +14,7 @@ import uvPicker from './picker/index.js'
 import uvSearch from './search/index.js'
 import uvSlider from './slider/index.js'
 import uvStepper from './stepper/index.js'
+import uvActionSheet from './action-sheet/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -32,6 +33,7 @@ const install = app => {
   app.use(uvSearch)
   app.use(uvSlider)
   app.use(uvStepper)
+  app.use(uvActionSheet)
 }
 const uvUI = {
   install
@@ -52,7 +54,8 @@ export {
   uvPicker,
   uvSearch,
   uvSlider,
-  uvStepper
+  uvStepper,
+  uvActionSheet
 }
 
 export default uvUI

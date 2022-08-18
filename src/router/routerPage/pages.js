@@ -137,6 +137,20 @@ export default [
           name: 'Stepper 步进器'
         },
         component: () => import('/packages/stepper/doc/doc.md')
+      },
+      {
+        path: '',
+        meta: {
+          title: '反馈组件'
+        }
+      },
+      {
+        path: 'action-sheet',
+        name: 'action-sheet',
+        meta: {
+          name: 'ActionSheet 动作面板'
+        },
+        component: () => import('/packages/action-sheet/doc/doc.md')
       }
 
     ]

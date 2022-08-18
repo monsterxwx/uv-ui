@@ -9,7 +9,7 @@
       <div
         v-show="modelValue"
         :class="uvClass"
-        :style="{height:height,backgroundColor:bgColor}"
+        :style="{height:height,backgroundColor:bgColor,padding:padding?'10px':'none'}"
       >
         <div class="uv-popup-content">
           <div
@@ -69,6 +69,10 @@ const props = defineProps({
   round: {
     type: Boolean,
     default: false
+  },
+  padding: {
+    type: Boolean,
+    default: true
   },
   overlay: {
     type: Boolean,
@@ -136,7 +140,6 @@ export default {
   position: fixed;
   z-index: 2;
   overflow-y: auto;
-  padding: 10px;
   max-height: 100%;
   transition: transform 0.3s;
   &-bottom {
