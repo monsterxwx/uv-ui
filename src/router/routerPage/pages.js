@@ -44,14 +44,7 @@ export default [
         },
         component: () => import('/packages/icon/doc/doc.md')
       },
-      {
-        path: 'overlay',
-        name: 'overlay',
-        meta: {
-          name: 'Overlay 遮罩层'
-        },
-        component: () => import('/packages/overlay/doc/doc.md')
-      },
+
       {
         path: 'popup',
         name: 'popup',
@@ -151,6 +144,14 @@ export default [
           name: 'ActionSheet 动作面板'
         },
         component: () => import('/packages/action-sheet/doc/doc.md')
+      },
+      {
+        path: 'overlay',
+        name: 'overlay',
+        meta: {
+          name: 'Overlay 遮罩层'
+        },
+        component: () => import('/packages/overlay/doc/doc.md')
       }
 
     ]

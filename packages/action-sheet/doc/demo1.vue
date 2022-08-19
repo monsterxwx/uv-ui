@@ -7,7 +7,6 @@
       v-model:show="show"
       v-model="value"
       :list="list"
-      :click-overlay-close="false"
     />
     {{ value }}
     <div class="title">
