@@ -2,7 +2,7 @@
     import demo1 from "./demo1.vue";
 </script>
 
-## Picker 选择器
+## Picker 选择器（待完善）
 
 ### 基本使用
 <demo1></demo1>

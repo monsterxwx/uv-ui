@@ -152,6 +152,14 @@ export default [
           name: 'Overlay 遮罩层'
         },
         component: () => import('/packages/overlay/doc/doc.md')
+      },
+      {
+        path: 'dialog',
+        name: 'dialog',
+        meta: {
+          name: 'Dialog 弹出框'
+        },
+        component: () => import('/packages/dialog/doc/doc.md')
       }
 
     ]

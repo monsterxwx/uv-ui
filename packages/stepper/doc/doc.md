@@ -2,7 +2,7 @@
     import demo1 from "./demo1.vue";
 </script>
 
-## Stepper 步进器
+## Stepper 步进器（待完善）
 
 ### 基本使用
 <demo1></demo1>
