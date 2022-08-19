@@ -1,7 +1,7 @@
 {
   "name": "uv-ui",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "./dist/uv-ui.umd.js",
   "module": "./dist/uv-ui.es.js",
   "exports": {
