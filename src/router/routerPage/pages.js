@@ -124,6 +124,14 @@ export default [
         component: () => import('/packages/slider/doc/doc.md')
       },
       {
+        path: 'switch',
+        name: 'switch',
+        meta: {
+          name: 'Switch 开关'
+        },
+        component: () => import('/packages/switch/doc/doc.md')
+      },
+      {
         path: 'stepper',
         name: 'stepper',
         meta: {

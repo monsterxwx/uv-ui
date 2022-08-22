@@ -16,6 +16,7 @@ import uvSlider from './slider/index.js'
 import uvStepper from './stepper/index.js'
 import uvActionSheet from './action-sheet/index.js'
 import showDialog from './dialog/index.js'
+import uvSwitch from './switch/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -36,6 +37,7 @@ const install = app => {
   app.use(uvStepper)
   app.use(uvActionSheet)
   app.use(showDialog)
+  app.use(uvSwitch)
 }
 const uvUI = {
   install
@@ -58,7 +60,8 @@ export {
   uvSlider,
   uvStepper,
   uvActionSheet,
-  showDialog
+  showDialog,
+  uvSwitch
 }
 
 export default uvUI
