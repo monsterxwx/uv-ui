@@ -17,6 +17,7 @@
         {{ item.name }}
       </div>
       <div
+        v-if="store.tabIndex===1"
         class="menu"
         @click.stop="menuChange"
       >
