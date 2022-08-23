@@ -112,7 +112,6 @@ const switchMenu = (item, index) => {
     .router-view {
       overflow-x: hidden;
       overflow-y: auto;
-      padding: 0 10px;
       height: auto;
       border: 1px solid #f7f8fa;
       background-color: #f6f7f9;

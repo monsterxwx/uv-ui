@@ -116,14 +116,15 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
   margin: 0 0 15px;
+  padding: 0 10px;
   width: 100%;
   height: auto;
   border-top: 0;
   transition: all 0.15s ease-out;
   .m-copy {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
     i {
       font-size: 22px;

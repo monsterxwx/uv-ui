@@ -11,12 +11,13 @@ import uvCheckbox from './checkbox/index.js'
 import uvCheckboxGroup from './checkbox-group/index.js'
 import uvNumInput from './num-input/index.js'
 import uvPicker from './picker/index.js'
+import uvSwitch from './switch/index.js'
 import uvSearch from './search/index.js'
 import uvSlider from './slider/index.js'
 import uvStepper from './stepper/index.js'
 import uvActionSheet from './action-sheet/index.js'
 import showDialog from './dialog/index.js'
-import uvSwitch from './switch/index.js'
+import uvSwipeCell from './swipe-cell/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -32,12 +33,13 @@ const install = app => {
   app.use(uvCheckboxGroup)
   app.use(uvNumInput)
   app.use(uvPicker)
+  app.use(uvSwitch)
   app.use(uvSearch)
   app.use(uvSlider)
   app.use(uvStepper)
   app.use(uvActionSheet)
   app.use(showDialog)
-  app.use(uvSwitch)
+  app.use(uvSwipeCell)
 }
 const uvUI = {
   install
@@ -56,12 +58,13 @@ export {
   uvCheckboxGroup,
   uvNumInput,
   uvPicker,
+  uvSwitch,
   uvSearch,
   uvSlider,
   uvStepper,
   uvActionSheet,
   showDialog,
-  uvSwitch
+  uvSwipeCell
 }
 
 export default uvUI

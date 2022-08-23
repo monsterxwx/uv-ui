@@ -168,6 +168,14 @@ export default [
           name: 'Dialog 弹出框'
         },
         component: () => import('/packages/dialog/doc/doc.md')
+      },
+      {
+        path: 'swipe-cell',
+        name: 'swipe-cell',
+        meta: {
+          name: 'SwipeCell 滑动单元格'
+        },
+        component: () => import('/packages/swipe-cell/doc/doc.md')
       }
 
     ]
