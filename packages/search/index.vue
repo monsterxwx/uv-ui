@@ -110,35 +110,49 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-search-padding: 10px;
+  --uv-search-content-padding: 2px 10px;
+  --uv-search-content-border-radius: 4px;
+  --uv-search-input-placeholder-color: #d3c9d6;
+  --uv-search-input-padding: 8px;
+  --uv-search-input-font-size: 14px;
+  --uv-search-input-border-radius: 4px;
+  --uv-search-input-disabled-color: #d3c9d6;
+  --uv-search-content-round-border-radius: 40px;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-search {
   position: relative;
-  padding: 10px;
+  padding: var(--uv-search-padding);
   .uv-search-content {
     display: flex;
     align-items: center;
-    padding: 2px 10px;
-    border-radius: 4px;
+    padding: var(--uv-search-content-padding);
+    border-radius: var(--uv-search-content-border-radius);
     &-input {
       flex: 1;
-      font-size: 14px;
+      font-size: var(--uv-search-input-font-size);
       input {
-        padding: 8px;
+        padding: var(--uv-search-input-padding);
         width: 100%;
         border: none;
-        border-radius: 4px;
+        border-radius: var(--uv-search-input-border-radius);
         outline: none;
       }
       input::placeholder {
-        color: #d3c9d6;
+        color: var(--uv-search-input-placeholder-color);
       }
       input:disabled {
-        color: #d3c9d6;
+        color: var(--uv-search-input-disabled-color);
       }
     }
   }
   .uv-search-content-round {
-    border-radius: 40px;
+    border-radius: var(--uv-search-content-round-border-radius);
   }
 }
 

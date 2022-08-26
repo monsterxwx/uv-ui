@@ -114,18 +114,30 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-num-input-font-size: 22px;
+  --uv-num-input-border-radius: 8px;
+  --uv-num-input-color: #323233;
+  --uv-num-input-bg-color: #ffffff;
+  --uv-num-input-active-bg-color: #ebedf0;
+  --uv-num-input-confim-color: #ffffff;
+  --uv-num-input-confim-bg-color: #1989fa;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-num-input {
   @mixin common {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
-    border-radius: 8px;
-    color: #323233;
-    background-color: #ffffff;
+    font-size: var(--uv-num-input-font-size);
+    border-radius: var(--uv-num-input-border-radius);
+    color: var(--uv-num-input-color);
+    background-color: var(--uv-num-input-bg-color);
     &:active {
-      background-color: #ebedf0;
+      background-color: var(--uv-num-input-active-bg-color);
     }
   }
   .uv-num-content {
@@ -154,8 +166,8 @@ export default {
       }
       .uv-num-input-confim {
         font-size: 14px;
-        color: #ffffff;
-        background-color: #1989fa;
+        color: var(--uv-num-input-confim-color);
+        background-color: var(--uv-num-input-confim-bg-color);
         &:active {
           opacity: 0.7;
         }

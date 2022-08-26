@@ -28,20 +28,34 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-message-value-top: 30px;
+  --uv-message-value-padding: 8px 10px;
+  --uv-message-value-width: 70%;
+  --uv-message-value-height: 40px;
+  --uv-message-value-border-radius: 4px;
+  --uv-message-value-bg-color: #ffffff;
+  --uv-message-value-box-shadow: 0 4px 12px #00000026;
+  --uv-message-animation-time: 0.5s;
+  --uv-message-animation-remove-time: 0.6s;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-message {
   .uv-message-value {
     position: fixed;
-    top: 30px;
+    top: var(--uv-message-value-top);
     left: 50%;
-    padding: 8px 10px;
-    width: 70%;
-    height: 40px;
-    border-radius: 4px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px #00000026;
+    padding: var(--uv-message-value-padding);
+    width: var(--uv-message-value-width);
+    height: var(--uv-message-value-height);
+    border-radius: var(--uv-message-value-border-radius);
+    background-color: var(--uv-message-value-bg-color);
+    box-shadow: var(--uv-message-value-box-shadow);
     transform: translateX(-50%);
-    animation: face 0.5s;
+    animation: face var(--uv-message-animation-time);
   }
 
   @keyframes face {
@@ -53,7 +67,7 @@ export default {
     }
   }
   .uv-message-value.remove {
-    animation: remove 0.6s;
+    animation: remove var(--uv-message-animation-remove-time);
   }
 
   @keyframes remove {

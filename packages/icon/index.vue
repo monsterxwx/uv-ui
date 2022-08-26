@@ -1,7 +1,7 @@
 <template>
   <div class="uv-icon">
     <svg
-      class="icon"
+      class="uv-icon-svg"
       :style="iconColor"
       aria-hidden="true"
     >
@@ -9,7 +9,7 @@
     </svg>
     <div
       v-if="dot"
-      class="uv-info"
+      class="uv-icon-info"
       :class="styleDot"
     >
       {{ badge }}
@@ -50,7 +50,7 @@ const iconColor = computed(() => {
 })
 const styleDot = computed(() => {
   return {
-    'uv-dot': props.dot && !props.badge
+    'uv-icon-dot': props.dot && !props.badge
   }
 })
 
@@ -61,40 +61,57 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-icon-info-top: 4px;
+  --uv-icon-info-right: 0;
+  --uv-icon-info-padding: 0 3px;
+  --uv-icon-info-min-width: 16px;
+  --uv-icon-info-font-size: 12px;
+  --uv-icon-info-font-weight: 500;
+  --uv-icon-info-border: 1px solid #ffffff;
+  --uv-icon-info-border-radius: 16px;
+  --uv-icon-info-color: #ffffff;
+  --uv-icon-info-bg-color: #ee0a24;
+  --uv-icon-dot-size: 8px;
+  --uv-icon-dot-bg-color: #ee0a24;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-icon {
   position: relative;
   display: inline-block;
-  .icon {
+  .uv-icon-svg {
     overflow: hidden;
     width: 1em;
     height: 1em;
     vertical-align: -0.15em;
     fill: currentcolor;
   }
-  .uv-info {
+  .uv-icon-info {
     position: absolute;
-    top: 4px;
-    right: 0;
-    padding: 0 3px;
-    min-width: 16px;
-    font-size: 12px;
-    font-weight: 500;
-    border: 1px solid #ffffff;
-    border-radius: 16px;
+    top: var(--uv-icon-info-top);
+    right: var(-uv-icon-info-right);
+    padding: var(--uv-icon-info-padding);
+    min-width: var(--uv-icon-info-min-width);
+    font-size: var(--uv-icon-info-font-size);
+    font-weight: var(--uv-icon-info-font-weight);
+    border: var(--uv-icon-info-border);
+    border-radius: var(--uv-icon-info-border-radius);
     text-align: center;
-    color: #ffffff;
-    background-color: #ee0a24;
+    color: var(--uv-icon-info-color);
+    background-color: var(--uv-icon-info-bg-color);
     box-sizing: border-box;
     line-height: 1.2;
     transform: translate(50%, -50%);
   }
-  .uv-dot {
-    width: 8px;
+  .uv-icon-dot {
+    width: var(--uv-icon-dot-size);
     min-width: 0;
-    height: 8px;
+    height: var(--uv-icon-dot-size);
     border-radius: 100%;
-    background-color: #ee0a24;
+    background-color: var(--uv-icon-dot-bg-color);
   }
 }
 

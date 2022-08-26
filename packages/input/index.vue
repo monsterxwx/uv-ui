@@ -239,20 +239,39 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-input-title-width: 88px;
+  --uv-input-title-disabled-color: #d3c9d6;
+  --uv-input-padding: 5px 8px;
+  --uv-input-border-radius: 4px;
+  --uv-input-bg-color: #ffffff;
+  --uv-input-height: 26px;
+  --uv-input-placeholder-color: #d3c9d6;
+  --uv-input-disabled-color: #d3c9d6;
+  --uv-input-word-limit-color: #646566;
+  --uv-input-required-font-color: #ee0a24;
+  --uv-input-tips-color: #ee0a24;
+  --uv-input-tips-font-size: 13px;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-input-title {
-  width: 88px;
+  width: var(--uv-input-title-width);
 }
-:deep(.uv-cell-content) {
-  justify-content: flex-start;
-  align-items: flex-start !important;
-}
-:deep(.uv-cell-content-value) {
-  flex: 1;
-}
-:deep(.uv-cell-content-title) {
-  margin: 0 !important;
-  line-height: 26px;
+:deep() {
+  .uv-cell-content {
+    justify-content: flex-start;
+    align-items: flex-start !important;
+  }
+  .uv-cell-content-value {
+    flex: 1;
+  }
+  .uv-cell-content-title {
+    margin: 0 !important;
+    line-height: 26px;
+  }
 }
 .uv-input {
   position: relative;
@@ -260,26 +279,26 @@ export default {
   align-items: center;
   input,
   textarea {
-    padding: 5px 8px;
+    padding: var(--uv-input-padding);
     width: 100%;
     border: none;
-    border-radius: 4px;
-    background-color: #ffffff;
+    border-radius: var(--uv-input-border-radius);
+    background-color: var(--uv-input-bg-color);
     outline: none;
   }
   input {
-    height: 26px;
+    height: var(--uv-input-height);
   }
   textarea {
     resize: none;
   }
   input::placeholder,
   textarea::placeholder {
-    color: #d3c9d6;
+    color: var(--uv-input-placeholder-color);
   }
   input:disabled,
   textarea:disabled {
-    color: #d3c9d6;
+    color: var(--uv-input-disabled-color);
   }
   .showWordLimit {
     position: absolute;
@@ -287,11 +306,11 @@ export default {
     bottom: -8px;
     font-size: 12px;
     white-space: nowrap;
-    color: #646566;
+    color: var(--uv-input-word-limit-color);
   }
 }
 .uv-input-title-disabled {
-  color: #d3c9d6;
+  color: var(--uv-input-title-disabled-color);
 }
 .uv-input-label {
   position: relative;
@@ -299,11 +318,11 @@ export default {
     position: absolute;
     top: 0;
     left: -8px;
-    color: #ee0a24;
+    color: var(--uv-input-required-font-color);
   }
 }
 .uv-input-tips {
-  font-size: 13px;
-  color: #ee0a24;
+  font-size: var(--uv-input-tips-font-size);
+  color: var(--uv-input-tips-color);
 }
 </style>

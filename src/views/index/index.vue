@@ -8,13 +8,7 @@
       >
         test
       </uv-button>
-      <uv-button
-        icon="user"
-        :icon-size="18"
-        type="success"
-      >
-        添加
-      </uv-button>
+      <uv-switch class="diy" />
     </div>
   </div>
 </template>
@@ -24,5 +18,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.diy {
+  --uv-switch-size: 36px;
+}
 </style>

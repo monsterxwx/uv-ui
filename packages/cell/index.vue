@@ -98,6 +98,19 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-cell-after-right: 15px;
+  --uv-cell-after-left: 15px;
+  --uv-cell-after-border-bottom: 1px solid #f5f6f7;
+  --uv-cell-clickable-bg-color: #f2f3f5;
+  --uv-cell-content-padding: 10px 15px;
+  --uv-cell-content-title-margin-right: 20px;
+  --uv-cell-content-value-color: #969799;
+  --uv-cell-tips-margin-left: 96px;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-cell {
   position: relative;
@@ -106,10 +119,10 @@ export default {
   overflow: hidden;
   &::after {
     position: absolute;
-    right: 15px;
+    right: var(--uv-cell-after-right);
     bottom: 0;
-    left: 15px;
-    border-bottom: 1px solid #f5f6f7;
+    left: var(--uv-cell-after-left);
+    border-bottom: var(--uv-cell-after-border-bottom);
     content: "";
     pointer-events: none;
 
@@ -120,26 +133,26 @@ export default {
   }
   .uv-cell-clickable {
     &:active {
-      background-color: #f2f3f5;
+      background-color: var(--uv-cell-clickable-bg-color);
     }
   }
   .uv-cell-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    &-title {
-      margin-right: 20px;
+    padding: var(--uv-cell-content-padding);
+    .uv-cell-content-title {
+      margin-right: var(--uv-cell-content-title-margin-right);
       white-space: nowrap;
     }
-    &-value {
+    .uv-cell-content-value {
       white-space: wrap;
-      color: #969799;
+      color: var(--uv-cell-content-value-color);
     }
   }
 }
 .uv-cell-tips {
   display: flex;
-  margin-left: 96px;
+  margin-left: var(--uv-cell-tips-margin-left);
 }
 </style>

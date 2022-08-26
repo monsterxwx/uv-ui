@@ -141,6 +141,28 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-dialog-width: 90%;
+  --uv-dialog-min-height: 100px;
+  --uv-dialog-border-radius: 16px;
+  --uv-dialog-bg-color: #ffffff;
+  --uv-dialog-transition-time: 0.3s;
+  --uv-dialog-title-padding: 15px 0 10px;
+  --uv-dialog-title-text-align: center;
+  --uv-dialog-title-color: #323233;
+  --uv-dialog-content-padding: 8px 24px 26px;
+  --uv-dialog-content-font-size: 14px;
+  --uv-dialog-content-color: #646566;
+  --uv-dialog-bottom-button-height: 48px;
+  --uv-dialog-bottom-button-border-top: 1px solid #f7f8f9;
+  --uv-dialog-bottom-button-center-line-color: #f7f8f9;
+  --uv-dialog-confim-active-bg-color: #e6e6e6;
+  --uv-dialog-cancle-bg-color: #e6e6e6;
+  --uv-dialog-button-undisabled-color: #646566;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-wrapper {
   display: flex;
@@ -151,28 +173,28 @@ export default {
   .uv-dialog {
     position: relative;
     overflow: hidden;
-    width: 90%;
-    min-height: 100px;
-    border-radius: 16px;
-    background-color: #ffffff;
-    transition: 0.3s;
+    width: var(--uv-dialog-width);
+    min-height: var(--uv-dialog-min-height);
+    border-radius: var(--uv-dialog-border-radius);
+    background-color: var(--uv-dialog-bg-color);
+    transition: var(--uv-dialog-transition-time);
     .uv-dialog-title {
-      padding: 15px 0 10px;
+      padding: var(--uv-dialog-title-padding);
       width: 100%;
       font-weight: 700;
-      text-align: center;
-      color: #323233;
+      text-align: var(--uv-dialog-title-text-align);
+      color: var(--uv-dialog-title-color);
     }
     .uv-dialog-content {
-      padding: 8px 24px 26px;
+      padding: var(--uv-dialog-content-padding);
       width: 100%;
-      font-size: 14px;
-      color: #646566;
+      font-size: var(--uv-dialog-content-font-size);
+      color: var(--uv-dialog-content-color);
     }
     .uv-dialog-bottom-button {
       width: 100%;
-      height: 48px;
-      border-top: 1px solid #f7f8f9;
+      height: var(--uv-dialog-bottom-button-height);
+      border-top: var(--uv-dialog-bottom-button-border-top);
       .only-confim {
         display: flex;
         height: 100%;
@@ -190,7 +212,7 @@ export default {
           transform: translateX(-50%);
           width: 1px;
           height: 100%;
-          background-color: #f7f8f9;
+          background-color: var(--uv-dialog-bottom-button-center-line-color);
         }
       }
       .uv-dialog-confim {
@@ -200,7 +222,7 @@ export default {
         height: 100%;
         flex: 1;
         &:active {
-          background-color: #e6e6e6;
+          background-color: var(--uv-dialog-confim-active-bg-color);
         }
       }
       .uv-dialog-cancle {
@@ -210,11 +232,11 @@ export default {
         height: 100%;
         flex: 1;
         &:active {
-          background-color: #e6e6e6;
+          background-color: var(--uv-dialog-cancle-bg-color);
         }
       }
       .uv-dialog-button-undisabled {
-        color: #646566 !important;
+        color: var(--uv-dialog-button-undisabled-color) !important;
         &:active {
           background-color: none !important;
         }

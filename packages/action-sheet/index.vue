@@ -82,6 +82,15 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-action-sheet-item-bg-color: #ffffff;
+  --uv-action-sheet-item-padding: 14px 16px;
+  --uv-action-able-click-bg-color: #f2f3f5;
+  --uv-action-cancle-item-margin-top: 10px;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-action-sheet {
   display: flex;
@@ -89,18 +98,18 @@ export default {
   align-items: center;
   flex-direction: column;
   .uv-action-sheet-item {
-    padding: 14px 16px;
+    padding: var(--uv-action-sheet-item-padding);
     width: 100%;
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--uv-action-sheet-item-bg-color);
   }
   .able-click {
     &:active {
-      background-color: #f2f3f5;
+      background-color: var(--uv-action-able-click-bg-color);
     }
   }
   .cancle-item {
-    margin-top: 10px;
+    margin-top: var(--uv-action-cancle-item-margin-top);
   }
 }
 </style>

@@ -32,18 +32,23 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --uv-overlay-transition-time: 0.5s;
+}
+</style>
+
 <style lang="scss" scoped>
 .uv-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
   width: 100%;
   height: 100%;
 }
 .overlay-enter-active,
 .overlay-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity var(--uv-overlay-transition-time) ease;
 }
 .overlay-enter-from,
 .overlay-leave-to {
