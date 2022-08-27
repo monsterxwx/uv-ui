@@ -46,7 +46,7 @@ import { useRouter } from 'vue-router'
 import useStore from '@/store/common'
 const store = useStore()
 const router = useRouter()
-const activeIndex = ref(0)
+const activeIndex = ref(1)
 const switchMenu = (item, index) => {
   router.push({
     name: item.name
