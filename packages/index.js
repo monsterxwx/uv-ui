@@ -18,6 +18,7 @@ import uvStepper from './stepper/index.js'
 import uvActionSheet from './action-sheet/index.js'
 import showDialog from './dialog/index.js'
 import uvSwipeCell from './swipe-cell/index.js'
+import uvRate from './rate/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -40,6 +41,7 @@ const install = app => {
   app.use(uvActionSheet)
   app.use(showDialog)
   app.use(uvSwipeCell)
+  app.use(uvRate)
 }
 const uvUI = {
   install
@@ -64,7 +66,8 @@ export {
   uvStepper,
   uvActionSheet,
   showDialog,
-  uvSwipeCell
+  uvSwipeCell,
+  uvRate
 }
 
 export default uvUI

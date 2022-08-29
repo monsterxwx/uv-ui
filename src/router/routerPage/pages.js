@@ -176,6 +176,14 @@ export default [
           name: 'SwipeCell 滑动单元格'
         },
         component: () => import('/packages/swipe-cell/doc/doc.md')
+      },
+      {
+        path: 'rate',
+        name: 'rate',
+        meta: {
+          name: 'Rate 评分'
+        },
+        component: () => import('/packages/rate/doc/doc.md')
       }
 
     ]

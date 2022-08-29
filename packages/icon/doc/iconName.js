@@ -298,6 +298,12 @@ const arr = [
   },
   {
     name: 'arrow-right-filling'
+  },
+  {
+    name: 'star-fill'
+  },
+  {
+    name: 'love-fill'
   }
 ]
 
