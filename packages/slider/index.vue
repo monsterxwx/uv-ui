@@ -14,7 +14,7 @@
         class="uv-slider-circle"
         ref="sliderValueRef"
         @touchstart="touchstart"
-        @touchmove.stop="throttleMove"
+        @touchmove.stop="touchmove"
         @touchend="touchend"
       >
         <slot name="button">
@@ -29,8 +29,9 @@
 </template>
 
 <script setup>
-import { throttle } from '../utils'
+import { useTouch } from '../hooks/useTouch.js'
 import { onMounted, ref } from 'vue'
+const touch = useTouch()
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -69,20 +70,19 @@ const emit = defineEmits(['update:modelValue', 'change', 'drag-start'])
 const sliderRef = ref(null)
 const sliderValueRef = ref(null)
 const sliderWidth = ref('')
-const sliderValueWidth = ref(0)
 
 onMounted(() => {
   sliderWidth.value = sliderRef.value.offsetWidth
 })
-const touchMoveValue = ref('')
 function touchstart (e) {
+  touch.start(e)
   emit('drag-start', e)
-  sliderValueWidth.value = sliderValueRef.value.offsetWidth
 }
 function touchmove (e) {
   if (props.disabled) return
-  touchMoveValue.value = e.touches[0].clientX
-  const difference = touchMoveValue.value - sliderValueWidth.value
+  touch.move(e)
+  const { deltaX, startX } = touch
+  const difference = Number(startX.value + deltaX.value)
   let percent = parseInt((difference / sliderWidth.value) * 100)
   if (percent < props.min) {
     percent = props.min
@@ -90,10 +90,6 @@ function touchmove (e) {
     percent = props.max
   }
   emit('update:modelValue', percent)
-}
-
-const throttleMove = (e) => {
-  throttle(touchmove, 30)(e)
 }
 
 function touchend () {
@@ -132,6 +128,7 @@ export default {
     padding: 0 10px;
     height: var(--uv-slider-height);
     border-radius: var(--uv-slider-border-radius);
+    transition: all 0.1s;
     .uv-slider-circle {
       position: absolute;
       right: -1px;
