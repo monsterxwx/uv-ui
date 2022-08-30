@@ -184,6 +184,14 @@ export default [
           name: 'Rate 评分'
         },
         component: () => import('/packages/rate/doc/doc.md')
+      },
+      {
+        path: 'collapse',
+        name: 'collapse',
+        meta: {
+          name: 'Collapse 折叠面板'
+        },
+        component: () => import('/packages/collapse/doc/doc.md')
       }
 
     ]

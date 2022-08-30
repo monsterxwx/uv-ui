@@ -19,6 +19,8 @@ import uvActionSheet from './action-sheet/index.js'
 import showDialog from './dialog/index.js'
 import uvSwipeCell from './swipe-cell/index.js'
 import uvRate from './rate/index.js'
+import uvCollapse from './collapse/index.js'
+import uvCollapseItem from './collapse-item/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -42,6 +44,8 @@ const install = app => {
   app.use(showDialog)
   app.use(uvSwipeCell)
   app.use(uvRate)
+  app.use(uvCollapse)
+  app.use(uvCollapseItem)
 }
 const uvUI = {
   install
@@ -67,7 +71,9 @@ export {
   uvActionSheet,
   showDialog,
   uvSwipeCell,
-  uvRate
+  uvRate,
+  uvCollapse,
+  uvCollapseItem
 }
 
 export default uvUI
