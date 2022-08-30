@@ -192,6 +192,14 @@ export default [
           name: 'Collapse 折叠面板'
         },
         component: () => import('/packages/collapse/doc/doc.md')
+      },
+      {
+        path: 'divider',
+        name: 'divider',
+        meta: {
+          name: 'Divider 分割线'
+        },
+        component: () => import('/packages/divider/doc/doc.md')
       }
 
     ]

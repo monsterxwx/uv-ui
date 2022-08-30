@@ -21,6 +21,7 @@ import uvSwipeCell from './swipe-cell/index.js'
 import uvRate from './rate/index.js'
 import uvCollapse from './collapse/index.js'
 import uvCollapseItem from './collapse-item/index.js'
+import uvDivider from './divider/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -46,6 +47,7 @@ const install = app => {
   app.use(uvRate)
   app.use(uvCollapse)
   app.use(uvCollapseItem)
+  app.use(uvDivider)
 }
 const uvUI = {
   install
@@ -73,7 +75,8 @@ export {
   uvSwipeCell,
   uvRate,
   uvCollapse,
-  uvCollapseItem
+  uvCollapseItem,
+  uvDivider
 }
 
 export default uvUI
