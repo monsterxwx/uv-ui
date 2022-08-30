@@ -66,12 +66,6 @@ export default {
 }
 </script>
 
-<style>
-:root {
-  --uv-test: 1px;
-}
-</style>
-
 <style lang="scss" scoped>
 .uv-rate {
   display: flex;
