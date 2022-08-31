@@ -1,0 +1,91 @@
+<template>
+  <div>
+    <div class="tip">
+      通过<span class="code">v-model</span> 绑定是否显示
+    </div>
+    <uv-popover
+      v-model="test"
+      :list="list"
+      key-name="name"
+    >
+      <template #reference>
+        <uv-button @click="test=true">
+          打开
+        </uv-button>
+      </template>
+    </uv-popover>
+    <div class="title">
+      配置渲染列表
+    </div>
+    <div class="tip">
+      <div>通过<span class="code">list</span> 属性传入渲染的数组</div>
+      <div>通过<span class="code">keyName</span> 指定展示的文字</div>
+      <div>子项通过<span class="code">disabled</span> 属性设置子项禁止点击</div>
+    </div>
+    <uv-popover
+      v-model="test1"
+      :list="list"
+      key-name="name"
+    >
+      <template #reference>
+        <div style="margin-left: 100px;">
+          <uv-button @click="test1=true">
+            打开
+          </uv-button>
+        </div>
+      </template>
+    </uv-popover>
+    <div class="title">
+      关闭配置
+    </div>
+    <div class="tip">
+      <div><span class="code">closeOnClickAction</span> 是否在点击选项后关闭</div>
+      <div><span class="code">closeOnClickOutside</span> 是否在点击外部元素后关闭菜单</div>
+    </div>
+    <uv-popover
+      v-model="test2"
+      :list="list"
+      close-on-click-action
+      :close-on-click-outside="false"
+      key-name="name"
+    >
+      <template #reference>
+        <div style="margin-left: 200px;">
+          <uv-button @click="test2=true">
+            打开
+          </uv-button>
+        </div>
+      </template>
+    </uv-popover>
+    <div class="title">
+      事件
+    </div>
+    <div class="tip">
+      <span class="code">change</span> 选择选项后触发
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+const test = ref(false)
+const test1 = ref(false)
+const test2 = ref(false)
+
+const list = ref([
+  {
+    name: '选项一'
+  },
+  {
+    name: '选项二',
+    disabled: true
+  }, {
+    name: '选项三'
+  }
+
+])
+</script>
+
+<style lang="scss" scoped>
+
+</style>

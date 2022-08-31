@@ -200,6 +200,14 @@ export default [
           name: 'Divider 分割线'
         },
         component: () => import('/packages/divider/doc/doc.md')
+      },
+      {
+        path: 'popover',
+        name: 'popover',
+        meta: {
+          name: 'Popover 气泡弹出框'
+        },
+        component: () => import('/packages/popover/doc/doc.md')
       }
 
     ]

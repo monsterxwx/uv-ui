@@ -22,6 +22,7 @@ import uvRate from './rate/index.js'
 import uvCollapse from './collapse/index.js'
 import uvCollapseItem from './collapse-item/index.js'
 import uvDivider from './divider/index.js'
+import uvPopover from './popover/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -48,6 +49,7 @@ const install = app => {
   app.use(uvCollapse)
   app.use(uvCollapseItem)
   app.use(uvDivider)
+  app.use(uvPopover)
 }
 const uvUI = {
   install
@@ -76,7 +78,8 @@ export {
   uvRate,
   uvCollapse,
   uvCollapseItem,
-  uvDivider
+  uvDivider,
+  uvPopover
 }
 
 export default uvUI
