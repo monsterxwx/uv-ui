@@ -88,7 +88,20 @@ export default {
 
 <style>
 :root {
-  --uv-test: 1px;
+  --uv-water-waves-box-shadow: #00eef2 0 0 32px inset;
+  --uv-water-waves-content-z-index: 10;
+  --uv-water-waves-item1-bg-color: #33cfff;
+  --uv-water-waves-item2-bg-color: #0eaffe;
+  --uv-water-waves-item3-bg-color: #0f7ae4;
+  --uv-water-waves-item1-animation-duration: 5s;
+  --uv-water-waves-item2-animation-duration: 7s;
+  --uv-water-waves-item3-animation-duration: 11s;
+  --uv-water-waves-item1-opacity: 0.7;
+  --uv-water-waves-item2-opacity: 0.5;
+  --uv-water-waves-item3-opacity: 0.3;
+  --uv-water-waves-item1-border-radius: 40%;
+  --uv-water-waves-item2-border-radius: 35%;
+  --uv-water-waves-item3-border-radius: 33%;
 }
 </style>
 
@@ -104,11 +117,11 @@ export default {
   height: 200px;
   border-radius: 50%;
   text-align: center;
-  box-shadow: #00eef2 0 0 32px inset;
+  box-shadow: var(--uv-water-waves-box-shadow);
   animation: water-waves linear infinite;
   .uv-water-waves-content {
     position: relative;
-    z-index: 10;
+    z-index: var(--uv-water-waves-content-z-index);
   }
   .uv-water-waves-item1 {
     position: absolute;
@@ -116,11 +129,11 @@ export default {
     left: -25%;
     width: 200%;
     height: 200%;
-    border-radius: 40%;
-    background-color: #33cfff;
-    opacity: 0.7;
+    border-radius: var(--uv-water-waves-item1-border-radius);
+    background-color: var(--uv-water-waves-item1-bg-color);
+    opacity: var(--uv-water-waves-item1-opacity);
     animation: inherit;
-    animation-duration: 5s;
+    animation-duration: var(--uv-water-waves-item1-animation-duration);
   }
   .uv-water-waves-item2 {
     position: absolute;
@@ -128,11 +141,11 @@ export default {
     left: -35%;
     width: 200%;
     height: 200%;
-    border-radius: 35%;
-    background-color: #0eaffe;
-    opacity: 0.5;
+    border-radius: var(--uv-water-waves-item2-border-radius);
+    background-color: var(--uv-water-waves-item2-bg-color);
+    opacity: var(--uv-water-waves-item2-opacity);
     animation: inherit;
-    animation-duration: 7s;
+    animation-duration: var(--uv-water-waves-item2-animation-duration);
   }
   .uv-water-waves-item3 {
     position: absolute;
@@ -140,11 +153,11 @@ export default {
     left: -35%;
     width: 200%;
     height: 200%;
-    border-radius: 33%;
-    background-color: #0f7ae4;
-    opacity: 0.3;
+    border-radius: var(--uv-water-waves-item3-border-radius);
+    background-color: var(--uv-water-waves-item3-bg-color);
+    opacity: var(--uv-water-waves-item3-opacity);
     animation: inherit;
-    animation-duration: 11s;
+    animation-duration: var(--uv-water-waves-item3-animation-duration);
   }
 
   @keyframes water-waves {
