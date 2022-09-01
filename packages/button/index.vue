@@ -114,28 +114,64 @@ export default {
   name: 'UvButton'
 }
 </script>
+
+<style>
+  :root {
+    --uv-button-primary: #409eff;
+    --uv-button-success: #67c23a;
+    --uv-button-warning: #e6a23c;
+    --uv-button-error: #f56c6c;
+    --uv-button-info: #909399;
+    --uv-button-text: #303133;
+    --uv-button-border-radius: 4px;
+    --uv-button-font-size: 13px;
+    --uv-button-default-border: 1px solid #d9d9d9;
+    --uv-button-default-color: #333333;
+    --uv-button-default-hover-color: #0e80eb;
+    --uv-button-default-bg-color: #ffffff;
+    --uv-button-default-hover-bg-color: #ecf5ff;
+    --uv-button-loading-size: 15px;
+    --uv-button-size-mini-padding: 2px;
+    --uv-button-size-small-padding: 5px;
+    --uv-button-size-normal-padding: 10px;
+  }
+</style>
+
 <style lang="scss" scoped>
+$primary: var(--uv-button-primary);
+$success: var(--uv-button-success);
+$warning: var(--uv-button-warning) ;
+$error: var(--uv-button-error) ;
+$info: var(--uv-button-info) ;
+$text: var(--uv-button-text) ;
 .uv-button {
-  font-size: 13px;
+  font-size: var(--uv-button-font-size);
   border: 0;
-  border-radius: 4px;
+  border-radius: var(--uv-button-border-radius);
   white-space: nowrap;
   color: #ffffff;
   background: none;
   outline: none;
   cursor: pointer;
   &-default {
-    border: 1px solid #d9d9d9;
-    color: #333333;
-    background: #ffffff;
+    border: var(--uv-button-default-border);
+    color: var(--uv-button-default-color);
+    background: var(--uv-button-default-bg-color);
     &:hover {
-      color: #0e80eb;
-      background-color: #ecf5ff;
+      color: var(--uv-button-default-hover-color);
+      background-color: var(--uv-button-default-hover-bg-color);
       opacity: 0.8;
     }
     &:active {
       opacity: 1;
     }
+  }
+  &-default-disabled {
+    border: var(--uv-button-default-border);
+    color: var(--uv-button-default-color);
+    background: var(--uv-button-default-bg-color);
+    opacity: 0.5;
+    cursor: no-drop;
   }
   &-round {
     border-radius: 999px;
@@ -169,13 +205,6 @@ export default {
   &-info {
     @include base($info);
   }
-  &-default-disabled {
-    border: 1px solid #d9d9d9;
-    color: #333333;
-    background: #ffffff;
-    opacity: 0.5;
-    cursor: no-drop;
-  }
 
   @mixin disabled($type) {
     border: 1px solid $type;
@@ -199,14 +228,14 @@ export default {
     @include disabled($warning);
   }
   &-size-normal {
-    padding: 10px;
+    padding: var(--uv-button-size-normal-padding);
   }
   &-size-small {
-    padding: 5px;
+    padding: var(--uv-button-size-small-padding);
     font-size: 12px;
   }
   &-size-mini {
-    padding: 2px;
+    padding: var(--uv-button-size-mini-padding);
     font-size: 12px;
   }
   &-block {
@@ -230,8 +259,8 @@ export default {
     &-loading {
       position: relative;
       margin-right: 5px;
-      width: 15px;
-      height: 15px;
+      width: var(--uv-button-loading-size);
+      height: var(--uv-button-loading-size);
       border: 2px solid #ffffff;
       border-top-color: #ffffff;
       border-right-color: transparent;
