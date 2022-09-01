@@ -23,6 +23,7 @@ import uvCollapse from './collapse/index.js'
 import uvCollapseItem from './collapse-item/index.js'
 import uvDivider from './divider/index.js'
 import uvPopover from './popover/index.js'
+import uvWaterWaves from './water-waves/index.js'
 
 const install = app => {
   app.use(uvButton)
@@ -50,6 +51,7 @@ const install = app => {
   app.use(uvCollapseItem)
   app.use(uvDivider)
   app.use(uvPopover)
+  app.use(uvWaterWaves)
 }
 const uvUI = {
   install
@@ -79,7 +81,8 @@ export {
   uvCollapse,
   uvCollapseItem,
   uvDivider,
-  uvPopover
+  uvPopover,
+  uvWaterWaves
 }
 
 export default uvUI

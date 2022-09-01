@@ -208,6 +208,14 @@ export default [
           name: 'Popover 气泡弹出框'
         },
         component: () => import('/packages/popover/doc/doc.md')
+      },
+      {
+        path: 'water-waves',
+        name: 'water-waves',
+        meta: {
+          name: 'WaterWaves 水波球'
+        },
+        component: () => import('/packages/water-waves/doc/doc.md')
       }
 
     ]
