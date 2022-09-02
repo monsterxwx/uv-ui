@@ -216,8 +216,21 @@ export default [
           name: 'WaterWaves 水波球'
         },
         component: () => import('/packages/water-waves/doc/doc.md')
+      },
+      {
+        path: '',
+        meta: {
+          title: '导航组件'
+        }
+      },
+      {
+        path: 'tab',
+        name: 'tab',
+        meta: {
+          name: 'Tab 标签页'
+        },
+        component: () => import('/packages/tab/doc/doc.md')
       }
-
     ]
   }
 ]
