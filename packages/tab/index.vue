@@ -34,28 +34,23 @@ const props = defineProps({
     default: 0
   },
   bgColor: {
-    type: String,
-    default: '#fff'
+    type: String
   },
   color: {
-    type: String,
-    default: '#646566'
+    type: String
   },
   activeColor: {
-    type: String,
-    default: '#323233'
+    type: String
   },
   scroll: {
     type: Boolean,
     default: false
   },
   lineHeight: {
-    type: String,
-    default: '3px'
+    type: String
   },
   lineColor: {
-    type: String,
-    default: '#1989fa'
+    type: String
   },
   list: {
     type: Array
@@ -125,7 +120,17 @@ export default {
 
 <style>
 :root {
-  --uv-test: 1px;
+  --uv-tab-bg-color: #ffffff;
+  --uv-tab-font-size: 14px;
+  --uv-tab-height: 44px;
+  --uv-tab-padding: 0 12px;
+  --uv-tab-line-bg-color: #1989fa;
+  --uv-tab-line-height: 3px;
+  --uv-tab-border-radius: 3px;
+  --uv-tab-item-color: #646566;
+  --uv-tab-acitve-item-color: #323233;
+  --uv-tab-acitve-item-font-weight: 700;
+  --uv-tab-item-margin: 10px;
 }
 </style>
 
@@ -137,38 +142,38 @@ export default {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: 44px;
-    font-size: 14px;
-    background-color: #ffffff;
+    height: var(--uv-tab-height);
+    font-size: var(--uv-tab-font-size);
+    background-color: var(--uv-tab-bg-color);
     .uv-tab-line {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 40px;
-      height: 3px;
-      border-radius: 3px;
-      background-color: #1989fa;
+      height: var(--uv-tab-line-height);
+      border-radius: var(--uv-tab-border-radius);
+      background-color: var(--uv-tab-line-bg-color);
     }
     .uv-tab-item {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #646566;
+      color: var(--uv-tab-item-color);
     }
     .uv-tab-acitve-item {
-      font-weight: 700;
-      color: #323233;
+      font-weight: var(--uv-tab-acitve-item-font-weight);
+      color: var(--uv-tab-acitve-item-color);
     }
   }
   .uv-tab-scroll {
     justify-content: inherit;
     overflow-x: auto;
-    padding: 0 10px;
+    padding: var(--uv-tab-padding);
     transition: all 0.3s;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    gap: 0 12px;
+    gap: 0 var(--uv-tab-item-margin);
     .uv-tab-item {
       white-space: nowrap;
     }
@@ -178,8 +183,8 @@ export default {
   }
   .uv-tab-shrink {
     justify-content: flex-start;
-    padding: 0 10px;
-    gap: 0 12px;
+    padding: var(--uv-tab-padding);
+    gap: 0 var(--uv-tab-item-margin);
   }
 }
 </style>
