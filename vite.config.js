@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx' // 引入jsx
 import Markdown from 'vite-plugin-md'
+import { resolve } from 'path'
 
 // import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
@@ -26,8 +27,10 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: './packages/index.js',
-      name: 'uv-ui'
+      entry: resolve(__dirname, './packages/index.js'),
+      name: 'uv-ui',
+      fileName: 'uv-ui',
+      formats: ['es', 'cjs', 'umd']
     }
   },
   plugins: [

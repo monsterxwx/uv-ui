@@ -60,7 +60,7 @@ async function getSourceCode () {
   if (isDev) {
     sourceCode.value = (
       await import(
-        /* @vite-ignore */ `/packages/${props.compName}/doc/${props.demoName}.vue?raw`
+        /* @vite-ignore */ `/packages/components/${props.compName}/doc/${props.demoName}.vue?raw`
       )
     ).default
   } else {

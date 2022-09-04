@@ -2,17 +2,9 @@
   "name": "uv-ui",
   "private": false,
   "version": "0.0.7",
-  "main": "./dist/uv-ui.umd.js",
-  "module": "./dist/uv-ui.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/uv-ui.es.js",
-      "require": "./dist/uv-ui.umd.js"
-    }
-  },
-  "files": [
-    "dist/*"
-  ],
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "style": "dist/index.css",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

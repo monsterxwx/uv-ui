@@ -25,7 +25,7 @@ export default [
         meta: {
           name: 'Button 按钮'
         },
-        component: () => import('/packages/button/doc/doc.md')
+        component: () => import('/packages/components/button/doc/doc.md')
       },
 
       {
@@ -34,7 +34,7 @@ export default [
         meta: {
           name: 'Cell 单元格'
         },
-        component: () => import('/packages/cell/doc/doc.md')
+        component: () => import('/packages/components/cell/doc/doc.md')
       },
       {
         path: 'icon',
@@ -42,7 +42,7 @@ export default [
         meta: {
           name: 'Icon 图标'
         },
-        component: () => import('/packages/icon/doc/doc.md')
+        component: () => import('/packages/components/icon/doc/doc.md')
       },
 
       {
@@ -51,7 +51,7 @@ export default [
         meta: {
           name: 'Popup 弹出层'
         },
-        component: () => import('/packages/popup/doc/doc.md')
+        component: () => import('/packages/components/popup/doc/doc.md')
       },
       {
         path: 'toast',
@@ -59,7 +59,7 @@ export default [
         meta: {
           name: 'Toast 轻提示'
         },
-        component: () => import('/packages/toast/doc/doc.md')
+        component: () => import('/packages/components/toast/doc/doc.md')
       },
       {
         path: 'message',
@@ -67,7 +67,7 @@ export default [
         meta: {
           name: 'Message 消息提示框'
         },
-        component: () => import('/packages/message/doc/doc.md')
+        component: () => import('/packages/components/message/doc/doc.md')
       },
       {
         path: '',
@@ -81,7 +81,7 @@ export default [
         meta: {
           name: 'Input 输入框'
         },
-        component: () => import('/packages/input/doc/doc.md')
+        component: () => import('/packages/components/input/doc/doc.md')
       },
       {
         path: 'checkbox',
@@ -89,7 +89,7 @@ export default [
         meta: {
           name: 'Checkbox 复选框'
         },
-        component: () => import('/packages/checkbox/doc/doc.md')
+        component: () => import('/packages/components/checkbox/doc/doc.md')
       },
       {
         path: 'num-input',
@@ -97,7 +97,7 @@ export default [
         meta: {
           name: 'NumInput 数字键盘'
         },
-        component: () => import('/packages/num-input/doc/doc.md')
+        component: () => import('/packages/components/num-input/doc/doc.md')
       },
       {
         path: 'picker',
@@ -105,7 +105,7 @@ export default [
         meta: {
           name: 'Picker 选择器'
         },
-        component: () => import('/packages/picker/doc/doc.md')
+        component: () => import('/packages/components/picker/doc/doc.md')
       },
       {
         path: 'search',
@@ -113,7 +113,7 @@ export default [
         meta: {
           name: 'Search 搜索框'
         },
-        component: () => import('/packages/search/doc/doc.md')
+        component: () => import('/packages/components/search/doc/doc.md')
       },
       {
         path: 'slider',
@@ -121,7 +121,7 @@ export default [
         meta: {
           name: 'Slider 滑块'
         },
-        component: () => import('/packages/slider/doc/doc.md')
+        component: () => import('/packages/components/slider/doc/doc.md')
       },
       {
         path: 'switch',
@@ -129,7 +129,7 @@ export default [
         meta: {
           name: 'Switch 开关'
         },
-        component: () => import('/packages/switch/doc/doc.md')
+        component: () => import('/packages/components/switch/doc/doc.md')
       },
       {
         path: 'stepper',
@@ -137,7 +137,7 @@ export default [
         meta: {
           name: 'Stepper 步进器'
         },
-        component: () => import('/packages/stepper/doc/doc.md')
+        component: () => import('/packages/components/stepper/doc/doc.md')
       },
       {
         path: '',
@@ -151,7 +151,7 @@ export default [
         meta: {
           name: 'ActionSheet 动作面板'
         },
-        component: () => import('/packages/action-sheet/doc/doc.md')
+        component: () => import('/packages/components/action-sheet/doc/doc.md')
       },
       {
         path: 'overlay',
@@ -159,7 +159,7 @@ export default [
         meta: {
           name: 'Overlay 遮罩层'
         },
-        component: () => import('/packages/overlay/doc/doc.md')
+        component: () => import('/packages/components/overlay/doc/doc.md')
       },
       {
         path: 'dialog',
@@ -167,7 +167,7 @@ export default [
         meta: {
           name: 'Dialog 弹出框'
         },
-        component: () => import('/packages/dialog/doc/doc.md')
+        component: () => import('/packages/components/dialog/doc/doc.md')
       },
       {
         path: 'swipe-cell',
@@ -175,7 +175,7 @@ export default [
         meta: {
           name: 'SwipeCell 滑动单元格'
         },
-        component: () => import('/packages/swipe-cell/doc/doc.md')
+        component: () => import('/packages/components/swipe-cell/doc/doc.md')
       },
       {
         path: 'rate',
@@ -183,7 +183,7 @@ export default [
         meta: {
           name: 'Rate 评分'
         },
-        component: () => import('/packages/rate/doc/doc.md')
+        component: () => import('/packages/components/rate/doc/doc.md')
       },
       {
         path: 'collapse',
@@ -191,7 +191,7 @@ export default [
         meta: {
           name: 'Collapse 折叠面板'
         },
-        component: () => import('/packages/collapse/doc/doc.md')
+        component: () => import('/packages/components/collapse/doc/doc.md')
       },
       {
         path: 'divider',
@@ -199,7 +199,7 @@ export default [
         meta: {
           name: 'Divider 分割线'
         },
-        component: () => import('/packages/divider/doc/doc.md')
+        component: () => import('/packages/components/divider/doc/doc.md')
       },
       {
         path: 'popover',
@@ -207,7 +207,7 @@ export default [
         meta: {
           name: 'Popover 气泡弹出框'
         },
-        component: () => import('/packages/popover/doc/doc.md')
+        component: () => import('/packages/components/popover/doc/doc.md')
       },
       {
         path: 'water-waves',
@@ -215,7 +215,7 @@ export default [
         meta: {
           name: 'WaterWaves 水波球'
         },
-        component: () => import('/packages/water-waves/doc/doc.md')
+        component: () => import('/packages/components/water-waves/doc/doc.md')
       },
       {
         path: '',
@@ -229,7 +229,7 @@ export default [
         meta: {
           name: 'Tab 标签页'
         },
-        component: () => import('/packages/tab/doc/doc.md')
+        component: () => import('/packages/components/tab/doc/doc.md')
       }
     ]
   }

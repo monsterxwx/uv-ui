@@ -1,60 +1,66 @@
-import uvButton from './button/index.js'
-import uvInput from './input/index.js'
-import uvIcon from './icon/index.js'
-import uvCell from './cell/index.js'
-import uvCellGroup from './cell-group/index.js'
-import uvOverlay from './overlay/index.js'
-import uvPopup from './popup/index.js'
-import Toast from './toast/index.js'
-import Message from './message/index.js'
-import uvCheckbox from './checkbox/index.js'
-import uvCheckboxGroup from './checkbox-group/index.js'
-import uvNumInput from './num-input/index.js'
-import uvPicker from './picker/index.js'
-import uvSwitch from './switch/index.js'
-import uvSearch from './search/index.js'
-import uvSlider from './slider/index.js'
-import uvStepper from './stepper/index.js'
-import uvActionSheet from './action-sheet/index.js'
-import showDialog from './dialog/index.js'
-import uvSwipeCell from './swipe-cell/index.js'
-import uvRate from './rate/index.js'
-import uvCollapse from './collapse/index.js'
-import uvCollapseItem from './collapse-item/index.js'
-import uvDivider from './divider/index.js'
-import uvPopover from './popover/index.js'
-import uvWaterWaves from './water-waves/index.js'
-import uvTab from './tab/index.js'
+import uvButton from './components/button/index.js'
+import uvInput from './components/input/index.js'
+import uvIcon from './components/icon/index.js'
+import uvCell from './components/cell/index.js'
+import uvCellGroup from './components/cell-group/index.js'
+import uvOverlay from './components/overlay/index.js'
+import uvPopup from './components/popup/index.js'
+import Toast from './components/toast/index.js'
+import Message from './components/message/index.js'
+import uvCheckbox from './components/checkbox/index.js'
+import uvCheckboxGroup from './components/checkbox-group/index.js'
+import uvNumInput from './components/num-input/index.js'
+import uvPicker from './components/picker/index.js'
+import uvSwitch from './components/switch/index.js'
+import uvSearch from './components/search/index.js'
+import uvSlider from './components/slider/index.js'
+import uvStepper from './components/stepper/index.js'
+import uvActionSheet from './components/action-sheet/index.js'
+import showDialog from './components/dialog/index.js'
+import uvSwipeCell from './components/swipe-cell/index.js'
+import uvRate from './components/rate/index.js'
+import uvCollapse from './components/collapse/index.js'
+import uvCollapseItem from './components/collapse-item/index.js'
+import uvDivider from './components/divider/index.js'
+import uvPopover from './components/popover/index.js'
+import uvWaterWaves from './components/water-waves/index.js'
+import uvTab from './components/tab/index.js'
 
-const install = app => {
-  app.use(uvButton)
-  app.use(uvInput)
-  app.use(uvIcon)
-  app.use(uvCell)
-  app.use(uvCellGroup)
-  app.use(uvOverlay)
-  app.use(uvPopup)
-  app.use(Toast)
-  app.use(Message)
-  app.use(uvCheckbox)
-  app.use(uvCheckboxGroup)
-  app.use(uvNumInput)
-  app.use(uvPicker)
-  app.use(uvSwitch)
-  app.use(uvSearch)
-  app.use(uvSlider)
-  app.use(uvStepper)
-  app.use(uvActionSheet)
-  app.use(showDialog)
-  app.use(uvSwipeCell)
-  app.use(uvRate)
-  app.use(uvCollapse)
-  app.use(uvCollapseItem)
-  app.use(uvDivider)
-  app.use(uvPopover)
-  app.use(uvWaterWaves)
-  app.use(uvTab)
+const components = [
+  uvButton,
+  uvInput,
+  uvIcon,
+  uvCell,
+  uvCellGroup,
+  uvOverlay,
+  uvPopup,
+  Toast,
+  Message,
+  uvCheckbox,
+  uvCheckboxGroup,
+  uvNumInput,
+  uvPicker,
+  uvSwitch,
+  uvSearch,
+  uvSlider,
+  uvStepper,
+  uvActionSheet,
+  showDialog,
+  uvSwipeCell,
+  uvRate,
+  uvCollapse,
+  uvCollapseItem,
+  uvDivider,
+  uvPopover,
+  uvWaterWaves,
+  uvTab
+]
+const install = function (app) {
+  components.forEach(component => {
+    app.component(component.name, component)
+  })
 }
+
 const uvUI = {
   install
 }
