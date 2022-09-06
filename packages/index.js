@@ -25,6 +25,8 @@ import uvDivider from './components/divider/index.js'
 import uvPopover from './components/popover/index.js'
 import uvWaterWaves from './components/water-waves/index.js'
 import uvTab from './components/tab/index.js'
+import uvSwipe from './components/swipe/index.js'
+import uvSwipeItem from './components/swipe-item/index.js'
 
 const components = [
   uvButton,
@@ -53,7 +55,9 @@ const components = [
   uvDivider,
   uvPopover,
   uvWaterWaves,
-  uvTab
+  uvTab,
+  uvSwipe,
+  uvSwipeItem
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -91,7 +95,9 @@ export {
   uvDivider,
   uvPopover,
   uvWaterWaves,
-  uvTab
+  uvTab,
+  uvSwipe,
+  uvSwipeItem
 }
 
 export default uvUI

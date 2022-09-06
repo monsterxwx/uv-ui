@@ -185,14 +185,7 @@ export default [
         },
         component: () => import('/packages/components/rate/doc/doc.md')
       },
-      {
-        path: 'collapse',
-        name: 'collapse',
-        meta: {
-          name: 'Collapse 折叠面板'
-        },
-        component: () => import('/packages/components/collapse/doc/doc.md')
-      },
+
       {
         path: 'divider',
         name: 'divider',
@@ -202,12 +195,34 @@ export default [
         component: () => import('/packages/components/divider/doc/doc.md')
       },
       {
+        path: '',
+        meta: {
+          title: '展示组件'
+        }
+      },
+      {
+        path: 'collapse',
+        name: 'collapse',
+        meta: {
+          name: 'Collapse 折叠面板'
+        },
+        component: () => import('/packages/components/collapse/doc/doc.md')
+      },
+      {
         path: 'popover',
         name: 'popover',
         meta: {
           name: 'Popover 气泡弹出框'
         },
         component: () => import('/packages/components/popover/doc/doc.md')
+      },
+      {
+        path: 'swipe',
+        name: 'swipe',
+        meta: {
+          name: 'Swipe 轮播'
+        },
+        component: () => import('/packages/components/swipe/doc/doc.md')
       },
       {
         path: 'water-waves',

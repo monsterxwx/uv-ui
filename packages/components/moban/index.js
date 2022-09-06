@@ -1,4 +1,4 @@
-import uv from './index.vue'
+import uv from './src/index.vue'
 
 uv.install = app => {
   app.component(uv.name, uv)
