@@ -27,6 +27,8 @@ import uvWaterWaves from './components/water-waves/index.js'
 import uvTab from './components/tab/index.js'
 import uvSwipe from './components/swipe/index.js'
 import uvSwipeItem from './components/swipe-item/index.js'
+import uvGrid from './components/grid/index.js'
+import uvGridItem from './components/grid-item/index.js'
 
 const components = [
   uvButton,
@@ -57,7 +59,9 @@ const components = [
   uvWaterWaves,
   uvTab,
   uvSwipe,
-  uvSwipeItem
+  uvSwipeItem,
+  uvGrid,
+  uvGridItem
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -97,7 +101,9 @@ export {
   uvWaterWaves,
   uvTab,
   uvSwipe,
-  uvSwipeItem
+  uvSwipeItem,
+  uvGrid,
+  uvGridItem
 }
 
 export default uvUI

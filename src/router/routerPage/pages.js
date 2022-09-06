@@ -245,6 +245,14 @@ export default [
           name: 'Tab 标签页'
         },
         component: () => import('/packages/components/tab/doc/doc.md')
+      },
+      {
+        path: 'grid',
+        name: 'grid',
+        meta: {
+          name: 'Grid 宫格'
+        },
+        component: () => import('/packages/components/grid/doc/doc.md')
       }
     ]
   }
