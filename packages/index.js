@@ -29,6 +29,7 @@ import uvSwipe from './components/swipe/index.js'
 import uvSwipeItem from './components/swipe-item/index.js'
 import uvGrid from './components/grid/index.js'
 import uvGridItem from './components/grid-item/index.js'
+import uvNoticeBar from './components/notice-bar/index.js'
 
 const components = [
   uvButton,
@@ -61,7 +62,8 @@ const components = [
   uvSwipe,
   uvSwipeItem,
   uvGrid,
-  uvGridItem
+  uvGridItem,
+  uvNoticeBar
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -103,7 +105,8 @@ export {
   uvSwipe,
   uvSwipeItem,
   uvGrid,
-  uvGridItem
+  uvGridItem,
+  uvNoticeBar
 }
 
 export default uvUI

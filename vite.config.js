@@ -19,7 +19,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'vue-router', 'pinia', 'normalize.css', 'highlight.js', 'dayjs', 'vite-plugin-md'],
       output: {
         globals: {
           vue: 'Vue'

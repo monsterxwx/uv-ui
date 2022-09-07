@@ -2,15 +2,30 @@
   "name": "uv-ui",
   "private": false,
   "version": "0.0.7",
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
-  "style": "dist/index.css",
+  "main": "dist/uv-ui.cjs.js",
+  "style": "dist/style.css",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint ./src/**/*.{js,jsx,vue,ts,tsx} --fix"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monsterxwx/uv-ui",
+    "directory": "packages/uv-ui"
+  },
+  "license": "MIT",
+  "author": "xiongge",
+  "keywords": [
+    "ui",
+    "vue",
+    "vue3",
+    "mobile",
+    "frontend",
+    "component",
+    "components"
+  ],
   "dependencies": {
     "dayjs": "^1.11.3",
     "highlight.js": "^11.6.0",

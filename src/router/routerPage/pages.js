@@ -209,6 +209,14 @@ export default [
         component: () => import('/packages/components/collapse/doc/doc.md')
       },
       {
+        path: 'notice-bar',
+        name: 'notice-bar',
+        meta: {
+          name: 'NoticeBar 通知栏'
+        },
+        component: () => import('/packages/components/notice-bar/doc/doc.md')
+      },
+      {
         path: 'popover',
         name: 'popover',
         meta: {
