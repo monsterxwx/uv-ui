@@ -261,6 +261,14 @@ export default [
           name: 'Grid 宫格'
         },
         component: () => import('/packages/components/grid/doc/doc.md')
+      },
+      {
+        path: 'nav-bar',
+        name: 'nav-bar',
+        meta: {
+          name: 'NavBar 导航栏'
+        },
+        component: () => import('/packages/components/nav-bar/doc/doc.md')
       }
     ]
   }
