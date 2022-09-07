@@ -12,7 +12,7 @@
         <uv-icon
           size="20"
           color="#ed6a0c"
-          name="warning"
+          name="notice"
           v-bind="iconProps"
         />
       </slot>

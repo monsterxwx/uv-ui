@@ -8,6 +8,7 @@
       通过<span class="code">scrollable</span> 设置
     </div>
     <uv-notice-bar
+      class="bottom"
       text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。"
       :scrollable="false"
     />
@@ -34,6 +35,7 @@
       通过<span class="code">mode</span> 设置,可选值为<span class="code">close</span>和<span class="code">link</span>
     </div>
     <uv-notice-bar
+      class="bottom"
       mode="close"
       speed="90"
       :show-left-icon="false"
@@ -58,5 +60,7 @@ const close = () => {
 </script>
 
 <style lang="scss" scoped>
-
+.bottom {
+  margin-bottom: 5px;
+}
 </style>

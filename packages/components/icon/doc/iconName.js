@@ -45,9 +45,6 @@ const arr = [
     name: 'camera'
   },
   {
-    name: 'chart-bar'
-  },
-  {
     name: 'attachment'
   },
   {
@@ -304,7 +301,11 @@ const arr = [
   },
   {
     name: 'love-fill'
+  },
+  {
+    name: 'notice'
   }
+
 ]
 
 export default arr
