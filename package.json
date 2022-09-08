@@ -31,7 +31,7 @@
     "highlight.js": "^11.6.0",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.17",
-    "uv-ui": "^0.0.6",
+    "uv-ui": "^0.0.7",
     "vite-plugin-md": "0.12.4",
     "vue": "^3.2.25",
     "vue-router": "^4.0.13"
