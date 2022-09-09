@@ -241,6 +241,14 @@ export default [
         component: () => import('/packages/components/water-waves/doc/doc.md')
       },
       {
+        path: 'count-to',
+        name: 'count-to',
+        meta: {
+          name: 'CountTo 数字滚动'
+        },
+        component: () => import('/packages/components/count-to/doc/doc.md')
+      },
+      {
         path: '',
         meta: {
           title: '导航组件'
@@ -269,6 +277,14 @@ export default [
           name: 'NavBar 导航栏'
         },
         component: () => import('/packages/components/nav-bar/doc/doc.md')
+      },
+      {
+        path: 'tab-bar',
+        name: 'tab-bar',
+        meta: {
+          name: 'TabBar 标签栏'
+        },
+        component: () => import('/packages/components/tab-bar/doc/doc.md')
       }
     ]
   }

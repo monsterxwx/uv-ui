@@ -31,6 +31,9 @@ import uvGrid from './components/grid/index.js'
 import uvGridItem from './components/grid-item/index.js'
 import uvNoticeBar from './components/notice-bar/index.js'
 import uvNavBar from './components/nav-bar/index.js'
+import uvTabBar from './components/tab-bar/index.js'
+import uvTabBarItem from './components/tab-bar-item/index.js'
+import uvCountTo from './components/count-to/index.js'
 
 const components = [
   uvButton,
@@ -65,7 +68,10 @@ const components = [
   uvGrid,
   uvGridItem,
   uvNoticeBar,
-  uvNavBar
+  uvNavBar,
+  uvTabBar,
+  uvTabBarItem,
+  uvCountTo
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -109,7 +115,10 @@ export {
   uvGrid,
   uvGridItem,
   uvNoticeBar,
-  uvNavBar
+  uvNavBar,
+  uvTabBar,
+  uvTabBarItem,
+  uvCountTo
 }
 
 export default uvUI
