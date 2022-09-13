@@ -1,15 +1,16 @@
 <template>
   <div
     class="uv-tab-bar-item"
-    :style="{color:modelValue===index?activeColor:inactiveColor}"
-    @click="handleClickItem(index)"
+    ref="tabBarItemRef"
+    :style="{color:context.isActive?activeColor:inactiveColor,backgroundColor:context.isActive?activeBgColor:''}"
+    @click="handleClickItem"
   >
     <div class="uv-tab-bar-item-icon">
       <slot name="icon">
         <uv-icon
           :size="iconSize"
           :name="iconName"
-          :color="modelValue===index?activeColor:inactiveColor"
+          :color="context.isActive?activeColor:inactiveColor"
           v-bind="iconProps"
         />
       </slot>
@@ -24,9 +25,9 @@
 </template>
 
 <script setup>
-import { inject } from 'vue'
+import {reactive, inject,onMounted,onBeforeUnmount,toRefs, ref } from 'vue'
 import uvIcon from '../../icon/src/icon.vue'
-defineProps({
+const props= defineProps({
   iconSize: {
     type: [Number, String]
   },
@@ -41,14 +42,34 @@ defineProps({
   }
 })
 
-const { props: parentProps } = inject('tab-bar')
 
-const { modelValue, activeColor, inactiveColor } = parentProps
 
-const emit = defineEmits(['click'])
+const tabBarItemRef=ref(null)
+
+const context = reactive({
+  $el: tabBarItemRef,
+  isActive:false
+})
+
+const { props: parentProps,acitveItemUpdate,addField,removeField,fields } = inject('tab-bar')
+
+const {  activeColor, inactiveColor,activeBgColor } = parentProps
+
+onMounted(() => {
+    addField(context)
+})
+
+onBeforeUnmount(() => {
+  removeField(context)
+})
+
 
 const handleClickItem = () => {
-  emit('click')
+  if(!context.isActive) {
+    context.isActive=true
+  }
+  const index=fields.indexOf(context)
+  acitveItemUpdate(index)
 }
 </script>
 <script>
@@ -59,19 +80,22 @@ export default {
 
 <style>
 :root {
-  --uv-test: 1px;
+  --uv-tab-bar-item-font-size: 12px;
+  --uv-tab-bar-item-text-margin-top: 5px;
 }
 </style>
 
 <style lang="scss" scoped>
   .uv-tab-bar-item {
     display: flex;
+    justify-content: center;
     align-items: center;
-    font-size: 12px;
-    color: #323233;
+    height: 100%;
+    font-size: var(--uv-tab-bar-item-font-size);
+    flex: 1;
     flex-direction: column;
     .uv-tab-bar-item-text {
-      margin-top: 5px;
+      margin-top: var(--uv-tab-bar-item-text-margin-top);
     }
   }
 </style>

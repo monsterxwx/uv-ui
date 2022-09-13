@@ -3,6 +3,8 @@
     <uv-tab-bar
       :fixed="false"
       v-model="active"
+      active-bg-color="#ebebeb"
+      @change="change"
     >
       <uv-tab-bar-item
         v-for="item in list"
@@ -65,6 +67,9 @@ const list = [
     iconName: 'setting'
   }
 ]
+const change = (idx) => {
+  console.log('点击了', idx)
+}
 </script>
 
 <style lang="scss" scoped>

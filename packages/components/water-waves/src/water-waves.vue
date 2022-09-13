@@ -51,16 +51,16 @@ const waterWavesStyles = computed(() => {
 const caleTopNumber = (progress) => {
   let item1 = 0; let item2 = 0; let item3 = 0
   if (progress === 0) {
-    item1 = 90 + '%'
-    item2 = 95 + '%'
-    item3 = 100 + '%'
+    item1 = 200 + '%'
+    item2 = 200 + '%'
+    item3 = 200 + '%'
   } else if (progress >= 100) {
     item1 = 0
     item2 = 0
     item3 = 0
   } else {
-    item1 = Number(100 - (progress + 10)) + '%'
-    item2 = Number(100 - (progress + 5)) + '%'
+    item1 = Number(100 - (progress)) + '%'
+    item2 = Number(100 - (progress)) + '%'
     item3 = Number(100 - progress) + '%'
   }
   return {

@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { provide } from 'vue'
+import { onMounted, provide } from 'vue'
 const props = defineProps({
   modelValue: {
     type: [Number, String],
@@ -34,6 +34,9 @@ const props = defineProps({
   activeColor: {
     type: String,
     default: '#1989fa'
+  },
+  activeBgColor: {
+    type: String
   },
   inactiveColor: {
     type: String,
@@ -57,13 +60,33 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'change'])
 
-const handleClickItem = (index) => {
-  emit('update:modelValue', index)
+const fields = []
+
+const addField = (field) => {
+  fields.push(field)
 }
 
-provide('tab-bar', { props, handleClickItem })
+const removeField = (field) => {
+  fields.splice(fields.indexOf(field), 1)
+}
+
+const acitveItemUpdate = (index) => {
+  emit('update:modelValue', index)
+  emit('change', index)
+  fields.forEach((item, idx) => {
+    if (idx !== index) {
+      item.isActive = false
+    }
+  })
+}
+
+provide('tab-bar', { props, addField, removeField, acitveItemUpdate, fields })
+
+onMounted(() => {
+  fields[props.modelValue].isActive = true
+})
 </script>
 <script>
 export default {
@@ -73,7 +96,7 @@ export default {
 
 <style>
 :root {
-  --uv-test: 1px;
+  --uv-tab-bar-height: 50px;
 }
 </style>
 
@@ -83,9 +106,9 @@ export default {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: var(--uv-tab-bar-height);
   .uv-tab-bar-placeholder {
-    height: 50px;
+    height: var(--uv-tab-bar-height);
   }
 }
 .uv-tab-bar-fixed {
