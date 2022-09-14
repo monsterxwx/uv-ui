@@ -34,6 +34,7 @@ import uvNavBar from './components/nav-bar/index.js'
 import uvTabBar from './components/tab-bar/index.js'
 import uvTabBarItem from './components/tab-bar-item/index.js'
 import uvCountTo from './components/count-to/index.js'
+import uvSelect from './components/select/index.js'
 
 const components = [
   uvButton,
@@ -71,7 +72,8 @@ const components = [
   uvNavBar,
   uvTabBar,
   uvTabBarItem,
-  uvCountTo
+  uvCountTo,
+  uvSelect
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -118,7 +120,8 @@ export {
   uvNavBar,
   uvTabBar,
   uvTabBarItem,
-  uvCountTo
+  uvCountTo,
+  uvSelect
 }
 
 export default uvUI

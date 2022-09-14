@@ -84,6 +84,14 @@ export default [
         component: () => import('/packages/components/input/doc/doc.md')
       },
       {
+        path: 'select',
+        name: 'select',
+        meta: {
+          name: 'Select 选择器'
+        },
+        component: () => import('/packages/components/select/doc/doc.md')
+      },
+      {
         path: 'checkbox',
         name: 'checkbox',
         meta: {
