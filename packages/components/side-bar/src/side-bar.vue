@@ -130,8 +130,9 @@ export default {
     }
   }
   .uv-side-bar-right {
-    flex: 1;
+    overflow: auto;
     background-color: var(--uv-side-bar-right-bg-color);
+    flex: 1;
   }
 }
 </style>
