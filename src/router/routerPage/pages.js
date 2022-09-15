@@ -293,6 +293,14 @@ export default [
           name: 'TabBar 标签栏'
         },
         component: () => import('/packages/components/tab-bar/doc/doc.md')
+      },
+      {
+        path: 'side-bar',
+        name: 'side-bar',
+        meta: {
+          name: 'SideBar 侧边导航'
+        },
+        component: () => import('/packages/components/side-bar/doc/doc.md')
       }
     ]
   }
