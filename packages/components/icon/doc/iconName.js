@@ -18,11 +18,15 @@ const arr = [
     name: 'arrow-down'
   },
   {
-    name: 'ashbin'
-  },
-  {
     name: 'arrow-right'
   },
+  {
+    name: 'arrow-left'
+  },
+  {
+    name: 'ashbin'
+  },
+
   {
     name: 'browse'
   },

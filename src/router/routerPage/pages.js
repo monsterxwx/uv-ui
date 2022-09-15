@@ -301,6 +301,14 @@ export default [
           name: 'SideBar 侧边导航'
         },
         component: () => import('/packages/components/side-bar/doc/doc.md')
+      },
+      {
+        path: 'pagination',
+        name: 'pagination',
+        meta: {
+          name: 'Pagination 分页'
+        },
+        component: () => import('/packages/components/pagination/doc/doc.md')
       }
     ]
   }
