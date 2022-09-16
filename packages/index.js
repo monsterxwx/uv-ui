@@ -37,6 +37,8 @@ import uvCountTo from './components/count-to/index.js'
 import uvSelect from './components/select/index.js'
 import uvSideBar from './components/side-bar/index.js'
 import uvPagination from './components/pagination/index.js'
+import uvSteps from './components/steps/index.js'
+import uvStepsItem from './components/steps-item/index.js'
 
 const components = [
   uvButton,
@@ -77,7 +79,9 @@ const components = [
   uvCountTo,
   uvSelect,
   uvSideBar,
-  uvPagination
+  uvPagination,
+  uvSteps,
+  uvStepsItem
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -127,7 +131,9 @@ export {
   uvCountTo,
   uvSelect,
   uvSideBar,
-  uvPagination
+  uvPagination,
+  uvSteps,
+  uvStepsItem
 }
 
 export default uvUI

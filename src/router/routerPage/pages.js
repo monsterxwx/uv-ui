@@ -257,6 +257,14 @@ export default [
         component: () => import('/packages/components/count-to/doc/doc.md')
       },
       {
+        path: 'steps',
+        name: 'steps',
+        meta: {
+          name: 'Steps 步骤条'
+        },
+        component: () => import('/packages/components/steps/doc/doc.md')
+      },
+      {
         path: '',
         meta: {
           title: '导航组件'

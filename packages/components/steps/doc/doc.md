@@ -2,11 +2,11 @@
     import demo1 from "./demo1.vue";
 </script>
 
-## CollapseItem 子
+## Steps 步骤条
 
 ### 基本使用
 <demo1></demo1>
 
 
-<preview compName='collapse-item' demoName='demo1'  ></preview>
+<preview compName='steps' demoName='demo1'  ></preview>
 
