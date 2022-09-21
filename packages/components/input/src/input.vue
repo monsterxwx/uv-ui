@@ -1,91 +1,65 @@
 <template>
-  <uvCell tips>
-    <template #title>
-      <div
-        class="uv-input-title"
-        :class="disabled?'uv-input-title-disabled':''"
+  <div
+    class="uv-input-wrap"
+    :style="{border:border?'1px solid #eeeeee':''}"
+  >
+    <div
+      class="uv-input"
+    >
+      <input
+        v-if="type!=='textarea'"
+        :style="{textAlign:inputAlign}"
+        :disabled="disabled"
+        :type="type"
+        :value="modelValue"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        @input="handleInput"
+        @blur="handleBlur"
+        @focus="handleFocus"
+        @keydown="handleKeydown"
       >
-        <!-- 自定义label -->
-        <slot name="label">
-          <div class="uv-input-label">
-            {{ label }}
-            <div
-              v-if="errorMsg"
-              class="uv-input-required"
-            >
-              *
-            </div>
-          </div>
-        </slot>
-      </div>
-    </template>
-    <template #value>
-      <div class="uv-input">
-        <input
-          v-if="type!=='textarea'"
-          :style="{border:border?'1px solid #eeeeee':'',textAlign:inputAlign}"
-          :disabled="disabled"
-          :type="type"
-          :value="modelValue"
-          :placeholder="placeholder"
-          :readonly="readonly"
-          @input="handleInput"
-          @blur="handleBlur"
-          @focus="handleFocus"
-          @keydown="handleKeydown"
-        >
-        <textarea
-          v-else
-          ref="textareaRef"
-          :style="{
-            border:border?'1px solid #eeeeee':'',
-            textAlign:inputAlign,
-            height:autosize && autosize.minHeight ? autosize.minHeight+'px':'28px'
-          }"
-          :disabled="disabled"
-          :value="modelValue"
-          :placeholder="placeholder"
-          :readonly="readonly"
-          :autoHeight="true"
-          @input="handleInput"
-          @blur="handleBlur"
-          @focus="handleFocus"
-          @keydown="handleKeydown"
-        />
-        <span
-          class="showWordLimit"
-          v-if="showWordLimit && maxlength"
-        >
-          {{ textLength }} / {{ maxlength }}
-        </span>
+      <textarea
+        v-else
+        ref="textareaRef"
+        :style="{
+          textAlign:inputAlign,
+          height:autosize && autosize.minHeight ? autosize.minHeight+'px':'38px'
+        }"
+        :disabled="disabled"
+        :value="modelValue"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        :autoHeight="true"
+        @input="handleInput"
+        @blur="handleBlur"
+        @focus="handleFocus"
+        @keydown="handleKeydown"
+      />
 
-        <uv-icon
-          v-if="modelValue && clearable"
-          @click="clearValueEvent"
-          name="error"
-          size="22"
-        />
-        <!-- 自定义输入框右边内容 -->
-        <slot name="right" />
-      </div>
-    </template>
-    <template #tips>
-      <div
-        v-if="errorMsg"
-        v-show="showTips"
-        class="uv-input-tips"
-      >
-        {{ errorMsg }}
-      </div>
-    </template>
-  </uvCell>
+      <uv-icon
+        v-if="modelValue && clearable"
+        @click="clearValueEvent"
+        name="error"
+        color="#96b3d7"
+        size="22"
+      />
+      <!-- 自定义输入框右边内容 -->
+      <slot name="right" />
+    </div>
+    <div
+      class="uv-input-word-limit"
+      v-if="showWordLimit && maxlength"
+    >
+      {{ textLength }} / {{ maxlength }}
+    </div>
+  </div>
 </template>
 
 <script setup>
 
-import uvIcon from '../../icon/src/icon.vue'
+import uvIcon from '../../icon'
 import { ref, watch, nextTick, computed } from 'vue'
-import uvCell from '../../cell/src/cell.vue'
 const emit = defineEmits(['update:modelValue', 'input', 'change', 'blur', 'focus', 'keydown'])
 const props = defineProps({
   modelValue: {
@@ -100,10 +74,6 @@ const props = defineProps({
     type: String,
     default: '请输入'
   },
-  label: {
-    type: String,
-    default: ''
-  },
   disabled: {
     type: Boolean,
     default: false
@@ -112,17 +82,13 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  errorMsg: {
-    type: String,
-    default: ''
-  },
   clearable: {
     type: Boolean,
     default: false
   },
   border: {
     type: Boolean,
-    default: false
+    default: true
   },
   formatter: {
     type: Function
@@ -241,88 +207,62 @@ export default {
 
 <style>
 :root {
-  --uv-input-title-width: 88px;
-  --uv-input-title-disabled-color: #d3c9d6;
+  --uv-input-wrap-font-size: 14px;
+  --uv-input-wrap-padding: 0 10px;
+  --uv-input-word-limit-font-size: 12px;
+  --uv-input-word-limit-padding-bottom: 5px;
+  --uv-input-word-limit-color: #646566;
   --uv-input-padding: 5px 8px;
   --uv-input-border-radius: 4px;
   --uv-input-bg-color: #ffffff;
-  --uv-input-height: 26px;
+  --uv-input-height: 38px;
   --uv-input-placeholder-color: #d3c9d6;
   --uv-input-disabled-color: #d3c9d6;
-  --uv-input-word-limit-color: #646566;
-  --uv-input-required-font-color: #ee0a24;
-  --uv-input-tips-color: #ee0a24;
-  --uv-input-tips-font-size: 13px;
 }
 </style>
 
 <style lang="scss" scoped>
-.uv-input-title {
-  width: var(--uv-input-title-width);
-}
-:deep() {
-  .uv-cell-content {
-    justify-content: flex-start;
-    align-items: flex-start !important;
-  }
-  .uv-cell-content-value {
-    flex: 1;
-  }
-  .uv-cell-content-title {
-    margin: 0 !important;
-    line-height: 26px;
-  }
-}
-.uv-input {
-  position: relative;
+.uv-input-wrap {
   display: flex;
-  align-items: center;
-  input,
-  textarea {
-    padding: var(--uv-input-padding);
-    width: 100%;
-    border: none;
-    border-radius: var(--uv-input-border-radius);
-    background-color: var(--uv-input-bg-color);
-    outline: none;
+  padding: var(--uv-input-wrap-padding);
+  font-size: var(--uv-input-wrap-font-size);
+  border-radius: var(--uv-input-border-radius);
+  background-color: var(--uv-input-bg-color);
+  flex-direction: column;
+  .uv-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    input,
+    textarea {
+      padding: var(--uv-input-padding);
+      width: 100%;
+      border: none;
+      background-color: var(--uv-input-bg-color);
+      outline: none;
+    }
+    input {
+      height: var(--uv-input-height);
+    }
+    textarea {
+      resize: none;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--uv-input-placeholder-color);
+    }
+    input:disabled,
+    textarea:disabled {
+      color: var(--uv-input-disabled-color);
+    }
   }
-  input {
-    height: var(--uv-input-height);
-  }
-  textarea {
-    resize: none;
-  }
-  input::placeholder,
-  textarea::placeholder {
-    color: var(--uv-input-placeholder-color);
-  }
-  input:disabled,
-  textarea:disabled {
-    color: var(--uv-input-disabled-color);
-  }
-  .showWordLimit {
-    position: absolute;
-    right: 10px;
-    bottom: -8px;
-    font-size: 12px;
+  .uv-input-word-limit {
+    padding-bottom: var(--uv-input-word-limit-padding-bottom);
+    font-size: var(--uv-input-word-limit-font-size);
+    text-align: right;
     white-space: nowrap;
     color: var(--uv-input-word-limit-color);
   }
 }
-.uv-input-title-disabled {
-  color: var(--uv-input-title-disabled-color);
-}
-.uv-input-label {
-  position: relative;
-  .uv-input-required {
-    position: absolute;
-    top: 0;
-    left: -8px;
-    color: var(--uv-input-required-font-color);
-  }
-}
-.uv-input-tips {
-  font-size: var(--uv-input-tips-font-size);
-  color: var(--uv-input-tips-color);
-}
+
 </style>
