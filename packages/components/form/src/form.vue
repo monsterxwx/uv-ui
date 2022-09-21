@@ -17,14 +17,14 @@ import uvCellGroup from '../../cell-group'
 const props = defineProps({
   model: Object,
   rules: {
-    type: [Object, Array]
+    type: Object
   },
   labelPosition: { // 标题对齐方式,默认向右对齐
     type: String,
     default: 'right'
   },
   labelWidth: {
-    type: [String, Number]
+    type: Number
   },
   card: {
     type: Boolean,
@@ -43,12 +43,6 @@ export default {
   name: 'UvForm'
 }
 </script>
-
-<style>
-:root {
-  --uv-test: 1px;
-}
-</style>
 
 <style lang="scss" scoped>
 

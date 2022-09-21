@@ -10,7 +10,7 @@
     >
       <div
         class="uv-cell-content-title"
-        :style="{width:labelWidth}"
+        :style="{width:labelWidth+'px'}"
       >
         <slot name="title">
           <span
@@ -45,14 +45,17 @@
     <div
       v-if="tips"
       class="uv-cell-tips"
+      :style="{marginLeft:`${labelWidth+18}px`}"
     >
-      <slot name="tips" />
+      <slot name="tips">
+        {{ errorMsg }}
+      </slot>
     </div>
   </div>
 </template>
 
 <script setup>
-import uvIcon from '../../icon/src/icon.vue'
+import uvIcon from '../../icon'
 defineProps({
   title: {
     type: String,
@@ -94,12 +97,15 @@ defineProps({
     type: Boolean,
     default: false
   },
+  errorMsg: {
+    type: String
+  },
   clickable: {
     type: Boolean,
     default: false
   },
   labelWidth: {
-    type: String
+    type: Number
   }
 })
 
@@ -120,7 +126,9 @@ export default {
   --uv-cell-content-title-margin-right: 20px;
   --uv-cell-content-value-color: #969799;
   --uv-cell-content-justify-content: space-between;
-  --uv-cell-tips-margin-left: 96px;
+  --uv-cell-tips-color: #ee0a24;
+  --uv-cell-tips-font-size: 13px;
+  --uv-cell-tips-margin-bottom: 5px;
 }
 </style>
 
@@ -174,6 +182,8 @@ export default {
 }
 .uv-cell-tips {
   display: flex;
-  margin-left: var(--uv-cell-tips-margin-left);
+  margin-bottom: var(--uv-cell-tips-margin-bottom);
+  font-size: var(--uv-cell-tips-font-size);
+  color: var(--uv-cell-tips-color);
 }
 </style>

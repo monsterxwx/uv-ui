@@ -6,6 +6,8 @@
     :title="label"
     :label-width="labelWidth"
     :clickable="clickable"
+    :tips="fields.showTips"
+    :error-msg="fields.errorMsg"
   >
     <template #title>
       <slot name="label" />
@@ -17,9 +19,9 @@
 </template>
 
 <script setup>
-import { inject } from 'vue'
+import { inject, provide, ref } from 'vue'
 import uvCell from '../../cell'
-defineProps({
+const props = defineProps({
   label: {
     type: String
   },
@@ -33,10 +35,29 @@ defineProps({
   clickable: {
     type: Boolean,
     default: false
+  },
+  prop: {
+    type: String
+  },
+  error: {
+    type: String
   }
 })
 const { props: parentProps } = inject('form')
-const { labelWidth } = parentProps
+const { labelWidth, rules } = parentProps
+
+const fields = ref({})
+
+const addField = (field) => {
+  fields.value = field
+}
+
+const removeField = (field) => {
+  fields.value = {}
+}
+
+provide('form-item', { props, rules, addField, removeField })
+
 </script>
 <script>
 export default {

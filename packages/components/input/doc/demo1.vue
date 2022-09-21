@@ -7,13 +7,13 @@
       v-model="value"
     />
     <div class="title">
-      是否关闭边框
+      是否开启边框
     </div>
     <div class="tip">
       通过 <span class="code">border</span>设置
     </div>
     <uv-input
-      :border="false"
+      border
       v-model="value1"
     />
     <div class="title">

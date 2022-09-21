@@ -7,6 +7,7 @@
       class="uv-input"
     >
       <input
+        ref="inputRef"
         v-if="type!=='textarea'"
         :style="{textAlign:inputAlign}"
         :disabled="disabled"
@@ -24,7 +25,7 @@
         ref="textareaRef"
         :style="{
           textAlign:inputAlign,
-          height:autosize && autosize.minHeight ? autosize.minHeight+'px':'38px'
+          height:autosize && autosize.minHeight ? autosize.minHeight+'px':'32px'
         }"
         :disabled="disabled"
         :value="modelValue"
@@ -59,8 +60,8 @@
 <script setup>
 
 import uvIcon from '../../icon'
-import { ref, watch, nextTick, computed } from 'vue'
-const emit = defineEmits(['update:modelValue', 'input', 'change', 'blur', 'focus', 'keydown'])
+import { onMounted, onBeforeUnmount, ref, reactive, watch, nextTick, computed, inject } from 'vue'
+const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus', 'keydown'])
 const props = defineProps({
   modelValue: {
     type: [String, Number],
@@ -88,7 +89,7 @@ const props = defineProps({
   },
   border: {
     type: Boolean,
-    default: true
+    default: false
   },
   formatter: {
     type: Function
@@ -114,12 +115,32 @@ const props = defineProps({
   }
 })
 
-const showTips = ref(false)
+const inputRef = ref(null)
+
+const context = reactive({
+  $el: inputRef,
+  showTips: false,
+  errorMsg: ''
+})
+
+const { props: parentProps, rules, addField, removeField } = inject('form-item', {})
+
+onMounted(() => {
+  if (addField) {
+    addField(context)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (removeField) {
+    removeField(context)
+  }
+})
 
 const clearValueEvent = () => {
   emit('update:modelValue', '')
-  if (props.errorMsg) {
-    showTips.value = true
+  if (parentProps && rules[parentProps.prop]) {
+    context.showTips = true
   }
 }
 
@@ -129,8 +150,10 @@ watch(() => props.modelValue, (newValue) => {
   if (props.maxlength) {
     updateValue(newValue)
   }
-  if (props.errorMsg && newValue) {
-    showTips.value = false
+  // 验证
+  const rulesDetail = rules && rules[parentProps.prop].find(item => item.trigger === 'blur')
+  if (rulesDetail) {
+    context.showTips = false
   }
   // textarea自动高度
   if (props.autosize && props.type === 'textarea') {
@@ -177,19 +200,26 @@ const updateValue = (e) => {
 const handleInput = (e) => {
   const { value } = e.target
   updateValue(value)
-  emit('input', value)
+  emit('change', value)
+  const rulesDetail = rules && rules[parentProps.prop].find(item => item.trigger === 'change')
+
+  if (rulesDetail) {
+    context.showTips = true
+    context.errorMsg = rulesDetail.message
+  }
 }
 
 const handleBlur = (e) => {
   if (props.formatter && props.formatTrigger === 'blur') {
     let { value } = e.target
     value = props.formatter(value)
-    console.log(value)
     emit('update:modelValue', value)
   }
   emit('blur')
-  if (!props.modelValue) {
-    showTips.value = true
+  const rulesDetail = rules && rules[parentProps.prop].find(item => item.trigger === 'blur')
+  if (!props.modelValue && rulesDetail) {
+    context.showTips = true
+    context.errorMsg = rulesDetail.message
   }
 }
 const handleFocus = () => {
@@ -215,7 +245,7 @@ export default {
   --uv-input-padding: 5px 8px;
   --uv-input-border-radius: 4px;
   --uv-input-bg-color: #ffffff;
-  --uv-input-height: 38px;
+  --uv-input-height: 32px;
   --uv-input-placeholder-color: #d3c9d6;
   --uv-input-disabled-color: #d3c9d6;
 }
