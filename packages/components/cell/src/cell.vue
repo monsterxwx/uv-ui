@@ -8,7 +8,10 @@
       class="uv-cell-content"
       :class="clickable?'uv-cell-clickable':''"
     >
-      <div class="uv-cell-content-title">
+      <div
+        class="uv-cell-content-title"
+        :style="{width:labelWidth}"
+      >
         <slot name="title">
           <span
             v-if="icon!==''"
@@ -21,15 +24,21 @@
         </slot>
       </div>
       <div class="uv-cell-content-value">
-        <slot name="value">
-          {{ value }} <span
-            v-if="arrow"
-            style="margin-left: 2px;"
-          ><uv-icon
-            :name="'arrow-'+arrowDirection"
-            color="#9699a6"
-          /></span>
-        </slot>
+        <div
+          class="uv-cell-content-value-slot"
+          :style="{paddingRight:arrow? '20px':''}"
+        >
+          <slot name="value">
+            {{ value }}
+          </slot>
+        </div>
+        <span
+          class="uv-cell-arrow"
+          v-if="arrow"
+        ><uv-icon
+          :name="'arrow-'+arrowDirection"
+          color="#9699a6"
+        /></span>
       </div>
     </div>
 
@@ -88,6 +97,9 @@ defineProps({
   clickable: {
     type: Boolean,
     default: false
+  },
+  labelWidth: {
+    type: String
   }
 })
 
@@ -107,6 +119,7 @@ export default {
   --uv-cell-content-padding: 10px 15px;
   --uv-cell-content-title-margin-right: 20px;
   --uv-cell-content-value-color: #969799;
+  --uv-cell-content-justify-content: space-between;
   --uv-cell-tips-margin-left: 96px;
 }
 </style>
@@ -138,16 +151,24 @@ export default {
   }
   .uv-cell-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: var(--uv-cell-content-justify-content);
     align-items: center;
     padding: var(--uv-cell-content-padding);
     .uv-cell-content-title {
       margin-right: var(--uv-cell-content-title-margin-right);
-      white-space: nowrap;
     }
     .uv-cell-content-value {
+      position: relative;
+      display: flex;
       white-space: wrap;
       color: var(--uv-cell-content-value-color);
+      .uv-cell-content-value-slot {
+        flex: 1;
+      }
+      .uv-cell-arrow {
+        position: absolute;
+        right: 0;
+      }
     }
   }
 }

@@ -116,6 +116,14 @@ export default [
         component: () => import('/packages/components/picker/doc/doc.md')
       },
       {
+        path: 'form',
+        name: 'form',
+        meta: {
+          name: 'Form 表单'
+        },
+        component: () => import('/packages/components/form/doc/doc.md')
+      },
+      {
         path: 'search',
         name: 'search',
         meta: {
