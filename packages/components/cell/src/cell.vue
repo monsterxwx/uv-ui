@@ -6,7 +6,7 @@
   >
     <div
       class="uv-cell-content"
-      :class="clickable?'uv-cell-clickable':''"
+      :class="[clickable?'uv-cell-clickable':'',labelPosition==='top'?'uv-cell-content-top':'',labelPosition==='right'?'uv-cell-content-right':'']"
     >
       <div
         class="uv-cell-content-title"
@@ -41,16 +41,17 @@
         /></span>
       </div>
     </div>
-
-    <div
-      v-if="tips"
-      class="uv-cell-tips"
-      :style="{marginLeft:`${labelWidth+18}px`}"
-    >
-      <slot name="tips">
-        {{ errorMsg }}
-      </slot>
-    </div>
+    <Transition name="cell-tips">
+      <div
+        v-if="tips"
+        class="uv-cell-tips"
+        :style="{marginLeft:`${labelWidth}px`}"
+      >
+        <slot name="tips">
+          {{ errorMsg }}
+        </slot>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -106,6 +107,10 @@ defineProps({
   },
   labelWidth: {
     type: Number
+  },
+  labelPosition: {
+    type: String,
+    default: 'left'
   }
 })
 
@@ -124,10 +129,12 @@ export default {
   --uv-cell-clickable-bg-color: #f2f3f5;
   --uv-cell-content-padding: 10px 15px;
   --uv-cell-content-title-margin-right: 20px;
+  --uv-cell-content-title-margin-bottom: 10px;
   --uv-cell-content-value-color: #969799;
   --uv-cell-content-justify-content: space-between;
   --uv-cell-tips-color: #ee0a24;
   --uv-cell-tips-font-size: 13px;
+  --uv-cell-tips-padding: 0 15px;
   --uv-cell-tips-margin-bottom: 5px;
 }
 </style>
@@ -179,11 +186,33 @@ export default {
       }
     }
   }
+  .uv-cell-content-top {
+    flex-direction: column;
+    align-items: flex-start;
+    .uv-cell-content-title {
+      margin-bottom: var(--uv-cell-content-title-margin-bottom);
+    }
+  }
+  .uv-cell-content-right {
+    text-align: right;
+  }
+  .uv-cell-tips {
+    position: relative;
+    display: flex;
+    margin-bottom: var(--uv-cell-tips-margin-bottom);
+    padding: var(--uv-cell-tips-padding);
+    font-size: var(--uv-cell-tips-font-size);
+    color: var(--uv-cell-tips-color);
+  }
+  .cell-tips-enter-active,
+  .cell-tips-leave-active {
+    transition: all 0.3s;
+  }
+  .cell-tips-enter-from,
+  .cell-tips-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
-.uv-cell-tips {
-  display: flex;
-  margin-bottom: var(--uv-cell-tips-margin-bottom);
-  font-size: var(--uv-cell-tips-font-size);
-  color: var(--uv-cell-tips-color);
-}
+
 </style>

@@ -25,7 +25,7 @@
         ref="textareaRef"
         :style="{
           textAlign:inputAlign,
-          height:autosize && autosize.minHeight ? autosize.minHeight+'px':'32px'
+          height:autosize && autosize.minHeight ? autosize.minHeight+'px':'60px'
         }"
         :disabled="disabled"
         :value="modelValue"
@@ -126,20 +126,20 @@ const context = reactive({
 const { props: parentProps, rules, addField, removeField } = inject('form-item', {})
 
 onMounted(() => {
-  if (addField) {
+  if (parentProps && parentProps.prop && addField) {
     addField(context)
   }
 })
 
 onBeforeUnmount(() => {
-  if (removeField) {
+  if (parentProps && parentProps.prop && removeField) {
     removeField(context)
   }
 })
 
 const clearValueEvent = () => {
   emit('update:modelValue', '')
-  if (parentProps && rules[parentProps.prop]) {
+  if (parentProps && parentProps.prop && rules[parentProps.prop]) {
     context.showTips = true
   }
 }
@@ -151,9 +151,10 @@ watch(() => props.modelValue, (newValue) => {
     updateValue(newValue)
   }
   // 验证
-  const rulesDetail = rules && rules[parentProps.prop].find(item => item.trigger === 'blur')
+  const rulesDetail = parentProps && parentProps.prop && rules[parentProps.prop].find(item => item.trigger === 'blur')
   if (rulesDetail) {
     context.showTips = false
+    context.errorMsg = ''
   }
   // textarea自动高度
   if (props.autosize && props.type === 'textarea') {
@@ -201,7 +202,7 @@ const handleInput = (e) => {
   const { value } = e.target
   updateValue(value)
   emit('change', value)
-  const rulesDetail = rules && rules[parentProps.prop].find(item => item.trigger === 'change')
+  const rulesDetail = parentProps && parentProps.prop && rules[parentProps.prop].find(item => item.trigger === 'change')
 
   if (rulesDetail) {
     context.showTips = true
@@ -216,7 +217,7 @@ const handleBlur = (e) => {
     emit('update:modelValue', value)
   }
   emit('blur')
-  const rulesDetail = rules && rules[parentProps.prop].find(item => item.trigger === 'blur')
+  const rulesDetail = parentProps && parentProps.prop && rules[parentProps.prop].find(item => item.trigger === 'blur')
   if (!props.modelValue && rulesDetail) {
     context.showTips = true
     context.errorMsg = rulesDetail.message
@@ -242,7 +243,7 @@ export default {
   --uv-input-word-limit-font-size: 12px;
   --uv-input-word-limit-padding-bottom: 5px;
   --uv-input-word-limit-color: #646566;
-  --uv-input-padding: 5px 8px;
+  --uv-input-padding: 5px 0;
   --uv-input-border-radius: 4px;
   --uv-input-bg-color: #ffffff;
   --uv-input-height: 32px;

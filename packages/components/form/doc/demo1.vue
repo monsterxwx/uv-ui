@@ -1,6 +1,7 @@
 <template>
   <div>
     <uv-form
+      ref="formRef"
       :model="formInfo"
       :label-width="80"
       :rules="rules"
@@ -22,6 +23,16 @@
       <uv-form-item label="无边框">
         <uv-input
           v-model="formInfo.input1"
+        />
+      </uv-form-item>
+      <uv-form-item
+        label="文本域"
+        label-position="top"
+      >
+        <uv-input
+          type="textarea"
+          border
+          v-model="formInfo.textarea"
         />
       </uv-form-item>
       <uv-form-item
@@ -57,7 +68,22 @@
         <div>请选择人员</div>
       </uv-form-item>
     </uv-form>
-
+    <uv-button
+      style="margin-top: 10px;padding: 0 10px;"
+      type="primary"
+      block
+      @click="submit"
+    >
+      提交
+    </uv-button>
+    <uv-button
+      style="margin-top: 10px;padding: 0 10px;"
+      type="primary"
+      block
+      @click="clear"
+    >
+      重置
+    </uv-button>
     <div class="title">
       标题
     </div>
@@ -68,11 +94,12 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 const formInfo = reactive({
   input: '11',
   input1: '11',
+  textarea: '1',
   test1: 4,
   test2: false,
   test3: 1,
@@ -92,6 +119,19 @@ const rules = reactive({
     // }
   ]
 })
+
+const formRef = ref(null)
+const submit = async () => {
+  try {
+    await formRef.value.validate()
+    console.log('验证成功')
+  } catch (error) {
+    console.log('验证失败')
+  }
+}
+const clear = () => {
+  formRef.value.clearValidate()
+}
 </script>
 
 <style lang="scss" scoped>

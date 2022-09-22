@@ -5,6 +5,7 @@
     :arrow-direction="arrowDirection"
     :title="label"
     :label-width="labelWidth"
+    :label-position="labelPosition?labelPosition: parentProps.labelPosition"
     :clickable="clickable"
     :tips="fields.showTips"
     :error-msg="fields.errorMsg"
@@ -19,10 +20,13 @@
 </template>
 
 <script setup>
-import { inject, provide, ref } from 'vue'
+import { inject, onMounted, onUnmounted, provide, ref } from 'vue'
 import uvCell from '../../cell'
 const props = defineProps({
   label: {
+    type: String
+  },
+  labelPosition: {
     type: String
   },
   arrow: {
@@ -43,16 +47,25 @@ const props = defineProps({
     type: String
   }
 })
-const { props: parentProps } = inject('form')
+const { props: parentProps, children } = inject('form')
 const { labelWidth, rules } = parentProps
 
 const fields = ref({})
+
+onMounted(() => {
+  children.value.push(fields)
+})
+
+onUnmounted(() => {
+  const index = children.value.findIndex(fields)
+  children.value.splice(index, 1)
+})
 
 const addField = (field) => {
   fields.value = field
 }
 
-const removeField = (field) => {
+const removeField = () => {
   fields.value = {}
 }
 
