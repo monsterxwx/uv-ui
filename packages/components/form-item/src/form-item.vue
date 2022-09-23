@@ -2,13 +2,14 @@
   <uvCell
     class="uv-form-item"
     ref="formItemRef"
-    v-bind="$attr"
+    v-bind="$attrs"
     :arrow="arrow"
     :arrow-direction="arrowDirection"
     :title="label"
     :label-width="labelWidth"
-    :label-position="labelPosition?labelPosition: parentProps.labelPosition"
+    :label-position="labelPosition || parentProps.labelPosition"
     :clickable="clickable"
+    :required="required || field.isRequired"
     :tips="!!field.errorMsg"
     :error-msg="field.errorMsg"
   >
@@ -22,7 +23,9 @@
 </template>
 
 <script setup>
-import { inject, onBeforeMount, onMounted, toRefs, reactive, ref } from 'vue'
+import { clone } from 'lodash-es'
+import { getProp } from '../../../utils'
+import { inject, onBeforeMount, onMounted, toRefs, reactive, ref, nextTick, computed } from 'vue'
 import uvCell from '../../cell'
 const props = defineProps({
   label: {
@@ -45,10 +48,22 @@ const props = defineProps({
   prop: {
     type: String
   },
-  error: {
-    type: String
+  required: {
+    type: Boolean
   }
 })
+
+// 默认初始值
+let initialValue
+
+const fieldValue = computed(() => {
+  const model = parentProps?.model
+  if (!model || !props.prop) {
+    return
+  }
+  return getProp(model, props.prop).value
+})
+
 const { props: parentProps, addField, removeField } = inject('form')
 const { labelWidth, rules } = parentProps
 
@@ -71,8 +86,13 @@ const validate = () => {
   }
 }
 
-const resetFields = () => {
-  console.log('qing')
+const resetField = async () => {
+  const model = parentProps?.model
+  if (!model || !props.prop) return
+  const computedValue = getProp(model, props.prop)
+  computedValue.value = clone(initialValue)
+  await nextTick()
+  clearValidate()
 }
 
 const clearValidate = () => {
@@ -83,11 +103,10 @@ const field = reactive({
   ...toRefs(props),
   $el: formItemRef,
   isRequired: false,
-  showErrMsg: false,
   errorMsg: null,
-  resetFields,
   clearValidate,
-  validate
+  validate,
+  resetField
 })
 
 onMounted(() => {
@@ -97,6 +116,7 @@ onMounted(() => {
       field.isRequired = true
     }
   }
+  initialValue = clone(fieldValue.value)
   addField(field)
 })
 

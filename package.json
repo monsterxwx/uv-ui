@@ -29,6 +29,7 @@
   "dependencies": {
     "dayjs": "^1.11.3",
     "highlight.js": "^11.6.0",
+    "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.17",
     "uv-ui": "^0.0.7",

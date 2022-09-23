@@ -1,4 +1,4 @@
-
+import { get, set } from 'lodash-es'
 let debounceTimer, throttleTimer
 
 // 防抖
@@ -22,5 +22,17 @@ export const throttle = (fn, delay) => {
       fn.apply(this, args)
       throttleTimer = null
     }, delay)
+  }
+}
+
+// 重置表单
+export const getProp = (obj, path, defaultValue) => {
+  return {
+    get value () {
+      return get(obj, path, defaultValue)
+    },
+    set value (val) {
+      set(obj, path, val)
+    }
   }
 }

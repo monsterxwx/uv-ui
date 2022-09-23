@@ -66,7 +66,10 @@ const validate = () => {
   })
 }
 const resetFields = () => {
-  console.log('resetFields')
+  if (!props.model) {
+    return
+  }
+  fields.forEach((field) => field.resetField())
 }
 const clearValidate = () => {
   console.log('clearValidate')

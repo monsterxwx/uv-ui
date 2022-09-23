@@ -19,7 +19,10 @@
         <div>无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。</div>
       </uv-form-item>
 
-      <uv-form-item label="无边框">
+      <uv-form-item
+        label="无边框"
+        prop="input1"
+      >
         <uv-input
           v-model="formInfo.input1"
         />
@@ -37,6 +40,7 @@
       </uv-form-item>
       <uv-form-item
         label="滑块"
+        prop="test1"
       >
         <uv-slider
           style="width: 100%;"
@@ -52,16 +56,25 @@
           v-model="formInfo.input"
         />
       </uv-form-item>
-      <uv-form-item label="开关">
+      <uv-form-item
+        label="开关"
+        prop="test2"
+      >
         <uv-switch
           size="20"
           v-model="formInfo.test2"
         />
       </uv-form-item>
-      <uv-form-item label="步进器">
+      <uv-form-item
+        label="步进器"
+        prop="test3"
+      >
         <uv-stepper v-model="formInfo.test3" />
       </uv-form-item>
-      <uv-form-item label="评分">
+      <uv-form-item
+        label="评分"
+        prop="test4"
+      >
         <uv-rate v-model="formInfo.test4" />
       </uv-form-item>
       <uv-form-item
@@ -85,7 +98,7 @@
     </uv-form>
     <uv-button
       style="margin-top: 10px;padding: 0 10px;"
-      type="primary"
+      type="success"
       block
       @click="submit"
     >
@@ -97,14 +110,16 @@
       block
       @click="clear"
     >
-      重置
+      清空验证
     </uv-button>
-    <div class="title">
-      标题
-    </div>
-    <div class="tip">
-      通过<span class="code">shape</span> 设置
-    </div>
+    <uv-button
+      style="margin-top: 10px;padding: 0 10px;"
+      type="error"
+      block
+      @click=" resetFields"
+    >
+      重置数据
+    </uv-button>
   </div>
 </template>
 
@@ -113,13 +128,13 @@ import { reactive, ref } from 'vue'
 
 const formInfo = reactive({
   input: '11',
-  input1: '11',
-  textarea: '',
-  test1: 4,
+  input1: '222',
+  textarea: '333',
+  test1: 50,
   test2: false,
-  test3: 1,
+  test3: 5,
   test4: 3,
-  select: ''
+  select: 'sss'
 })
 const rules = reactive({
   input: [
@@ -154,6 +169,9 @@ const submit = async () => {
 }
 const clear = () => {
   formRef.value.clearValidate()
+}
+const resetFields = () => {
+  formRef.value.resetFields()
 }
 </script>
 

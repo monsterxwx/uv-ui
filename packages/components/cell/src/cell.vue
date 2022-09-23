@@ -10,6 +10,7 @@
     >
       <div
         class="uv-cell-content-title"
+        :class="required?'uv-cell-content-title-required':''"
         :style="{width:labelWidth+'px'}"
       >
         <slot name="title">
@@ -112,6 +113,10 @@ defineProps({
   labelPosition: {
     type: String,
     default: 'left'
+  },
+  required: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -172,6 +177,16 @@ export default {
       font-size: 14px;
       white-space: nowrap;
       line-height: 24px;
+    }
+    .uv-cell-content-title-required {
+      position: relative;
+      &::before {
+        position: absolute;
+        left: -8px;
+        color: #f67979;
+        line-height: 24px;
+        content: "*";
+      }
     }
     .uv-cell-content-value-wrap {
       display: flex;
