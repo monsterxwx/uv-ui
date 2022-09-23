@@ -23,35 +23,36 @@
           /></span> {{ title }}
         </slot>
       </div>
-      <div class="uv-cell-content-value">
-        <div
-          class="uv-cell-content-value-slot"
-          :style="{paddingRight:arrow? '20px':''}"
-        >
-          <slot name="value">
-            {{ value }}
-          </slot>
+      <div class="uv-cell-content-value-wrap">
+        <div class="uv-cell-content-value">
+          <div
+            class="uv-cell-content-value-slot"
+            :style="{paddingRight:arrow? '20px':''}"
+          >
+            <slot name="value">
+              {{ value }}
+            </slot>
+          </div>
+          <span
+            class="uv-cell-arrow"
+            v-if="arrow"
+          ><uv-icon
+            :name="'arrow-'+arrowDirection"
+            color="#9699a6"
+          /></span>
         </div>
-        <span
-          class="uv-cell-arrow"
-          v-if="arrow"
-        ><uv-icon
-          :name="'arrow-'+arrowDirection"
-          color="#9699a6"
-        /></span>
+        <Transition name="cell-tips">
+          <div
+            v-if="tips"
+            class="uv-cell-tips"
+          >
+            <slot name="tips">
+              {{ errorMsg }}
+            </slot>
+          </div>
+        </Transition>
       </div>
     </div>
-    <Transition name="cell-tips">
-      <div
-        v-if="tips"
-        class="uv-cell-tips"
-        :style="{marginLeft:`${labelWidth}px`}"
-      >
-        <slot name="tips">
-          {{ errorMsg }}
-        </slot>
-      </div>
-    </Transition>
   </div>
 </template>
 
@@ -127,15 +128,13 @@ export default {
   --uv-cell-after-left: 15px;
   --uv-cell-after-border-bottom: 1px solid #f5f6f7;
   --uv-cell-clickable-bg-color: #f2f3f5;
-  --uv-cell-content-padding: 10px 15px;
+  --uv-cell-content-padding: 10px 16px;
   --uv-cell-content-title-margin-right: 20px;
-  --uv-cell-content-title-margin-bottom: 10px;
   --uv-cell-content-value-color: #969799;
+  --uv-cell-content-value-slot-text-align: right;
   --uv-cell-content-justify-content: space-between;
   --uv-cell-tips-color: #ee0a24;
   --uv-cell-tips-font-size: 13px;
-  --uv-cell-tips-padding: 0 15px;
-  --uv-cell-tips-margin-bottom: 5px;
 }
 </style>
 
@@ -153,8 +152,6 @@ export default {
     border-bottom: var(--uv-cell-after-border-bottom);
     content: "";
     pointer-events: none;
-
-    // transform: scaleY(0.5);
   }
   &:last-child::after {
     display: none;
@@ -167,51 +164,59 @@ export default {
   .uv-cell-content {
     display: flex;
     justify-content: var(--uv-cell-content-justify-content);
-    align-items: center;
+
+    // align-items: center;
     padding: var(--uv-cell-content-padding);
     .uv-cell-content-title {
       margin-right: var(--uv-cell-content-title-margin-right);
+      font-size: 14px;
+      white-space: nowrap;
+      line-height: 24px;
     }
-    .uv-cell-content-value {
-      position: relative;
+    .uv-cell-content-value-wrap {
       display: flex;
-      white-space: wrap;
-      color: var(--uv-cell-content-value-color);
-      .uv-cell-content-value-slot {
-        flex: 1;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      .uv-cell-content-value {
+        position: relative;
+        display: flex;
+        white-space: wrap;
+        color: var(--uv-cell-content-value-color);
+        line-height: 24px;
+        .uv-cell-content-value-slot {
+          flex: 1;
+          text-align: var(--uv-cell-content-value-slot-text-align);
+        }
+        .uv-cell-arrow {
+          position: absolute;
+          right: 0;
+        }
       }
-      .uv-cell-arrow {
-        position: absolute;
-        right: 0;
+      .uv-cell-tips {
+        position: relative;
+        display: flex;
+        font-size: var(--uv-cell-tips-font-size);
+        color: var(--uv-cell-tips-color);
+        line-height: 24px;
+      }
+      .cell-tips-enter-active,
+      .cell-tips-leave-active {
+        transition: all 0.3s;
+      }
+      .cell-tips-enter-from,
+      .cell-tips-leave-to {
+        transform: translateX(-100%);
+        opacity: 0;
       }
     }
   }
   .uv-cell-content-top {
     flex-direction: column;
     align-items: flex-start;
-    .uv-cell-content-title {
-      margin-bottom: var(--uv-cell-content-title-margin-bottom);
-    }
   }
   .uv-cell-content-right {
     text-align: right;
-  }
-  .uv-cell-tips {
-    position: relative;
-    display: flex;
-    margin-bottom: var(--uv-cell-tips-margin-bottom);
-    padding: var(--uv-cell-tips-padding);
-    font-size: var(--uv-cell-tips-font-size);
-    color: var(--uv-cell-tips-color);
-  }
-  .cell-tips-enter-active,
-  .cell-tips-leave-active {
-    transition: all 0.3s;
-  }
-  .cell-tips-enter-from,
-  .cell-tips-leave-to {
-    transform: translateX(-100%);
-    opacity: 0;
   }
 }
 

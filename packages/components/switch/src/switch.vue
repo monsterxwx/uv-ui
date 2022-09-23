@@ -72,7 +72,6 @@ export default {
 <style lang="scss" scoped>
 .uv-switch {
   position: relative;
-  display: inline-block;
   width: var(--uv-switch-width);
   height: var(--uv-switch-height);
   font-size: var(--uv-switch-size);

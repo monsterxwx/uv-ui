@@ -8,18 +8,17 @@
       card
       gap
     >
+      <uv-form-item bg-color="#eee">
+        <template #label>
+          <div style="color: red;">
+            表单标题
+          </div>
+        </template>
+      </uv-form-item>
       <uv-form-item label="描述文本">
         <div>无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。</div>
       </uv-form-item>
-      <uv-form-item
-        label="输入框"
-        prop="input"
-      >
-        <uv-input
-          border
-          v-model="formInfo.input"
-        />
-      </uv-form-item>
+
       <uv-form-item label="无边框">
         <uv-input
           v-model="formInfo.input1"
@@ -28,6 +27,7 @@
       <uv-form-item
         label="文本域"
         label-position="top"
+        prop="textarea"
       >
         <uv-input
           type="textarea"
@@ -39,12 +39,24 @@
         label="滑块"
       >
         <uv-slider
-          style="width: 200px;"
+          style="width: 100%;"
           v-model="formInfo.test1"
         />
       </uv-form-item>
+      <uv-form-item
+        label="输入框"
+        prop="input"
+      >
+        <uv-input
+          border
+          v-model="formInfo.input"
+        />
+      </uv-form-item>
       <uv-form-item label="开关">
-        <uv-switch v-model="formInfo.test2" />
+        <uv-switch
+          size="20"
+          v-model="formInfo.test2"
+        />
       </uv-form-item>
       <uv-form-item label="步进器">
         <uv-stepper v-model="formInfo.test3" />
@@ -64,8 +76,11 @@
         arrow
         arrow-direction="down"
         clickable
+        prop="select"
       >
-        <div>请选择人员</div>
+        <div>
+          请选择人员
+        </div>
       </uv-form-item>
     </uv-form>
     <uv-button
@@ -99,11 +114,12 @@ import { reactive, ref } from 'vue'
 const formInfo = reactive({
   input: '11',
   input1: '11',
-  textarea: '1',
+  textarea: '',
   test1: 4,
   test2: false,
   test3: 1,
-  test4: 3
+  test4: 3,
+  select: ''
 })
 const rules = reactive({
   input: [
@@ -112,11 +128,18 @@ const rules = reactive({
       message: '此项必填！！！',
       trigger: 'blur'
     }
-    // {
-    //   required: true,
-    //   message: '这个不对',
-    //   trigger: 'change'
-    // }
+  ],
+  textarea: [
+    {
+      required: true,
+      message: '该项必填哦'
+    }
+  ],
+  select: [
+    {
+      required: true,
+      message: 'select没值'
+    }
   ]
 })
 

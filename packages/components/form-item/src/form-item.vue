@@ -1,14 +1,16 @@
 <template>
   <uvCell
     class="uv-form-item"
+    ref="formItemRef"
+    v-bind="$attr"
     :arrow="arrow"
     :arrow-direction="arrowDirection"
     :title="label"
     :label-width="labelWidth"
     :label-position="labelPosition?labelPosition: parentProps.labelPosition"
     :clickable="clickable"
-    :tips="fields.showTips"
-    :error-msg="fields.errorMsg"
+    :tips="!!field.errorMsg"
+    :error-msg="field.errorMsg"
   >
     <template #title>
       <slot name="label" />
@@ -20,7 +22,7 @@
 </template>
 
 <script setup>
-import { inject, onMounted, onUnmounted, provide, ref } from 'vue'
+import { inject, onBeforeMount, onMounted, toRefs, reactive, ref } from 'vue'
 import uvCell from '../../cell'
 const props = defineProps({
   label: {
@@ -47,29 +49,62 @@ const props = defineProps({
     type: String
   }
 })
-const { props: parentProps, children } = inject('form')
+const { props: parentProps, addField, removeField } = inject('form')
 const { labelWidth, rules } = parentProps
 
-const fields = ref({})
+const formItemRef = ref(null)
+
+const validate = () => {
+  if (field.isRequired) {
+    // 如果值为空
+    if (!parentProps.model[props.prop]) {
+      const msg = rules[props.prop].find(item => item.required === true)
+      field.errorMsg = msg.message
+      return false
+    } else {
+      field.errorMsg = null
+      return true
+    }
+  } else {
+    field.errorMsg = null
+    return true
+  }
+}
+
+const resetFields = () => {
+  console.log('qing')
+}
+
+const clearValidate = () => {
+  field.errorMsg = null
+}
+
+const field = reactive({
+  ...toRefs(props),
+  $el: formItemRef,
+  isRequired: false,
+  showErrMsg: false,
+  errorMsg: null,
+  resetFields,
+  clearValidate,
+  validate
+})
 
 onMounted(() => {
-  children.value.push(fields)
+  if (rules && rules[props.prop]) {
+    const isRequired = rules[props.prop].find(item => item.required === true)
+    if (isRequired) {
+      field.isRequired = true
+    }
+  }
+  addField(field)
 })
 
-onUnmounted(() => {
-  const index = children.value.findIndex(fields)
-  children.value.splice(index, 1)
+onBeforeMount(() => {
+  removeField(field)
 })
 
-const addField = (field) => {
-  fields.value = field
-}
-
-const removeField = () => {
-  fields.value = {}
-}
-
-provide('form-item', { props, rules, addField, removeField })
+// provide('form-item', { props, rules, addField, removeField })
 
 </script>
 <script>
@@ -87,6 +122,8 @@ export default {
 <style lang="scss" scoped>
   .uv-form-item {
     --uv-cell-content-justify-content: flex-start;
+    --uv-cell-content-value-slot-text-align: left;
+    --uv-input-height: 24px;
     :deep() {
       .uv-cell-content-value {
         width: 100%;
