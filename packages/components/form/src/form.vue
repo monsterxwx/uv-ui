@@ -54,8 +54,6 @@ const validate = () => {
       const isValidatePass = fields.map(item => {
         return item.validate()
       }).every(item => item === true)
-
-      console.log('validate', fields)
       if (isValidatePass) {
         resolve(true)
       } else {
@@ -72,8 +70,7 @@ const resetFields = () => {
   fields.forEach((field) => field.resetField())
 }
 const clearValidate = () => {
-  console.log('clearValidate')
-  fields.map(item => item.clearValidate())
+  fields.forEach(item => item.clearValidate())
 }
 defineExpose({
   validate,

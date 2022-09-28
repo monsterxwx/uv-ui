@@ -7,7 +7,6 @@
       class="uv-input"
     >
       <input
-        ref="inputRef"
         v-if="type!=='textarea'"
         :style="{textAlign:inputAlign}"
         :disabled="disabled"
@@ -60,7 +59,7 @@
 <script setup>
 
 import uvIcon from '../../icon'
-import { onMounted, onBeforeUnmount, ref, reactive, watch, nextTick, computed, inject } from 'vue'
+import { ref, watch, nextTick, computed, inject } from 'vue'
 const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus', 'keydown'])
 const props = defineProps({
   modelValue: {
@@ -115,33 +114,10 @@ const props = defineProps({
   }
 })
 
-const inputRef = ref(null)
-
-const context = reactive({
-  $el: inputRef,
-  showTips: false,
-  errorMsg: ''
-})
-
-const { props: parentProps, rules, addField, removeField } = inject('form-item', {})
-
-onMounted(() => {
-  if (parentProps && parentProps.prop && addField) {
-    addField(context)
-  }
-})
-
-onBeforeUnmount(() => {
-  if (parentProps && parentProps.prop && removeField) {
-    removeField(context)
-  }
-})
+const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
 
 const clearValueEvent = () => {
   emit('update:modelValue', '')
-  if (parentProps && parentProps.prop && rules[parentProps.prop]) {
-    context.showTips = true
-  }
 }
 
 const textareaRef = ref(null)
@@ -149,12 +125,6 @@ const textareaRef = ref(null)
 watch(() => props.modelValue, (newValue) => {
   if (props.maxlength) {
     updateValue(newValue)
-  }
-  // 验证
-  const rulesDetail = parentProps && parentProps.prop && rules[parentProps.prop].find(item => item.trigger === 'blur')
-  if (rulesDetail) {
-    context.showTips = false
-    context.errorMsg = ''
   }
   // textarea自动高度
   if (props.autosize && props.type === 'textarea') {
@@ -202,11 +172,8 @@ const handleInput = (e) => {
   const { value } = e.target
   updateValue(value)
   emit('change', value)
-  const rulesDetail = parentProps && parentProps.prop && rules[parentProps.prop].find(item => item.trigger === 'change')
-
-  if (rulesDetail) {
-    context.showTips = true
-    context.errorMsg = rulesDetail.message
+  if (parentProps) {
+    validateBlurOrChange('change')
   }
 }
 
@@ -217,10 +184,8 @@ const handleBlur = (e) => {
     emit('update:modelValue', value)
   }
   emit('blur')
-  const rulesDetail = parentProps && parentProps.prop && rules[parentProps.prop].find(item => item.trigger === 'blur')
-  if (!props.modelValue && rulesDetail) {
-    context.showTips = true
-    context.errorMsg = rulesDetail.message
+  if (parentProps) {
+    validateBlurOrChange('blur')
   }
 }
 const handleFocus = () => {

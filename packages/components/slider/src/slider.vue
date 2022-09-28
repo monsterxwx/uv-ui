@@ -30,7 +30,7 @@
 
 <script setup>
 import { useTouch } from '../../../hooks/useTouch'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, inject } from 'vue'
 const touch = useTouch()
 const props = defineProps({
   modelValue: {
@@ -66,6 +66,9 @@ const props = defineProps({
     default: 100
   }
 })
+
+const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
+
 const emit = defineEmits(['update:modelValue', 'change', 'drag-start'])
 const sliderRef = ref(null)
 const sliderValueRef = ref(null)
@@ -94,6 +97,9 @@ function touchmove (e) {
 
 function touchend () {
   emit('change', props.modelValue)
+  if (parentProps) {
+    validateBlurOrChange('change')
+  }
 }
 </script>
 <script>

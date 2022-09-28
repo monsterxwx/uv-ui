@@ -25,7 +25,7 @@
 <script setup>
 import { clone } from 'lodash-es'
 import { getProp } from '../../../utils'
-import { inject, onBeforeMount, onMounted, toRefs, reactive, ref, nextTick, computed } from 'vue'
+import { inject, onBeforeMount, onMounted, toRefs, reactive, ref, nextTick, computed, provide } from 'vue'
 import uvCell from '../../cell'
 const props = defineProps({
   label: {
@@ -70,15 +70,66 @@ const { labelWidth, rules } = parentProps
 const formItemRef = ref(null)
 
 const validate = () => {
-  if (field.isRequired) {
-    // 如果值为空
-    if (!parentProps.model[props.prop]) {
-      const msg = rules[props.prop].find(item => item.required === true)
-      field.errorMsg = msg.message
-      return false
-    } else {
-      field.errorMsg = null
-      return true
+  if (!props.prop || !rules[props.prop]) {
+    return true
+  }
+  const currentRules = rules[props.prop]
+  const validatePass = currentRules.map(item => {
+    let isPass = ''
+    if (item.required === true) {
+      if (!parentProps.model[props.prop]) {
+        // 如果值为空
+        field.errorMsg = item.message
+        isPass = false
+      } else {
+        field.errorMsg = null
+        isPass = true
+      }
+    }
+    if (item.trigger) {
+      const isTrue = validateBlurOrChange(item.trigger)
+      isPass = isTrue
+    }
+    return isPass
+  }).every(item => item === true)
+  if (validatePass) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// 值改变验证or失去焦点验证
+const validateBlurOrChange = (trigger) => {
+  if (!props.prop) {
+    return console.error('请传入form-item中传入prop属性')
+  }
+  const validateObj = rules[props.prop].find(item => item.trigger === trigger)
+  if (validateObj) {
+    // 如果为必传
+    if (validateObj.required) {
+      // 如果该值必填
+      if (!parentProps.model[props.prop]) {
+        // 值为空时触发验证
+        field.errorMsg = validateObj.message
+        return false
+      } else {
+        field.errorMsg = null
+        return true
+      }
+    }
+    if (validateObj.validator) {
+      // 如果存在自定义验证
+      // 获取当前值
+      const value = parentProps.model[props.prop]
+      const isTrue = validateObj.validator(value)
+      if (isTrue) {
+        field.errorMsg = null
+        return true
+      } else {
+        field.errorMsg = validateObj.message
+        return false
+      }
     }
   } else {
     field.errorMsg = null
@@ -124,7 +175,7 @@ onBeforeMount(() => {
   removeField(field)
 })
 
-// provide('form-item', { props, rules, addField, removeField })
+provide('form-item', { props, validateBlurOrChange })
 
 </script>
 <script>
@@ -132,12 +183,6 @@ export default {
   name: 'UvFormItem'
 }
 </script>
-
-<style>
-:root {
-  --uv-test: 1px;
-}
-</style>
 
 <style lang="scss" scoped>
   .uv-form-item {

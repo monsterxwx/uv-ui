@@ -136,12 +136,35 @@ const formInfo = reactive({
   test4: 3,
   select: 'sss'
 })
+
+const checkNum = (value) => {
+  if (value.length >= 5 && value.length <= 14) {
+    return true
+  } else {
+    return false
+  }
+}
+const checkNum1 = (value) => {
+  console.log('value', value)
+  if (value >= 20 && value <= 70) {
+    return true
+  } else {
+    return false
+  }
+}
+
 const rules = reactive({
   input: [
     {
       required: true,
       message: '此项必填！！！',
       trigger: 'blur'
+    },
+    // 自定义校验
+    {
+      validator: checkNum,
+      message: '请输入长度在5~14之间',
+      trigger: 'change'
     }
   ],
   textarea: [
@@ -154,6 +177,13 @@ const rules = reactive({
     {
       required: true,
       message: 'select没值'
+    }
+  ],
+  test1: [
+    {
+      validator: checkNum1,
+      message: '选择范围在20-70之间',
+      trigger: 'change'
     }
   ]
 })

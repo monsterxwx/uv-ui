@@ -43,7 +43,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, inject } from 'vue'
 const props = defineProps({
   modelValue: {
     type: Number
@@ -77,7 +77,10 @@ const props = defineProps({
   }
 
 })
-const emit = defineEmits(['update:modelValue', 'add', 'sub'])
+
+const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
+
+const emit = defineEmits(['update:modelValue', 'add', 'sub', 'change'])
 const current = ref(1)
 
 watch(() => props.modelValue, (newValue) => {
@@ -86,17 +89,26 @@ watch(() => props.modelValue, (newValue) => {
   immediate: true
 })
 
+function change () {
+  emit('change', current.value)
+  if (parentProps) {
+    validateBlurOrChange('change')
+  }
+}
+
 function subClick () {
   if ((props.min && current.value - 1 < props.min) || props.disabled) return
   current.value = current.value - 1
   emit('add', current.value)
   emit('update:modelValue', current.value)
+  change()
 }
 function addClick () {
   if ((props.max && current.value + 1 > props.max) || props.disabled) return
   current.value = current.value + 1
   emit('add', current.value)
   emit('update:modelValue', current.value)
+  change()
 }
 
 function filter (value) {
