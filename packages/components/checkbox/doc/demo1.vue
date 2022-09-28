@@ -1,12 +1,15 @@
 <template>
   <div>
+    <div class="tip">
+      <div>通过<span class="code">v-model</span> 进行双向绑定，Boolean类型</div>
+      <div>通过<span class="code">label</span> 指定显示内容，也可以直接通过默认插槽进行个性化显示</div>
+      <div>通过<span class="code">change</span>事件监听变化</div>
+    </div>
     <uv-checkbox
       v-model="test1"
-      name="test1"
+      label="数据1"
       @change="change"
-    >
-      单选框
-    </uv-checkbox>
+    />
     <div class="title">
       自定义形状
     </div>
@@ -15,11 +18,9 @@
     </div>
     <uv-checkbox
       v-model="test2"
-      name="test2"
+      label="test2"
       shape="square"
-    >
-      单选框
-    </uv-checkbox>
+    />
     <div class="title">
       禁用状态
     </div>
@@ -29,10 +30,8 @@
     <uv-checkbox
       v-model="test2"
       disabled
-      name="单选框"
-    >
-      单选框
-    </uv-checkbox>
+      label="单选框"
+    />
     <div class="title">
       自定义选中背景色
     </div>
@@ -41,7 +40,6 @@
     </div>
     <uv-checkbox
       v-model="test2"
-
       checked-color="red"
     >
       单选框
@@ -54,11 +52,10 @@
     </div>
     <uv-checkbox
       v-model="test2"
+      label="单选框"
       shape="square"
       label-position="left"
-    >
-      单选框
-    </uv-checkbox>
+    />
     <div class="title">
       是否两边排布
     </div>
@@ -67,30 +64,65 @@
     </div>
     <uv-checkbox
       v-model="test3"
+      label="单选框"
       space-between
       label-position="left"
-    >
-      单选框
-    </uv-checkbox>
-    <!-- <div class="title">
+    />
+    <div class="title">
       多选组
     </div>
     <div class="tip">
-      通过<span class="code">uv-checkbox-group</span> 组件包裹
+      <div>通过<span class="code">uv-checkbox-group</span> 组件包裹</div>
+      <div>通过<span class="code"> v-model</span> 绑定数组类型数据</div>
     </div>
-    <uv-checkbox-group v-model="checkArr">
+    <uv-checkbox-group
+      v-model="checkArr"
+    >
       <uv-checkbox
-        name="test1"
-      >
-        单选框
-      </uv-checkbox>
+        label="test1"
+      />
       <uv-checkbox
-        name="test2"
-      >
-        单选框
-      </uv-checkbox>
+        label="test2"
+      />
+      <uv-checkbox
+        label="test3"
+      />
+      <uv-checkbox
+        label="test4"
+      />
+      <uv-checkbox
+        label="test41"
+      />
+      <uv-checkbox
+        label="test42"
+      />
+      <uv-checkbox
+        label="test43"
+      />
     </uv-checkbox-group>
-    {{ checkArr }} -->
+    <div class="title">
+      限制最大选择数量
+    </div>
+    <div class="tip">
+      通过<span class="code">max</span>属性设置
+    </div>
+    <uv-checkbox-group
+      v-model="checkArr1"
+      :max="2"
+    >
+      <uv-checkbox
+        label="test1"
+      />
+      <uv-checkbox
+        label="test2"
+      />
+      <uv-checkbox
+        label="test3"
+      />
+      <uv-checkbox
+        label="test4"
+      />
+    </uv-checkbox-group>
   </div>
 </template>
 
@@ -99,7 +131,8 @@ import { ref } from 'vue'
 const test1 = ref(false)
 const test2 = ref(true)
 const test3 = ref(false)
-// const checkArr = ref(['test1'])
+const checkArr = ref([])
+const checkArr1 = ref(['test1'])
 const change = (e) => {
   console.log(e)
 }

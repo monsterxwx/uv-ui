@@ -1,6 +1,7 @@
 <template>
   <div
     class="uv-check-box"
+    ref="checkboxRef"
     :class="uvCheckBoxClass"
     @click="change"
   >
@@ -8,37 +9,40 @@
       v-if="labelPosition==='left'"
       class="uv-check-box-left"
     >
-      <slot />
+      <slot>
+        {{ label }}
+      </slot>
     </div>
     <div
       class="uv-check-box-icon"
       :style="uvStyle"
-      :class="uvIconClass"
+      :class="[
+        props.shape === 'round' ? 'round' : '',
+        context.isSelect?'active':''
+      ]"
     >
       <uv-icon
-        v-if="modelValue"
+        v-if="context.isSelect"
         name="select"
         :color="disabled?'#c8c9cc':'#fff'"
-        size="20"
+        size="18"
       />
     </div>
     <div
       v-if="labelPosition==='right'"
       class="uv-check-box-right"
     >
-      <slot />
+      <slot>
+        {{ label }}
+      </slot>
     </div>
   </div>
-  <!-- <div class="uv-checkbox">
-    <input type="checkbox">
-    <span>dd</span>
-  </div> -->
 </template>
 
 <script setup>
 
 import uvIcon from '../../icon/src/icon.vue'
-import { computed } from 'vue'
+import { computed, ref, reactive, inject, onMounted, onBeforeUnmount } from 'vue'
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -48,7 +52,7 @@ const props = defineProps({
     type: String,
     default: 'round'
   },
-  name: {
+  label: {
     type: String,
     default: ''
   },
@@ -57,8 +61,7 @@ const props = defineProps({
     default: false
   },
   checkedColor: {
-    type: String,
-    default: '#1989fa'
+    type: String
   },
   labelPosition: {
     type: String,
@@ -71,13 +74,34 @@ const props = defineProps({
 
 })
 
-const emit = defineEmits(['update:modelValue', 'change'])
-const uvIconClass = computed(() => {
-  return [
-    props.shape === 'round' ? 'round' : '',
-    props.modelValue ? 'active' : ''
-  ]
+const checkboxRef = ref(null)
+
+const context = reactive({
+  $el: checkboxRef,
+  label: props.label,
+  isSelect: false
 })
+
+const { props: parentProps, addField, removeField, updateItem, fields } = inject('checkbox-group', {})
+
+onMounted(() => {
+  if (parentProps) {
+    addField(context)
+    // 初始化是否有默认选择项
+    if (parentProps.modelValue.find(item => item === context.label)) {
+      context.isSelect = true
+    }
+  }
+})
+
+onBeforeUnmount(() => {
+  if (parentProps) {
+    removeField(context)
+  }
+})
+
+const emit = defineEmits(['update:modelValue', 'change'])
+
 const uvCheckBoxClass = computed(() => {
   return [
     props.disabled ? 'uv-check-box-disabled' : '',
@@ -86,14 +110,22 @@ const uvCheckBoxClass = computed(() => {
 })
 const uvStyle = computed(() => {
   return {
-    border: props.modelValue ? `1px solid ${props.checkedColor}` : '',
-    backgroundColor: props.modelValue ? `${props.checkedColor}` : ''
+    border: context.isSelect ? `1px solid ${props.checkedColor || parentProps?.checkedColor}` : '',
+    backgroundColor: context.isSelect ? `${props.checkedColor || parentProps?.checkedColor}` : '',
+    width: `${parentProps?.iconSize || 18}px`,
+    height: `${parentProps?.iconSize || 18}px`
   }
 })
 const change = () => {
   if (props.disabled) return
-  emit('update:modelValue', !props.modelValue)
-  emit('change', props.name)
+  if (parentProps && parentProps.modelValue) {
+    const index = fields.indexOf(context)
+    updateItem(index)
+  } else {
+    context.isSelect = !context.isSelect
+    emit('update:modelValue', !props.modelValue)
+    emit('change', props.label)
+  }
 }
 </script>
 <script>
@@ -102,54 +134,57 @@ export default {
 }
 </script>
 
+<style>
+  :root {
+    --uv-check-box-icon-border: 1px solid #c8c9cc;
+    --uv-check-box-icon-active-border: 1px solid #1989fa;
+    --uv-check-box-icon-active-bg-color: #1989fa;
+    --uv-check-box-icon-disabled-border: 1px solid #c8c9cc;
+    --uv-check-box-icon-disabled-bg-color: #ebedf0;
+    --uv-check-box-text-margin: 8px;
+    --uv-check-box-text-size: 14px;
+    --uv-check-box-space-between-padding: 0 10px;
+  }
+</style>
+
 <style lang="scss" scoped>
-// .uv-checkbox {
-//   display: flex;
-//   align-items: center;
-//   input {
-//     width: 20px;
-//     height: 20px;
-//     border: 1px solid #c8c9cc;
-//   }
-// }
 .uv-check-box {
   display: flex;
   align-items: center;
-  &-icon {
+  .uv-check-box-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #c8c9cc;
+    border: var(--uv-check-box-icon-border);
     transition: all 0.3s;
+  }
+  .active {
+    border: var(--uv-check-box-icon-active-border);
+    background-color: var(--uv-check-box-icon-active-bg-color);
   }
   .round {
     border-radius: 50%;
   }
-  .active {
-    border: 1px solid #1989fa;
-    background-color: #1989fa;
+  .uv-check-box-right {
+    margin-left: var(--uv-check-box-text-margin);
+    font-size: var(--uv-check-box-text-size);
   }
-  &-right {
-    margin-left: 8px;
-    font-size: 14px;
-  }
-  &-left {
-    margin-right: 8px;
-    font-size: 14px;
+  .uv-check-box-left {
+    margin-right: var(--uv-check-box-text-margin);
+    font-size: var(--uv-check-box-text-size);
   }
 }
 .uv-check-box-disabled {
   cursor: no-drop;
   color: #c8c9cc;
   .uv-check-box-icon {
-    border: 1px solid #c8c9cc !important;
-    background-color: #ebedf0 !important;
+    border: var(--uv-check-box-icon-disabled-border) !important;
+    background-color: var(--uv-check-box-icon-disabled-bg-color) !important;
   }
 }
 .uv-check-box-space-between {
   justify-content: space-between;
+  padding: var(--uv-check-box-space-between-padding);
 }
 
 </style>

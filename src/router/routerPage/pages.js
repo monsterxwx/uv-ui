@@ -95,7 +95,7 @@ export default [
         path: 'checkbox',
         name: 'checkbox',
         meta: {
-          name: 'Checkbox 复选框'
+          name: 'Checkbox 多选框'
         },
         component: () => import('/packages/components/checkbox/doc/doc.md')
       },
