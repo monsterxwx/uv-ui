@@ -1,6 +1,6 @@
 <template>
   <div
-    class="uv-checkbox-group"
+    class="uv-radio-group"
     :style="{flexDirection:direction==='column'? 'column':'row'}"
   >
     <slot />
@@ -8,14 +8,10 @@
 </template>
 
 <script setup>
-import { computed, provide } from 'vue'
+import { provide } from 'vue'
 const props = defineProps({
   modelValue: {
-    type: Array,
-    default: () => ([])
-  },
-  max: {
-    type: Number
+    type: String
   },
   direction: {
     type: String,
@@ -47,40 +43,36 @@ const removeField = (field) => {
 }
 
 const updateItem = (index) => {
-  if (props.max && selectNum.value === props.max) {
-    if (!fields[index].isSelect) {
-      return
+  fields.forEach((item, idx) => {
+    if (idx === index) {
+      item.isSelect = !item.isSelect
+    } else {
+      item.isSelect = false
     }
-  }
-  fields[index].isSelect = !fields[index].isSelect
-  const newArr = fields.filter(item => item.isSelect).map(item => item.label)
-  emit('change', newArr)
-  emit('update:modelValue', newArr)
+  })
+  emit('change', fields[index].label)
+  emit('update:modelValue', fields[index].label)
 }
 
-const selectNum = computed(() => {
-  return props.modelValue.length
-})
-
-provide('checkbox-group', { props, addField, removeField, updateItem, fields })
+provide('radio-group', { props, addField, removeField, updateItem, fields })
 
 </script>
 <script>
 export default {
-  name: 'UvCheckboxGroup'
+  name: 'UvRadioGroup'
 }
 </script>
 
 <style>
   :root {
-    --uv-checkbox-group-gap: 10px;
+    --uv-radio-group-gap: 10px;
   }
 </style>
 
 <style lang="scss" scoped>
-.uv-checkbox-group {
+.uv-radio-group {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--uv-checkbox-group-gap);
+  gap: var(--uv-radio-group-gap);
 }
 </style>

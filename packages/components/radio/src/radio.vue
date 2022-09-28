@@ -1,20 +1,20 @@
 <template>
   <div
-    class="uv-check-box"
-    ref="checkboxRef"
-    :class="uvCheckBoxClass"
+    class="uv-radio"
+    ref="radioRef"
+    :class="uvRadioClass"
     @click="change"
   >
     <div
       v-if="labelPosition==='left'"
-      class="uv-check-box-left"
+      class="uv-radio-left"
     >
       <slot>
         {{ label }}
       </slot>
     </div>
     <div
-      class="uv-check-box-icon"
+      class="uv-radio-icon"
       :style="uvStyle"
       :class="[
         (parentProps?.shape || props.shape) === 'round' ? 'round' : '',
@@ -30,7 +30,7 @@
     </div>
     <div
       v-if="labelPosition==='right'"
-      class="uv-check-box-right"
+      class="uv-radio-right"
     >
       <slot>
         {{ label }}
@@ -74,21 +74,21 @@ const props = defineProps({
 
 })
 
-const checkboxRef = ref(null)
+const radioRef = ref(null)
 
 const context = reactive({
-  $el: checkboxRef,
+  $el: radioRef,
   label: props.label,
   isSelect: false
 })
 
-const { props: parentProps, addField, removeField, updateItem, fields } = inject('checkbox-group', {})
+const { props: parentProps, addField, removeField, updateItem, fields } = inject('radio-group', {})
 
 onMounted(() => {
   if (parentProps) {
     addField(context)
     // 初始化是否有默认选择项
-    if (parentProps.modelValue.find(item => item === context.label)) {
+    if (parentProps.modelValue === context.label) {
       context.isSelect = true
     }
   }
@@ -102,10 +102,10 @@ onBeforeUnmount(() => {
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
-const uvCheckBoxClass = computed(() => {
+const uvRadioClass = computed(() => {
   return [
-    props.disabled ? 'uv-check-box-disabled' : '',
-    props.spaceBetween ? 'uv-check-box-space-between' : ''
+    props.disabled ? 'uv-radio-disabled' : '',
+    props.spaceBetween ? 'uv-radio-space-between' : ''
   ]
 })
 const uvStyle = computed(() => {
@@ -130,61 +130,61 @@ const change = () => {
 </script>
 <script>
 export default {
-  name: 'UvCheckbox'
+  name: 'UvRadio'
 }
 </script>
 
 <style>
   :root {
-    --uv-check-box-icon-border: 1px solid #c8c9cc;
-    --uv-check-box-icon-active-border: 1px solid #1989fa;
-    --uv-check-box-icon-active-bg-color: #1989fa;
-    --uv-check-box-icon-disabled-border: 1px solid #c8c9cc;
-    --uv-check-box-icon-disabled-bg-color: #ebedf0;
-    --uv-check-box-text-margin: 8px;
-    --uv-check-box-text-size: 14px;
-    --uv-check-box-space-between-padding: 0 10px;
+    --uv-radio-icon-border: 1px solid #c8c9cc;
+    --uv-radio-icon-active-border: 1px solid #1989fa;
+    --uv-radio-icon-active-bg-color: #1989fa;
+    --uv-radio-icon-disabled-border: 1px solid #c8c9cc;
+    --uv-radio-icon-disabled-bg-color: #ebedf0;
+    --uv-radio-text-margin: 8px;
+    --uv-radio-text-size: 14px;
+    --uv-radio-space-between-padding: 0 10px;
   }
 </style>
 
 <style lang="scss" scoped>
-.uv-check-box {
+.uv-radio {
   display: flex;
   align-items: center;
-  .uv-check-box-icon {
+  .uv-radio-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: var(--uv-check-box-icon-border);
+    border: var(--uv-radio-icon-border);
     transition: all 0.3s;
   }
   .active {
-    border: var(--uv-check-box-icon-active-border);
-    background-color: var(--uv-check-box-icon-active-bg-color);
+    border: var(--uv-radio-icon-active-border);
+    background-color: var(--uv-radio-icon-active-bg-color);
   }
   .round {
     border-radius: 50%;
   }
-  .uv-check-box-right {
-    margin-left: var(--uv-check-box-text-margin);
-    font-size: var(--uv-check-box-text-size);
+  .uv-radio-right {
+    margin-left: var(--uv-radio-text-margin);
+    font-size: var(--uv-radio-text-size);
   }
-  .uv-check-box-left {
-    margin-right: var(--uv-check-box-text-margin);
-    font-size: var(--uv-check-box-text-size);
+  .uv-radio-left {
+    margin-right: var(--uv-radio-text-margin);
+    font-size: var(--uv-radio-text-size);
   }
 }
-.uv-check-box-disabled {
+.uv-radio-disabled {
   cursor: no-drop;
   color: #c8c9cc;
-  .uv-check-box-icon {
-    border: var(--uv-check-box-icon-disabled-border) !important;
-    background-color: var(--uv-check-box-icon-disabled-bg-color) !important;
+  .uv-radio-icon {
+    border: var(--uv-radio-icon-disabled-border) !important;
+    background-color: var(--uv-radio-icon-disabled-bg-color) !important;
   }
 }
-.uv-check-box-space-between {
+.uv-radio-space-between {
   justify-content: space-between;
-  padding: var(--uv-check-box-space-between-padding);
+  padding: var(--uv-radio-space-between-padding);
 }
 
 </style>

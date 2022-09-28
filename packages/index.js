@@ -9,6 +9,8 @@ import Toast from './components/toast/index.js'
 import Message from './components/message/index.js'
 import uvCheckbox from './components/checkbox/index.js'
 import uvCheckboxGroup from './components/checkbox-group/index.js'
+import uvRadio from './components/radio/index.js'
+import uvRadioGroup from './components/radio-group/index.js'
 import uvNumInput from './components/num-input/index.js'
 import uvPicker from './components/picker/index.js'
 import uvSwitch from './components/switch/index.js'
@@ -54,6 +56,8 @@ const components = [
   Message,
   uvCheckbox,
   uvCheckboxGroup,
+  uvRadio,
+  uvRadioGroup,
   uvNumInput,
   uvPicker,
   uvSwitch,
@@ -108,6 +112,8 @@ export {
   Message,
   uvCheckbox,
   uvCheckboxGroup,
+  uvRadio,
+  uvRadioGroup,
   uvNumInput,
   uvPicker,
   uvSwitch,

@@ -100,6 +100,14 @@ export default [
         component: () => import('/packages/components/checkbox/doc/doc.md')
       },
       {
+        path: 'radio',
+        name: 'radio',
+        meta: {
+          name: 'Radio 单选框'
+        },
+        component: () => import('/packages/components/radio/doc/doc.md')
+      },
+      {
         path: 'num-input',
         name: 'num-input',
         meta: {

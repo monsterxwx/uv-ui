@@ -85,15 +85,33 @@
         <div>请选择人员</div>
       </uv-form-item>
       <uv-form-item
-        label="箭头位置"
-        arrow
-        arrow-direction="down"
-        clickable
+        label="单选框"
+        prop="radioselect"
+      >
+        <uv-radio-group
+          v-model="formInfo.radioselect"
+        >
+          <uv-radio label="test1" />
+          <uv-radio label="test2" />
+          <uv-radio label="test3" />
+          <uv-radio label="test4" />
+          <uv-radio label="test5" />
+        </uv-radio-group>
+      </uv-form-item>
+      <uv-form-item
+        label="多选框"
         prop="select"
       >
-        <div>
-          请选择人员
-        </div>
+        <uv-checkbox-group
+          v-model="formInfo.select"
+          shape="square"
+        >
+          <uv-checkbox label="test1" />
+          <uv-checkbox label="test2" />
+          <uv-checkbox label="test3" />
+          <uv-checkbox label="test4" />
+          <uv-checkbox label="test5" />
+        </uv-checkbox-group>
       </uv-form-item>
     </uv-form>
     <uv-button
@@ -134,7 +152,8 @@ const formInfo = reactive({
   test2: false,
   test3: 5,
   test4: 3,
-  select: 'sss'
+  radioselect: 'test1',
+  select: []
 })
 
 const checkNum = (value) => {
@@ -171,12 +190,6 @@ const rules = reactive({
     {
       required: true,
       message: '该项必填哦'
-    }
-  ],
-  select: [
-    {
-      required: true,
-      message: 'select没值'
     }
   ],
   test1: [
