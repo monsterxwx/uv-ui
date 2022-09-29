@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { provide } from 'vue'
+import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
     type: String
@@ -32,16 +32,6 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'change'])
 
-const fields = []
-
-const addField = (field) => {
-  fields.push(field)
-}
-
-const removeField = (field) => {
-  fields.splice(fields.indexOf(field), 1)
-}
-
 const updateItem = (index) => {
   fields.forEach((item, idx) => {
     if (idx === index) {
@@ -54,7 +44,7 @@ const updateItem = (index) => {
   emit('update:modelValue', fields[index].label)
 }
 
-provide('radio-group', { props, addField, removeField, updateItem, fields })
+const { fields } = useChildren('radio-group', { props, updateItem })
 
 </script>
 <script>

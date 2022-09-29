@@ -25,7 +25,8 @@
 </template>
 
 <script setup>
-import { reactive, inject, onMounted, onBeforeUnmount, ref } from 'vue'
+import { reactive, onMounted, ref } from 'vue'
+import { useParent } from '../../../hooks/useContext.js'
 import uvIcon from '../../icon/src/icon.vue'
 defineProps({
   iconSize: {
@@ -49,24 +50,21 @@ const context = reactive({
   isActive: false
 })
 
-const { props: parentProps, acitveItemUpdate, addField, removeField, fields } = inject('tab-bar')
-
-const { activeColor, inactiveColor, activeBgColor } = parentProps
+const { props: parentProps, acitveItemUpdate, index } = useParent('tab-bar', context)
 
 onMounted(() => {
-  addField(context)
+  if (parentProps && parentProps.modelValue === index.value) {
+    context.isActive = true
+  }
 })
 
-onBeforeUnmount(() => {
-  removeField(context)
-})
+const { activeColor, inactiveColor, activeBgColor } = parentProps
 
 const handleClickItem = () => {
   if (!context.isActive) {
     context.isActive = true
   }
-  const index = fields.indexOf(context)
-  acitveItemUpdate(index)
+  acitveItemUpdate(index.value)
 }
 </script>
 <script>

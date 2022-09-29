@@ -30,7 +30,8 @@
 </template>
 
 <script setup>
-import { ref, reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
+import { useParent } from '../../../hooks/useContext.js'
 
 defineProps({
   title: {
@@ -46,24 +47,22 @@ const context = reactive({
   lineActive: false
 })
 
-const { props: parentProps, acitveItemUpdate, addField, removeField, fields } = inject('steps')
+const { props: parentProps, acitveItemUpdate, index } = useParent('steps', context)
+
+onMounted(() => {
+  if (parentProps.modelValue === index.value) {
+    context.isActive = true
+  }
+})
 
 const { activeColor, inactiveColor } = parentProps
 
-onMounted(() => {
-  addField(context)
-})
-
 const clickItem = () => {
   if (parentProps.isAbleClick) {
-    const index = fields.indexOf(context)
-    acitveItemUpdate(index)
+    acitveItemUpdate(index.value)
   }
 }
 
-onBeforeUnmount(() => {
-  removeField(context)
-})
 </script>
 <script>
 export default {

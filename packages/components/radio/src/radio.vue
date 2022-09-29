@@ -42,7 +42,9 @@
 <script setup>
 
 import uvIcon from '../../icon/src/icon.vue'
-import { computed, ref, reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { computed, ref, reactive, onMounted } from 'vue'
+
+import { useParent } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
     type: Boolean,
@@ -82,21 +84,11 @@ const context = reactive({
   isSelect: false
 })
 
-const { props: parentProps, addField, removeField, updateItem, fields } = inject('radio-group', {})
+const { props: parentProps, updateItem, index } = useParent('radio-group', context)
 
 onMounted(() => {
-  if (parentProps) {
-    addField(context)
-    // 初始化是否有默认选择项
-    if (parentProps.modelValue === context.label) {
-      context.isSelect = true
-    }
-  }
-})
-
-onBeforeUnmount(() => {
-  if (parentProps) {
-    removeField(context)
+  if (parentProps && parentProps.modelValue === context.label) {
+    context.isSelect = true
   }
 })
 
@@ -119,8 +111,7 @@ const uvStyle = computed(() => {
 const change = () => {
   if (props.disabled) return
   if (parentProps && parentProps.modelValue) {
-    const index = fields.indexOf(context)
-    updateItem(index)
+    updateItem(index.value)
   } else {
     context.isSelect = !context.isSelect
     emit('update:modelValue', !props.modelValue)

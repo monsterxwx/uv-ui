@@ -7,7 +7,6 @@
       @touchstart="touchstart"
       @touchmove="touchmove"
       @touchend="touchend"
-      ref="swipeListRef"
       class="uv-swipe-list"
       :style="{width: `${swipeListWidth}px`,transform: `translateX(${transformX}px)`}"
     >
@@ -19,7 +18,8 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useTouch } from '../../../hooks/useTouch.js'
-defineProps({
+import { useChildren } from '../../../hooks/useContext.js'
+const props = defineProps({
   autoplay: {
     type: [Number, String]
   },
@@ -34,16 +34,15 @@ defineProps({
 })
 
 const currentIndex = ref(0)
-const listLenght = ref(0)
 const swiperRef = ref(null)
 const swiperWidth = ref(0)
-const swipeListRef = ref(null)
 const swipeListWidth = ref(0)
+
+const { childrenNum } = useChildren('swipe', { props })
 
 onMounted(() => {
   swiperWidth.value = swiperRef.value.offsetWidth
-  listLenght.value = swipeListRef.value.children ? (swipeListRef.value.children.length) : 0
-  swipeListWidth.value = listLenght.value * swiperWidth.value
+  swipeListWidth.value = childrenNum.value * swiperWidth.value
 })
 
 const touch = useTouch()
@@ -65,13 +64,13 @@ function touchend (event) {
   const { deltaX } = touch
   if (-deltaX.value > (swiperWidth.value / 8)) {
     currentIndex.value++
-    if (currentIndex.value > listLenght.value - 1) {
+    if (currentIndex.value > childrenNum.value - 1) {
       currentIndex.value = 0
     }
   } else if (deltaX.value > (swiperWidth.value / 8)) {
     currentIndex.value--
     if (currentIndex.value < 0) {
-      currentIndex.value = listLenght.value - 1
+      currentIndex.value = childrenNum.value - 1
     }
   }
   transformX.value = -swiperWidth.value * currentIndex.value

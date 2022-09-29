@@ -2,16 +2,21 @@ import { provide, inject, onMounted, onBeforeUnmount, ref } from 'vue'
 export function useChildren (name, obj = {}) {
   const fields = []
 
+  const childrenNum = ref(0)
+
   const addField = (field) => {
     fields.push(field)
+    childrenNum.value++
   }
 
   const removeField = (field) => {
     fields.splice(fields.indexOf(field), 1)
+    childrenNum.value--
   }
-  provide(name, { addField, removeField, fields, ...obj })
+  provide(name, { addField, removeField, fields, childrenNum, ...obj })
   return {
-    fields
+    fields,
+    childrenNum
   }
 }
 

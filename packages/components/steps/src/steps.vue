@@ -9,8 +9,9 @@
 </template>
 
 <script setup>
-import { provide, onMounted, watch } from 'vue'
+import { watch } from 'vue'
 
+import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -32,15 +33,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue', 'change'])
-const fields = []
-
-const addField = (field) => {
-  fields.push(field)
-}
-
-const removeField = (field) => {
-  fields.splice(fields.indexOf(field), 1)
-}
 
 watch(() => props.modelValue, (newValue) => {
   acitveItemUpdate(newValue)
@@ -66,11 +58,9 @@ const acitveItemUpdate = (index) => {
     }
   })
 }
-provide('steps', { props, addField, removeField, acitveItemUpdate, fields })
 
-onMounted(() => {
-  fields[props.modelValue].isActive = true
-})
+const { fields } = useChildren('steps', { props, acitveItemUpdate })
+
 </script>
 <script>
 export default {

@@ -1,6 +1,7 @@
 <template>
   <div
     class="uv-grid-item "
+    ref="gridItemRef"
     :style="rootStyle"
     :class="rootClass"
     @click="clickEvent"
@@ -32,7 +33,8 @@
 </template>
 
 <script setup>
-import { inject, computed } from 'vue'
+import { reactive, computed, ref } from 'vue'
+import { useParent } from '../../../hooks/useContext.js'
 import uvIcon from '../../icon/src/icon.vue'
 
 defineProps({
@@ -56,7 +58,11 @@ defineProps({
 
 const emit = defineEmits(['click'])
 
-const { props: parentProps, index } = inject('grid')
+const gridItemRef = ref(null)
+const context = reactive({
+  $el: gridItemRef
+})
+const { props: parentProps, childrenNum, index } = useParent('grid', context)
 
 const rootStyle = computed(() => {
   const { columnNum, gutter } = parentProps
@@ -66,7 +72,7 @@ const rootStyle = computed(() => {
   }
   if (gutter) {
     style.paddingRight = gutter + 'px'
-    if (index.value >= columnNum) {
+    if (childrenNum.value >= columnNum && index.value >= columnNum) {
       style.marginTop = gutter + 'px'
     }
   }

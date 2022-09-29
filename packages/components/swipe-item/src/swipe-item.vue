@@ -1,12 +1,24 @@
 <template>
   <div
     class="uv-swipe-item"
+    ref="swipeItemRef"
   >
     <slot />
   </div>
 </template>
 
 <script setup>
+import { reactive, ref } from 'vue'
+import { useParent } from '../../../hooks/useContext.js'
+
+const swipeItemRef = ref(null)
+
+const context = reactive({
+  $el: swipeItemRef
+})
+
+// const { props: parentProps } = useParent('swipe', context)
+useParent('swipe', context)
 
 </script>
 <script>

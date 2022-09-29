@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { onMounted, provide } from 'vue'
+import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
     type: [Number, String],
@@ -62,16 +62,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
-const fields = []
-
-const addField = (field) => {
-  fields.push(field)
-}
-
-const removeField = (field) => {
-  fields.splice(fields.indexOf(field), 1)
-}
-
 const acitveItemUpdate = (index) => {
   emit('update:modelValue', index)
   emit('change', index)
@@ -82,11 +72,8 @@ const acitveItemUpdate = (index) => {
   })
 }
 
-provide('tab-bar', { props, addField, removeField, acitveItemUpdate, fields })
+const { fields } = useChildren('tab-bar', { props, acitveItemUpdate })
 
-onMounted(() => {
-  fields[props.modelValue].isActive = true
-})
 </script>
 <script>
 export default {

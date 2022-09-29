@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { onMounted, provide, ref } from 'vue'
+import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   clickable: {
     type: Boolean,
@@ -43,13 +43,8 @@ const props = defineProps({
     type: String
   }
 })
-const uvGridRef = ref(null)
-const index = ref(0)
-onMounted(() => {
-  index.value = uvGridRef.value.children.length
-})
 
-provide('grid', { props, index })
+useChildren('grid', { props })
 </script>
 <script>
 export default {
