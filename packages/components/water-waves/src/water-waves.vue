@@ -17,10 +17,6 @@
       class="uv-water-waves-item2"
       :style="{top:wavesTopList.item2}"
     />
-    <div
-      class="uv-water-waves-item3"
-      :style="{top:wavesTopList.item3}"
-    />
   </div>
 </template>
 
@@ -92,16 +88,11 @@ export default {
   --uv-water-waves-content-z-index: 10;
   --uv-water-waves-item1-bg-color: #33cfff;
   --uv-water-waves-item2-bg-color: #0eaffe;
-  --uv-water-waves-item3-bg-color: #0f7ae4;
-  --uv-water-waves-item1-animation-duration: 5s;
-  --uv-water-waves-item2-animation-duration: 7s;
-  --uv-water-waves-item3-animation-duration: 11s;
+  --uv-water-waves-animation-duration: 8s;
   --uv-water-waves-item1-opacity: 0.7;
   --uv-water-waves-item2-opacity: 0.5;
-  --uv-water-waves-item3-opacity: 0.3;
-  --uv-water-waves-item1-border-radius: 40%;
-  --uv-water-waves-item2-border-radius: 35%;
-  --uv-water-waves-item3-border-radius: 33%;
+  --uv-water-waves-item1-border-radius: 42%;
+  --uv-water-waves-item2-border-radius: 40%;
 }
 </style>
 
@@ -133,7 +124,7 @@ export default {
     background-color: var(--uv-water-waves-item1-bg-color);
     opacity: var(--uv-water-waves-item1-opacity);
     animation: inherit;
-    animation-duration: var(--uv-water-waves-item1-animation-duration);
+    animation-duration: var(--uv-water-waves-animation-duration);
   }
   .uv-water-waves-item2 {
     position: absolute;
@@ -145,19 +136,7 @@ export default {
     background-color: var(--uv-water-waves-item2-bg-color);
     opacity: var(--uv-water-waves-item2-opacity);
     animation: inherit;
-    animation-duration: var(--uv-water-waves-item2-animation-duration);
-  }
-  .uv-water-waves-item3 {
-    position: absolute;
-    top: 100%;
-    left: -35%;
-    width: 200%;
-    height: 200%;
-    border-radius: var(--uv-water-waves-item3-border-radius);
-    background-color: var(--uv-water-waves-item3-bg-color);
-    opacity: var(--uv-water-waves-item3-opacity);
-    animation: inherit;
-    animation-duration: var(--uv-water-waves-item3-animation-duration);
+    animation-duration: var(--uv-water-waves-animation-duration);
   }
 
   @keyframes water-waves {
