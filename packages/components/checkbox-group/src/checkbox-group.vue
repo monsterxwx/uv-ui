@@ -8,7 +8,8 @@
 </template>
 
 <script setup>
-import { computed, provide } from 'vue'
+import { computed } from 'vue'
+import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
     type: Array,
@@ -36,16 +37,6 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'change'])
 
-const fields = []
-
-const addField = (field) => {
-  fields.push(field)
-}
-
-const removeField = (field) => {
-  fields.splice(fields.indexOf(field), 1)
-}
-
 const updateItem = (index) => {
   if (props.max && selectNum.value === props.max) {
     if (!fields[index].isSelect) {
@@ -62,7 +53,7 @@ const selectNum = computed(() => {
   return props.modelValue.length
 })
 
-provide('checkbox-group', { props, addField, removeField, updateItem, fields })
+const { fields } = useChildren('checkbox-group', { props, updateItem })
 
 </script>
 <script>
