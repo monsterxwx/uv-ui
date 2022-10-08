@@ -101,8 +101,13 @@ const validate = () => {
 
 // 值改变验证or失去焦点验证
 const validateBlurOrChange = (trigger) => {
-  if (!props.prop) {
-    return console.error('请传入form-item中传入prop属性')
+  if (!props.prop || !rules[props.prop]) {
+    if (!props.prop) {
+      console.error('请传入form-item中传入prop属性')
+    } else if (!rules[props.prop]) {
+      console.error('未传入该属性的rule规则')
+    }
+    return
   }
   const validateObj = rules[props.prop].find(item => item.trigger === trigger)
   if (validateObj) {

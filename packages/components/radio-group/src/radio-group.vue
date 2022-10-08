@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+import { watch } from 'vue'
 import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
@@ -32,16 +33,21 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'change'])
 
-const updateItem = (index) => {
+watch(() => props.modelValue, (newValue) => {
+  const index = fields.findIndex(item => item.label === newValue)
   fields.forEach((item, idx) => {
     if (idx === index) {
-      item.isSelect = !item.isSelect
+      item.isSelect = true
     } else {
       item.isSelect = false
     }
   })
-  emit('change', fields[index].label)
-  emit('update:modelValue', fields[index].label)
+})
+
+const updateItem = (index) => {
+  const currentValue = fields[index].label
+  emit('change', currentValue)
+  emit('update:modelValue', currentValue)
 }
 
 const { fields } = useChildren('radio-group', { props, updateItem })

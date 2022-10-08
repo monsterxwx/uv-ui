@@ -53,7 +53,7 @@ const props = defineProps({
   },
   min: {
     type: Number,
-    default: 0
+    default: 1
   },
   integer: {
     type: Boolean,
@@ -97,14 +97,14 @@ function change () {
 }
 
 function subClick () {
-  if ((props.min && current.value - 1 < props.min) || props.disabled) return
+  if ((props.min && current.value <= props.min) || props.disabled) return
   current.value = current.value - 1
   emit('add', current.value)
   emit('update:modelValue', current.value)
   change()
 }
 function addClick () {
-  if ((props.max && current.value + 1 > props.max) || props.disabled) return
+  if ((props.max && current.value >= props.max) || props.disabled) return
   current.value = current.value + 1
   emit('add', current.value)
   emit('update:modelValue', current.value)

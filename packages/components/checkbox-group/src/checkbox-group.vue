@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
   modelValue: {
@@ -37,14 +37,39 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'change'])
 
+// 用于表单重置初始数据后需要重置所有选项状态
+const isNeedWatch = ref(false)
+
+watch(() => props.modelValue, (newValue) => {
+  if (isNeedWatch.value) {
+    fields.forEach(chil => {
+      chil.isSelect = false
+    })
+    newValue.forEach(item => {
+      fields.forEach(chil => {
+        if (chil.label === item) {
+          chil.isSelect = true
+        }
+      })
+    })
+  }
+  isNeedWatch.value = true
+})
+
 const updateItem = (index) => {
   if (props.max && selectNum.value === props.max) {
     if (!fields[index].isSelect) {
       return
     }
   }
+  isNeedWatch.value = false
   fields[index].isSelect = !fields[index].isSelect
-  const newArr = fields.filter(item => item.isSelect).map(item => item.label)
+  const newArr = []
+  fields.forEach(item => {
+    if (item.isSelect) {
+      newArr.push(item.label)
+    }
+  })
   emit('change', newArr)
   emit('update:modelValue', newArr)
 }
