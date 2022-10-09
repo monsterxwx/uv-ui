@@ -139,18 +139,29 @@ export default {
 }
 </script>
 
+<style>
+  :root {
+    --uv-stepper-gap: 2px;
+    --uv-stepper-input-color: #323233;
+    --uv-stepper-bg-color: #f2f3f5;
+    --uv-stepper-active-bg-color: #f7f8f9;
+    --uv-stepper-disabled-bg-color: #f7f8fa;
+    --uv-stepper-border-radius: 4px;
+  }
+  </style>
+
 <style lang="scss" scoped>
 .uv-stepper {
   display: flex;
-  gap: 2px;
+  gap: var(--uv-stepper-gap);
   align-items: center;
   input {
     width: 100%;
     height: 100%;
     border: none;
     text-align: center;
-    color: #323233;
-    background-color: #f2f3f5;
+    color: var(--uv-stepper-input-color);
+    background-color: var(--uv-stepper-bg-color);
     outline: none;
   }
 
@@ -159,7 +170,7 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 2px;
-    background-color: #f2f3f5;
+    background-color: var(--uv-stepper-bg-color);
   }
   .uv-stepper-icon {
     display: flex;
@@ -169,26 +180,24 @@ export default {
   .uv-stepper-minus {
     @include common;
 
-    border-radius: 4px 0 0 4px;
+    border-radius: var(--uv-stepper-border-radius) 0 0 var(--uv-stepper-border-radius);
     &:active {
-      background-color: #f7f8f9;
+      background-color: var(--uv-stepper-active-bg-color);
     }
   }
   .uv-stepper-input {
     @include common;
-
-    width: 28px;
   }
   .uv-stepper-add {
     @include common;
 
-    border-radius: 0 4px  4px 0;
+    border-radius: 0 var(--uv-stepper-border-radius)  var(--uv-stepper-border-radius) 0;
     &:active {
-      background-color: #f7f8f9;
+      background-color: var(--uv-stepper-active-bg-color);
     }
   }
   .uv-stepper-disabled {
-    background-color: #f7f8fa;
+    background-color: var(--uv-stepper-disabled-bg-color);
     cursor: not-allowed;
   }
 }
