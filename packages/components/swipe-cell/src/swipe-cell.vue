@@ -9,15 +9,17 @@
     >
       <div
         class="uv-swipe-cell-left uv-swipe-cell-position"
+        ref="swipeCellLeftRef"
         v-if="left"
       >
         <slot name="left">
           <div class="left-content">
-            <div class="left-cancle left-content-item-common">
-              取消
-            </div>
-            <div class="left-confim left-content-item-common">
-              确定
+            <div
+              class="left-content-item-common"
+              :style="{backgroundColor:selectBgColor}"
+              @click="selectHandle"
+            >
+              {{ selectText }}
             </div>
           </div>
         </slot>
@@ -25,21 +27,32 @@
 
       <div class="uv-swipe-cell-content">
         <slot>
-          <div>标题</div>
-          <div>内容</div>
+          <div class="uv-swipe-cell-content-default">
+            <div>{{ title }}</div>
+            <div>{{ content }}</div>
+          </div>
         </slot>
       </div>
       <div
         class="uv-swipe-cell-right uv-swipe-cell-position"
+        ref="swipeCellRightRef"
         v-if="right"
       >
         <slot name="right">
           <div class="right-content">
-            <div class="right-cancle right-content-item-common">
-              取消
+            <div
+              class=" right-content-item-common"
+              :style="{backgroundColor:cancleBgColor}"
+              @click="cancleHandle"
+            >
+              {{ cancleText }}
             </div>
-            <div class="right-confim right-content-item-common">
-              确定
+            <div
+              class="right-content-item-common"
+              :style="{backgroundColor:confimBgColor}"
+              @click="confimHandle"
+            >
+              {{ confimText }}
             </div>
           </div>
         </slot>
@@ -53,15 +66,62 @@ import { computed, ref } from 'vue'
 import { useTouch } from '../../../hooks/useTouch'
 
 const props = defineProps({
+  // 开启左边操作栏
   left: {
     type: Boolean,
     default: false
   },
+  // 开启右边操作栏
   right: {
     type: Boolean,
     default: true
+  },
+  selectText: {
+    type: String,
+    default: '选择'
+  },
+  selectBgColor: {
+    type: String,
+    default: '#1989fa'
+  },
+  cancleText: {
+    type: String,
+    default: '删除'
+  },
+  cancleBgColor: {
+    type: String,
+    default: '#ee0a24'
+  },
+  confimText: {
+    type: String,
+    default: '确定'
+  },
+  confimBgColor: {
+    type: String,
+    default: '#1989fa'
+  },
+  title: {
+    type: String,
+    default: '标题'
+  },
+  content: {
+    type: String,
+    default: '内容'
   }
 })
+
+const emits = defineEmits(['cancle', 'confim', 'select'])
+
+const isOpen = ref(false)
+const swipeCellLeftRef = ref(null)
+const swipeCellRightRef = ref(null)
+const leftWidth = computed(() => {
+  return swipeCellLeftRef.value ? swipeCellLeftRef.value.clientWidth : 0
+})
+const rightWidth = computed(() => {
+  return swipeCellRightRef.value ? swipeCellRightRef.value.clientWidth : 0
+})
+
 const transformLength = ref(0)
 const touch = useTouch()
 function touchstart (event) {
@@ -71,12 +131,31 @@ function touchstart (event) {
 function touchmove (event) {
   const { deltaX } = touch
   touch.move(event)
-  if ((deltaX.value > 0 && props.left) || (deltaX.value < 0 && props.right)) {
-    if (Math.abs(deltaX.value) < 50) {
-      transformLength.value = deltaX.value
-    } else {
-      transformLength.value = deltaX.value > 0 ? 120 : -120
+
+  // 判断左滑还是右滑
+  if (deltaX.value < 0) {
+    // 左滑
+    if (props.right || isOpen.value) {
+      // 已经展开则直接返回
+      if (transformLength.value === -rightWidth.value) {
+        return
+      }
+      transformLength.value = Math.abs(deltaX.value) < 50 ? deltaX.value : -rightWidth.value
     }
+  } else if (deltaX.value > 0) {
+    // 右滑
+    if (props.left || isOpen.value) {
+      // 已经展开则直接返回
+      if (transformLength.value === leftWidth.value) {
+        return
+      }
+      transformLength.value = Math.abs(deltaX.value) < 50 ? deltaX.value : leftWidth.value
+    }
+  }
+  if (Math.abs(transformLength.value) > 0) {
+    isOpen.value = true
+  } else {
+    isOpen.value = false
   }
 }
 
@@ -85,6 +164,17 @@ function touchend (event) {
   if (Math.abs(deltaX.value) < 50) {
     transformLength.value = 0
   }
+}
+
+function cancleHandle () {
+  emits('cancle')
+}
+function confimHandle () {
+  emits('confim')
+}
+
+function selectHandle () {
+  emits('select')
 }
 
 const uvSwipeCellStyle = computed(() => {
@@ -99,6 +189,15 @@ export default {
 }
 </script>
 
+<style>
+  :root {
+    --uv-swipe-cell-content-bg-color: #ffffff;
+    --uv-swipe-cell-left-right-content-common-color: #ffffff;
+    --uv-swipe-cell-left-right-content-common-width: 60px;
+    --uv-swipe-cell-left-right-content-common-font-size: 14px;
+  }
+  </style>
+
 <style lang="scss" scoped>
 .uv-swipe-cell {
   position: relative;
@@ -112,7 +211,6 @@ export default {
       position: absolute;
       top: 0;
       display: flex;
-      align-items: center;
       height: 100%;
     }
     .uv-swipe-cell-left {
@@ -121,17 +219,16 @@ export default {
     }
     .uv-swipe-cell-content {
       position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      overflow: hidden;
-      padding: 10px 16px;
       width: 100%;
-      font-size: 14px;
-      color: #323233;
-      background-color: #ffffff;
-      line-height: 24px;
+      background-color: var(--uv-swipe-cell-content-bg-color);
+      .uv-swipe-cell-content-default {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        font-size: 14px;
+        color: #323233;
+      }
     }
     .uv-swipe-cell-right {
       right: 0;
@@ -146,18 +243,10 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 60px;
+        width: var(--uv-swipe-cell-left-right-content-common-width);
         height: 100%;
-        font-size: 14px;
-        color: #ffffff;
-      }
-      .left-confim,
-      .right-confim {
-        background-color: #1989fa;
-      }
-      .left-cancle,
-      .right-cancle {
-        background-color: #ee0a24;
+        font-size: var(--uv-swipe-cell-left-right-content-common-font-size);
+        color: var(--uv-swipe-cell-left-right-content-common-color);
       }
     }
   }
