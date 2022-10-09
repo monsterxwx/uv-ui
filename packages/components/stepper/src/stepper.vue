@@ -9,9 +9,10 @@
       @click.stop="subClick"
     >
       <uv-icon
+        class="uv-stepper-icon"
         size="20"
         name="minus"
-        :color="min===current || disabled?'c8c9cc':'#323233'"
+        :color="min===current || disabled?'#c8c9cc':'#323233'"
       />
     </div>
 
@@ -24,7 +25,8 @@
         :style="{ color: disabled?'#d0c9cc':'#323233'}"
         :disabled="disableInput || disabled"
         @input="handleInput"
-        v-model="current"
+        @blur="handleBlur"
+        :value="current"
       >
     </div>
     <div
@@ -34,9 +36,10 @@
       @click.stop="addClick"
     >
       <uv-icon
+        class="uv-stepper-icon"
         size="20"
         name="add"
-        :color="max===current || disabled?'c8c9cc':'#323233'"
+        :color="max===current || disabled?'#c8c9cc':'#323233'"
       />
     </div>
   </div>
@@ -44,6 +47,7 @@
 
 <script setup>
 import { ref, watch, inject } from 'vue'
+import { formatNumber } from '../../../utils/index.js'
 const props = defineProps({
   modelValue: {
     type: Number
@@ -55,6 +59,12 @@ const props = defineProps({
     type: Number,
     default: 1
   },
+  // 步长
+  step: {
+    type: Number,
+    default: 1
+  },
+  // 只允许输入整数
   integer: {
     type: Boolean,
     default: false
@@ -81,49 +91,46 @@ const props = defineProps({
 const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
 
 const emit = defineEmits(['update:modelValue', 'add', 'sub', 'change'])
-const current = ref(1)
+const current = ref(props.modelValue || 1)
 
 watch(() => props.modelValue, (newValue) => {
   current.value = newValue
-}, {
-  immediate: true
 })
 
-function change () {
-  emit('change', current.value)
+watch(current, (newValue) => {
+  emit('update:modelValue', newValue)
+  emit('change', newValue)
   if (parentProps) {
     validateBlurOrChange('change')
   }
-}
+})
 
 function subClick () {
   if ((props.min && current.value <= props.min) || props.disabled) return
-  current.value = current.value - 1
+  current.value = current.value - props.step
   emit('add', current.value)
-  emit('update:modelValue', current.value)
-  change()
 }
 function addClick () {
   if ((props.max && current.value >= props.max) || props.disabled) return
-  current.value = current.value + 1
+  current.value = Number(current.value + props.step)
   emit('add', current.value)
-  emit('update:modelValue', current.value)
-  change()
-}
-
-function filter (value) {
-  value = String(value).replace(/[^0-9.-]/g, '')
-  if (props.integer && value.indexOf('.') !== -1) {
-    value = value.split('.')[0]
-  }
-  return value
 }
 
 function handleInput (e) {
   const { value } = e.target
-  const formatted = filter(value)
+  const formatted = formatNumber(String(value), !props.integer)
+  console.log(formatted)
+  e.target.value = formatted
   current.value = Number(formatted)
-  emit('update:modelValue', current.value)
+}
+function handleBlur (e) {
+  if (props.min && current.value <= props.min) {
+    e.target.value = props.min
+    current.value = Number(props.min)
+  } else if (props.max && current.value >= props.max) {
+    e.target.value = props.max
+    current.value = Number(props.max)
+  }
 }
 </script>
 <script>
@@ -153,6 +160,11 @@ export default {
     align-items: center;
     padding: 2px;
     background-color: #f2f3f5;
+  }
+  .uv-stepper-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .uv-stepper-minus {
     @include common;
