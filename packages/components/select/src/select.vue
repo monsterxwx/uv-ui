@@ -100,7 +100,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import uvOverlay from '../../overlay/src/overlay.vue'
 import uvIcon from '../../icon/src/icon.vue'
 const props = defineProps({
@@ -136,15 +136,18 @@ const isActive = ref(false)
 const selectRef = ref(null)
 const contentPositon = ref('bottom')
 
-onMounted(() => {
+function getShowPositon () {
   // 显示位置处理,在屏幕下半部分向上显示，默认向下显示
-  const { top } = selectRef.value.getBoundingClientRect()
-  if (top > ((screen.availHeight) / 2)) {
+  const positon = selectRef.value ? selectRef.value.getBoundingClientRect().top : 0
+  if (positon > ((screen.availHeight) / 2)) {
     contentPositon.value = 'top'
+  } else {
+    contentPositon.value = 'bottom'
   }
-})
+}
 
 const openShow = () => {
+  getShowPositon()
   if (props.filterable) {
     filterList.value = props.list
   }
