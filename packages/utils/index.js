@@ -1,26 +1,27 @@
 import { get, set } from 'lodash-es'
-let debounceTimer, throttleTimer
 
 // 防抖
 export const debounce = (fn, delay) => {
+  let timer = null
   return (...args) => {
-    if (debounceTimer) {
-      clearTimeout(debounceTimer)
+    if (timer) {
+      clearTimeout(timer)
     }
-    debounceTimer = setTimeout(() => {
+    timer = setTimeout(() => {
       fn.apply(this, args)
     }, delay)
   }
 }
 // 节流
-export const throttle = (fn, delay) => {
-  return (...args) => {
-    if (throttleTimer) {
+export const throttle = (callback, delay = 20) => {
+  let timer = null
+  return function (args) {
+    if (timer) {
       return
     }
-    throttleTimer = setTimeout(() => {
-      fn.apply(this, args)
-      throttleTimer = null
+    timer = setTimeout(() => {
+      callback(args)
+      timer = null
     }, delay)
   }
 }
