@@ -82,7 +82,18 @@
         arrow
         clickable
       >
-        <div>请选择人员</div>
+        <div
+          @click="openPicker=true"
+        >
+          {{ currentValue||'请选择地点' }}
+        </div>
+        <uv-picker
+          v-model:show="openPicker"
+          v-model="currentValue"
+          title="地点选择"
+          :list="list"
+          key-name="value"
+        />
       </uv-form-item>
       <uv-form-item
         label="单选框"
@@ -171,6 +182,10 @@ const checkNum1 = (value) => {
     return false
   }
 }
+
+const openPicker = ref(false)
+const currentValue = ref()
+const list = ref([{ key: 1, value: '杭州' }, { key: 2, value: '宁波' }, { key: 3, value: '温州' }, { key: 3, value: '肇庆' }, { key: 3, value: '湖州' }, { key: 3, value: '广州' }])
 
 const rules = reactive({
   input: [
