@@ -58,6 +58,27 @@
       </template>
     </uv-popover>
     <div class="title">
+      自定义内容
+    </div>
+    <uv-popover
+      v-model="test3"
+    >
+      <template #reference>
+        <div style="margin-left: 20px;">
+          <uv-button @click="test3=true">
+            打开
+          </uv-button>
+        </div>
+      </template>
+      <template #default>
+        <div style="padding: 10px;">
+          <div>无论我们能活多久，享受只有无法分割的此刻</div>
+          <div>无论我们能活多久</div>
+          <div>我们能够享受的只有无法分割的此刻</div>
+        </div>
+      </template>
+    </uv-popover>
+    <div class="title">
       事件
     </div>
     <div class="tip">
@@ -71,6 +92,7 @@ import { ref } from 'vue'
 const test = ref(false)
 const test1 = ref(false)
 const test2 = ref(false)
+const test3 = ref(false)
 
 const list = ref([
   {
