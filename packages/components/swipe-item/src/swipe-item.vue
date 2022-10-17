@@ -1,6 +1,7 @@
 <template>
   <div
     class="uv-swipe-item"
+    :style="{transform: `translateX(${context.transform}px)`}"
     ref="swipeItemRef"
   >
     <slot />
@@ -14,10 +15,10 @@ import { useParent } from '../../../hooks/useContext.js'
 const swipeItemRef = ref(null)
 
 const context = reactive({
-  $el: swipeItemRef
+  $el: swipeItemRef,
+  transform: 0
 })
 
-// const { props: parentProps } = useParent('swipe', context)
 useParent('swipe', context)
 
 </script>

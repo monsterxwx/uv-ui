@@ -7,8 +7,10 @@
       @touchstart="touchstart"
       @touchmove="touchmove"
       @touchend="touchend"
+      @transitionend="transitionend"
+      ref="swipeListRef"
       class="uv-swipe-list"
-      :style="{width: `${swipeListWidth}px`,transform: `translateX(${transformX}px)`}"
+      :style="{width: `${listWidth}px`,transform: `translateX(${transformX}px)`,transitionDuration:state.duration+'s'}"
     >
       <slot />
     </div>
@@ -16,7 +18,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useTouch } from '../../../hooks/useTouch.js'
 import { useChildren } from '../../../hooks/useContext.js'
 const props = defineProps({
@@ -33,47 +35,77 @@ const props = defineProps({
   }
 })
 
-const currentIndex = ref(0)
-const swiperRef = ref(null)
-const swiperWidth = ref(0)
-const swipeListWidth = ref(0)
+const state = reactive({
+  duration: 0, // 过渡持续时间
+  activeIndex: 0, // 当前活跃的子项
+  width: 0, // 屏幕宽度
+  moving: false // 移动中
+})
 
-const { childrenNum } = useChildren('swipe', { props })
+const swiperRef = ref(null)
+const swipeListRef = ref(null)
+
+const { childrenNum, fields } = useChildren('swipe', { props })
 
 onMounted(() => {
-  swiperWidth.value = swiperRef.value.offsetWidth
-  swipeListWidth.value = childrenNum.value * swiperWidth.value
+  state.width = swiperRef.value.offsetWidth
+})
+// 轮播总宽度
+const listWidth = computed(() => {
+  return childrenNum.value * state.width
 })
 
 const touch = useTouch()
 const transformX = ref(0)
+let startX = null
 function touchstart (event) {
+  state.duration = 0.3
   touch.start(event)
+  startX = transformX.value
 }
 
 function touchmove (event) {
-  touch.reset()
   touch.move(event)
   const { deltaX } = touch
-  transformX.value = transformX.value + deltaX.value
-
-  console.log('deltaX', transformX.value)
+  if (!state.moving) {
+    if (deltaX.value < 0 && state.activeIndex === childrenNum.value - 1) { // 左移且index为最后一张
+      fields[0].transform = listWidth.value
+    } else if (deltaX.value > 0 && state.activeIndex === 0) { // 右移且当前index为0
+    // 将最后一张轮播换到首位
+      fields[fields.length - 1].transform = -listWidth.value
+    }
+  }
+  state.moving = true
+  transformX.value = startX + deltaX.value
 }
 
 function touchend (event) {
+  state.moving = false
   const { deltaX } = touch
-  if (-deltaX.value > (swiperWidth.value / 8)) {
-    currentIndex.value++
-    if (currentIndex.value > childrenNum.value - 1) {
-      currentIndex.value = 0
-    }
-  } else if (deltaX.value > (swiperWidth.value / 8)) {
-    currentIndex.value--
-    if (currentIndex.value < 0) {
-      currentIndex.value = childrenNum.value - 1
-    }
+  if (-deltaX.value > (state.width / 8)) {
+    state.activeIndex++
+  } else if (deltaX.value > (state.width / 8)) {
+    state.activeIndex--
   }
-  transformX.value = -swiperWidth.value * currentIndex.value
+  transformX.value = -state.width * state.activeIndex
+}
+
+function transitionend () {
+  if (state.activeIndex < 0) {
+    state.duration = 0
+    transformX.value = -state.width * (childrenNum.value - 1)
+    fields[fields.length - 1].transform = 0
+    state.activeIndex = childrenNum.value - 1
+  } else if (state.activeIndex > (childrenNum.value - 1)) {
+    state.duration = 0
+    state.activeIndex = 0
+    transformX.value = 0
+    fields[0].transform = 0
+  } else {
+    fields.forEach(item => {
+      item.transform = 0
+    })
+  }
 }
 </script>
 <script>
@@ -82,11 +114,11 @@ export default {
 }
 </script>
 
-<style>
+<!-- <style>
 :root {
   --uv-test: 1px;
 }
-</style>
+</style> -->
 
 <style lang="scss" scoped>
   .uv-swipe {
@@ -98,7 +130,6 @@ export default {
       position: relative;
       display: flex;
       height: 100%;
-      transition: transform 0.3s;
     }
   }
 
