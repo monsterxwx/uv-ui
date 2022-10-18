@@ -281,6 +281,14 @@ export default [
         component: () => import('/packages/components/steps/doc/doc.md')
       },
       {
+        path: 'table',
+        name: 'table',
+        meta: {
+          name: 'Table 表格'
+        },
+        component: () => import('/packages/components/table/doc/doc.md')
+      },
+      {
         path: '',
         meta: {
           title: '导航组件'

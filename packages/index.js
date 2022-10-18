@@ -43,6 +43,7 @@ import uvSteps from './components/steps/index.js'
 import uvStepsItem from './components/steps-item/index.js'
 import uvForm from './components/form/index.js'
 import uvFormItem from './components/form-item/index.js'
+import uvTable from './components/table/index.js'
 
 const components = [
   uvButton,
@@ -89,7 +90,8 @@ const components = [
   uvSteps,
   uvStepsItem,
   uvForm,
-  uvFormItem
+  uvFormItem,
+  uvTable
 ]
 const install = function (app) {
   components.forEach(component => {
@@ -145,7 +147,8 @@ export {
   uvSteps,
   uvStepsItem,
   uvForm,
-  uvFormItem
+  uvFormItem,
+  uvTable
 }
 
 export default uvUI
