@@ -18,6 +18,7 @@ import 'uv-ui/dist/style.css'
 app.use(uvUI)
 ```
 
-持续开发中
+预览地址：https://monsterwx.gitee.io/uv-ui
 
 github :https://github.com/monsterxwx/uv-ui
+gitee  :https://gitee.com/monsterwx/uv-ui
