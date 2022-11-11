@@ -4,7 +4,10 @@
       <div>通过 <span class="code">size</span> 设置球大小</div>
       <div>通过 <span class="code">progress</span> 设置进度</div>
     </div>
-    <uv-water-waves :progress="progress" />
+    <uv-water-waves
+      :progress="progress"
+      size="250px"
+    />
     <div style="display: flex;gap: 20px;">
       <uv-button @click="autoAdd">
         播放
@@ -35,7 +38,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const progress = ref(20)
+const progress = ref(0)
 const progress1 = ref(60)
 const inter = ref(null)
 const autoAdd = () => {
