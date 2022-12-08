@@ -1,0 +1,23 @@
+{
+  "name": "uv-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "uv-ui",
+    "vue3组件库"
+  ],
+  "files": [
+    "es",
+    "lib"
+  ],
+  "author": "coderxwx",
+  "license": "MIT",
+  "dependencies": {
+    "@uv-ui/utils": "workspace:^1.0.0"
+  }
+}
