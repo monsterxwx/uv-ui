@@ -6,7 +6,7 @@ export default defineConfig({
     //打包文件目录
     // outDir: 'es',
     //压缩
-    minify: false,
+    minify: true,
     //css分离
     //cssCodeSplit: true,
     rollupOptions: {
@@ -33,7 +33,7 @@ export default defineConfig({
     },
     lib: {
       entry: './index.js',
-      formats: ['es', 'cjs'],
+      name: 'uv'
     },
   },
   plugins: [vue()],

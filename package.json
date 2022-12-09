@@ -3,8 +3,8 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "pnpm -C docs dev",
-    "build:uv-ui": "gulp -f packages/components/script/build/gulpfile.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs:build": "pnpm -C docs build",
+    "build:uv-ui": "gulp -f packages/components/script/build/gulpfile.js"
   },
   "keywords": [],
   "author": "",
