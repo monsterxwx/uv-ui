@@ -2,6 +2,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docs:dev": "pnpm -C docs dev",
     "build:uv-ui": "gulp -f packages/components/script/build/gulpfile.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,6 +40,7 @@
     "stylelint-config-standard": "^29.0.0",
     "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-order": "^5.0.0",
-    "vite": "^3.2.3"
+    "vite": "^3.2.3",
+    "vitepress": "1.0.0-alpha.30"
   }
 }
