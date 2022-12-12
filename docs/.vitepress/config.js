@@ -3,6 +3,7 @@ module.exports = {
   base:'/monorepo-uv-ui/',
   themeConfig: {
     lastUpdated: true,
+    lastUpdatedText: 'Updated Date',
     docsDir: 'docs',
     editLinks: true,
     editLinkText: '编辑此⽹站',
@@ -22,7 +23,7 @@ module.exports = {
     },
     nav: [
       { text: '指南', link: '/guide/installation', activeMatch: '/guide/' },
-      { text: '组件', link: '/component/icon', activeMatch: '/component/' }
+      { text: '组件', link: '/component/button', activeMatch: '/component/' }
     ],
     sidebar: {
       '/guide/': [

@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /guide/quickStart
+      link: /guide/installation
     - theme: brand
       text: 组件
       link: /component/icon
