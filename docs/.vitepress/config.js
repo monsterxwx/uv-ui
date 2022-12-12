@@ -1,5 +1,6 @@
 module.exports = {
   title: 'UV-UI',
+  base:'/monorepo-uv-ui/',
   themeConfig: {
     lastUpdated: true,
     docsDir: 'docs',
