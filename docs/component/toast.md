@@ -5,7 +5,6 @@ const compStore =useCompStore()
 
 onMounted(()=>{
   compStore.updateName('toast')
-  console.log('currentName',compStore.currentName)
 })
 
 </script>

@@ -177,7 +177,6 @@ const compStore =useCompStore()
 
 onMounted(()=>{
   compStore.updateName('button')
-  console.log('currentName',compStore.currentName)
 })
 
 </script>

@@ -10,7 +10,6 @@ const compStore =useCompStore()
 
 onMounted(()=>{
   compStore.updateName('icon')
-  console.log('currentName',compStore.currentName)
 })
 
 </script>
