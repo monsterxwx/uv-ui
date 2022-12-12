@@ -31,8 +31,8 @@ const iframeSrc = computed(() => {
 .uv-ui-iframe {
   position: fixed;
   z-index: 9999;
-  right: 20px;
-  top: 100px;
+  right: 10%;
+  top: 15%;
   width: 375px;
   height: 667px;
   border: 1px solid #eee;
