@@ -83,19 +83,17 @@ onMounted(()=>{
 | bgColor   |     背景颜色     |     String      |   '#fff' |
 | color     |     文字颜色     |     String      |        - |
 
- ## grid events
 
- 无
 
 ## grid-items props
 
-| 属性      |       含义       |  类型  |   默认值 |
-| --------- | :--------------: | :----: | -------: |
-| iconSize  | 是否开启点击反馈 | String |   Number | false |
-| iconName  |   时刻开启边框   | String |     true |
-| iconColor |     子项间隔     | String |        0 |
-| iconProps |     每行个数     | Object |        4 |
-| text      |     排布方式     | String | 'column' |
+| 属性      |   含义   |      类型       | 默认值 |
+| --------- | :------: | :-------------: | -----: |
+| iconSize  | 图标大小 | [String,Number] |     28 |
+| iconName  | 图标名称 |     String      |      - |
+| iconColor | 图标颜色 |     String      |      - |
+| iconProps | 图标配置 |     Object      |      - |
+| text      | 文字名称 |     String      |      - |
 
 ## grid-item events
 
