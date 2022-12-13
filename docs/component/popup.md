@@ -110,28 +110,28 @@ onMounted(()=>{
 
 ## props
 
-| 属性         |     含义     |  类型   |   默认值 |
-| ------------ | :----------: | :-----: | -------: |
-| modelValue         |   v-model是否显示弹框   | Boolean  |  false |
-| position      | 弹框显示位置 | String  | 'bottom' |
-| bgColor        |   背景颜色   | String  |  '#fff' |
-| round         |   是否为圆角弹框   | Boolean | false |
-| padding        |  是否自带内边距  | Boolean  |   true |
-| overlay        |  是否开启遮罩层  | Boolean  |   true |
-| clickOverlayClose  |  点击遮罩层关闭弹框  | Boolean  |   true |
-| height  |  弹框高度  | String  |   'atuo' |
-| action  |  开启按钮操作  | Boolean  |   false|
-| close  | 是否显示关闭按钮  | Boolean  |   false|
-| leftName  | 左边按钮名称  | String  |   '取消'|
-| rightName  | 右边按钮名称  | String  |   '确定'|
+| 属性              |        含义         |  类型   |   默认值 |
+| ----------------- | :-----------------: | :-----: | -------: |
+| modelValue        | v-model是否显示弹框 | Boolean |    false |
+| position          |    弹框显示位置     | String  | 'bottom' |
+| bgColor           |      背景颜色       | String  |   '#fff' |
+| round             |   是否为圆角弹框    | Boolean |    false |
+| padding           |   是否自带内边距    | Boolean |     true |
+| overlay           |   是否开启遮罩层    | Boolean |     true |
+| clickOverlayClose | 点击遮罩层关闭弹框  | Boolean |     true |
+| height            |      弹框高度       | String  |   'atuo' |
+| action            |    开启按钮操作     | Boolean |    false |
+| close             |  是否显示关闭按钮   | Boolean |    false |
+| leftName          |    左边按钮名称     | String  |   '取消' |
+| rightName         |    右边按钮名称     | String  |   '确定' |
 
 ## events
 
-| 事件名称 |   含义   | 参数 |
-| -------- | :------: | ---: |
-| close    | 弹框关闭事件 |    - |
-| confim    | 弹框点击确定事件 |    - |
-| cancle    | 弹框点击取消事件 |    - |
+| 事件名称 |       含义       | 参数 |
+| -------- | :--------------: | ---: |
+| close    |   弹框关闭事件   |    - |
+| confim   | 弹框点击确定事件 |    - |
+| cancle   | 弹框点击取消事件 |    - |
 
 ## css变量
 

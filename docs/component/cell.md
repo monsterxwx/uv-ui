@@ -83,20 +83,20 @@ onMounted(()=>{
 ```
 ## props
 
-| 属性         |     含义     |  类型   |   默认值 |
-| ------------ | :----------: | :-----: | -------: |
-| title         |   标题   | String  |  default |
-| value      | 右边的值 | String | Number | Boolean  |        - |
-| bgColor        |   背景颜色   | String  |  '#fff' |
-| size         |   字体大小   | String | Number  | '14' |
-| icon        |  图标名称  | String |    - |
-| iconColor    |   图标颜色   | String  |        - |
-| iconSize     |   图标大小   | Number  |       16 |
-| arrow |   是否显示箭头   | Boolean  |  false |
-| arrowDirection |   箭头位置   | String  |  'right' |
-| clickable |   点击反馈   | Boolean  |  false |
-| labelWidth |   标题的宽度   | Number  |  - |
-| labelPosition |   标题的对齐方式   | String  |  'left' |
+| 属性           |      含义      |          类型           |  默认值 |
+| -------------- | :------------: | :---------------------: | ------: |
+| title          |      标题      |         String          | default |
+| value          |    右边的值    | [String,Number,Boolean] |       - |
+| bgColor        |    背景颜色    |         String          |  '#fff' |
+| size           |    字体大小    |     [String,Number]     |    '14' |
+| icon           |    图标名称    |         String          |       - |
+| iconColor      |    图标颜色    |         String          |       - |
+| iconSize       |    图标大小    |         Number          |      16 |
+| arrow          |  是否显示箭头  |         Boolean         |   false |
+| arrowDirection |    箭头位置    |         String          | 'right' |
+| clickable      |    点击反馈    |         Boolean         |   false |
+| labelWidth     |   标题的宽度   |         Number          |       - |
+| labelPosition  | 标题的对齐方式 |         String          |  'left' |
 
 ## events
 

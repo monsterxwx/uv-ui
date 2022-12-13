@@ -76,13 +76,13 @@ const openToast2 = () => {
 
 ## props
 
-| 属性         |     含义     |  类型   |   默认值 |
-| ------------ | :----------: | :-----: | -------: |
-| message         |  提示文字   | String  |  - |
-| duration      | 持续时间 | Number  | 1600 |
-| bgColor        |   背景颜色   | String  |  '#4a4a4b' |
-| color         |   文字颜色   | String | '#fff' |
-| type        |  提示类型  | String  |   - |
+| 属性     |   含义   |  类型  |    默认值 |
+| -------- | :------: | :----: | --------: |
+| message  | 提示文字 | String |         - |
+| duration | 持续时间 | Number |      1600 |
+| bgColor  | 背景颜色 | String | '#4a4a4b' |
+| color    | 文字颜色 | String |    '#fff' |
+| type     | 提示类型 | String |         - |
 
 
 ## css变量

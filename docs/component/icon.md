@@ -16,13 +16,13 @@ onMounted(()=>{
 
 ## props
 
-| 属性         |     含义     |  类型   |   默认值 |
-| ------------ | :----------: | :-----: | -------: |
-| name         |   图标名称   | String  |  - |
-| color      | 图标颜色 | String  |        - |
-| size        |   图标大小   | String | Number  |  '14' |
-| dot         |   是否显示红点   | Boolean | false |
-| badge        |  红点显示的数字  | String | Number |    - |
+| 属性  |      含义      |      类型       | 默认值 |
+| ----- | :------------: | :-------------: | -----: |
+| name  |    图标名称    |     String      |      - |
+| color |    图标颜色    |     String      |      - |
+| size  |    图标大小    | [String,Number] |   '14' |
+| dot   |  是否显示红点  |     Boolean     |  false |
+| badge | 红点显示的数字 | [String,Number] |      - |
 
 ## events
 
