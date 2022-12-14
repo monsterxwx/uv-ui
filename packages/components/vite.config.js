@@ -47,7 +47,6 @@ export default defineConfig({
         for (const key of keys) {
           const bundler = bundle[key]
           //rollup内置方法,将所有输出文件code中的.scss换成.css
-          console.log('bundler',bundler.code)
           this.emitFile({
             type: 'asset',
             fileName: key, //文件名不变

@@ -30,16 +30,8 @@ const buildScss = async () => {
              fs.writeFile(resolve(targetEs,cssPath),result.css)
              
              // 删除scss文件,包括es和lib
-            //  fs.stat(resolve(targetLib,scssFiles[path]),(err,stateObj)=>{
-            //     if(stateObj.isFile()) {
-            //         fs.unlink(resolve(targetLib,scssFiles[path]))
-            //     }
-            //  })
-            //  fs.stat(resolve(targetEs,scssFiles[path]),(err,stateObj)=>{
-            //     if(stateObj.isFile()) {
-            //         fs.unlink(resolve(targetEs,scssFiles[path]))
-            //     }
-            //  })
+             fs.rm(resolve(targetLib,scssFiles[path]))
+             fs.rm(resolve(targetEs,scssFiles[path]))
         })
      }
 }
