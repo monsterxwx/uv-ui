@@ -1,4 +1,4 @@
-import uvMessage from './src/message.vue'
+import uvMessage from './message.vue'
 
 import { createVNode, render } from 'vue'
 

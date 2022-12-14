@@ -1,4 +1,4 @@
-import Toast from './src/toast.vue'
+import Toast from './toast.vue'
 import { createVNode, render } from 'vue'
 
 const defaultOpt = { // 创建默认参数
