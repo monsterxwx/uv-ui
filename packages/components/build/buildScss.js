@@ -20,7 +20,7 @@ const buildScss = async () => {
      for(let path in scssFiles) {
         const filePath =resolve(__dirname,'../dist/es/'+scssFiles[path])
         //拿到css后缀path
-        const cssPath =scssFiles[path].replace('.scss','css')
+        const cssPath =scssFiles[path].replace('.scss','.css')
         //将scss转成css
          sass.render({
             file:filePath,     
