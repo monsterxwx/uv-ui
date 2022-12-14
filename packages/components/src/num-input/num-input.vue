@@ -40,7 +40,7 @@
 <script setup>
 import './index.scss'
 import { computed, ref, watch } from 'vue'
-import uvPopup from '../popup.vue'
+import uvPopup from '../popup'
 const props = defineProps({
   show: {
     type: Boolean,

@@ -27,7 +27,7 @@ import './index.scss'
 import { clone } from 'lodash-es'
 import { getProp } from '@uv-ui/utils'
 import { inject, onBeforeMount, onMounted, toRefs, reactive, ref, nextTick, computed, provide } from 'vue'
-import uvCell from '../cell.vue'
+import uvCell from '../cell'
 const props = defineProps({
   label: {
     type: String

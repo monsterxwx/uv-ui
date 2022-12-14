@@ -19,7 +19,7 @@
 
 <script setup>
 import './index.scss'
-import uvIcon from '../icon.vue'
+import uvIcon from '../icon'
 const props = defineProps({
   modelValue: {
     type: Number

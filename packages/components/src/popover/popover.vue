@@ -49,7 +49,7 @@
 <script setup>
 import './index.scss'
 import { ref, watch } from 'vue'
-import uvOverlay from '../overlay.vue'
+import uvOverlay from '../overlay'
 
 const props = defineProps({
   modelValue: {

@@ -64,7 +64,7 @@
 <script setup>
 import './index.scss'
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
-import uvIcon from '../icon.vue'
+import uvIcon from '../icon'
 
 const props = defineProps({
   speed: { // 速度

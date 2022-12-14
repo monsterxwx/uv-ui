@@ -63,7 +63,7 @@
 <script setup>
 import './index.scss'
 import { computed } from 'vue'
-import uvIcon from '../icon.vue'
+import uvIcon from '../icon'
 const props = defineProps({
   // 每页显示条数
   pageSize: {

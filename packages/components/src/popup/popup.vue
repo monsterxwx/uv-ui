@@ -52,8 +52,8 @@
 <script setup>
 import './index.scss'
 import { computed } from 'vue'
-import uvIcon from '../icon.vue'
-import overLay from '../overlay.vue'
+import uvIcon from '../icon'
+import overLay from '../overlay'
 const props = defineProps({
   modelValue: {
     type: Boolean,

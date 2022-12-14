@@ -102,8 +102,8 @@
 <script setup>
 import './index.scss'
 import { ref } from 'vue'
-import uvOverlay from '../overlay.vue'
-import uvIcon from '../icon.vue'
+import uvOverlay from '../overlay'
+import uvIcon from '../icon'
 const props = defineProps({
   modelValue: {
     type: [String, Array, Number]

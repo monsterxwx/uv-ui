@@ -1,6 +1,6 @@
 import {useChildren,useParent} from './useContext'
 import {useTouch} from './useTouch'
-export default {
+export  {
   useChildren,
   useParent,
   useTouch

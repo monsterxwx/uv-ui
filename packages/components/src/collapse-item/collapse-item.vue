@@ -53,7 +53,7 @@
 <script setup>
 import './index.scss'
 import { computed, inject } from 'vue'
-import uvIcon from '../icon.vue'
+import uvIcon from '../icon'
 
 const props = defineProps({
   title: {

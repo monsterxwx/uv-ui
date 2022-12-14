@@ -14,7 +14,7 @@
 <script setup>
 import './index.scss'
 import { provide, nextTick } from 'vue'
-import uvCellGroup from '../cell-group.vue'
+import uvCellGroup from '../cell-group'
 const props = defineProps({
   model: Object,
   rules: {

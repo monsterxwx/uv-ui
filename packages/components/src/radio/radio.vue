@@ -41,7 +41,7 @@
 
 <script setup>
 import './index.scss'
-import uvIcon from '../icon.vue'
+import uvIcon from '../icon'
 import { computed, ref, reactive, onMounted } from 'vue'
 import { useParent } from '@uv-ui/hooks'
 

@@ -28,7 +28,7 @@
 import './index.scss'
 import { reactive, onMounted, ref } from 'vue'
 import { useParent } from '@uv-ui/hooks'
-import uvIcon from '../icon.vue'
+import uvIcon from '../icon'
 defineProps({
   iconSize: {
     type: [Number, String]
