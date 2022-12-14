@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "vite build",
-    "build:scss": "esno build/buildScss"
+    "build": "vite build & esno build/buildScss"
   },
   "keywords": [
     "uv-ui",

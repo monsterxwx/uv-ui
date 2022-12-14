@@ -11,7 +11,7 @@ export default defineConfig({
     //cssCodeSplit: true,
     rollupOptions: {
       //忽略打包vue文件
-      external: ['vue'],
+      external: ['vue', /\.scss/],
       input: ['src/index.js'],
       output: [
         {
@@ -33,8 +33,28 @@ export default defineConfig({
     },
     lib: {
       entry: './index.js',
-      formats: ['es', 'cjs']
+      formats: ['es', 'cjs'],
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    {
+      name: 'style',
+      generateBundle(config, bundle) {
+        //获取打包后的文件目录以及代码code
+        const keys = Object.keys(bundle)
+
+        for (const key of keys) {
+          const bundler = bundle[key]
+          //rollup内置方法,将所有输出文件code中的.scss换成.css
+          console.log('bundler',bundler.code)
+          this.emitFile({
+            type: 'asset',
+            fileName: key, //文件名不变
+            source: bundler.code.replace(/\.scss/g, '.css'),
+          })
+        }
+      },
+    },
+  ],
 })
