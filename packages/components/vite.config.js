@@ -4,7 +4,7 @@ export default defineConfig({
   build: {
     target: 'modules',
     //打包文件目录
-    // outDir: 'es',
+    outDir: 'es',
     //压缩
     minify: true,
     //css分离
@@ -12,28 +12,28 @@ export default defineConfig({
     rollupOptions: {
       //忽略打包vue文件
       external: ['vue'],
-      input: ['index.js'],
+      input: ['src/index.js'],
       output: [
         {
           format: 'es',
           entryFileNames: '[name].js',
           preserveModules: true,
           //配置打包根目录
-          dir: 'build/es',
+          dir: 'dist/es',
           preserveModulesRoot: 'src',
         },
         {
           format: 'cjs',
           entryFileNames: '[name].js',
           preserveModules: true,
-          dir: 'build/lib',
+          dir: 'dist/lib',
           preserveModulesRoot: 'src',
         },
       ],
     },
     lib: {
       entry: './index.js',
-      name: 'uv'
+      formats: ['es', 'cjs']
     },
   },
   plugins: [vue()],

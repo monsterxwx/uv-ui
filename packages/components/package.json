@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:scss": "esno build/buildScss"
   },
   "keywords": [
     "uv-ui",
