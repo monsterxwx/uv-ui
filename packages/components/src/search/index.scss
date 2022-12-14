@@ -1,0 +1,42 @@
+:root {
+  --uv-search-padding: 10px;
+  --uv-search-content-padding: 2px 10px;
+  --uv-search-content-border-radius: 4px;
+  --uv-search-input-placeholder-color: #d3c9d6;
+  --uv-search-input-padding: 8px;
+  --uv-search-input-font-size: 14px;
+  --uv-search-input-border-radius: 4px;
+  --uv-search-input-disabled-color: #d3c9d6;
+  --uv-search-content-round-border-radius: 40px;
+}
+
+.uv-search {
+  position: relative;
+  padding: var(--uv-search-padding);
+  .uv-search-content {
+    display: flex;
+    align-items: center;
+    padding: var(--uv-search-content-padding);
+    border-radius: var(--uv-search-content-border-radius);
+    &-input {
+      flex: 1;
+      font-size: var(--uv-search-input-font-size);
+      input {
+        padding: var(--uv-search-input-padding);
+        width: 100%;
+        border: none;
+        border-radius: var(--uv-search-input-border-radius);
+        outline: none;
+      }
+      input::placeholder {
+        color: var(--uv-search-input-placeholder-color);
+      }
+      input:disabled {
+        color: var(--uv-search-input-disabled-color);
+      }
+    }
+  }
+  .uv-search-content-round {
+    border-radius: var(--uv-search-content-round-border-radius);
+  }
+}

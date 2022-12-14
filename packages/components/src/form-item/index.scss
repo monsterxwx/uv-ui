@@ -1,0 +1,10 @@
+.uv-form-item {
+  --uv-cell-content-justify-content: flex-start;
+  --uv-cell-content-value-slot-text-align: left;
+  --uv-input-height: 24px;
+  :deep() {
+    .uv-cell-content-value {
+      width: 100%;
+    }
+  }
+}

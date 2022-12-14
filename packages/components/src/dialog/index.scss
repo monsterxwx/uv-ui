@@ -1,0 +1,107 @@
+:root {
+  --uv-dialog-width: 90%;
+  --uv-dialog-min-height: 100px;
+  --uv-dialog-border-radius: 16px;
+  --uv-dialog-bg-color: #ffffff;
+  --uv-dialog-transition-time: 0.3s;
+  --uv-dialog-title-padding: 15px 0 10px;
+  --uv-dialog-title-text-align: center;
+  --uv-dialog-title-color: #323233;
+  --uv-dialog-content-padding: 8px 24px 26px;
+  --uv-dialog-content-font-size: 14px;
+  --uv-dialog-content-color: #646566;
+  --uv-dialog-bottom-button-height: 48px;
+  --uv-dialog-bottom-button-border-top: 1px solid #f7f8f9;
+  --uv-dialog-bottom-button-center-line-color: #f7f8f9;
+  --uv-dialog-confim-active-bg-color: #e6e6e6;
+  --uv-dialog-cancle-bg-color: #e6e6e6;
+  --uv-dialog-button-undisabled-color: #646566;
+}
+
+.uv-dialog-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  .uv-dialog {
+    position: relative;
+    overflow: hidden;
+    width: var(--uv-dialog-width);
+    min-height: var(--uv-dialog-min-height);
+    border-radius: var(--uv-dialog-border-radius);
+    background-color: var(--uv-dialog-bg-color);
+    transition: var(--uv-dialog-transition-time);
+    .uv-dialog-title {
+      padding: var(--uv-dialog-title-padding);
+      width: 100%;
+      font-weight: 700;
+      text-align: var(--uv-dialog-title-text-align);
+      color: var(--uv-dialog-title-color);
+    }
+    .uv-dialog-content {
+      padding: var(--uv-dialog-content-padding);
+      width: 100%;
+      font-size: var(--uv-dialog-content-font-size);
+      color: var(--uv-dialog-content-color);
+    }
+    .uv-dialog-bottom-button {
+      width: 100%;
+      height: var(--uv-dialog-bottom-button-height);
+      border-top: var(--uv-dialog-bottom-button-border-top);
+      .only-confim {
+        display: flex;
+        height: 100%;
+      }
+      .confim-and-cancle {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 1px;
+          height: 100%;
+          background-color: var(--uv-dialog-bottom-button-center-line-color);
+        }
+      }
+      .uv-dialog-confim {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex: 1;
+        &:active {
+          background-color: var(--uv-dialog-confim-active-bg-color);
+        }
+      }
+      .uv-dialog-cancle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex: 1;
+        &:active {
+          background-color: var(--uv-dialog-cancle-bg-color);
+        }
+      }
+      .uv-dialog-button-undisabled {
+        color: var(--uv-dialog-button-undisabled-color) !important;
+        &:active {
+          background-color: none !important;
+        }
+      }
+    }
+  }
+}
+.dialog-leave-to {
+  transform: scale(0.4);
+  opacity: 0;
+}
+.dialog-enter-from {
+  transform: scale(0);
+}
