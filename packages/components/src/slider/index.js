@@ -1,6 +1,6 @@
-import uvSlider from './slider.vue'
+import Slider from './slider.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvSlider = withInstall(uvSlider)
+const uvSlider = withInstall(Slider)
 
 export default uvSlider

@@ -1,6 +1,6 @@
-import uvSideBar from './side-bar.vue'
+import SideBar from './side-bar.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvSideBar = withInstall(uvSideBar)
+const uvSideBar = withInstall(SideBar)
 
 export default uvSideBar

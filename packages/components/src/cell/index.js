@@ -1,6 +1,6 @@
-import uvCell from './cell.vue'
+import Cell from './cell.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvCell = withInstall(uvCell)
+const uvCell = withInstall(Cell)
 
 export default uvCell

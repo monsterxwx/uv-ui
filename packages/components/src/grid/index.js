@@ -1,6 +1,6 @@
-import uvGrid from './grid.vue'
+import Grid from './grid.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvGrid = withInstall(uvGrid)
+const uvGrid = withInstall(Grid)
 
 export default uvGrid

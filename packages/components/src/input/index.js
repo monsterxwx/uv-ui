@@ -1,6 +1,6 @@
-import uvInput from './input.vue'
+import Input from './input.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvInput = withInstall(uvInput)
+const uvInput = withInstall(Input)
 
 export default uvInput

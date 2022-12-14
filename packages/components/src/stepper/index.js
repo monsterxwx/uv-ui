@@ -1,6 +1,6 @@
-import uvStepper from './stepper.vue'
+import Stepper from './stepper.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvStepper = withInstall(uvStepper)
+const uvStepper = withInstall(Stepper)
 
 export default uvStepper

@@ -1,6 +1,6 @@
-import uvNoticeBar from './notice-bar.vue'
+import NoticeBar from './notice-bar.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvNoticeBar = withInstall(uvNoticeBar)
+const uvNoticeBar = withInstall(NoticeBar)
 
 export default uvNoticeBar

@@ -1,6 +1,6 @@
-import uvSwipeItem from './swipe-item.vue'
+import SwipeItem from './swipe-item.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvSwipeItem = withInstall(uvSwipeItem)
+const uvSwipeItem = withInstall(SwipeItem)
 
 export default uvSwipeItem

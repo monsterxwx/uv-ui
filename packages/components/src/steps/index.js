@@ -1,6 +1,6 @@
-import uvSteps from './steps.vue'
+import Steps from './steps.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvSteps = withInstall(uvSteps)
+const uvSteps = withInstall(Steps)
 
 export default uvSteps

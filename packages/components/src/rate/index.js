@@ -1,6 +1,6 @@
-import uvRate from './rate.vue'
+import Rate from './rate.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvRate = withInstall(uvRate)
+const uvRate = withInstall(Rate)
 
 export default uvRate

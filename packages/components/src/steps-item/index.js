@@ -1,6 +1,6 @@
-import uvStepsItem from './steps-item.vue'
+import StepsItem from './steps-item.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvStepsItem = withInstall(uvStepsItem)
+const uvStepsItem = withInstall(StepsItem)
 
 export default uvStepsItem

@@ -1,6 +1,6 @@
-import uvCheckbox from './checkbox.vue'
+import Checkbox from './checkbox.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvCheckbox = withInstall(uvCheckbox)
+const uvCheckbox = withInstall(Checkbox)
 
 export default uvCheckbox

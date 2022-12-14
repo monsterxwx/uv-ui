@@ -1,6 +1,6 @@
-import uvTabBar from './tab-bar.vue'
+import TabBar from './tab-bar.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvTabBar = withInstall(uvTabBar)
+const uvTabBar = withInstall(TabBar)
 
 export default uvTabBar

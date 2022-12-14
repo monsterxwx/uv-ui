@@ -1,6 +1,6 @@
-import uvDivider from './divider.vue'
+import Divider from './divider.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvDivider = withInstall(uvDivider)
+const uvDivider = withInstall(Divider)
 
 export default uvDivider

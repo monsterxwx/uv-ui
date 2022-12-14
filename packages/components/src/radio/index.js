@@ -1,6 +1,6 @@
-import uvRadio from './radio.vue'
+import Radio from './radio.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvRadio = withInstall(uvRadio)
+const uvRadio = withInstall(Radio)
 
 export default uvRadio

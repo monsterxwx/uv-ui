@@ -1,6 +1,6 @@
-import uvTable from './table.vue'
+import Table from './table.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvTable = withInstall(uvTable)
+const uvTable = withInstall(Table)
 
 export default uvTable

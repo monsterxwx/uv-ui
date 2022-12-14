@@ -1,6 +1,6 @@
-import uvNumInput from './num-input.vue'
+import NumInput from './num-input.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvNumInput = withInstall(uvNumInput)
+const uvNumInput = withInstall(NumInput)
 
 export default uvNumInput

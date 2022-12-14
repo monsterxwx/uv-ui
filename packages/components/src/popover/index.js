@@ -1,6 +1,6 @@
-import uvPopover from './popover.vue'
+import Popover from './popover.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvPopover = withInstall(uvPopover)
+const uvPopover = withInstall(Popover)
 
 export default uvPopover

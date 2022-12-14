@@ -1,6 +1,6 @@
-import uvSelect from './select.vue'
+import Select from './select.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvSelect = withInstall(uvSelect)
+const uvSelect = withInstall(Select)
 
 export default uvSelect

@@ -1,6 +1,6 @@
-import uvPagination from './pagination.vue'
+import Pagination from './pagination.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvPagination = withInstall(uvPagination)
+const uvPagination = withInstall(Pagination)
 
 export default uvPagination

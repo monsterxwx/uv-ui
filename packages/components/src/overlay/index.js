@@ -1,6 +1,6 @@
-import uvOverlay from './overlay.vue'
+import Overlay from './overlay.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvOverlay = withInstall(uvOverlay)
+const uvOverlay = withInstall(Overlay)
 
 export default uvOverlay

@@ -1,6 +1,6 @@
-import uvNavBar from './nav-bar.vue'
+import NavBar from './nav-bar.vue'
 import {withInstall} from '@uv-ui/utils'
 
-const uvNavBar = withInstall(uvNavBar)
+const uvNavBar = withInstall(NavBar)
 
 export default uvNavBar
