@@ -3,12 +3,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   build: {
     target: 'modules',
-    //打包文件目录
-    outDir: 'es',
     //压缩
     minify: true,
-    //css分离
-    //cssCodeSplit: true,
     rollupOptions: {
       //忽略打包vue文件
       external: ['vue', /\.scss/],
@@ -54,6 +50,6 @@ export default defineConfig({
           })
         }
       },
-    },
+    }
   ],
 })

@@ -4,7 +4,7 @@
   "scripts": {
     "docs:dev": "pnpm -C docs dev",
     "docs:build": "pnpm -C docs build",
-    "build:uv-ui": "gulp -f packages/components/script/build/gulpfile.js"
+    "build:uv-ui": ""
   },
   "keywords": [],
   "author": "",

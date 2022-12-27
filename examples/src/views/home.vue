@@ -10,7 +10,8 @@
 </template>
 
 <script setup>
-import { uvButton } from 'uv-ui'
+
+import {uvButton} from 'uv-ui'
 </script>
 
 <style lang="scss" scoped>

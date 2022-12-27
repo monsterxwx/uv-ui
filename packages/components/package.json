@@ -2,7 +2,8 @@
   "name": "uv-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
   "scripts": {
     "build": "vite build & esno build/buildScss"
   },

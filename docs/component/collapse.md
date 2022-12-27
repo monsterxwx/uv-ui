@@ -95,3 +95,14 @@ onMounted(()=>{
 | accordion  |     是否手风琴模式     |         Boolean         |  false |
 | modelValue | 双向绑定的当前展开的值 | [Array, String, Number] |      - |
 
+
+## collapse item css变量
+
+```css
+  --uv-collapse-item-border-bottom: 1px solid #f5f6f7;
+  --uv-collapse-item-font-size: 14px;
+  --uv-collapse-item-title-padding: 10px 0;
+  --uv-collapse-item-content-padding: 12px 0;
+  --uv-collapse-item-bottom-line-border-bottom: 1px solid #f5f6f7;
+  --uv-collapse-item-transition-time: 0.3s;
+```
