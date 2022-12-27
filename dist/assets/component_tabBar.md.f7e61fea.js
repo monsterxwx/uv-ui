@@ -1,1 +1,0 @@
-import{u as e,o as a,a as o,c as r}from"./app.ee39e375.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"component/tabBar.md"}'),n={name:"component/tabBar.md"},d=Object.assign(n,{setup(s){const t=e();return a(()=>{t.updateName("tab-bar")}),(c,p)=>(o(),r("div"))}});export{_ as __pageData,d as default};

@@ -1,1 +1,0 @@
-import{_ as e,a as t,c as a}from"./app.ee39e375.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"component/sideBar.md"}'),r={name:"component/sideBar.md"};function o(n,s,c,p,d,i){return t(),a("div")}const f=e(r,[["render",o]]);export{m as __pageData,f as default};
