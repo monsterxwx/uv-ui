@@ -1,6 +1,6 @@
 module.exports = {
   title: 'UV-UI',
-  base:'/monorepo-uv-ui/',
+  base:'/uv-ui/',
   themeConfig: {
     lastUpdated: true,
     lastUpdatedText: 'Updated Date',

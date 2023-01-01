@@ -11,13 +11,13 @@
 <script setup>
 import useCompStore from '../store/copname.js'
 import DefaultTheme from 'vitepress/theme'
-import { computed, onMounted, ref, watchEffect } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const { Layout } = DefaultTheme
 const compStore =useCompStore()
 
 const iframeSrc = computed(() => {
-  let src = `https://monsterwx.gitee.io/uv-ui`
+  let src = `https://monsterwx.gitee.io/uv-ui-example`
   if (compStore.currentName) {
     src += '#' + compStore.currentName
   }

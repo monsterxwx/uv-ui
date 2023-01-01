@@ -65,6 +65,21 @@ importers:
       vite: 3.2.5_sass@1.56.2
       vitepress: 1.0.0-alpha.30_sass@1.56.2
 
+  examples:
+    specifiers: {}
+
+  packages/components:
+    specifiers:
+      '@uv-ui/utils': workspace:^1.0.0
+    dependencies:
+      '@uv-ui/utils': link:../utils
+
+  packages/hooks:
+    specifiers: {}
+
+  packages/utils:
+    specifiers: {}
+
 packages:
 
   /@algolia/autocomplete-core/1.7.2:
