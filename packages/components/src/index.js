@@ -45,6 +45,61 @@ import uvForm from './form'
 import uvFormItem from './form-item'
 import uvTable from './table'
 
+const components = [
+  uvButton,
+  uvInput,
+  uvIcon,
+  uvCell,
+  uvCellGroup,
+  uvOverlay,
+  uvPopup,
+  Toast,
+  Message,
+  uvCheckbox,
+  uvCheckboxGroup,
+  uvRadio,
+  uvRadioGroup,
+  uvNumInput,
+  uvPicker,
+  uvSwitch,
+  uvSearch,
+  uvSlider,
+  uvStepper,
+  uvActionSheet,
+  showDialog,
+  uvSwipeCell,
+  uvRate,
+  uvCollapse,
+  uvCollapseItem,
+  uvDivider,
+  uvPopover,
+  uvWaterWaves,
+  uvTab,
+  uvSwipe,
+  uvSwipeItem,
+  uvGrid,
+  uvGridItem,
+  uvNoticeBar,
+  uvNavBar,
+  uvTabBar,
+  uvTabBarItem,
+  uvCountTo,
+  uvSelect,
+  uvSideBar,
+  uvPagination,
+  uvSteps,
+  uvStepsItem,
+  uvForm,
+  uvFormItem,
+  uvTable
+]
+
+const install = (Vue)=>{
+  components.forEach(component => {
+    Vue.component(component.name,component)
+  })
+}
+
 export {
   uvButton,
   uvInput,
@@ -94,51 +149,4 @@ export {
   uvTable
 }
 
-export default [
-  uvButton,
-  uvInput,
-  uvIcon,
-  uvCell,
-  uvCellGroup,
-  uvOverlay,
-  uvPopup,
-  Toast,
-  Message,
-  uvCheckbox,
-  uvCheckboxGroup,
-  uvRadio,
-  uvRadioGroup,
-  uvNumInput,
-  uvPicker,
-  uvSwitch,
-  uvSearch,
-  uvSlider,
-  uvStepper,
-  uvActionSheet,
-  showDialog,
-  uvSwipeCell,
-  uvRate,
-  uvCollapse,
-  uvCollapseItem,
-  uvDivider,
-  uvPopover,
-  uvWaterWaves,
-  uvTab,
-  uvSwipe,
-  uvSwipeItem,
-  uvGrid,
-  uvGridItem,
-  uvNoticeBar,
-  uvNavBar,
-  uvTabBar,
-  uvTabBarItem,
-  uvCountTo,
-  uvSelect,
-  uvSideBar,
-  uvPagination,
-  uvSteps,
-  uvStepsItem,
-  uvForm,
-  uvFormItem,
-  uvTable
-]
+export default install
