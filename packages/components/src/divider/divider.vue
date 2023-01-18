@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 defineProps({
   // 0.5px线
   hairline: {

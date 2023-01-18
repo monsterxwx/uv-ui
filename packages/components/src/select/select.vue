@@ -100,7 +100,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { ref } from 'vue'
 import uvOverlay from '../overlay'
 import uvIcon from '../icon'

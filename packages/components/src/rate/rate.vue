@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import uvIcon from '../icon'
 const props = defineProps({
   modelValue: {

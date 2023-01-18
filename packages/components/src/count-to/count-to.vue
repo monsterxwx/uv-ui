@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { onMounted, onUnmounted, reactive, watch, computed } from 'vue'
 import { requestAnimationFrame, cancelAnimationFrame } from '@uv-ui/utils'
 

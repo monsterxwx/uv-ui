@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import uvIcon from '../icon'
 import { ref, watch, nextTick, computed, inject } from 'vue'
 const emit = defineEmits(['update:modelValue', 'change', 'blur', 'focus', 'keydown'])

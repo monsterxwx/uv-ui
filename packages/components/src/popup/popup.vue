@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed } from 'vue'
 import uvIcon from '../icon'
 import overLay from '../overlay'

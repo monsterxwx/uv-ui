@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { reactive, computed, ref } from 'vue'
 import { useParent } from '@uv-ui/hooks'
 import uvIcon from '../icon'

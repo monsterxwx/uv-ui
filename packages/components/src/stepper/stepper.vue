@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { ref, watch, inject } from 'vue'
 import { formatNumber } from '@uv-ui/utils'
 const props = defineProps({

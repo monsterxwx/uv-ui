@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 defineProps({
   content: {
     type: String,

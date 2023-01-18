@@ -19,7 +19,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import './index.scss'
+ 
 import './iconfont'
 const props = defineProps({
   name: {

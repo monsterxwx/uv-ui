@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { ref, watch } from 'vue'
 import uvOverlay from '../overlay'
 

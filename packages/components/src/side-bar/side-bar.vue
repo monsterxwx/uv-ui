@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import './index.scss'
+ 
 const props = defineProps({
   modelValue: {
     type: Number,

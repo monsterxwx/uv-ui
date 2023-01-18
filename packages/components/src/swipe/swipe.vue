@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useTouch,useChildren } from '@uv-ui/hooks'
 const props = defineProps({

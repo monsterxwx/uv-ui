@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 defineProps({
   show: {
     type: Boolean,

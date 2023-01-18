@@ -35,7 +35,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import './index.scss'
+ 
 import uvPopup from '../popup'
 const props = defineProps({
   show: {

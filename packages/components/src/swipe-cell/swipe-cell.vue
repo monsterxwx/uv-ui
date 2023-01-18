@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed, ref } from 'vue'
 import { useTouch } from '@uv-ui/hooks'
 

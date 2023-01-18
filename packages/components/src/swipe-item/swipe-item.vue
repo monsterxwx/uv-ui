@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { reactive, ref } from 'vue'
 import { useParent } from '@uv-ui/hooks'
 

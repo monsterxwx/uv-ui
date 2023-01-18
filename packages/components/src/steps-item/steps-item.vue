@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { ref, reactive, onMounted } from 'vue'
 import { useParent } from '@uv-ui/hooks'
 

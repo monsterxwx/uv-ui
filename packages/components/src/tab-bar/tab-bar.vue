@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({
   modelValue: {

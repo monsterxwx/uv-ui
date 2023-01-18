@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { ref, onMounted } from 'vue'
 import uvOverlay from '../overlay'
 // import uvIcon from '../icon'

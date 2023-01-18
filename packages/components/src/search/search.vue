@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import uvIcon from '../icon'
 import { computed } from 'vue'
 

@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 // import { onMounted, ref } from 'vue'
 defineProps({
   data: {

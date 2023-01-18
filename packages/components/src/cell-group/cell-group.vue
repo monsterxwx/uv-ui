@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 defineProps({
   card: {
     type: Boolean,

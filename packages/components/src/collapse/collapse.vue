@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { provide, ref, watch } from 'vue'
 
 const props = defineProps({

@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed, inject } from 'vue'
 import uvIcon from '../icon'
 

@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { provide, nextTick } from 'vue'
 import uvCellGroup from '../cell-group'
 const props = defineProps({

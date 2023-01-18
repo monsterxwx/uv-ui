@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { onMounted, ref, watch } from 'vue'
 import { scrollLeftTo } from '@uv-ui/utils'
 const props = defineProps({

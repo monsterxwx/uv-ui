@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { watch } from 'vue'
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({

@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { useTouch } from '@uv-ui/hooks'
 import { onMounted, ref, inject } from 'vue'
 const touch = useTouch()

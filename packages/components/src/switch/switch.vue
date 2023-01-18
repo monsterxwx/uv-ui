@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed } from 'vue'
 
 const props = defineProps({

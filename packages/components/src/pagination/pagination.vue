@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed } from 'vue'
 import uvIcon from '../icon'
 const props = defineProps({

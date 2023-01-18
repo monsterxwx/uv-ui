@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { computed, ref, watch } from 'vue'
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({

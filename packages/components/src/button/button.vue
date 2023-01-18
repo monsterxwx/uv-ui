@@ -38,7 +38,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import './index.scss'
+ 
 import uvIcon from '../icon'
 const props = defineProps({
   type: {

@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { ref, watch, computed } from 'vue'
 import uvPopup from '../popup'
 import { throttle } from 'lodash-es'

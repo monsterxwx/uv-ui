@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
-import './index.scss'
+ 
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import uvIcon from '../icon'
 
