@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@uv-ui/hooks": "workspace:^1.0.0",
+    "@uv-ui/theme-chalk": "workspace:^1.0.0",
     "@uv-ui/utils": "workspace:^1.0.0",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",

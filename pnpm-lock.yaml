@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@uv-ui/hooks': workspace:^1.0.0
+      '@uv-ui/theme-chalk': workspace:^1.0.0
       '@uv-ui/utils': workspace:^1.0.0
       '@vitejs/plugin-vue': ^3.2.0
       cpy: ^9.0.1
@@ -35,6 +36,7 @@ importers:
       vue-router: ^4.1.5
     dependencies:
       '@uv-ui/hooks': link:packages/hooks
+      '@uv-ui/theme-chalk': link:packages/theme-chalk
       '@uv-ui/utils': link:packages/utils
       lodash-es: 4.17.21
       normalize.css: 8.0.1
