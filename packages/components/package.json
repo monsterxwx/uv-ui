@@ -1,9 +1,11 @@
 {
   "name": "uv-ui",
+  "private": false,
   "version": "1.0.0",
-  "main": "dist/lib/index.js",
+  "main": "dist/es/index.js",
   "module": "dist/es/index.js",
   "style": "dist/es/style.css",
+  "description": "基于vue3的移动端组件库",
   "scripts": {
     "build": "vite build",
     "lint": "eslint ./src/**/*.{js,jsx,vue,ts,tsx} --fix"
@@ -21,8 +23,7 @@
     "components"
   ],
   "files": [
-    "es",
-    "lib"
+    "dist"
   ],
   "author": "coderxwx",
   "license": "MIT",
