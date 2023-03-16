@@ -228,3 +228,5 @@ export default {
   name: 'UvCountTo'
 }
 </script>
+
+<style lang="scss"></style>

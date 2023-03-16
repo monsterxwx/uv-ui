@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
- 
+
 import { provide, ref, watch } from 'vue'
 
 const props = defineProps({
@@ -65,5 +65,9 @@ export default {
   name: 'UvCollapse'
 }
 </script>
-
-
+<style lang="scss">
+.uv-collapse {
+  padding: 0 16px;
+  background-color: #ffffff;
+}
+</style>

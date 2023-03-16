@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
- 
+
 import uvIcon from '../icon'
 import { computed, ref, reactive, onMounted } from 'vue'
 import { useParent } from '@uv-ui/hooks'
@@ -125,4 +125,53 @@ export default {
 }
 </script>
 
-
+<style lang="scss">
+:root {
+  --uv-radio-icon-border: 1px solid #c8c9cc;
+  --uv-radio-icon-active-border: 1px solid #1989fa;
+  --uv-radio-icon-active-bg-color: #1989fa;
+  --uv-radio-icon-disabled-border: 1px solid #c8c9cc;
+  --uv-radio-icon-disabled-bg-color: #ebedf0;
+  --uv-radio-text-margin: 8px;
+  --uv-radio-text-size: 14px;
+  --uv-radio-space-between-padding: 0 10px;
+}
+.uv-radio {
+  display: flex;
+  align-items: center;
+  .uv-radio-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--uv-radio-icon-border);
+    transition: all 0.3s;
+  }
+  .active {
+    border: var(--uv-radio-icon-active-border);
+    background-color: var(--uv-radio-icon-active-bg-color);
+  }
+  .round {
+    border-radius: 50%;
+  }
+  .uv-radio-right {
+    margin-left: var(--uv-radio-text-margin);
+    font-size: var(--uv-radio-text-size);
+  }
+  .uv-radio-left {
+    margin-right: var(--uv-radio-text-margin);
+    font-size: var(--uv-radio-text-size);
+  }
+}
+.uv-radio-disabled {
+  cursor: no-drop;
+  color: #c8c9cc;
+  .uv-radio-icon {
+    border: var(--uv-radio-icon-disabled-border) !important;
+    background-color: var(--uv-radio-icon-disabled-bg-color) !important;
+  }
+}
+.uv-radio-space-between {
+  justify-content: space-between;
+  padding: var(--uv-radio-space-between-padding);
+}
+</style>

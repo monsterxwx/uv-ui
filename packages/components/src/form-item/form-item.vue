@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
- 
+
 import { clone } from 'lodash-es'
 import { getProp } from '@uv-ui/utils'
 import { inject, onBeforeMount, onMounted, toRefs, reactive, ref, nextTick, computed, provide } from 'vue'
@@ -189,5 +189,15 @@ export default {
   name: 'UvFormItem'
 }
 </script>
-
-
+<style lang="scss">
+.uv-form-item {
+  --uv-cell-content-justify-content: flex-start;
+  --uv-cell-content-value-slot-text-align: left;
+  --uv-input-height: 24px;
+  :deep() {
+    .uv-cell-content-value {
+      width: 100%;
+    }
+  }
+}
+</style>

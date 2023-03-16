@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
- 
+
 import { computed, ref, watch } from 'vue'
 import uvPopup from '../popup'
 const props = defineProps({
@@ -115,3 +115,62 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-num-input-font-size: 22px;
+  --uv-num-input-border-radius: 8px;
+  --uv-num-input-color: #323233;
+  --uv-num-input-bg-color: #ffffff;
+  --uv-num-input-active-bg-color: #ebedf0;
+  --uv-num-input-confim-color: #ffffff;
+  --uv-num-input-confim-bg-color: #1989fa;
+}
+.uv-num-input {
+  @mixin common {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--uv-num-input-font-size);
+    border-radius: var(--uv-num-input-border-radius);
+    color: var(--uv-num-input-color);
+    background-color: var(--uv-num-input-bg-color);
+    &:active {
+      background-color: var(--uv-num-input-active-bg-color);
+    }
+  }
+  .uv-num-content {
+    display: flex;
+    &-left {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      &-item {
+        @include common;
+
+        padding: 10px 0;
+        width: 30%;
+      }
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      &-item {
+        @include common;
+
+        padding: 0 22px;
+        flex: 1;
+      }
+      .uv-num-input-confim {
+        font-size: 14px;
+        color: var(--uv-num-input-confim-color);
+        background-color: var(--uv-num-input-confim-bg-color);
+        &:active {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+</style>

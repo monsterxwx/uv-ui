@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
- 
+
 import { computed, ref, watch } from 'vue'
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({
@@ -88,4 +88,13 @@ export default {
 }
 </script>
 
-
+<style lang="scss">
+:root {
+  --uv-checkbox-group-gap: 10px;
+}
+.uv-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--uv-checkbox-group-gap);
+}
+</style>

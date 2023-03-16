@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
- 
+
 import { reactive, ref } from 'vue'
 import { useParent } from '@uv-ui/hooks'
 
@@ -29,3 +29,14 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.uv-swipe-item {
+  position: relative;
+  width: 100%;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>

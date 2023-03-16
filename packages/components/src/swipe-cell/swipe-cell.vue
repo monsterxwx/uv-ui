@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
- 
+
 import { computed, ref } from 'vue'
 import { useTouch } from '@uv-ui/hooks'
 
@@ -190,3 +190,63 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-swipe-cell-content-bg-color: #ffffff;
+  --uv-swipe-cell-left-right-content-common-color: #ffffff;
+  --uv-swipe-cell-left-right-content-common-width: 60px;
+  --uv-swipe-cell-left-right-content-common-font-size: 14px;
+}
+.uv-swipe-cell {
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  .uv-swipe-cell-wrapper {
+    transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);
+    transition-property: transform;
+    transition-duration: 0.6s;
+    .uv-swipe-cell-position {
+      position: absolute;
+      top: 0;
+      display: flex;
+      height: 100%;
+    }
+    .uv-swipe-cell-left {
+      left: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+    .uv-swipe-cell-content {
+      position: relative;
+      width: 100%;
+      background-color: var(--uv-swipe-cell-content-bg-color);
+      .uv-swipe-cell-content-default {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        font-size: 14px;
+        color: #323233;
+      }
+    }
+    .uv-swipe-cell-right {
+      right: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+    .left-content,
+    .right-content {
+      display: flex;
+      height: 100%;
+      .left-content-item-common,
+      .right-content-item-common {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--uv-swipe-cell-left-right-content-common-width);
+        height: 100%;
+        font-size: var(--uv-swipe-cell-left-right-content-common-font-size);
+        color: var(--uv-swipe-cell-left-right-content-common-color);
+      }
+    }
+  }
+}
+</style>

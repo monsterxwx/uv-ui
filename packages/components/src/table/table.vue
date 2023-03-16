@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
- 
+
 // import { onMounted, ref } from 'vue'
 defineProps({
   data: {
@@ -66,3 +66,45 @@ export default {
   name: 'UvTable'
 }
 </script>
+<style lang="scss">
+.uv-table {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  .uv-table-header-wrapper {
+    width: 100%;
+  }
+  .uv-table-body-wrapper {
+    width: 100%;
+  }
+  .uv-table-tr {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    .uv-table-th,
+    .uv-table-td {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      padding: 10px 0;
+      font-size: 14px;
+      border-right: 1px solid #ebeef5;
+      border-bottom: 1px solid #ebeef5;
+      background-color: #ffffff;
+      &:last-child {
+        border-right: none;
+      }
+    }
+    .uv-table-th {
+      font-weight: 700;
+      color: #7f7f7f;
+    }
+    .uv-table-td {
+      color: #333333;
+    }
+  }
+}
+</style>

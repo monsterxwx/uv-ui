@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
- 
+
 import { computed, onMounted, reactive, ref } from 'vue'
-import { useTouch,useChildren } from '@uv-ui/hooks'
+import { useTouch, useChildren } from '@uv-ui/hooks'
 const props = defineProps({
   autoplay: {
     type: [Number, String]
@@ -113,3 +113,17 @@ export default {
   name: 'UvSwipe'
 }
 </script>
+
+<style lang="scss">
+.uv-swipe {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  .uv-swipe-list {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
+}
+</style>

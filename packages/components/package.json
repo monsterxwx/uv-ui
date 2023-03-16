@@ -1,15 +1,24 @@
 {
   "name": "uv-ui",
   "version": "1.0.0",
-  "description": "",
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
+  "style": "dist/es/style.css",
   "scripts": {
-    "build": "vite build & esno build/buildScss"
+    "build": "vite build",
+    "lint": "eslint ./src/**/*.{js,jsx,vue,ts,tsx} --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monsterxwx/uv-ui",
+    "directory": "packages/uv-ui"
   },
   "keywords": [
     "uv-ui",
-    "vue3组件库"
+    "vue3组件库",
+    "mobile",
+    "frontend",
+    "components"
   ],
   "files": [
     "es",
@@ -18,6 +27,7 @@
   "author": "coderxwx",
   "license": "MIT",
   "dependencies": {
+    "@uv-ui/hooks": "workspace:^1.0.0",
     "@uv-ui/utils": "workspace:^1.0.0"
   }
 }

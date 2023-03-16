@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 
 const useCompStore = defineStore({
-  id: 'comp', 
+  id: 'comp',
   state: () => {
     return {
-      currentName:''
+      currentName: ''
     }
   },
   actions: {

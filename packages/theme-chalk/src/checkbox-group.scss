@@ -1,9 +1,0 @@
-:root {
-  --uv-checkbox-group-gap: 10px;
-}
-
-.uv-checkbox-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--uv-checkbox-group-gap);
-}

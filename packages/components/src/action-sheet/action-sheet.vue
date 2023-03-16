@@ -35,7 +35,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
- 
+
 import uvPopup from '../popup'
 const props = defineProps({
   show: {
@@ -83,3 +83,31 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-action-sheet-item-bg-color: #ffffff;
+  --uv-action-sheet-item-padding: 14px 16px;
+  --uv-action-able-click-bg-color: #f2f3f5;
+  --uv-action-cancle-item-margin-top: 10px;
+}
+.uv-action-sheet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .uv-action-sheet-item {
+    padding: var(--uv-action-sheet-item-padding);
+    width: 100%;
+    text-align: center;
+    background-color: var(--uv-action-sheet-item-bg-color);
+  }
+  .able-click {
+    &:active {
+      background-color: var(--uv-action-able-click-bg-color);
+    }
+  }
+  .cancle-item {
+    margin-top: var(--uv-action-cancle-item-margin-top);
+  }
+}
+</style>

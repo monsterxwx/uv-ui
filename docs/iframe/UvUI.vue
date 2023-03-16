@@ -2,7 +2,12 @@
   <Layout>
     <template #aside-outline-before>
       <div class="uv-ui-iframe" :style="iframeStyle">
-        <iframe width="100%" height="100%" frameborder="0" :src="iframeSrc"></iframe>
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          :src="iframeSrc"
+        />
       </div>
     </template>
   </Layout>
@@ -14,10 +19,10 @@ import DefaultTheme from 'vitepress/theme'
 import { computed, onMounted, ref } from 'vue'
 
 const { Layout } = DefaultTheme
-const compStore =useCompStore()
+const compStore = useCompStore()
 
 const iframeSrc = computed(() => {
-  let src = `https://monsterwx.gitee.io/uv-ui-example`
+  let src = 'https://monsterwx.gitee.io/uv-ui-example'
   if (compStore.currentName) {
     src += '#' + compStore.currentName
   }
@@ -28,22 +33,22 @@ const firstScreenWidth = ref(null)
 const screenWidth = ref(null)
 const differenceWidth = ref(0)
 
-onMounted(()=>{
+onMounted(() => {
   screenWidth.value = document.body.clientWidth
   firstScreenWidth.value = document.body.clientWidth
   window.onresize = () => {
-      //屏幕尺寸变化
-      return (() => {
-        screenWidth.value = document.body.clientWidth 
-        differenceWidth.value =firstScreenWidth.value - screenWidth.value 
-      })()
+    // 屏幕尺寸变化
+    return (() => {
+      screenWidth.value = document.body.clientWidth
+      differenceWidth.value = firstScreenWidth.value - screenWidth.value
+    })()
   }
 })
 
-const iframeStyle = computed(()=>{
-  console.log(differenceWidth.value);
-  let rightValue = `cale(20% - ${differenceWidth.value}px)` 
-  return {    
+const iframeStyle = computed(() => {
+  console.log(differenceWidth.value)
+  const rightValue = `cale(20% - ${differenceWidth.value}px)`
+  return {
     right: rightValue
   }
 })

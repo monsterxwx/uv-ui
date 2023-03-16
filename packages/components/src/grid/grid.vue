@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
- 
+
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({
   clickable: {
@@ -52,5 +52,9 @@ export default {
   name: 'UvGrid'
 }
 </script>
-
-
+<style lang="scss">
+.uv-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>

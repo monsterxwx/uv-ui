@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
- 
+
 import uvIcon from '../icon'
 defineProps({
   message: {
@@ -63,3 +63,69 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-toast-value-padding: 8px 10px;
+  --uv-toast-value-max-width: 150px;
+  --uv-toast-value-border-radius: 4px;
+  --uv-toast-message-font-size: 13px;
+  --uv-toast-message-min-width: 70px;
+}
+.uv-toast {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  .uv-toast-value {
+    display: inline-block;
+    padding: var(--uv-toast-value-padding);
+    max-width: var(--uv-toast-value-max-width);
+    border-radius: var(--uv-toast-value-border-radius);
+    text-align: center;
+    animation: face 0.5s;
+    .uv-toast-value-icon {
+      margin-bottom: 10px;
+    }
+    .loading-icon {
+      position: relative;
+      animation: rotate 3s linear infinite;
+      margin-bottom: 10px;
+    }
+    .uv-toast-message {
+      min-width: var(--uv-toast-message-min-width);
+      font-size: var(--uv-toast-message-font-size);
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes face {
+    0% { opacity: 0; }
+    100% {
+      opacity: 1;
+    }
+  }
+  .uv-toast-value.remove {
+    animation: remove 0.6s;
+  }
+
+  @keyframes remove {
+    0% { opacity: 1; }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+</style>

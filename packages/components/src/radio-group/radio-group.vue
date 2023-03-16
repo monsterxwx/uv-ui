@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
- 
+
 import { watch } from 'vue'
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({
@@ -60,3 +60,13 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-radio-group-gap: 10px;
+}
+.uv-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--uv-radio-group-gap);
+}
+</style>

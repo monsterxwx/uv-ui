@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
- 
+
 import uvIcon from '../icon'
 const props = defineProps({
   modelValue: {
@@ -66,4 +66,8 @@ export default {
   name: 'UvRate'
 }
 </script>
-
+<style lang="scss">
+.uv-rate {
+  display: flex;
+}
+</style>

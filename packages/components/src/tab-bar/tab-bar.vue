@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
- 
+
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({
   modelValue: {
@@ -81,5 +81,23 @@ export default {
   name: 'UvTabBar'
 }
 </script>
-
-
+<style lang="scss">
+:root {
+  --uv-tab-bar-height: 50px;
+}
+.uv-tab-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: var(--uv-tab-bar-height);
+  .uv-tab-bar-placeholder {
+    height: var(--uv-tab-bar-height);
+  }
+}
+.uv-tab-bar-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+</style>

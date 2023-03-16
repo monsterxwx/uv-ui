@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
- 
+
 import { reactive, onMounted, ref } from 'vue'
 import { useParent } from '@uv-ui/hooks'
 import uvIcon from '../icon'
@@ -74,3 +74,21 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-tab-bar-item-font-size: 12px;
+  --uv-tab-bar-item-text-margin-top: 5px;
+}
+.uv-tab-bar-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: var(--uv-tab-bar-item-font-size);
+  flex: 1;
+  flex-direction: column;
+  .uv-tab-bar-item-text {
+    margin-top: var(--uv-tab-bar-item-text-margin-top);
+  }
+}
+</style>

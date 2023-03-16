@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
- 
+
 import { watch } from 'vue'
 import { useChildren } from '@uv-ui/hooks'
 const props = defineProps({
@@ -68,3 +68,17 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --uv-steps-padding: 10px;
+  --uv-steps-bg-color: #ffffff;
+}
+.uv-steps {
+  padding: var(--uv-steps-padding);
+  background-color: var(--uv-steps-bg-color);
+  .uv-steps-content {
+    position: relative;
+    display: flex;
+  }
+}
+</style>
