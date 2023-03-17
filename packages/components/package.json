@@ -1,7 +1,7 @@
 {
   "name": "uv-ui",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.0.11",
   "main": "dist/es/index.js",
   "module": "dist/es/index.js",
   "style": "dist/es/style.css",
@@ -28,7 +28,7 @@
   "author": "coderxwx",
   "license": "MIT",
   "dependencies": {
-    "@uv-ui/hooks": "workspace:^1.0.0",
-    "@uv-ui/utils": "workspace:^1.0.0"
+    "@coderxwx/uv-ui-hooks": "1.0.0",
+    "@coderxwx/uv-ui-utils": "1.0.0"
   }
 }
