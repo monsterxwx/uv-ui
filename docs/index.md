@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: uv-ui 组件库
+  name: UV-UI 组件库
   text: 基于 Vue 3 的组件库
   actions:
     - theme: brand
@@ -14,11 +14,12 @@ hero:
 
 features:
   - icon: 🛠️
-    title: 组件库构建流程
-    details: Vue3 组件库构建...
+    title: 持续开发中
+    details: 用于Vue3组件库的学习
+  - icon: 🪨
+    title: 轻量小巧
+    details: 整体组件只有几百k
   - icon: ⚙️
-    title: 组件库单元测试
-    details: Vue3 组件库测试...
+    title: 按需引入
+    details: 直接支持按需引入无需配置任何插件。
 ---
-
-
