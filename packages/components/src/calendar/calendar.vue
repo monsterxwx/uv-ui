@@ -1,32 +1,46 @@
 <template>
   <div class="uv-calendar">
-    <div class="uv-calendar-bar">
-      <div class="uv-calendar-pre">
-        &lt
+    <div class="uv-calendar-header">
+      <div class="uv-calendar-header-action">
+        <div class="uv-calendar-pre" @click="MonthHandle(-1)">
+          <uv-icon size="16" name="arrow-left" />
+        </div>
+        <div class="uv-calendar-title">
+          {{ calendarProps.target.year+ '年' +Number(calendarProps.target.month+1) +'月' }}
+        </div>
+        <div class="uv-calendar-next" @click="MonthHandle(1)">
+          <uv-icon size="16" name="arrow-right" />
+        </div>
       </div>
-      <div>{{ calendarProps.target.year+ '.' +Number(calendarProps.target.month+1) }}</div>
-      <div class="uv-calendar-next">
-        &gt
+      <div class="uv-calendar-header-week">
+        <div class=" uv-calendar-header-week-item" v-for="item in dayNameList" :key="item.shortName">
+          {{ item.chineseShortName }}
+        </div>
       </div>
     </div>
-    <div class="uv-calendar-warp">
-      <div class="uv-calendar-title uv-calendar-item" v-for="item in dayNameList" :key="item.shortName">
-        {{ item.chineseShortName }}
-      </div>
+    <div class="uv-calendar-content">
       <div
         v-for="item,index in calendarData"
         :key="index"
-        :class="item.dateType==='previous'||item.dateType==='next'?'uv-calendar-disabled':''"
         class="uv-calendar-item"
+        @click="selectItemHandle(item)"
       >
-        {{ item.dateNumber }}
+        <div
+          :class="[
+            item.dateType==='previous'||item.dateType==='next'?'uv-calendar-disabled':'',
+            item.dateNumber ===calendarProps.target.date && !['previous','next'].includes(item.dateType)?'uv-calendar-selected':''
+          ]"
+          class="uv-calendar-item-label"
+        >
+          {{ item.dateNumber }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-
+import uvIcon from '../icon'
 import { ref, reactive, onMounted } from 'vue'
 const props = defineProps({
   modelValue: {
@@ -292,6 +306,31 @@ function setCalendarData () {
   }
   calendarData.value = originData
 }
+
+// 切换月份
+function MonthHandle (num) {
+  let curMonth = calendarProps.target.month + num
+  let curYear = calendarProps.target.year
+  if (curMonth > 11) {
+    curMonth = 0
+    curYear += 1
+  } else if (curMonth < 0) {
+    curMonth = 11
+    curYear -= 1
+  }
+  targetDate.value = new Date(curYear, curMonth, 1)
+  setCalendarProps()
+  setCalendarData()
+}
+
+// 选中子项
+function selectItemHandle (item) {
+  if (['previous', 'next'].includes(item.dateType)) return
+  console.log(item)
+  calendarProps.target.date = item.dateNumber
+  emits('update:modelValue', item.dateObj)
+}
+
 onMounted(() => {
   setCalendarProps()
   setCalendarData()
@@ -308,43 +347,69 @@ export default {
 <style lang="scss">
 :root {
   --uv-calendar-bg-color: #ffffff;
+  --uv-calendar-header-shadow: 0 2px 10px rgb(125 126 128 / 16%);
 }
 .uv-calendar {
   display: flex;
   width: 100%;
   flex-direction: column;
-  .uv-calendar-bar {
+  font-size: 14px;
+  background-color: #ffffff;
+  .uv-calendar-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    .uv-calendar-pre,
-    .uv-calendar-next {
+    flex-direction: column;
+    box-shadow: var(--uv-calendar-header-shadow);
+    .uv-calendar-header-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 10px;
+      .uv-calendar-pre,
+      .uv-calendar-next {
+        padding: 10px;
+        font-weight: 700;
+        border-radius: 50%;
+        color: #3f3f41;
+        background-color: #f9faff;
+      }
+    }
+    .uv-calendar-title {
       font-weight: 700;
-      border-radius: 50%;
-      color: #3f3f41;
-      background-color: #f9faff;
+    }
+    .uv-calendar-header-week {
+      display: flex;
+      .uv-calendar-header-week-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+        width: calc(100% / 7);
+      }
     }
   }
-  .uv-calendar-warp {
+  .uv-calendar-content {
     display: flex;
-    width: 100%;
     flex-wrap: wrap;
-    .uv-calendar-title {
-      background-color: #f6f8fe;
-    }
-    .uv-calendar-item {
+    padding: 5px 0;
+    gap: 5px 0;
+  }
+  .uv-calendar-item {
+    width: calc(100% / 7);
+    height: 50px;
+    .uv-calendar-item-label {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: calc(100% / 7);
-      height: 40px;
-      font-weight: 700;
+      height: 100%;
       color: #495067;
     }
     .uv-calendar-disabled {
       color: #92a5aa;
+    }
+    .uv-calendar-selected {
+      border-radius: 4px;
+      color: #ffffff;
+      background-color: #1989fa;
     }
   }
 }
