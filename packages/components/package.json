@@ -30,6 +30,6 @@
   "license": "MIT",
   "dependencies": {
     "@uv-ui/hooks": "1.0.0",
-    "@uv-ui/utils": "1.0.0"
+    "@uv-ui/utils": "1.0.1"
   }
 }
