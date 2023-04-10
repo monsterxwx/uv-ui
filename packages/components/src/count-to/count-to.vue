@@ -12,9 +12,11 @@
 </template>
 
 <script setup>
- 
+
 import { onMounted, onUnmounted, reactive, watch, computed } from 'vue'
-import { requestAnimationFrame, cancelAnimationFrame } from '@uv-ui/utils'
+import { useRequestAnimationFrame } from '@uv-ui/utils'
+
+const { requestAnimationFrame, cancelAnimationFrame } = useRequestAnimationFrame()
 
 const props = defineProps({
   start: {

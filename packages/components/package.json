@@ -1,7 +1,7 @@
 {
   "name": "uv-ui",
   "private": false,
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "src/index.js",
   "module": "src/index.js",
   "style": "",
