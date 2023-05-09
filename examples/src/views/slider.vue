@@ -1,5 +1,6 @@
 <template>
   <div style="padding: 20px;">
+    {{ test1 }}
     <uvSlider v-model="test1" />
     <uv-form
       :model="formInfo"

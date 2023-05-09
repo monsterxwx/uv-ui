@@ -96,7 +96,7 @@ function touchmove (e) {
   dragStatus.value = 'dragging'
   const delta = touch.deltaX.value
   const total = sliderWidth.value
-  const diff = (delta / total) * (props.max - props.min)
+  const diff = parseInt((delta / total) * (props.max - props.min))
   current.value = startValue.value + diff
   if (current.value < props.min) {
     current.value = props.min
