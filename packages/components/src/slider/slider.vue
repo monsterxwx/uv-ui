@@ -6,7 +6,7 @@
     ref="sliderRef"
   >
     <div
-      :style="{width: `${modelValue}%`,backgroundColor:activeColor,height:barHeight+'px'}"
+      :style="{width: `${current}%`,backgroundColor:activeColor,height:barHeight+'px'}"
       class="uv-slider-value"
       :class="disabled?'uv-slider-value-disabled':''"
     >
@@ -32,7 +32,6 @@
 
 import { useTouch } from '@uv-ui/hooks'
 import { onMounted, ref, inject } from 'vue'
-const touch = useTouch()
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -70,34 +69,49 @@ const props = defineProps({
 
 const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
 
-const emit = defineEmits(['update:modelValue', 'change', 'drag-start'])
+const touch = useTouch()
+const emit = defineEmits(['update:modelValue', 'change', 'drag-start', 'drag-end'])
 const sliderRef = ref(null)
 const sliderValueRef = ref(null)
 const sliderWidth = ref('')
+const current = ref(props.modelValue)
+const startValue = ref('')
+const dragStatus = ref('') // start dragging ''
 
 onMounted(() => {
   sliderWidth.value = sliderRef.value.offsetWidth
 })
 function touchstart (e) {
   touch.start(e)
-  emit('drag-start', e)
+  current.value = props.modelValue
+  startValue.value = props.modelValue
+  dragStatus.value = 'start'
 }
 function touchmove (e) {
   if (props.disabled) return
-  touch.move(e)
-  const { deltaX, startX } = touch
-  const difference = Number(startX.value + deltaX.value)
-  let percent = parseInt((difference / sliderWidth.value) * 100)
-  if (percent < props.min) {
-    percent = props.min
-  } else if (percent > props.max) {
-    percent = props.max
+  if (dragStatus.value === 'start') {
+    emit('drag-start', e)
   }
-  emit('update:modelValue', percent)
+  touch.move(e)
+  dragStatus.value = 'dragging'
+  const delta = touch.deltaX.value
+  const total = sliderWidth.value
+  const diff = (delta / total) * (props.max - props.min)
+  current.value = startValue.value + diff
+  if (current.value < props.min) {
+    current.value = props.min
+  } else if (current.value > props.max) {
+    current.value = props.max
+  }
+  emit('update:modelValue', current.value)
 }
 
-function touchend () {
-  emit('change', props.modelValue)
+function touchend (e) {
+  if (dragStatus.value === 'dragging') {
+    emit('drag-end', e)
+    emit('change', props.modelValue)
+  }
+  dragStatus.value = ''
   if (parentProps) {
     validateBlurOrChange('change')
   }

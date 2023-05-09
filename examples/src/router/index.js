@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/tab',
       name: 'tab',
       component: () => import('@/views/tab.vue')
+    },
+    {
+      path: '/slider',
+      name: 'slider',
+      component: () => import('@/views/slider.vue')
     }
   ]
 })
