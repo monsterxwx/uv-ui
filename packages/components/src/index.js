@@ -45,6 +45,7 @@ import uvForm from './form'
 import uvFormItem from './form-item'
 import uvTable from './table'
 import uvCalendar from './calendar'
+import uvSignature from './signature'
 
 const components = [
   uvButton,
@@ -93,7 +94,8 @@ const components = [
   uvForm,
   uvFormItem,
   uvTable,
-  uvCalendar
+  uvCalendar,
+  uvSignature
 ]
 
 const install = (Vue) => {
@@ -149,7 +151,8 @@ export {
   uvForm,
   uvFormItem,
   uvTable,
-  uvCalendar
+  uvCalendar,
+  uvSignature
 }
 
 export default install
