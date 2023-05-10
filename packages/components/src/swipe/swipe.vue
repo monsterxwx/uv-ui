@@ -10,7 +10,7 @@
       @transitionend="transitionend"
       ref="swipeListRef"
       class="uv-swipe-list"
-      :style="{width: `${listWidth}px`,transform: `translateX(${transformX}px)`,transitionDuration:state.duration+'s'}"
+      :style="{width: `${listWidth}px`,transform: `translateX(${transformX}px)`}"
     >
       <slot />
     </div>
@@ -32,15 +32,25 @@ const props = defineProps({
   loop: {
     type: Boolean,
     default: true
+  },
+  duration: {
+    type: Number,
+    default: 0.3
   }
 })
 
 const state = reactive({
-  duration: 0, // 过渡持续时间
   activeIndex: 0, // 当前活跃的子项
   width: 0, // 屏幕宽度
   moving: false // 移动中
 })
+
+const addAnimation = () => {
+  swipeListRef.value.style.transition = `transform ${props?.duration}s ease`
+}
+const removeAnimation = () => {
+  swipeListRef.value.style.transition = 'none'
+}
 
 const swiperRef = ref(null)
 const swipeListRef = ref(null)
@@ -59,7 +69,6 @@ const touch = useTouch()
 const transformX = ref(0)
 let startX = null
 function touchstart (event) {
-  state.duration = 0.3
   touch.start(event)
   startX = transformX.value
 }
@@ -67,6 +76,7 @@ function touchstart (event) {
 function touchmove (event) {
   touch.move(event)
   const { deltaX } = touch
+  removeAnimation()
   if (!state.moving) {
     if (deltaX.value < 0 && state.activeIndex === childrenNum.value - 1) { // 左移且index为最后一张
       fields[0].transform = listWidth.value
@@ -80,24 +90,24 @@ function touchmove (event) {
 }
 
 function touchend (event) {
+  addAnimation()
   state.moving = false
   const { deltaX } = touch
-  if (-deltaX.value > (state.width / 8)) {
+  if (-deltaX.value > (state.width / 3)) {
     state.activeIndex++
-  } else if (deltaX.value > (state.width / 8)) {
+  } else if (deltaX.value > (state.width / 3)) {
     state.activeIndex--
   }
   transformX.value = -state.width * state.activeIndex
 }
 
 function transitionend () {
+  removeAnimation()
   if (state.activeIndex < 0) {
-    state.duration = 0
     transformX.value = -state.width * (childrenNum.value - 1)
     fields[fields.length - 1].transform = 0
     state.activeIndex = childrenNum.value - 1
   } else if (state.activeIndex > (childrenNum.value - 1)) {
-    state.duration = 0
     state.activeIndex = 0
     transformX.value = 0
     fields[0].transform = 0

@@ -31,7 +31,7 @@
 <script setup>
 
 import { useTouch } from '@uv-ui/hooks'
-import { onMounted, ref, inject } from 'vue'
+import { onMounted, ref, inject, watch } from 'vue'
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -77,6 +77,12 @@ const sliderWidth = ref('')
 const current = ref(props.modelValue)
 const startValue = ref('')
 const dragStatus = ref('') // start dragging ''
+
+watch(() => props.modelValue, (newValue) => {
+  if (newValue !== current.value) {
+    current.value = newValue
+  }
+})
 
 onMounted(() => {
   sliderWidth.value = sliderRef.value.offsetWidth

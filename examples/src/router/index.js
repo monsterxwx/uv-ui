@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/slider',
       name: 'slider',
       component: () => import('@/views/slider.vue')
+    },
+    {
+      path: '/swiper',
+      name: 'swiper',
+      component: () => import('@/views/swiper.vue')
     }
   ]
 })
