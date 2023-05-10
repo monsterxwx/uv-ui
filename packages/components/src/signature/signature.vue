@@ -145,6 +145,10 @@ const submit = () => {
     canvas
   })
 }
+defineExpose({
+  clear,
+  submit
+})
 
 </script>
 
