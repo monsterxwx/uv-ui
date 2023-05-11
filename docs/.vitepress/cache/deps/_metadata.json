@@ -5,13 +5,13 @@
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "0d4e6e31",
+      "fileHash": "0d3cfeb5",
       "needsInterop": false
     },
     "pinia": {
       "src": "../../../../node_modules/.pnpm/pinia@2.0.33_vue@3.2.47/node_modules/pinia/dist/pinia.mjs",
       "file": "pinia.js",
-      "fileHash": "fa7bd282",
+      "fileHash": "4cfb9434",
       "needsInterop": false
     }
   },

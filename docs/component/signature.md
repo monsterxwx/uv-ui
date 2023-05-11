@@ -28,7 +28,7 @@ onMounted(()=>{
 ## ref
 通过ref可以拿到这两个方法 `clear` 、`submit`
 
- ## props
+## props
 
 | 属性              |      含义      |  类型  |  默认值 |
 | ----------------- | :------------: | :----: | ------: |
@@ -43,13 +43,13 @@ onMounted(()=>{
 
 ## events
 
-| 事件名称 |        含义        |                                               参数 |
-| -------- | :----------------: | -------------------------------------------------: |
-| start    |   开始签名时触发   |                                                  - |
-| end      |   结束签名时触发   |                                                  - |
-| signing  |   签名过程中触发   |                                  event: TouchEvent |
-| submit   | 点击确定按钮时触发 | data: { image: string; canvas: HTMLCanvasElement } |
-| clear    | 点击取消按钮时触发 |                                                  - |
+| 事件名称 |        含义        |                                                 参数 |
+| -------- | :----------------: | ---------------------------------------------------: |
+| start    |   开始签名时触发   |                                                    - |
+| end      |   结束签名时触发   |                                                    - |
+| signing  |   签名过程中触发   |                                    event: TouchEvent |
+| submit   | 点击确定按钮时触发 | 'data: { image: string; canvas: HTMLCanvasElement }' |
+| clear    | 点击取消按钮时触发 |                                                    - |
 
 
 ## css变量
