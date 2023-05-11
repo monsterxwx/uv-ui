@@ -32,6 +32,11 @@ const router = createRouter({
       path: '/signature',
       name: 'signature',
       component: () => import('@/views/signature.vue')
+    },
+    {
+      path: '/waterMark',
+      name: 'waterMark',
+      component: () => import('@/views/waterMark.vue')
     }
   ]
 })
