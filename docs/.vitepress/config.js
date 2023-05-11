@@ -1,12 +1,12 @@
-module.exports = {
+export default {
   title: 'UV-UI',
   base:'/uv-ui/',
+  lastUpdated: true,
   themeConfig: {
-    lastUpdated: true,
-    lastUpdatedText: 'Updated Date',
+    search: {
+      provider: 'local'
+    },
     docsDir: 'docs',
-    editLinks: true,
-    editLinkText: '编辑此⽹站',
     outline:false, // 大纲
     socialLinks: [
       { icon: 'github', link: 'https://github.com/monsterxwx/uv-ui' },
@@ -60,7 +60,9 @@ module.exports = {
             { text: 'Search 搜索框', link: '/component/search' },
             { text: 'Slider 滑块', link: '/component/slider' },
             { text: 'Switch 开关', link: '/component/switch' },
-            { text: 'Stepper 步进器', link: '/component/stepper' }
+            { text: 'Stepper 步进器', link: '/component/stepper' },
+            { text: 'Signature 签名', link: '/component/signature' },
+            { text: 'Calendar 日历', link: '/component/calendar' }
           ]
         },
         {
@@ -85,6 +87,7 @@ module.exports = {
             { text: 'CountTo 数字滚动', link: '/component/countTo' },
             { text: 'Steps 步骤条', link: '/component/steps' },
             { text: 'Table 表格', link: '/component/table' },
+            { text: 'WaterMark 水印', link: '/component/waterMark' }
           ]
         },
         {
