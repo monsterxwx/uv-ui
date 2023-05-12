@@ -60,45 +60,45 @@ export default [
       name: 'Toast 轻提示'
     },
     component: () => import('../../../packages/components/toast/demo/index.vue')
+  },
+  {
+    path: '/message',
+    name: 'message',
+    meta: {
+      name: 'Message 消息提示框'
+    },
+    component: () => import('../../../packages/components/message/demo/index.vue')
+  },
+  {
+    path: '',
+    meta: {
+      title: '表单组件'
+    }
+  },
+  {
+    path: '/input',
+    name: 'input',
+    meta: {
+      name: 'Input 输入框'
+    },
+    component: () => import('../../../packages/components/input/demo/index.vue')
+  },
+  {
+    path: '/select',
+    name: 'select',
+    meta: {
+      name: 'Select 选择器'
+    },
+    component: () => import('../../../packages/components/select/demo/index.vue')
+  },
+  {
+    path: '/checkbox',
+    name: 'checkbox',
+    meta: {
+      name: 'Checkbox 多选框'
+    },
+    component: () => import('../../../packages/components/checkbox/demo/index.vue')
   }
-  // {
-  //   path: '/message',
-  //   name: 'message',
-  //   meta: {
-  //     name: 'Message 消息提示框'
-  //   },
-  //   component: () => import('../../../packages/components/message/demo/index.vue')
-  // },
-  // {
-  //   path: '',
-  //   meta: {
-  //     title: '表单组件'
-  //   }
-  // },
-  // {
-  //   path: '/input',
-  //   name: 'input',
-  //   meta: {
-  //     name: 'Input 输入框'
-  //   },
-  //   component: () => import('../../../packages/components/input/demo/index.vue')
-  // },
-  // {
-  //   path: '/select',
-  //   name: 'select',
-  //   meta: {
-  //     name: 'Select 选择器'
-  //   },
-  //   component: () => import('../../../packages/components/select/demo/index.vue')
-  // },
-  // {
-  //   path: '/checkbox',
-  //   name: 'checkbox',
-  //   meta: {
-  //     name: 'Checkbox 多选框'
-  //   },
-  //   component: () => import('../../../packages/components/checkbox/demo/index.vue')
-  // },
   // {
   //   path: '/radio',
   //   name: 'radio',
