@@ -5,7 +5,7 @@
         ref="canvasRef"
         :width="state.width"
         :height="state.height"
-        @touchstartPassive="touchStart"
+        @touchstart="touchStart"
         @touchmove="touchMove"
         @touchend="touchEnd"
       />
