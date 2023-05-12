@@ -74,25 +74,26 @@ export default {
 .uv-toast {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
+  z-index: 9;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   .uv-toast-value {
     display: inline-block;
     padding: var(--uv-toast-value-padding);
     max-width: var(--uv-toast-value-max-width);
     border-radius: var(--uv-toast-value-border-radius);
     text-align: center;
-    animation: face 0.5s;
+    animation: uv-toast-face 0.5s;
     .uv-toast-value-icon {
       margin-bottom: 10px;
     }
     .loading-icon {
       position: relative;
-      animation: rotate 3s linear infinite;
+      animation: uv-toast-rotate 3s linear infinite;
       margin-bottom: 10px;
     }
     .uv-toast-message {
@@ -101,7 +102,7 @@ export default {
     }
   }
 
-  @keyframes rotate {
+  @keyframes uv-toast-rotate {
     0% {
       transform: rotate(0);
     }
@@ -110,17 +111,17 @@ export default {
     }
   }
 
-  @keyframes face {
+  @keyframes uv-toast-face {
     0% { opacity: 0; }
     100% {
       opacity: 1;
     }
   }
   .uv-toast-value.remove {
-    animation: remove 0.6s;
+    animation: uv-toast-remove 0.6s;
   }
 
-  @keyframes remove {
+  @keyframes uv-toast-remove {
     0% { opacity: 1; }
     100% {
       opacity: 0;
