@@ -4,8 +4,6 @@ importers:
 
   .:
     specifiers:
-      '@uv-ui/hooks': workspace:^1.0.0
-      '@uv-ui/utils': workspace:^1.0.0
       '@vitejs/plugin-vue': ^3.2.0
       eslint: ^8.0.1
       eslint-config-standard: ^17.0.0
@@ -26,18 +24,16 @@ importers:
       stylelint-config-standard: ^29.0.0
       stylelint-config-standard-scss: ^6.1.0
       stylelint-order: ^5.0.0
-      uv-ui: workspace:^1.0.11
+      uv-ui: workspace:^1.0.16
       vite: ^3.2.3
       vitepress: 1.0.0-alpha.75
       vue: ^3.2.41
       vue-router: ^4.1.5
     dependencies:
-      '@uv-ui/hooks': link:packages/hooks
-      '@uv-ui/utils': link:packages/utils
       lodash-es: 4.17.21
       normalize.css: 8.0.1
       pinia: 2.0.33_vue@3.2.47
-      uv-ui: link:packages/components
+      uv-ui: link:packages
       vue: 3.2.47
       vue-router: 4.1.6_vue@3.2.47
     devDependencies:
@@ -60,14 +56,6 @@ importers:
       stylelint-order: 5.0.0_stylelint@14.16.1
       vite: 3.2.5_sass@1.60.0
       vitepress: 1.0.0-alpha.75_sass@1.60.0
-
-  packages/components:
-    specifiers:
-      '@coderxwx/uv-ui-hooks': workspace:^1.0.0
-      '@coderxwx/uv-ui-utils': workspace:^1.0.0
-    dependencies:
-      '@coderxwx/uv-ui-hooks': link:../hooks
-      '@coderxwx/uv-ui-utils': link:../utils
 
 packages:
 

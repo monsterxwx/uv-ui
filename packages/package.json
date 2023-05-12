@@ -1,0 +1,32 @@
+{
+  "name": "uv-ui",
+  "private": false,
+  "version": "1.0.16",
+  "main": "components/index.js",
+  "module": "components/index.js",
+  "description": "基于vue3的移动端组件库",
+  "scripts": {
+    "prebuild": "node modify-package-json.js",
+    "build": "pnpm prebuild && vite build",
+    "lint": "eslint ./src/**/*.{js,jsx,vue,ts,tsx} --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monsterxwx/uv-ui",
+    "directory": "packages/uv-ui"
+  },
+  "keywords": [
+    "uv-ui",
+    "vue3组件库",
+    "mobile",
+    "frontend",
+    "components"
+  ],
+  "files": [
+    "es",
+    "lib"
+  ],
+  "author": "coderxwx",
+  "license": "MIT",
+  "dependencies": {}
+}
