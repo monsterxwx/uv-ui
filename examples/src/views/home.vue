@@ -1,71 +1,96 @@
 <template>
-  <div>
-    <uvButton
-      type="primary"
-      loading
-      @click="open"
+  <div
+    class="menu"
+    ref="scrollRef"
+  >
+    <template
+      v-for="(item,index) in menuStore.menuList"
+      :key="item.name || index"
     >
-      切换
-    </uvButton>
-    <uvPopup v-model="show" round>
-      <div style="height: 300px;">
-        111
-      </div>
-    </uvPopup>
-    <uvInput v-model="test1" border clearable />
-
-    <div class="iconBox">
       <div
-        class="icon"
-        v-for="item in iconArr"
-        :key="item.name"
+        class="sort"
+        v-if="item.meta.title"
+        @click.stop
       >
-        <uv-icon
-          size="30"
-          :name="item.name"
-        />
-        <div class="itemName">
-          {{ item.name }}
-        </div>
+        {{ item.meta.title }}
       </div>
-    </div>
+      <li
+        class="menu-item"
+        v-else
+        @click="switchMenu(item,index)"
+      >
+        <div> {{ item.meta.name }}</div>
+        <div>
+          <uv-icon
+            size="14"
+            color="#bac6d4"
+            name="arrow-right"
+          />
+        </div>
+      </li>
+    </template>
   </div>
 </template>
 
 <script setup>
-import iconArr from './iconName.js'
-import { uvPopup, uvButton, uvInput, uvIcon } from 'uv-ui'
-import { ref } from 'vue'
+import { uvIcon } from 'uv-ui'
+import { ref, onActivated, nextTick } from 'vue'
+import { useRouter, onBeforeRouteLeave } from 'vue-router'
+import useStore from '@/stores/common.js'
 
-const show = ref(false)
-const test1 = ref('')
-const open = () => {
-  show.value = !show.value
+const router = useRouter()
+
+const menuStore = useStore()
+
+function capitalizeFirstLetter (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+const switchMenu = (item) => {
+  menuStore.currentTitle = capitalizeFirstLetter(item.name)
+  router.push({
+    name: item.name
+  })
+}
+const scrollRef = ref(null)
+const scrollTop = ref(0)
+onActivated(() => {
+  nextTick(() => {
+    scrollRef.value.scrollTop = scrollTop.value
+  })
+})
+onBeforeRouteLeave((to, from, next) => {
+  scrollTop.value = scrollRef.value.scrollTop
+  next()
+})
 </script>
 
 <style lang="scss" scoped>
-.iconBox {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  .icon {
+.menu {
+  overflow: auto;
+  height: 100%;
+  li {
+    list-style: none;
+  }
+  .sort {
+    margin: 24px 0 8px 20px;
+    font-size: 14px;
+    color: #969799;
+  }
+  .menu-item {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 5px;
-    width: 31%;
-    border-radius: 4px;
+    margin: 0 14px 12px;
+    padding: 0 14px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 99px;
+    color: #34495e;
     background-color: #ffffff;
-    flex-direction: column;
-    .itemName {
-      margin-top: 10px;
-      font-size: 12px;
-    }
     &:active {
       background-color: #eeeeee;
-      opacity: 0.8;
     }
   }
 }
