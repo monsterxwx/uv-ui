@@ -143,7 +143,7 @@
 
 <script setup>
 import demoBlock from '../../../demo/demo-block.vue'
-import uvButton from '../button.vue'
+import { uvButton } from 'uv-ui'
 </script>
 
 <style lang="scss" scoped>
