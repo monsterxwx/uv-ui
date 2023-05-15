@@ -19,7 +19,7 @@ onMounted(()=>{
     v-for="item in 8"
     :key="item"
     :text="'文字'+item"
-    icon-name="picture"
+    icon-name="modular"
   />
 </uv-grid>
 ```
@@ -34,7 +34,7 @@ onMounted(()=>{
     v-for="item in 9"
     :key="item"
     :text="'文字'+item"
-    icon-name="picture"
+    icon-name="modular"
   />
 </uv-grid>
  ```
@@ -49,7 +49,7 @@ onMounted(()=>{
     v-for="item in 8"
     :key="item"
     :text="'文字'+item"
-    icon-name="picture"
+    icon-name="modular"
   />
 </uv-grid>
  ```
@@ -64,7 +64,7 @@ onMounted(()=>{
     v-for="item in 8"
     :key="item"
     :text="'文字'+item"
-    icon-name="picture"
+    icon-name="modular"
     @click="handleClick(item)"
   />
 </uv-grid>

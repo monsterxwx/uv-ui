@@ -310,37 +310,37 @@ export default [
       name: 'WaterMark 水印'
     },
     component: () => import('../../../packages/components/water-mark/demo/index.vue')
+  },
+  {
+    path: '',
+    meta: {
+      title: '导航组件'
+    }
+  },
+  {
+    path: '/tab',
+    name: 'tab',
+    meta: {
+      name: 'Tab 标签页'
+    },
+    component: () => import('../../../packages/components/tab/demo/index.vue')
+  },
+  {
+    path: '/grid',
+    name: 'grid',
+    meta: {
+      name: 'Grid 宫格'
+    },
+    component: () => import('../../../packages/components/grid/demo/index.vue')
+  },
+  {
+    path: '/nav-bar',
+    name: 'nav-bar',
+    meta: {
+      name: 'NavBar 导航栏'
+    },
+    component: () => import('../../../packages/components/nav-bar/demo/index.vue')
   }
-  // {
-  //   path: '',
-  //   meta: {
-  //     title: '导航组件'
-  //   }
-  // },
-  // {
-  //   path: '/tab',
-  //   name: 'tab',
-  //   meta: {
-  //     name: 'Tab 标签页'
-  //   },
-  //   component: () => import('../../../packages/components/tab/demo/index.vue')
-  // },
-  // {
-  //   path: '/grid',
-  //   name: 'grid',
-  //   meta: {
-  //     name: 'Grid 宫格'
-  //   },
-  //   component: () => import('../../../packages/components/grid/demo/index.vue')
-  // },
-  // {
-  //   path: '/nav-bar',
-  //   name: 'nav-bar',
-  //   meta: {
-  //     name: 'NavBar 导航栏'
-  //   },
-  //   component: () => import('../../../packages/components/nav-bar/demo/index.vue')
-  // },
   // {
   //   path: '/tab-bar',
   //   name: 'tab-bar',
