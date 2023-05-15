@@ -28,7 +28,7 @@ onMounted(()=>{
 通过 `lineWidth` 设置线宽度,通过 `lineColor` 设置线颜色
 
  ```html
-<uv-side-bar lineWidth='10px' lineColor='green' v-model="activeIndex" :list="list">
+<uv-side-bar lineWidth='7px' lineColor='green' v-model="activeIndex" :list="list">
   <div v-show="activeIndex===0">1</div>
   <div v-show="activeIndex===1">2</div>
 </uv-side-bar>

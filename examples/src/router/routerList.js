@@ -340,29 +340,29 @@ export default [
       name: 'NavBar 导航栏'
     },
     component: () => import('../../../packages/components/nav-bar/demo/index.vue')
+  },
+  {
+    path: '/tab-bar',
+    name: 'tab-bar',
+    meta: {
+      name: 'TabBar 标签栏'
+    },
+    component: () => import('../../../packages/components/tab-bar/demo/index.vue')
+  },
+  {
+    path: '/side-bar',
+    name: 'side-bar',
+    meta: {
+      name: 'SideBar 侧边导航'
+    },
+    component: () => import('../../../packages/components/side-bar/demo/index.vue')
+  },
+  {
+    path: '/pagination',
+    name: 'pagination',
+    meta: {
+      name: 'Pagination 分页'
+    },
+    component: () => import('../../../packages/components/pagination/demo/index.vue')
   }
-  // {
-  //   path: '/tab-bar',
-  //   name: 'tab-bar',
-  //   meta: {
-  //     name: 'TabBar 标签栏'
-  //   },
-  //   component: () => import('../../../packages/components/tab-bar/demo/index.vue')
-  // },
-  // {
-  //   path: '/side-bar',
-  //   name: 'side-bar',
-  //   meta: {
-  //     name: 'SideBar 侧边导航'
-  //   },
-  //   component: () => import('../../../packages/components/side-bar/demo/index.vue')
-  // },
-  // {
-  //   path: '/pagination',
-  //   name: 'pagination',
-  //   meta: {
-  //     name: 'Pagination 分页'
-  //   },
-  //   component: () => import('../../../packages/components/pagination/demo/index.vue')
-  // }
 ]

@@ -30,8 +30,8 @@ onMounted(()=>{
 通过插槽名为 `icon` 自定义图标,通过插槽名为 `text` 自定义文字效果
 
  ```html
-<uv-tab-bar active-color="green" v-model="active1">
-  <uv-tab-bar-item>
+<uv-tab-bar :fixed="false" active-color="green" v-model="active1">
+  <uv-tab-bar-item v-for="item in 3" :key="item">
     <template #icon>
       icon
     </template>
