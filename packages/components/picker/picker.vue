@@ -54,7 +54,7 @@
 
 <script setup>
 
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, inject } from 'vue'
 import uvPopup from '../popup'
 import { throttle } from 'lodash-es'
 const props = defineProps({
@@ -86,6 +86,9 @@ const props = defineProps({
   }
 })
 const emit = defineEmits(['update:show', 'update:modelValue', 'change', 'cancle', 'confim'])
+
+const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
+
 const showPop = ref(false)
 watch(() => props.show, (newValue) => {
   showPop.value = newValue
@@ -175,6 +178,9 @@ function cancleHandle () {
 function confimHandle () {
   emit('confim')
   emit('update:modelValue', getCurrentValue())
+  if (parentProps) {
+    validateBlurOrChange('blur')
+  }
   showPop.value = false
 }
 
