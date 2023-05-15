@@ -98,93 +98,93 @@ export default [
       name: 'Checkbox 多选框'
     },
     component: () => import('../../../packages/components/checkbox/demo/index.vue')
+  },
+  {
+    path: '/radio',
+    name: 'radio',
+    meta: {
+      name: 'Radio 单选框'
+    },
+    component: () => import('../../../packages/components/radio/demo/index.vue')
+  },
+  {
+    path: '/num-input',
+    name: 'num-input',
+    meta: {
+      name: 'NumInput 数字键盘'
+    },
+    component: () => import('../../../packages/components/num-input/demo/index.vue')
+  },
+  {
+    path: '/picker',
+    name: 'picker',
+    meta: {
+      name: 'Picker 选择器'
+    },
+    component: () => import('../../../packages/components/picker/demo/index.vue')
+  },
+  {
+    path: '/form',
+    name: 'form',
+    meta: {
+      name: 'Form 表单'
+    },
+    component: () => import('../../../packages/components/form/demo/index.vue')
+  },
+  {
+    path: '/search',
+    name: 'search',
+    meta: {
+      name: 'Search 搜索框'
+    },
+    component: () => import('../../../packages/components/search/demo/index.vue')
+  },
+  {
+    path: '/slider',
+    name: 'slider',
+    meta: {
+      name: 'Slider 滑块'
+    },
+    component: () => import('../../../packages/components/slider/demo/index.vue')
+  },
+  {
+    path: '/switch',
+    name: 'switch',
+    meta: {
+      name: 'Switch 开关'
+    },
+    component: () => import('../../../packages/components/switch/demo/index.vue')
+  },
+  {
+    path: '/stepper',
+    name: 'stepper',
+    meta: {
+      name: 'Stepper 步进器'
+    },
+    component: () => import('../../../packages/components/stepper/demo/index.vue')
+  },
+  {
+    path: '/signature',
+    name: 'signature',
+    meta: {
+      name: 'Signature 签名'
+    },
+    component: () => import('../../../packages/components/signature/demo/index.vue')
+  },
+  {
+    path: '/calendar',
+    name: 'calendar',
+    meta: {
+      name: 'Calendar 日历'
+    },
+    component: () => import('../../../packages/components/calendar/demo/index.vue')
+  },
+  {
+    path: '',
+    meta: {
+      title: '反馈组件'
+    }
   }
-  // {
-  //   path: '/radio',
-  //   name: 'radio',
-  //   meta: {
-  //     name: 'Radio 单选框'
-  //   },
-  //   component: () => import('../../../packages/components/radio/demo/index.vue')
-  // },
-  // {
-  //   path: '/num-input',
-  //   name: 'num-input',
-  //   meta: {
-  //     name: 'NumInput 数字键盘'
-  //   },
-  //   component: () => import('../../../packages/components/num-input/demo/index.vue')
-  // },
-  // {
-  //   path: '/picker',
-  //   name: 'picker',
-  //   meta: {
-  //     name: 'Picker 选择器'
-  //   },
-  //   component: () => import('../../../packages/components/picker/demo/index.vue')
-  // },
-  // {
-  //   path: '/form',
-  //   name: 'form',
-  //   meta: {
-  //     name: 'Form 表单'
-  //   },
-  //   component: () => import('../../../packages/components/form/demo/index.vue')
-  // },
-  // {
-  //   path: '/search',
-  //   name: 'search',
-  //   meta: {
-  //     name: 'Search 搜索框'
-  //   },
-  //   component: () => import('../../../packages/components/search/demo/index.vue')
-  // },
-  // {
-  //   path: '/slider',
-  //   name: 'slider',
-  //   meta: {
-  //     name: 'Slider 滑块'
-  //   },
-  //   component: () => import('../../../packages/components/slider/demo/index.vue')
-  // },
-  // {
-  //   path: '/switch',
-  //   name: 'switch',
-  //   meta: {
-  //     name: 'Switch 开关'
-  //   },
-  //   component: () => import('../../../packages/components/switch/demo/index.vue')
-  // },
-  // {
-  //   path: '/stepper',
-  //   name: 'stepper',
-  //   meta: {
-  //     name: 'Stepper 步进器'
-  //   },
-  //   component: () => import('../../../packages/components/stepper/demo/index.vue')
-  // },
-  // {
-  //   path: '/signature',
-  //   name: 'signature',
-  //   meta: {
-  //     name: 'Signature 签名'
-  //   },
-  //   component: () => import('../../../packages/components/signature/demo/index.vue')
-  // },
-  // {
-  //   path: '/calendar',
-  //   name: 'calendar',
-  //   meta: {
-  //     name: 'Calendar 日历'
-  //   },
-  //   component: () => import('../../../packages/components/calendar/demo/index.vue')
-  // },
-  // {
-  //   path: '',
-  //   meta: {
-  //     title: '反馈组件'
-  //   }
-  // },
   // {
   //   path: '/action-sheet',
   //   name: 'action-sheet',
