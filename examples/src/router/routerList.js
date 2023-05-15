@@ -184,134 +184,133 @@ export default [
     meta: {
       title: '反馈组件'
     }
+  },
+  {
+    path: '/action-sheet',
+    name: 'action-sheet',
+    meta: {
+      name: 'ActionSheet 动作面板'
+    },
+    component: () => import('../../../packages/components/action-sheet/demo/index.vue')
+  },
+  {
+    path: '/overlay',
+    name: 'overlay',
+    meta: {
+      name: 'Overlay 遮罩层'
+    },
+    component: () => import('../../../packages/components/overlay/demo/index.vue')
+  },
+  {
+    path: '/dialog',
+    name: 'dialog',
+    meta: {
+      name: 'Dialog 弹出框'
+    },
+    component: () => import('../../../packages/components/dialog/demo/index.vue')
+  },
+  {
+    path: '/swipe-cell',
+    name: 'swipe-cell',
+    meta: {
+      name: 'SwipeCell 滑动单元格'
+    },
+    component: () => import('../../../packages/components/swipe-cell/demo/index.vue')
+  },
+  {
+    path: '/rate',
+    name: 'rate',
+    meta: {
+      name: 'Rate 评分'
+    },
+    component: () => import('../../../packages/components/rate/demo/index.vue')
+  },
+  {
+    path: '/divider',
+    name: 'divider',
+    meta: {
+      name: 'Divider 分割线'
+    },
+    component: () => import('../../../packages/components/divider/demo/index.vue')
+  },
+  {
+    path: '',
+    meta: {
+      title: '展示组件'
+    }
+  },
+  {
+    path: '/collapse',
+    name: 'collapse',
+    meta: {
+      name: 'Collapse 折叠面板'
+    },
+    component: () => import('../../../packages/components/collapse/demo/index.vue')
+  },
+  {
+    path: '/notice-bar',
+    name: 'notice-bar',
+    meta: {
+      name: 'NoticeBar 通知栏'
+    },
+    component: () => import('../../../packages/components/notice-bar/demo/index.vue')
+  },
+  {
+    path: '/popover',
+    name: 'popover',
+    meta: {
+      name: 'Popover 气泡弹出框'
+    },
+    component: () => import('../../../packages/components/popover/demo/index.vue')
+  },
+  {
+    path: '/swipe',
+    name: 'swipe',
+    meta: {
+      name: 'Swipe 轮播'
+    },
+    component: () => import('../../../packages/components/swipe/demo/index.vue')
+  },
+  {
+    path: '/water-waves',
+    name: 'water-waves',
+    meta: {
+      name: 'WaterWaves 水波球'
+    },
+    component: () => import('../../../packages/components/water-waves/demo/index.vue')
+  },
+  {
+    path: '/count-to',
+    name: 'count-to',
+    meta: {
+      name: 'CountTo 数字滚动'
+    },
+    component: () => import('../../../packages/components/count-to/demo/index.vue')
+  },
+  {
+    path: '/steps',
+    name: 'steps',
+    meta: {
+      name: 'Steps 步骤条'
+    },
+    component: () => import('../../../packages/components/steps/demo/index.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    meta: {
+      name: 'Table 表格'
+    },
+    component: () => import('../../../packages/components/table/demo/index.vue')
+  },
+  {
+    path: '/water-mark',
+    name: 'water-mark',
+    meta: {
+      name: 'WaterMark 水印'
+    },
+    component: () => import('../../../packages/components/water-mark/demo/index.vue')
   }
-  // {
-  //   path: '/action-sheet',
-  //   name: 'action-sheet',
-  //   meta: {
-  //     name: 'ActionSheet 动作面板'
-  //   },
-  //   component: () => import('../../../packages/components/action-sheet/demo/index.vue')
-  // },
-  // {
-  //   path: '/overlay',
-  //   name: 'overlay',
-  //   meta: {
-  //     name: 'Overlay 遮罩层'
-  //   },
-  //   component: () => import('../../../packages/components/overlay/demo/index.vue')
-  // },
-  // {
-  //   path: '/dialog',
-  //   name: 'dialog',
-  //   meta: {
-  //     name: 'Dialog 弹出框'
-  //   },
-  //   component: () => import('../../../packages/components/dialog/demo/index.vue')
-  // },
-  // {
-  //   path: '/swipe-cell',
-  //   name: 'swipe-cell',
-  //   meta: {
-  //     name: 'SwipeCell 滑动单元格'
-  //   },
-  //   component: () => import('../../../packages/components/swipe-cell/demo/index.vue')
-  // },
-  // {
-  //   path: '/rate',
-  //   name: 'rate',
-  //   meta: {
-  //     name: 'Rate 评分'
-  //   },
-  //   component: () => import('../../../packages/components/rate/demo/index.vue')
-  // },
-
-  // {
-  //   path: '/divider',
-  //   name: 'divider',
-  //   meta: {
-  //     name: 'Divider 分割线'
-  //   },
-  //   component: () => import('../../../packages/components/divider/demo/index.vue')
-  // },
-  // {
-  //   path: '',
-  //   meta: {
-  //     title: '展示组件'
-  //   }
-  // },
-  // {
-  //   path: '/collapse',
-  //   name: 'collapse',
-  //   meta: {
-  //     name: 'Collapse 折叠面板'
-  //   },
-  //   component: () => import('../../../packages/components/collapse/demo/index.vue')
-  // },
-  // {
-  //   path: '/notice-bar',
-  //   name: 'notice-bar',
-  //   meta: {
-  //     name: 'NoticeBar 通知栏'
-  //   },
-  //   component: () => import('../../../packages/components/notice-bar/demo/index.vue')
-  // },
-  // {
-  //   path: '/popover',
-  //   name: 'popover',
-  //   meta: {
-  //     name: 'Popover 气泡弹出框'
-  //   },
-  //   component: () => import('../../../packages/components/popover/demo/index.vue')
-  // },
-  // {
-  //   path: '/swipe',
-  //   name: 'swipe',
-  //   meta: {
-  //     name: 'Swipe 轮播'
-  //   },
-  //   component: () => import('../../../packages/components/swipe/demo/index.vue')
-  // },
-  // {
-  //   path: '/water-waves',
-  //   name: 'water-waves',
-  //   meta: {
-  //     name: 'WaterWaves 水波球'
-  //   },
-  //   component: () => import('../../../packages/components/water-waves/demo/index.vue')
-  // },
-  // {
-  //   path: '/count-to',
-  //   name: 'count-to',
-  //   meta: {
-  //     name: 'CountTo 数字滚动'
-  //   },
-  //   component: () => import('../../../packages/components/count-to/demo/index.vue')
-  // },
-  // {
-  //   path: '/steps',
-  //   name: 'steps',
-  //   meta: {
-  //     name: 'Steps 步骤条'
-  //   },
-  //   component: () => import('../../../packages/components/steps/demo/index.vue')
-  // },
-  // {
-  //   path: '/table',
-  //   name: 'table',
-  //   meta: {
-  //     name: 'Table 表格'
-  //   },
-  //   component: () => import('../../../packages/components/table/demo/index.vue')
-  // },
-  // {
-  //   path: '/water-mark',
-  //   name: 'water-mark',
-  //   meta: {
-  //     name: 'WaterMark 水印'
-  //   },
-  //   component: () => import('../../../packages/components/water-mark/demo/index.vue')
-  // },
   // {
   //   path: '',
   //   meta: {
