@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-
+import uvIcon from '../icon'
 import { ref, watch, inject } from 'vue'
 import { formatNumber } from '../../utils/index.js'
 const props = defineProps({

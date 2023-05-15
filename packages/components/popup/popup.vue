@@ -1,5 +1,5 @@
 <template>
-  <div class="uv-popup">
+  <div class="uv-popup" @touchmove.prevent>
     <overLay
       :overlay="overlay"
       :show="modelValue"
