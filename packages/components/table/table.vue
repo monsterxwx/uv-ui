@@ -10,13 +10,12 @@
           v-for="(item,index) in columns"
           :key="item.prop || index"
         >
-          <template v-if="item.titleSlot">
-            <slot
-              :name="item.titleSlot"
-              :data="item"
-            />
-          </template>
-          <span v-else> {{ item.title }}</span>
+          <slot
+            :name="item.titleSlot"
+            :data="item"
+          >
+            {{ item.title }}
+          </slot>
         </div>
       </div>
     </div>
