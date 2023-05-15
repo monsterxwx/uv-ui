@@ -84,7 +84,7 @@ const backIndex = () => {
     overflow: auto;
     min-height: 0;
     flex: 1 0;
-    touch-action: auto;
+    touch-action: none;
   }
 }
 </style>

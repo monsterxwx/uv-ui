@@ -6,6 +6,7 @@ import router from './router'
 import 'normalize.css'
 import './styles/common.scss'
 // import 'uv-ui/dist/es/style.css'
+import './utils/touch-emulator'
 
 const app = createApp(App)
 
