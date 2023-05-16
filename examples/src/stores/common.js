@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import routerList from '@/router/routerList'
 
-const useCommonStore = defineStore({
+export const useCommonStore = defineStore({
   id: 'common',
   state: () => {
     return {
@@ -13,4 +13,3 @@ const useCommonStore = defineStore({
 
   }
 })
-export default useCommonStore

@@ -36,18 +36,12 @@
 import { uvIcon } from 'uv-ui'
 import { ref, onActivated, nextTick } from 'vue'
 import { useRouter, onBeforeRouteLeave } from 'vue-router'
-import useStore from '@/stores/common.js'
+import { useCommonStore } from '@/stores/common.js'
 
+const menuStore = useCommonStore()
 const router = useRouter()
 
-const menuStore = useStore()
-
-function capitalizeFirstLetter (str) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
 const switchMenu = (item) => {
-  menuStore.currentTitle = capitalizeFirstLetter(item.name)
   router.push({
     name: item.name
   })

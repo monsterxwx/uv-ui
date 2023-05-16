@@ -1,9 +1,9 @@
 <script setup>
 import { uvNavBar } from 'uv-ui'
 import { useRouter, useRoute } from 'vue-router'
-import useStore from '@/stores/common.js'
+import { useCommonStore } from '@/stores/common.js'
 
-const menuStore = useStore()
+const menuStore = useCommonStore()
 const gitAddress = {
   github: 'https://github.com/monsterxwx/uv-ui',
   gitee: 'https://gitee.com/monsterwx/uv-ui'
@@ -15,7 +15,6 @@ const toPage = (url) => {
 }
 const backIndex = () => {
   if (route.fullPath === '/uv-ui') return
-  menuStore.currentTitle = 'UV-UI'
   router.back()
 }
 </script>
