@@ -38,6 +38,7 @@ export default {
       '/component/': [
         {
           text: '基础组件',
+          collapsed: false,
           items: [
             { text: 'Button 按钮', link: '/component/button' },
             { text: 'Cell 单元格', link: '/component/cell' },
@@ -49,6 +50,7 @@ export default {
         },
         {
           text: '表单组件',
+          collapsed: false,
           items: [
             { text: 'Input 输入框', link: '/component/input' },
             { text: 'Select 选择器', link: '/component/select' },
@@ -67,6 +69,7 @@ export default {
         },
         {
           text: '反馈组件',
+          collapsed: false,
           items: [
             { text: 'ActionSheet 动作面板', link: '/component/actionSheet' },
             { text: 'Overlay 遮罩层', link: '/component/overlay' },
@@ -78,6 +81,7 @@ export default {
         },
         {
           text: '展示组件',
+          collapsed: false,
           items: [
             { text: 'Collapse 折叠面板', link: '/component/collapse' },
             { text: 'NoticeBar 通知栏', link: '/component/noticeBar' },
@@ -92,6 +96,7 @@ export default {
         },
         {
           text: '导航组件',
+          collapsed: false,
           items: [
             { text: 'Tab 标签页', link: '/component/tab' },
             { text: 'Grid 宫格', link: '/component/grid' },
