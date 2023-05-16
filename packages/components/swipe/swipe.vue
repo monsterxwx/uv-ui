@@ -36,9 +36,15 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['change'])
+
 const state = reactive({
   activeIndex: 0, // 当前活跃的子项
   width: 0 // 屏幕宽度
+})
+
+watch(() => state.activeIndex, (newValue) => {
+  emit('change', newValue)
 })
 
 const addAnimation = () => {

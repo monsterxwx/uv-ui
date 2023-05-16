@@ -364,5 +364,13 @@ export default [
       name: 'Pagination 分页'
     },
     component: () => import('../../../packages/components/pagination/demo/index.vue')
+  },
+  {
+    path: '/back-top',
+    name: 'back-top',
+    meta: {
+      name: 'BackTop 分页'
+    },
+    component: () => import('../../../packages/components/back-top/demo/index.vue')
   }
 ]

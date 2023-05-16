@@ -109,3 +109,8 @@ export const scrollLeftTo = (scroller, to, duration = 0.3) => {
   }
   animate()
 }
+
+export const getScrollTop = (el) => {
+  const top = 'scrollTop' in el ? el.scrollTop : el.pageYOffset
+  return Math.max(top, 0)
+}

@@ -79,6 +79,15 @@ const arr = [
   },
   {
     name: 'select-bold'
+  },
+  {
+    name: 'bottom'
+  },
+  {
+    name: 'upload'
+  },
+  {
+    name: 'user'
   }
 ]
 

@@ -49,6 +49,7 @@ import uvTable from './table'
 import uvCalendar from './calendar'
 import uvSignature from './signature'
 import uvWaterMark from './water-mark'
+import uvBackTop from './back-top'
 
 const components = [
   uvButton,
@@ -99,7 +100,8 @@ const components = [
   uvTable,
   uvCalendar,
   uvSignature,
-  uvWaterMark
+  uvWaterMark,
+  uvBackTop
 ]
 
 const install = (Vue) => {
@@ -157,7 +159,8 @@ export {
   uvTable,
   uvCalendar,
   uvSignature,
-  uvWaterMark
+  uvWaterMark,
+  uvBackTop
 }
 
 export default install
