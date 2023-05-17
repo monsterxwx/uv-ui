@@ -369,7 +369,7 @@ export default [
     path: '/back-top',
     name: 'back-top',
     meta: {
-      name: 'BackTop 分页'
+      name: 'BackTop 回到顶部'
     },
     component: () => import('../../../packages/components/back-top/demo/index.vue')
   }

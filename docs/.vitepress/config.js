@@ -103,7 +103,8 @@ export default {
             { text: 'NavBar 导航栏', link: '/component/navBar' },
             { text: 'TabBar 标签栏', link: '/component/tabBar' },
             { text: 'SideBar 侧边导航', link: '/component/sideBar' },
-            { text: 'Pagination 分页', link: '/component/pagination' }
+            { text: 'Pagination 分页', link: '/component/pagination' },
+            { text: 'BackTop 回到顶部', link: '/component/backTop' }
           ]
         },
       ]
