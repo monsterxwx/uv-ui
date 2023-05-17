@@ -1,7 +1,7 @@
 {
   "name": "uv-ui",
   "private": false,
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "components/index.js",
   "module": "components/index.js",
   "description": "基于vue3的移动端组件库",
