@@ -14,7 +14,7 @@
 <script setup>
 
 import { onMounted, onUnmounted, reactive, watch, computed } from 'vue'
-import { useRequestAnimationFrame } from '../../utils/index.js'
+import { useRequestAnimationFrame } from '../../hooks'
 
 const { requestAnimationFrame, cancelAnimationFrame } = useRequestAnimationFrame()
 
