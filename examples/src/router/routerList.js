@@ -304,12 +304,12 @@ export default [
     component: () => import('../../../packages/components/table/demo/index.vue')
   },
   {
-    path: '/water-mark',
-    name: 'water-mark',
+    path: '/tag',
+    name: 'tag',
     meta: {
-      name: 'WaterMark 水印'
+      name: 'Tag 标签'
     },
-    component: () => import('../../../packages/components/water-mark/demo/index.vue')
+    component: () => import('../../../packages/components/tag/demo/index.vue')
   },
   {
     path: '/text-ellipsis',
@@ -318,6 +318,14 @@ export default [
       name: 'TextEllipsis 文本省略'
     },
     component: () => import('../../../packages/components/text-ellipsis/demo/index.vue')
+  },
+  {
+    path: '/water-mark',
+    name: 'water-mark',
+    meta: {
+      name: 'WaterMark 水印'
+    },
+    component: () => import('../../../packages/components/water-mark/demo/index.vue')
   },
   {
     path: '',

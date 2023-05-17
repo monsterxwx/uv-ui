@@ -51,6 +51,7 @@ import uvSignature from './signature'
 import uvWaterMark from './water-mark'
 import uvBackTop from './back-top'
 import uvTextEllipsis from './text-ellipsis'
+import uvTag from './tag'
 
 const components = [
   uvButton,
@@ -103,7 +104,8 @@ const components = [
   uvSignature,
   uvWaterMark,
   uvBackTop,
-  uvTextEllipsis
+  uvTextEllipsis,
+  uvTag
 ]
 
 const install = (Vue) => {
@@ -163,7 +165,8 @@ export {
   uvSignature,
   uvWaterMark,
   uvBackTop,
-  uvTextEllipsis
+  uvTextEllipsis,
+  uvTag
 }
 
 export default install
