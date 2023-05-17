@@ -63,3 +63,9 @@ export const getScrollTop = (el) => {
   const top = 'scrollTop' in el ? el.scrollTop : el.pageYOffset
   return Math.max(top, 0)
 }
+
+export const pxToNum = (value) => {
+  if (!value) return 0
+  const match = value.match(/^\d*(\.\d*)?/)
+  return match ? Number(match[0]) : 0
+}

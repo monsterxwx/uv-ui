@@ -312,6 +312,14 @@ export default [
     component: () => import('../../../packages/components/water-mark/demo/index.vue')
   },
   {
+    path: '/text-ellipsis',
+    name: 'text-ellipsis',
+    meta: {
+      name: 'TextEllipsis 文本省略'
+    },
+    component: () => import('../../../packages/components/text-ellipsis/demo/index.vue')
+  },
+  {
     path: '',
     meta: {
       title: '导航组件'

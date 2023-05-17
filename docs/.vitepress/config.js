@@ -91,7 +91,8 @@ export default {
             { text: 'CountTo 数字滚动', link: '/component/countTo' },
             { text: 'Steps 步骤条', link: '/component/steps' },
             { text: 'Table 表格', link: '/component/table' },
-            { text: 'WaterMark 水印', link: '/component/waterMark' }
+            { text: 'WaterMark 水印', link: '/component/waterMark' },
+            { text: 'TextEllipsis 文本省略', link: '/component/textEllipsis' }
           ]
         },
         {
