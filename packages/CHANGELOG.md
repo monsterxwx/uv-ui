@@ -1,3 +1,13 @@
+## [1.0.19](https://github.com/monsterxwx/uv-ui/compare/1.0.18...1.0.19) (2023-05-17)
+
+
+### Features
+
+* 新增text-ellipsis组件 ([e2e6ae0](https://github.com/monsterxwx/uv-ui/commit/e2e6ae0c5867fd6aa7ee197307a8ef6a8c2b917a))
+* 增加tag组件 ([39bc60c](https://github.com/monsterxwx/uv-ui/commit/39bc60ca0fb9588c0587d0b6eef6970e15bf465f))
+
+
+
 ## 1.0.18 (2023-05-17)
 
 
