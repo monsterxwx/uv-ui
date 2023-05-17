@@ -21,6 +21,7 @@
   "type": "module",
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.2.0",
+    "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.0.1",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.2",
