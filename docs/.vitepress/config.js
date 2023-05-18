@@ -89,6 +89,7 @@ export default {
             { text: 'Swipe 轮播', link: '/component/swipe' },
             { text: 'WaterWaves 水波球', link: '/component/waterWaves' },
             { text: 'CountTo 数字滚动', link: '/component/countTo' },
+            { text: 'Skeleton 骨架屏', link: '/component/skeleton' },
             { text: 'Steps 步骤条', link: '/component/steps' },
             { text: 'Table 表格', link: '/component/table' },
             { text: 'Tag 标签', link: '/component/tag' },

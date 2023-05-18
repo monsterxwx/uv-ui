@@ -288,6 +288,14 @@ export default [
     component: () => import('../../../packages/components/count-to/demo/index.vue')
   },
   {
+    path: '/skeleton',
+    name: 'skeleton',
+    meta: {
+      name: 'Skeleton 骨架屏'
+    },
+    component: () => import('../../../packages/components/skeleton/demo/index.vue')
+  },
+  {
     path: '/steps',
     name: 'steps',
     meta: {

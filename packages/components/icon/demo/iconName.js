@@ -88,6 +88,15 @@ const arr = [
   },
   {
     name: 'user'
+  },
+  {
+    name: 'photo'
+  },
+  {
+    name: 'photo-fail'
+  },
+  {
+    name: 'photograph'
   }
 ]
 

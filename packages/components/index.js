@@ -52,6 +52,11 @@ import uvWaterMark from './water-mark'
 import uvBackTop from './back-top'
 import uvTextEllipsis from './text-ellipsis'
 import uvTag from './tag'
+import uvSkeleton from './skeleton'
+import uvSkeletonAvatar from './skeleton-avatar'
+import uvSkeletonImage from './skeleton-image'
+import uvSkeletonParagraph from './skeleton-paragraph'
+import uvSkeletonTitle from './skeleton-title'
 
 const components = [
   uvButton,
@@ -105,7 +110,12 @@ const components = [
   uvWaterMark,
   uvBackTop,
   uvTextEllipsis,
-  uvTag
+  uvTag,
+  uvSkeleton,
+  uvSkeletonTitle,
+  uvSkeletonParagraph,
+  uvSkeletonImage,
+  uvSkeletonAvatar
 ]
 
 const install = (Vue) => {
@@ -166,7 +176,12 @@ export {
   uvWaterMark,
   uvBackTop,
   uvTextEllipsis,
-  uvTag
+  uvTag,
+  uvSkeleton,
+  uvSkeletonTitle,
+  uvSkeletonParagraph,
+  uvSkeletonImage,
+  uvSkeletonAvatar
 }
 
 export default install

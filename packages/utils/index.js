@@ -64,8 +64,23 @@ export const getScrollTop = (el) => {
   return Math.max(top, 0)
 }
 
+export const isDef = (val) => {
+  return val !== undefined && val !== null
+}
+
+export const isNumeric = (val) => {
+  return typeof val === 'number' || /^\d+(\.\d+)?$/.test(val)
+}
+
 export const pxToNum = (value) => {
   if (!value) return 0
   const match = value.match(/^\d*(\.\d*)?/)
   return match ? Number(match[0]) : 0
+}
+
+export const addUnit = (value) => {
+  if (isDef(value)) {
+    return isNumeric(value) ? `${value}px` : String(value)
+  }
+  return undefined
 }
