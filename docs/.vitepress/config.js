@@ -84,6 +84,7 @@ export default {
           collapsed: false,
           items: [
             { text: 'Collapse 折叠面板', link: '/component/collapse' },
+            { text: 'CountDown 倒计时', link: '/component/countDown' },
             { text: 'NoticeBar 通知栏', link: '/component/noticeBar' },
             { text: 'Popover 气泡弹出框', link: '/component/popover' },
             { text: 'Swipe 轮播', link: '/component/swipe' },
