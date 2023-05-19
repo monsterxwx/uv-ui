@@ -51,6 +51,9 @@ const arr = [
     name: 'hide'
   },
   {
+    name: 'browse'
+  },
+  {
     name: 'home'
   },
   {
@@ -58,9 +61,6 @@ const arr = [
   },
   {
     name: 'modular'
-  },
-  {
-    name: 'refresh'
   },
   {
     name: 'search'
@@ -97,6 +97,15 @@ const arr = [
   },
   {
     name: 'photograph'
+  },
+  {
+    name: 'play-circle-o'
+  },
+  {
+    name: 'pause-circle-o'
+  },
+  {
+    name: 'refresh'
   }
 ]
 

@@ -248,6 +248,14 @@ export default [
     component: () => import('../../../packages/components/collapse/demo/index.vue')
   },
   {
+    path: '/count-down',
+    name: 'count-down',
+    meta: {
+      name: 'CountDown 倒计时'
+    },
+    component: () => import('../../../packages/components/count-down/demo/index.vue')
+  },
+  {
     path: '/notice-bar',
     name: 'notice-bar',
     meta: {

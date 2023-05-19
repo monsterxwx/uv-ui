@@ -57,6 +57,7 @@ import uvSkeletonAvatar from './skeleton-avatar'
 import uvSkeletonImage from './skeleton-image'
 import uvSkeletonParagraph from './skeleton-paragraph'
 import uvSkeletonTitle from './skeleton-title'
+import uvCountDown from './count-down'
 
 const components = [
   uvButton,
@@ -115,7 +116,8 @@ const components = [
   uvSkeletonTitle,
   uvSkeletonParagraph,
   uvSkeletonImage,
-  uvSkeletonAvatar
+  uvSkeletonAvatar,
+  uvCountDown
 ]
 
 const install = (Vue) => {
@@ -181,7 +183,8 @@ export {
   uvSkeletonTitle,
   uvSkeletonParagraph,
   uvSkeletonImage,
-  uvSkeletonAvatar
+  uvSkeletonAvatar,
+  uvCountDown
 }
 
 export default install

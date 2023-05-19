@@ -84,3 +84,4 @@ export const addUnit = (value) => {
   }
   return undefined
 }
+export const inBrowser = typeof window !== 'undefined'
