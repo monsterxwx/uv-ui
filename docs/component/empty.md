@@ -33,6 +33,18 @@ onMounted(()=>{
 <uvEmpty image-size="80" image="https://fastly.jsdelivr.net/npm/@vant/assets/custom-empty-image.png" label="无数据" />
 ```
 
+## 图片插槽
+
+通过 `image` 插槽修改
+
+```html
+<uvEmpty label="无数据">
+  <template #image>
+    iamge
+  </template>
+</uvEmpty>
+```
+
 ## 自定义底部内容
 
 通过默认插槽修改底部内容
