@@ -304,6 +304,14 @@ export default [
     component: () => import('../../../packages/components/count-to/demo/index.vue')
   },
   {
+    path: '/progress',
+    name: 'progress',
+    meta: {
+      name: 'Progress 进度条'
+    },
+    component: () => import('../../../packages/components/progress/demo/index.vue')
+  },
+  {
     path: '/skeleton',
     name: 'skeleton',
     meta: {
