@@ -226,14 +226,6 @@ export default [
     component: () => import('../../../packages/components/rate/demo/index.vue')
   },
   {
-    path: '/divider',
-    name: 'divider',
-    meta: {
-      name: 'Divider 分割线'
-    },
-    component: () => import('../../../packages/components/divider/demo/index.vue')
-  },
-  {
     path: '',
     meta: {
       title: '展示组件'
@@ -254,6 +246,22 @@ export default [
       name: 'CountDown 倒计时'
     },
     component: () => import('../../../packages/components/count-down/demo/index.vue')
+  },
+  {
+    path: '/divider',
+    name: 'divider',
+    meta: {
+      name: 'Divider 分割线'
+    },
+    component: () => import('../../../packages/components/divider/demo/index.vue')
+  },
+  {
+    path: '/empty',
+    name: 'empty',
+    meta: {
+      name: 'Empty 空状态'
+    },
+    component: () => import('../../../packages/components/empty/demo/index.vue')
   },
   {
     path: '/notice-bar',

@@ -76,7 +76,6 @@ export default {
             { text: 'Dialog 弹出框', link: '/component/dialog' },
             { text: 'SwipeCell 滑动单元格', link: '/component/swipeCell' },
             { text: 'Rate 评分', link: '/component/rate' },
-            { text: 'Divider 分割线', link: '/component/divider' },
           ]
         },
         {
@@ -85,6 +84,8 @@ export default {
           items: [
             { text: 'Collapse 折叠面板', link: '/component/collapse' },
             { text: 'CountDown 倒计时', link: '/component/countDown' },
+            { text: 'Divider 分割线', link: '/component/divider' },
+            { text: 'Empty 空状态', link: '/component/empty' },
             { text: 'NoticeBar 通知栏', link: '/component/noticeBar' },
             { text: 'Popover 气泡弹出框', link: '/component/popover' },
             { text: 'Swipe 轮播', link: '/component/swipe' },
