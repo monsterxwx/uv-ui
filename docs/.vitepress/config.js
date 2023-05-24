@@ -89,6 +89,7 @@ export default {
             { text: 'NoticeBar 通知栏', link: '/component/noticeBar' },
             { text: 'Popover 气泡弹出框', link: '/component/popover' },
             { text: 'Progress 进度条', link: '/component/progress' },
+            { text: 'CircleProgress 环形进度条', link: '/component/circle-progress' },
             { text: 'Swipe 轮播', link: '/component/swipe' },
             { text: 'WaterWaves 水波球', link: '/component/waterWaves' },
             { text: 'CountTo 数字滚动', link: '/component/countTo' },

@@ -60,6 +60,7 @@ import uvSkeletonTitle from './skeleton-title'
 import uvCountDown from './count-down'
 import uvEmpty from './empty'
 import uvProgress from './progress'
+import uvCircleProgress from './circle-progress'
 
 const components = [
   uvButton,
@@ -121,7 +122,8 @@ const components = [
   uvSkeletonAvatar,
   uvCountDown,
   uvEmpty,
-  uvProgress
+  uvProgress,
+  uvCircleProgress
 ]
 
 const install = (Vue) => {
@@ -190,7 +192,8 @@ export {
   uvSkeletonAvatar,
   uvCountDown,
   uvEmpty,
-  uvProgress
+  uvProgress,
+  uvCircleProgress
 }
 
 export default install

@@ -312,6 +312,14 @@ export default [
     component: () => import('../../../packages/components/progress/demo/index.vue')
   },
   {
+    path: '/circle-progress',
+    name: 'circle-progress',
+    meta: {
+      name: 'CircleProgress 环形进度条'
+    },
+    component: () => import('../../../packages/components/circle-progress/demo/index.vue')
+  },
+  {
     path: '/skeleton',
     name: 'skeleton',
     meta: {

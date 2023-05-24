@@ -85,3 +85,11 @@ export const addUnit = (value) => {
   return undefined
 }
 export const inBrowser = typeof window !== 'undefined'
+
+export const _typeof = (obj) => {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+}
+
+export const isObject = (obj) => {
+  return _typeof(obj) === 'object'
+}
