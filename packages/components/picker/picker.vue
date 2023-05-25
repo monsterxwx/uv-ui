@@ -56,7 +56,7 @@
 
 import { ref, watch, computed, inject } from 'vue'
 import uvPopup from '../popup'
-import { throttle } from 'lodash-es'
+import { useThrottle } from '../../hooks'
 const props = defineProps({
   show: {
     type: Boolean,
@@ -151,7 +151,7 @@ function touchend () {
 
 const pickerBoxRef = ref(null)
 // 移动的实现
-const move = throttle((e) => {
+const move = useThrottle((e) => {
   offY.value = e.touches[0].clientY - startY
   if (offY.value > 36) {
     offY.value = 36
@@ -168,7 +168,7 @@ const move = throttle((e) => {
   }
 
   emit('change', getCurrentValue())
-})
+}, 20)
 
 function cancleHandle () {
   emit('change')
