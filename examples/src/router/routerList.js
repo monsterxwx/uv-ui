@@ -180,6 +180,14 @@ export default [
     component: () => import('../../../packages/components/calendar/demo/index.vue')
   },
   {
+    path: '/uploader',
+    name: 'uploader',
+    meta: {
+      name: 'Uploader 文件上传'
+    },
+    component: () => import('../../../packages/components/uploader/demo/index.vue')
+  },
+  {
     path: '',
     meta: {
       title: '反馈组件'
