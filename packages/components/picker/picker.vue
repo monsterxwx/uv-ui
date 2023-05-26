@@ -43,7 +43,7 @@
 
 <script setup>
 
-import { ref, inject, computed } from 'vue'
+import { ref, inject, computed, watch } from 'vue'
 import uvPopup from '../popup'
 import PickerColumn from './picker-column.vue'
 import { getColumnsType, formatCascadeColumns } from './utils.js'
@@ -107,7 +107,7 @@ const calcList = computed(() => {
         label: labelName,
         value: keyName,
         children: childrenName
-      }, selectValue)
+      }, temValue)
     default:
       return [list]
   }
@@ -116,6 +116,12 @@ const calcList = computed(() => {
 const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
 
 const temValue = ref([])
+
+watch(() => props.modelValue, (newValue) => {
+  temValue.value = newValue.split(',')
+}, {
+  immediate: true
+})
 
 const showPop = ref(false)
 

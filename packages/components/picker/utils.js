@@ -69,6 +69,5 @@ export function formatCascadeColumns (
     columnIndex++
     formatted.push(options)
   }
-  console.log('---cascade', formatted)
   return formatted
 }

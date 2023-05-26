@@ -67,7 +67,9 @@ const openPicker2 = () => {
 }
 const value = ref('温州')
 const value1 = ref('')
-const value2 = ref('浙江,温州,余杭区')
+const value2 = ref('')
+// const value2 = ref('浙江,温州,瓯海区')
+// const value2 = ref('福建,厦门,海沧区')
 const list = ref(
   [
     { value: '杭州' },
@@ -102,44 +104,44 @@ const list1 = ref(
 const list2 = [
   {
     label: '浙江',
-    value: 'Zhejiang',
+    value: '浙江',
     children: [
       {
         label: '杭州',
-        value: 'Hangzhou',
+        value: '杭州',
         children: [
-          { label: '西湖区', value: 'Xihu' },
-          { label: '余杭区', value: 'Yuhang' }
+          { label: '西湖区', value: '西湖区' },
+          { label: '余杭区', value: '余杭区' }
         ]
       },
       {
         label: '温州',
-        value: 'Wenzhou',
+        value: '温州',
         children: [
-          { label: '鹿城区', value: 'Lucheng' },
-          { label: '瓯海区', value: 'Ouhai' }
+          { label: '鹿城区', value: '鹿城区' },
+          { label: '瓯海区', value: '瓯海区' }
         ]
       }
     ]
   },
   {
     label: '福建',
-    value: 'Fujian',
+    value: '福建',
     children: [
       {
         label: '福州',
-        value: 'Fuzhou',
+        value: '福州',
         children: [
-          { label: '鼓楼区', value: 'Gulou' },
-          { label: '台江区', value: 'Taijiang' }
+          { label: '鼓楼区', value: '鼓楼区' },
+          { label: '台江区', value: '台江区' }
         ]
       },
       {
         label: '厦门',
-        value: 'Xiamen',
+        value: '厦门',
         children: [
-          { label: '思明区', value: 'Siming' },
-          { label: '海沧区', value: 'Haicang' }
+          { label: '思明区', value: '思明区' },
+          { label: '海沧区', value: '海沧区' }
         ]
       }
     ]
