@@ -124,6 +124,14 @@ export default [
     component: () => import('../../../packages/components/picker/demo/index.vue')
   },
   {
+    path: '/datetime-picker',
+    name: 'datetime-picker',
+    meta: {
+      name: 'DatetimePicker 日期时间选择器'
+    },
+    component: () => import('../../../packages/components/datetime-picker/demo/index.vue')
+  },
+  {
     path: '/form',
     name: 'form',
     meta: {

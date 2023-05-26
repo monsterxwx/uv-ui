@@ -24,29 +24,18 @@
           {{ rightName }}
         </div>
       </div>
-      <div
-        class="uv-picker-content"
-        @touchstart="touchstart"
-        @touchmove="touchmove"
-        @touchend="touchend"
-      >
-        <div
-          class="uv-picker-content-wrapper"
+      <div class="uv-picker-content">
+        <div class="uv-picker-content-wrapper" />
+        <PickerColumn
+          v-for="(item,index) in calcList"
+          :key="index"
+          :list="item"
+          :key-name="keyName"
+          :label-name="labelName"
+          :value="selectValue[index]"
+          @change="change($event,index)"
+          @first-open="firstOpen($event,index)"
         />
-        <ul
-          class="uv-picker-content-box"
-          ref="pickerBoxRef"
-          :style="getOffsetY"
-        >
-          <li
-            class="uv-picker-content-item"
-            v-for="(item, idx) in list"
-            :key="keyName || idx"
-            :style="pickerItemStyle(Number(idx))"
-          >
-            {{ item[keyName] || item }}
-          </li>
-        </ul>
       </div>
     </div>
   </uvPopup>
@@ -54,16 +43,14 @@
 
 <script setup>
 
-import { ref, watch, computed, inject } from 'vue'
+import { ref, inject, computed } from 'vue'
 import uvPopup from '../popup'
-import { useThrottle } from '../../hooks'
+import PickerColumn from './picker-column.vue'
+import { getColumnsType, formatCascadeColumns } from './utils.js'
+
 const props = defineProps({
-  show: {
-    type: Boolean,
-    default: false
-  },
   modelValue: {
-    type: String,
+    type: [String, Number],
     default: ''
   },
   title: {
@@ -79,111 +66,97 @@ const props = defineProps({
   },
   list: {
     type: Array,
-    required: true
+    default: () => ([])
   },
   keyName: {
-    type: String
+    type: [String, Number],
+    default: 'value'
+  },
+  labelName: {
+    type: [String, Number],
+    default: 'label'
+  },
+  childrenName: {
+    type: String,
+    default: 'children'
   }
 })
-const emit = defineEmits(['update:show', 'update:modelValue', 'change', 'cancle', 'confim'])
+const emit = defineEmits(['update:modelValue', 'change', 'column-change', 'cancle', 'confim'])
+
+const selectValue = computed(() => {
+  const value = String(props.modelValue)
+  const regex = /[\\/:\-\s]/
+  if (regex.test(value)) {
+    return value.split(/[\\/:\-\s]/)
+  }
+  return value.split(',')
+})
+
+const columnsType = computed(() =>
+  getColumnsType(props.list, props.childrenName)
+)
+
+const calcList = computed(() => {
+  const { list, labelName, keyName, childrenName } = props
+  switch (columnsType.value) {
+    case 'multiple':
+      return list
+    case 'cascade':
+      // return [list]
+      return formatCascadeColumns(list, {
+        label: labelName,
+        value: keyName,
+        children: childrenName
+      }, selectValue)
+    default:
+      return [list]
+  }
+})
 
 const { props: parentProps, validateBlurOrChange } = inject('form-item', {})
 
+const temValue = ref([])
+
 const showPop = ref(false)
-watch(() => props.show, (newValue) => {
-  showPop.value = newValue
-})
-watch(() => showPop.value, (newValue) => {
-  emit('update:show', newValue)
-})
 
-const offY = ref(null)
-
-const getOffsetY = computed(() => {
-  if (typeof offY.value === 'number') {
-    return {
-      transform: `translate(-50%, ${offY.value}px)`
-    }
-  } else {
-    return {
-      transform: 'translate(-50%, -18px)'
-    }
-  }
-})
-
-const activeIndex = ref(0)
-const colors = ['gray', '#ccc', '#ddd', '#eee']
-const scales = [0.96, 0.9, 0.88, 0.84]
-
-function pickerItemStyle (idx) {
-  let color = '#000'; let scale = 1; const len = colors.length - 1
-  if (idx > activeIndex.value) {
-    const _idx = idx - activeIndex.value > len ? len : idx - activeIndex.value - 1
-    color = colors[_idx]
-    scale = scales[_idx]
-  } else if (idx < activeIndex.value) {
-    const _idx = activeIndex.value - idx > len ? len : activeIndex.value - idx - 1
-    color = colors[_idx]
-    scale = scales[_idx]
-  }
-  return { color, transform: `scale(${scale})` }
+const open = () => {
+  showPop.value = true
 }
-
-function getCurrentValue () {
-  return props.keyName ? props.list[activeIndex.value][props.keyName] : props.list[activeIndex.value]
-}
-
-let startY = null
-function touchstart (event) {
-  const transformY = offY.value || -18
-  startY = event.touches[0].clientY - transformY
-}
-function touchmove (event) {
-  move(event)
-}
-
-function touchend () {
-  // 重置当前位置
-  setTimeout(() => {
-    offY.value = -activeIndex.value * 36 - 18
-  }, 100)
-}
-
-const pickerBoxRef = ref(null)
-// 移动的实现
-const move = useThrottle((e) => {
-  offY.value = e.touches[0].clientY - startY
-  if (offY.value > 36) {
-    offY.value = 36
-  } else if (offY.value < -pickerBoxRef.value.offsetHeight - 36) {
-    offY.value = -pickerBoxRef.value.offsetHeight - 36
-  }
-  // 计算当前位置的就近下标
-  activeIndex.value = Math.abs(Math.ceil(offY.value / 36))
-  // 判断顶部和底部的一个界限，然后做一个位置的重置
-  if (activeIndex.value <= 0 || offY.value > 0) {
-    activeIndex.value = 0
-  } else if (activeIndex.value > props.list.length - 1 || offY.value < -pickerBoxRef.value.offsetHeight - 18) {
-    activeIndex.value = props.list.length - 1
-  }
-
-  emit('change', getCurrentValue())
-}, 20)
-
-function cancleHandle () {
-  emit('change')
+const close = () => {
   showPop.value = false
 }
 
+function cancleHandle () {
+  emit('cancle')
+  showPop.value = false
+}
+
+function change (e, index) {
+  temValue.value[index] = e
+  temValue.value.join(',')
+  emit('change', temValue.value.join(','))
+  emit('column-change', {
+    value: e,
+    index
+  })
+}
+
+function firstOpen (e, index) {
+  temValue.value[index] = e
+}
+
 function confimHandle () {
-  emit('confim')
-  emit('update:modelValue', getCurrentValue())
+  emit('confim', temValue.value.join(','))
+  emit('update:modelValue', temValue.value.join(','))
   if (parentProps) {
     validateBlurOrChange('blur')
   }
   showPop.value = false
 }
-
+defineExpose({
+  open,
+  close
+})
 </script>
 <script>
 export default {
@@ -203,7 +176,6 @@ export default {
   --uv-picker-content-height: 230px;
   --uv-picker-content-wrapper-border-top-and-bottom: 1px solid #f7f8f9;
   --uv-picker-content-wrapper-box-shadow: 0 0 5px #f7f8f9;
-  --uv-picker-content-item-font-size: 16px;
 }
 .uv-picker {
   .uv-picker-title {
@@ -239,25 +211,6 @@ export default {
       border-top: var(--uv-picker-content-wrapper-border-top-and-bottom);
       border-bottom: var(--uv-picker-content-wrapper-border-top-and-bottom);
       box-shadow: var(--uv-picker-content-wrapper-box-shadow);
-    }
-    .uv-picker-content-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      list-style: none;
-      transition: all 0.2s;
-      flex: 1;
-      transition-timing-function: cubic-bezier(0.23, 1, 0.68, 1);
-      .uv-picker-content-item {
-        height: 36px;
-        font-size: var(--uv-picker-content-item-font-size);
-        text-align: center;
-        transition: color 0.5s;
-        line-height: 36px;
-      }
     }
   }
 }

@@ -15,6 +15,7 @@ import uvRadio from './radio'
 import uvRadioGroup from './radio-group'
 import uvNumInput from './num-input'
 import uvPicker from './picker'
+import uvDatetimePicker from './datetime-picker'
 import uvSwitch from './switch'
 import uvSearch from './search'
 import uvSlider from './slider'
@@ -79,6 +80,7 @@ const components = [
   uvRadioGroup,
   uvNumInput,
   uvPicker,
+  uvDatetimePicker,
   uvSwitch,
   uvSearch,
   uvSlider,
@@ -150,6 +152,7 @@ export {
   uvRadioGroup,
   uvNumInput,
   uvPicker,
+  uvDatetimePicker,
   uvSwitch,
   uvSearch,
   uvSlider,

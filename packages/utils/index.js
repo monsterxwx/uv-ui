@@ -68,6 +68,8 @@ export const isDef = (val) => {
   return val !== undefined && val !== null
 }
 
+export const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
+
 export const isNumeric = (val) => {
   return typeof val === 'number' || /^\d+(\.\d+)?$/.test(val)
 }
