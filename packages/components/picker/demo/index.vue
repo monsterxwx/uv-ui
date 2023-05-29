@@ -13,6 +13,7 @@
         v-model="value"
         title="标题"
         :list="list"
+        key-name="value"
         label-name="value"
         @change="change"
       />
