@@ -33,6 +33,7 @@
           :key-name="keyName"
           :label-name="labelName"
           :value="selectValue[index]"
+          :columns-type="columnsType"
           @change="change($event,index)"
           @first-open="firstOpen($event,index)"
         />
@@ -102,7 +103,6 @@ const calcList = computed(() => {
     case 'multiple':
       return list
     case 'cascade':
-      // return [list]
       return formatCascadeColumns(list, {
         label: labelName,
         value: keyName,
