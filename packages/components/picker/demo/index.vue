@@ -67,9 +67,9 @@ const openPicker2 = () => {
 }
 const value = ref('温州')
 const value1 = ref('')
-const value2 = ref('')
+// const value2 = ref('')
 // const value2 = ref('浙江,温州,瓯海区')
-// const value2 = ref('福建,厦门,海沧区')
+const value2 = ref('福建,厦门,海沧区')
 const list = ref(
   [
     { value: '杭州' },

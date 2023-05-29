@@ -42,6 +42,9 @@ const props = defineProps({
   value: {
     type: [String, Number],
     default: ''
+  },
+  columnsType: {
+    type: String
   }
 })
 
@@ -89,17 +92,23 @@ function getCurrentValue () {
 }
 
 const defaultValue = ref('')
-watch(() => props.list, () => {
-  defaultValue.value = getCurrentValue()
-  emit('first-open', defaultValue.value)
-}, {
-  immediate: true
-})
 
 // 修改offY
 const changeOffY = (index) => {
   offY.value = -36 * index - 18
 }
+
+watch(() => props.list, (newValue) => {
+  defaultValue.value = getCurrentValue()
+  emit('first-open', defaultValue.value)
+  if (props.columnsType === 'cascade') {
+    activeIndex.value = 0
+    changeOffY(0)
+    emit('first-open', newValue[0][props.keyName])
+  }
+}, {
+  immediate: true
+})
 
 // 双向绑定值时当有默认值则自动显示到当前值位置
 watch(() => props.value, (newValue) => {
