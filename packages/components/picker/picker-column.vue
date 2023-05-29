@@ -101,7 +101,7 @@ const changeOffY = (index) => {
 watch(() => props.list, (newValue) => {
   defaultValue.value = getCurrentValue()
   emit('first-open', defaultValue.value)
-  if (props.columnsType === 'cascade') {
+  if (props.columnsType) {
     activeIndex.value = 0
     changeOffY(0)
     emit('first-open', newValue[0][props.keyName])
