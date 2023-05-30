@@ -126,7 +126,7 @@ const openPicker = () => {
   pickerRef2.value.open()
 }
 
-const value2 = ref("")
+const value2 = ref('福建,厦门,海沧区')
 const list2 = [
   {
     label: '浙江',

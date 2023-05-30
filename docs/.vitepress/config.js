@@ -58,6 +58,7 @@ export default {
             { text: 'Radio 单选框', link: '/component/radio' },
             { text: 'NumInput 数字键盘', link: '/component/numInput' },
             { text: 'Picker 选择器', link: '/component/picker' },
+            { text: 'DatetimePicker 日期时间选择器', link: '/component/datetimePicker' },
             { text: 'Form 表单', link: '/component/form' },
             { text: 'Search 搜索框', link: '/component/search' },
             { text: 'Slider 滑块', link: '/component/slider' },
