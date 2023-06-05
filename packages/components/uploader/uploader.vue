@@ -35,7 +35,7 @@
               <div class="uv-uploader-delete-shadow" />
               <uv-icon
                 class="uv-uploader-delete-icon"
-                size="16"
+                size="14"
                 name="close"
                 color="#fff"
               />
@@ -254,10 +254,10 @@ export default {
   --uv-uploader-upload-size-width: 80px;
   --uv-uploader-upload-size-height: 80px;
   --uv-uploader-upload-gap: 8px;
-  --uv-uploader-delete-shadow-size: 14px;
-  --uv-uploader-delete-shadow-border-radius: 0 0 0 12px;
-  --uv-uploader-delete-shadow-background: rgb(0 0 0 / 70%);
-  --uv-uploader-delete-icon-transform: scale(0.6) translate(20%, -30%);
+  --uv-uploader-border-radius: 6px;
+  --uv-uploader-delete-shadow-size: 20px;
+  --uv-uploader-delete-shadow-border-radius: 0 6px 0 6px;
+  --uv-uploader-delete-shadow-background: rgb(0 0 0 / 40%);
   --uv-uploader-img-object-fit: cover;
   --uv-uploader-upload-wrapper-bg-color: #f7f8fa;
   --uv-uploader-mask-background: rgb(50 50 51 / 88%);
@@ -276,8 +276,10 @@ export default {
     gap: var(--uv-uploader-upload-gap);
     .uv-uploader-img-wrapper {
       position: relative;
+      overflow: hidden;
       width: var(--uv-uploader-upload-size-width);
       height: var(--uv-uploader-upload-size-height);
+      border-radius: var(--uv-uploader-border-radius);
       .uv-uploader-delete {
         position: absolute;
         top: 0;
@@ -290,9 +292,9 @@ export default {
         }
         .uv-uploader-delete-icon {
           position: absolute;
-          top: 0;
-          right: 0;
-          transform: var(--uv-uploader-delete-icon-transform);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
       }
       .uv-uploader-img {
@@ -343,6 +345,7 @@ export default {
     .uv-uploader-upload-wrapper {
       position: relative;
       display: inline-block;
+      border-radius: var(--uv-uploader-border-radius);
       background-color: var(--uv-uploader-upload-wrapper-bg-color);
       .uv-uploader-upload {
         display: flex;
