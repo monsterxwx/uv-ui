@@ -12,16 +12,21 @@
         :style="{height:height,backgroundColor:bgColor,padding:padding?'10px':'none'}"
       >
         <div class="uv-popup-content">
-          <div
-            v-if="close"
-            class="uv-popup-content-close"
-          >
-            <uv-icon
-              @click="closeEvent"
-              name="close"
-              size="24"
-              color="#c8c9cc"
-            />
+          <div class="uv-popup-content-top" v-if="title || close">
+            <div v-if="title" class="uv-popup-content-title">
+              {{ title }}
+            </div>
+            <div
+              v-if="close"
+              class="uv-popup-content-close"
+            >
+              <uv-icon
+                @click="closeEvent"
+                name="close"
+                size="28"
+                color="#c8c9cc"
+              />
+            </div>
           </div>
           <div class="uv-popup-content-item">
             <slot />
@@ -91,6 +96,10 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
+  title: {
+    type: String,
+    default: ''
+  },
   close: {
     type: Boolean,
     default: false
@@ -149,6 +158,10 @@ export default {
   --uv-popup-button-cancle-color: #1fa45d;
   --uv-popup-button-confim-bg-color: #07c160;
   --uv-popup-button-cancle-bg-color: #f0f0f0;
+  --uv-popup-content-top-height: 30px;
+  --uv-popup-content-title-font-size: 16px;
+  --uv-popup-content-title-font-weight: 700;
+  --uv-popup-content-title-color: #323233;
 }
 .uv-popup {
   .uv-popup-bottom {
@@ -202,11 +215,21 @@ export default {
     max-height: 100%;
     transition: transform var(--uv-popup-transition-time);
     .uv-popup-content {
-      .uv-popup-content-close {
+      .uv-popup-content-top {
+        position: relative;
         display: flex;
-        justify-content: flex-end;
-        padding-bottom: 6px;
-        width: 100%;
+        align-items: center;
+        height: var(--uv-popup-content-top-height);
+        .uv-popup-content-title {
+          font-size: var(--uv-popup-content-title-font-size);
+          font-weight: var(--uv-popup-content-title-font-weight);
+          color: var(--uv-popup-content-title-color);
+        }
+        .uv-popup-content-close {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
       }
       .uv-popup-content-button {
         display: flex;

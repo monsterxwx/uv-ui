@@ -25,6 +25,8 @@ onMounted(()=>{
 <uv-popup
   position="bottom"
   v-model="show1"
+  title="我是标题"
+  close
 >
   <div class="test">
     标标题标标题标题标标标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题标标题标标题标题标标题标题标标题标题标标标标题标标题标题标标标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题标标题标标题标题标标题
@@ -116,6 +118,7 @@ onMounted(()=>{
 | position          |    弹框显示位置     | String  | 'bottom' |
 | bgColor           |      背景颜色       | String  |   '#fff' |
 | round             |   是否为圆角弹框    | Boolean |    false |
+| title             |      弹框标题       | String  |       '' |
 | padding           |   是否自带内边距    | Boolean |     true |
 | overlay           |   是否开启遮罩层    | Boolean |     true |
 | clickOverlayClose | 点击遮罩层关闭弹框  | Boolean |     true |
@@ -147,5 +150,9 @@ onMounted(()=>{
   --uv-popup-button-cancle-color: #1fa45d;
   --uv-popup-button-confim-bg-color: #07c160;
   --uv-popup-button-cancle-bg-color: #f0f0f0;
+  --uv-popup-content-top-height: 30px;
+  --uv-popup-content-title-font-size: 16px;
+  --uv-popup-content-title-font-weight: 700;
+  --uv-popup-content-title-color: #323233;
 ```
 

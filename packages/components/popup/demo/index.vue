@@ -12,16 +12,37 @@
       </uv-popup>
     </demoBlock>
     <demoBlock title="显示位置">
-      <uv-button
-        type="primary"
-        @click="show1=true"
-      >
-        底部显示
-      </uv-button>
+      <div style="display: flex;gap: 10px;">
+        <uv-button
+          type="primary"
+          @click="openShow1('bottom')"
+        >
+          底部显示
+        </uv-button>
+        <uv-button
+          type="primary"
+          @click="openShow1('top')"
+        >
+          顶部显示
+        </uv-button>
+        <uv-button
+          type="primary"
+          @click="openShow1('left')"
+        >
+          左侧显示
+        </uv-button>
+        <uv-button
+          type="primary"
+          @click="openShow1('right')"
+        >
+          右侧显示
+        </uv-button>
+      </div>
       <uv-popup
-        position="bottom"
-
+        :position="position"
         v-model="show1"
+        title="我是标题"
+        close
       >
         <div class="test">
           标标题标标题标题标标标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题标标题标标题标题标标题标题标标题标题标标标标题标标题标题标标标标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标标题标题标题标标题标标题标题标标题
@@ -124,6 +145,12 @@ const show11 = ref(false)
 const show22 = ref(false)
 const show33 = ref(false)
 const show44 = ref(false)
+
+const position = ref('bottom')
+const openShow1 = (pos) => {
+  show1.value = true
+  position.value = pos
+}
 </script>
 
 <style lang="scss" scoped>
