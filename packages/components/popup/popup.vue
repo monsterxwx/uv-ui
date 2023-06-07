@@ -162,6 +162,7 @@ export default {
   --uv-popup-content-title-font-size: 16px;
   --uv-popup-content-title-font-weight: 700;
   --uv-popup-content-title-color: #323233;
+  --uv-popup-content-title-padding: 0;
 }
 .uv-popup {
   .uv-popup-bottom {
@@ -221,6 +222,7 @@ export default {
         align-items: center;
         height: var(--uv-popup-content-top-height);
         .uv-popup-content-title {
+          padding: var(--uv-popup-content-title-padding);
           font-size: var(--uv-popup-content-title-font-size);
           font-weight: var(--uv-popup-content-title-font-weight);
           color: var(--uv-popup-content-title-color);

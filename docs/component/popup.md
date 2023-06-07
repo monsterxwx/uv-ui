@@ -154,5 +154,6 @@ onMounted(()=>{
   --uv-popup-content-title-font-size: 16px;
   --uv-popup-content-title-font-weight: 700;
   --uv-popup-content-title-color: #323233;
+  --uv-popup-content-title-padding: 0;
 ```
 
