@@ -7,7 +7,7 @@
   "description": "基于vue3的移动端组件库",
   "scripts": {
     "prebuild": "node modify-package-json.js",
-    "build": "pnpm prebuild && vite build",
+    "build": "pnpm prebuild && vite build && pnpm changelog",
     "lint": "eslint ./src/**/*.{js,jsx,vue,ts,tsx} --fix",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
