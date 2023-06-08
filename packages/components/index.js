@@ -63,6 +63,7 @@ import uvEmpty from './empty'
 import uvProgress from './progress'
 import uvCircleProgress from './circle-progress'
 import uvUploader from './uploader'
+import uvCascader from './cascader'
 
 const components = [
   uvButton,
@@ -127,7 +128,8 @@ const components = [
   uvEmpty,
   uvProgress,
   uvCircleProgress,
-  uvUploader
+  uvUploader,
+  uvCascader
 ]
 
 const install = (Vue) => {
@@ -199,7 +201,8 @@ export {
   uvEmpty,
   uvProgress,
   uvCircleProgress,
-  uvUploader
+  uvUploader,
+  uvCascader
 }
 
 export default install

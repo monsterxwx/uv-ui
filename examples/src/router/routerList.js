@@ -196,6 +196,14 @@ export default [
     component: () => import('../../../packages/components/uploader/demo/index.vue')
   },
   {
+    path: '/cascader',
+    name: 'cascader',
+    meta: {
+      name: 'Cascader 级联选择'
+    },
+    component: () => import('../../../packages/components/cascader/demo/index.vue')
+  },
+  {
     path: '',
     meta: {
       title: '反馈组件'

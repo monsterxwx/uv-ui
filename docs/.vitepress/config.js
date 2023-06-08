@@ -65,7 +65,8 @@ export default {
             { text: 'Switch 开关', link: '/component/switch' },
             { text: 'Stepper 步进器', link: '/component/stepper' },
             { text: 'Signature 签名', link: '/component/signature' },
-            { text: 'Calendar 日历', link: '/component/calendar' }
+            { text: 'Calendar 日历', link: '/component/calendar' },
+            { text: 'Cascader 级联选择', link: '/component/cascader' }
           ]
         },
         {
