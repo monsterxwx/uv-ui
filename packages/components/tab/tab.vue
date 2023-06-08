@@ -14,12 +14,12 @@
       <div
         class="uv-tab-item"
         @click="changeIndex(index)"
-        :class="currentIndex===index?'uv-tab-acitve-item':''"
-        :style="{color:currentIndex===index?activeColor:color}"
+        :class="placeholder? placeholder===item?'':'uv-tab-acitve-item': currentIndex===index?'uv-tab-acitve-item':''"
+        :style="{color:placeholder? placeholder===item?color:activeColor:currentIndex===index?activeColor:color}"
         v-for="(item,index) in list"
-        :key="keyName?item[keyName]:item"
+        :key="item"
       >
-        <div>{{ keyName?item[keyName]:item }}</div>
+        <div>{{ item }}</div>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
 
 <script setup>
 
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, nextTick } from 'vue'
 import { scrollLeftTo } from '../../utils/index.js'
 const props = defineProps({
   acitveIndex: {
@@ -56,13 +56,15 @@ const props = defineProps({
   list: {
     type: Array
   },
-  keyName: {
-    type: String
-  },
   // 收缩布局，即flex-start
   shrink: {
     type: Boolean,
     default: false
+  },
+  // 用于给cascader选择器使用
+  placeholder: {
+    type: String,
+    default: ''
   }
 })
 
@@ -80,6 +82,7 @@ watch(() => props.acitveIndex, (newValue) => {
 })
 
 watch(currentIndex, (newValue) => {
+  uvTableItemListDom.value = uvTabRef.value.querySelectorAll('.uv-tab-item')
   const { offsetWidth, offsetLeft } = uvTableItemListDom.value[newValue]
   setTabLine(offsetWidth, offsetLeft)
   if (props.scroll) {
@@ -94,7 +97,8 @@ const changeIndex = (index) => {
   currentIndex.value = index
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick()
   initTabLine()
 })
 

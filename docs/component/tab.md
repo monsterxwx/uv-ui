@@ -50,18 +50,17 @@ onMounted(()=>{
 
  ## props
 
-| 属性        |              含义              |  类型   | 默认值 |
-| ----------- | :----------------------------: | :-----: | -----: |
-| acitveIndex |       当前活跃子项index        | Number  |      0 |
-| bgColor     |            背景颜色            | String  |      - |
-| color       |          默认子项颜色          | String  |      - |
-| activeColor |         活跃子项的颜色         | String  |      - |
+| 属性        |               含义               |  类型   | 默认值 |
+| ----------- | :------------------------------: | :-----: | -----: |
+| acitveIndex |        当前活跃子项index         | Number  |      0 |
+| bgColor     |             背景颜色             | String  |      - |
+| color       |           默认子项颜色           | String  |      - |
+| activeColor |          活跃子项的颜色          | String  |      - |
 | scroll      | 是否可以滚动，很多子项时可以开启 | Boolean |  false |
-| lineHeight  |            线条高度            | String  |      - |
-| lineColor   |            线条颜色            | String  |      - |
-| list        |            渲染列表            |  Array  |      - |
-| keyName     |           列表关键字           | String  |      - |
-| shrink      |          是否收缩布局          | Boolean |  false |
+| lineHeight  |             线条高度             | String  |      - |
+| lineColor   |             线条颜色             | String  |      - |
+| list        |             渲染列表             |  Array  |      - |
+| shrink      |           是否收缩布局           | Boolean |  false |
 
 ## events
 
