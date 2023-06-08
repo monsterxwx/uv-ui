@@ -5,7 +5,9 @@
     "dev:docs": "pnpm -C docs dev",
     "dev:examples": "pnpm -C examples dev",
     "build:docs": "pnpm -C docs build",
-    "build:uv-ui": "pnpm -C packages build"
+    "build:examples": "pnpm -C examples build",
+    "build:uv-ui": "pnpm -C packages build",
+    "build": "pnpm build:docs && build:examples && build:uv-ui"
   },
   "keywords": [],
   "author": "",
