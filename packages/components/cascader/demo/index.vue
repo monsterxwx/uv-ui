@@ -48,7 +48,9 @@ const finish = (e) => {
   currentData.value = e
 }
 
+const loadingFirst = ref(false)
 const change = (e) => {
+  if (loadingFirst.value) return
   console.log(e)
   const toast = Toast({
     message: '加载中',
@@ -72,6 +74,7 @@ const change = (e) => {
     ]
 
     toast.clear()
+    loadingFirst.value = true
   }, 2000)
 }
 
