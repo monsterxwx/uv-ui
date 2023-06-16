@@ -23,9 +23,7 @@
 </template>
 
 <script setup>
-
-import { clone } from 'lodash-es'
-import { getProp } from '../../utils/index.js'
+import { getProp, clone } from '../../utils/index.js'
 import { inject, onBeforeMount, onMounted, toRefs, reactive, ref, nextTick, computed, provide } from 'vue'
 import uvCell from '../cell'
 const props = defineProps({
