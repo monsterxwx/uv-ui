@@ -7,10 +7,12 @@
       @touchstart="touchstart"
       @touchmove="touchmove"
       @touchend="touchend"
-      @transitionend="transitionend"
-      ref="swipeListRef"
       class="uv-swipe-list"
-      :style="{width: `${listWidth}px`,transform: `translateX(${transformX}px)`}"
+      :style="{
+        width: `${listWidth}px`,
+        transform: `translateX(${transformX}px)`,
+        transitionDuration: state.lockDuration ? `0ms` : `${duration}ms`
+      }"
     >
       <slot />
     </div>
@@ -18,49 +20,46 @@
 </template>
 
 <script setup>
-
-import { computed, onMounted, reactive, ref, watch, nextTick } from 'vue'
+import { nextTickFrame, call } from '../../utils/index.js'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useTouch, useChildren } from '../../hooks/index'
 const props = defineProps({
   autoplay: {
-    type: Boolean,
-    default: true
+    type: Number,
+    default: 0
   },
   duration: {
     type: Number,
-    default: 0.3
+    default: 500
   },
-  interval: {
-    type: Number,
-    default: 3000
+  loop: {
+    type: Boolean,
+    default: true
   }
 })
 
 const emit = defineEmits(['change'])
 
 const state = reactive({
-  activeIndex: 0, // 当前活跃的子项
-  width: 0 // 屏幕宽度
+  // 当前活跃的子项
+  activeIndex: 0,
+  // 屏幕宽度
+  width: 0,
+  // 是否停止动画时间
+  lockDuration: true
 })
 
 watch(() => state.activeIndex, (newValue) => {
   emit('change', newValue)
 })
 
-const addAnimation = () => {
-  swipeListRef.value.style.transition = `transform ${props?.duration}s ease`
-}
-const removeAnimation = () => {
-  swipeListRef.value.style.transition = 'none'
-}
-
 const swiperRef = ref(null)
-const swipeListRef = ref(null)
 
 const { childrenNum, fields } = useChildren('swipe', { props })
 
 onMounted(() => {
   state.width = swiperRef.value.offsetWidth
+  startAutoplay()
 })
 // 轮播总宽度
 const listWidth = computed(() => {
@@ -69,17 +68,50 @@ const listWidth = computed(() => {
 
 const touch = useTouch()
 const transformX = ref(0)
+
+// 修正轮播子项位置
+const fixPosition = (fn) => {
+  state.lockDuration = true
+  console.log('fixPosition', state.activeIndex)
+  if (state.activeIndex < 0) {
+    fields[fields.length - 1].transform = 0
+    state.activeIndex = childrenNum.value - 1
+    transformX.value = -state.width * (childrenNum.value - 1)
+  } else if (state.activeIndex > (childrenNum.value - 1)) {
+    fields[0].transform = 0
+    state.activeIndex = 0
+    transformX.value = 0
+  }
+
+  nextTickFrame(() => {
+    state.lockDuration = false
+    call(fn)
+  })
+}
+
 let startX = null
+let touching = false // 是否按下
+
 function touchstart (event) {
-  stopSwipe()
+  if (childrenNum.value <= 1) {
+    return
+  }
   touch.start(event)
+  touching = true
+  stopAutoplay()
+  fixPosition(() => {
+    state.lockDuration = true
+  })
+
   startX = transformX.value
 }
 
 function touchmove (event) {
+  if (!touching) {
+    return
+  }
   touch.move(event)
   const { deltaX } = touch
-  removeAnimation()
   if (deltaX.value < 0 && state.activeIndex === childrenNum.value - 1) { // 左移且index为最后一张
     fields[0].transform = listWidth.value
   } else if (deltaX.value > 0 && state.activeIndex === 0) { // 右移且当前index为0
@@ -90,68 +122,53 @@ function touchmove (event) {
 }
 
 function touchend (event) {
-  if (props.autoplay) {
-    autoSwipe()
+  if (!touching) {
+    return
   }
-  addAnimation()
+
   const { deltaX } = touch
-  if (deltaX.value < (-state.width / 3)) {
+  if (deltaX.value < -40) {
     state.activeIndex++
-  } else if (deltaX.value > (state.width / 3)) {
+  } else if (deltaX.value > 40) {
     state.activeIndex--
   }
+  touching = false
+  state.lockDuration = false
   transformX.value = -state.width * state.activeIndex
+  startAutoplay()
 }
 
-function transitionend () {
-  removeAnimation()
-  if (state.activeIndex < 0) {
-    fields[fields.length - 1].transform = 0
-    state.activeIndex = childrenNum.value - 1
-    transformX.value = -state.width * (childrenNum.value - 1)
-  } else if (state.activeIndex > (childrenNum.value - 1)) {
-    fields[0].transform = 0
-    state.activeIndex = 0
-    transformX.value = 0
-  } else {
-    fields.forEach(item => {
-      item.transform = 0
-    })
-  }
-}
+const next = () => {
+  const { loop } = props
 
-const timer = ref(null)
-const autoSwipe = () => {
-  timer.value = setInterval(() => {
-    if (state.activeIndex === childrenNum.value - 1) { // index为最后一张
-      removeAnimation()
+  touch.reset()
+  state.activeIndex++
+
+  fixPosition(() => {
+    if (state.activeIndex === childrenNum.value - 1 && loop) {
+      console.log('state.activeIndex', state.activeIndex)
       fields[0].transform = listWidth.value
-    } else if (state.activeIndex === 0) { // index为0
-    // 将最后一张轮播换到首位
-      removeAnimation()
-      fields[fields.length - 1].transform = -listWidth.value
+      transformX.value = -state.width * state.activeIndex
+    } else {
+      transformX.value = -state.width * state.activeIndex
     }
-    addAnimation()
-    state.activeIndex++
-    transformX.value = -state.width * state.activeIndex
-  }, props.interval)
+  })
 }
 
-const stopSwipe = () => {
-  removeAnimation()
-  clearInterval(timer.value)
-}
-
-watch(() => props.autoplay, async () => {
-  await nextTick()
-  if (props.autoplay === true) {
-    autoSwipe()
-  } else {
-    stopSwipe()
+let timer = null
+const startAutoplay = () => {
+  if (+props.autoplay > 0 && childrenNum.value > 1) {
+    timer = setTimeout(() => {
+      next()
+      startAutoplay()
+    }, +props.autoplay)
   }
-}, {
-  immediate: true
-})
+}
+
+const stopAutoplay = () => {
+  timer && clearTimeout(timer)
+}
+
 </script>
 <script>
 export default {

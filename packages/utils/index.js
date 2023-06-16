@@ -97,3 +97,19 @@ export const isObject = (obj) => _typeof(obj) === 'object'
 export const isFunction = (val) => typeof val === 'function'
 
 export const isPromise = (val) => isObject(val) && isFunction(val.then) && isFunction(val.catch)
+
+export function nextTickFrame (fn) {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(fn)
+  })
+}
+
+export function call (fn, ...args) {
+  if (Array.isArray(fn)) {
+    return fn.map((f) => f(...args))
+  }
+
+  if (fn) {
+    return fn(...args)
+  }
+}

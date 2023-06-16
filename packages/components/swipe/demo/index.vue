@@ -1,7 +1,7 @@
 <template>
   <div>
     <demoBlock title="基本使用">
-      <uv-swipe>
+      <uv-swipe :autoplay="3000">
         <uv-swipe-item>
           <div class="test color1">
             1
@@ -20,7 +20,7 @@
       </uv-swipe>
     </demoBlock>
     <demoBlock title="关闭自动轮播">
-      <uv-swipe :autoplay="false">
+      <uv-swipe>
         <uv-swipe-item>
           <div class="test color1">
             1
