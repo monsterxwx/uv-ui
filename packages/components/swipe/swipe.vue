@@ -31,10 +31,6 @@ const props = defineProps({
   duration: {
     type: Number,
     default: 500
-  },
-  loop: {
-    type: Boolean,
-    default: true
   }
 })
 
@@ -72,7 +68,6 @@ const transformX = ref(0)
 // 修正轮播子项位置
 const fixPosition = (fn) => {
   state.lockDuration = true
-  console.log('fixPosition', state.activeIndex)
   if (state.activeIndex < 0) {
     fields[fields.length - 1].transform = 0
     state.activeIndex = childrenNum.value - 1
@@ -81,6 +76,10 @@ const fixPosition = (fn) => {
     fields[0].transform = 0
     state.activeIndex = 0
     transformX.value = 0
+  } else {
+    fields.forEach(item => {
+      item.transform = 0
+    })
   }
 
   nextTickFrame(() => {
@@ -121,15 +120,17 @@ function touchmove (event) {
   transformX.value = startX + deltaX.value
 }
 
+const OVER_MOUSE_LENGHT = 40 // 超过滑动的距离长度
+
 function touchend (event) {
   if (!touching) {
     return
   }
 
   const { deltaX } = touch
-  if (deltaX.value < -40) {
+  if (deltaX.value < -OVER_MOUSE_LENGHT) {
     state.activeIndex++
-  } else if (deltaX.value > 40) {
+  } else if (deltaX.value > OVER_MOUSE_LENGHT) {
     state.activeIndex--
   }
   touching = false
@@ -139,19 +140,15 @@ function touchend (event) {
 }
 
 const next = () => {
-  const { loop } = props
-
   touch.reset()
-  state.activeIndex++
 
   fixPosition(() => {
-    if (state.activeIndex === childrenNum.value - 1 && loop) {
-      console.log('state.activeIndex', state.activeIndex)
+    if (state.activeIndex === childrenNum.value - 1) {
       fields[0].transform = listWidth.value
-      transformX.value = -state.width * state.activeIndex
-    } else {
-      transformX.value = -state.width * state.activeIndex
     }
+    state.activeIndex++
+    state.lockDuration = false
+    transformX.value = -state.width * state.activeIndex
   })
 }
 
