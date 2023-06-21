@@ -3,7 +3,7 @@ export default {
   base:'/uv-ui/',
   lastUpdated: true,
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/blob/master/docs/logo.png',
     search: {
       provider: 'local'
     },
