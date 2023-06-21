@@ -3,7 +3,7 @@ export default {
   base:'/uv-ui/',
   lastUpdated: true,
   themeConfig: {
-    logo: 'https://gitee.com/monsterwx/uv-ui/blob/master/docs/logo.png',
+    logo: 'https://gitee.com/monsterwx/uv-ui/raw/master/docs/logo.png',
     search: {
       provider: 'local'
     },

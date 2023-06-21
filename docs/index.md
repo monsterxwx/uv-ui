@@ -5,7 +5,7 @@ hero:
   name: UV-UI 组件库
   text: 基于 Vue 3 的组件库
   image:
-    src: https://gitee.com/monsterwx/uv-ui/blob/master/docs/logo.png
+    src: https://gitee.com/monsterwx/uv-ui/raw/master/docs/logo.png
     alt: logo
   actions:
     - theme: brand
