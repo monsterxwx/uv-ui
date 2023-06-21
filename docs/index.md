@@ -4,6 +4,9 @@ layout: home
 hero:
   name: UV-UI 组件库
   text: 基于 Vue 3 的组件库
+  image:
+    src: /logo.png
+    alt: logo
   actions:
     - theme: brand
       text: 快速开始

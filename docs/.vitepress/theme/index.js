@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-
+import './styles/vars.css'
 import { createPinia } from 'pinia'
 import UvUI from '../../iframe/UvUI.vue'
 
