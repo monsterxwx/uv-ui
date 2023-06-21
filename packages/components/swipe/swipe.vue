@@ -16,6 +16,14 @@
     >
       <slot />
     </div>
+    <div class="uv-swipe-indicators">
+      <div
+        v-for="(item,idx) in fields"
+        :key="idx"
+        :class="state.activeIndex%childrenNum===idx?'uv-swipe-indicators-item-active':''"
+        class="uv-swipe-indicators-item"
+      />
+    </div>
   </div>
 </template>
 
@@ -183,6 +191,27 @@ export default {
     position: relative;
     display: flex;
     height: 100%;
+  }
+  .uv-swipe-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    transform: translateX(-50%);
+    gap: 6px;
+    .uv-swipe-indicators-item {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #ebedf0;
+      opacity: 0.3;
+      transition: all 0.3s;
+    }
+    .uv-swipe-indicators-item-active {
+      background-color: #ffffff;
+      opacity: 1;
+    }
   }
 }
 </style>
