@@ -1,6 +1,7 @@
 export default {
   title: 'UV-UI',
   base:'/uv-ui/',
+  outDir: './dist',
   lastUpdated: true,
   themeConfig: {
     logo: 'https://gitee.com/monsterwx/uv-ui/raw/master/docs/logo.png',
