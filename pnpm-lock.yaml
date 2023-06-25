@@ -19,6 +19,7 @@ importers:
       postcss: ^8.4.20
       postcss-html: ^1.5.0
       sass: ^1.56.0
+      semver: ^7.5.3
       stylelint: ^14.16.0
       stylelint-config-html: ^1.1.0
       stylelint-config-recommended-scss: ^8.0.0
@@ -51,6 +52,7 @@ importers:
       postcss: 8.4.21
       postcss-html: 1.5.0
       sass: 1.60.0
+      semver: 7.5.3
       stylelint: 14.16.1
       stylelint-config-html: 1.1.0_kbto3rg3njmczth2rrsgfnlsqa
       stylelint-config-recommended-scss: 8.0.0_w5gtdy6oq4ictd5o4eu6befejy
@@ -991,7 +993,7 @@ packages:
   /builtins/5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.3.8
+      semver: 7.5.3
     dev: true
 
   /call-bind/1.0.2:
@@ -1966,7 +1968,7 @@ packages:
       is-core-module: 2.11.0
       minimatch: 3.1.2
       resolve: 1.22.1
-      semver: 7.3.8
+      semver: 7.5.3
     dev: true
 
   /eslint-plugin-promise/6.1.1_eslint@8.37.0:
@@ -1989,7 +1991,7 @@ packages:
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.11
-      semver: 7.3.8
+      semver: 7.5.3
       vue-eslint-parser: 9.1.1_eslint@8.37.0
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
@@ -3281,7 +3283,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.11.0
-      semver: 7.3.8
+      semver: 7.5.3
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -3966,8 +3968,8 @@ packages:
     hasBin: true
     dev: true
 
-  /semver/7.3.8:
-    resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
+  /semver/7.5.3:
+    resolution: {integrity: sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -4210,7 +4212,7 @@ packages:
       stylelint: '>=14.0.0'
     dependencies:
       postcss-html: 1.5.0
-      semver: 7.3.8
+      semver: 7.5.3
       stylelint: 14.16.1
       stylelint-config-html: 1.1.0_kbto3rg3njmczth2rrsgfnlsqa
       stylelint-config-recommended: 11.0.0_stylelint@14.16.1
@@ -4702,7 +4704,7 @@ packages:
       espree: 9.5.1
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.3.8
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
     dev: true
