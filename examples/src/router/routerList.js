@@ -250,6 +250,14 @@ export default [
     component: () => import('../../../packages/components/rate/demo/index.vue')
   },
   {
+    path: '/floating-panel',
+    name: 'floating-panel',
+    meta: {
+      name: 'FloatingPanel 浮动面板'
+    },
+    component: () => import('../../../packages/components/floating-panel/demo/index.vue')
+  },
+  {
     path: '',
     meta: {
       title: '展示组件'

@@ -81,6 +81,7 @@ export default {
             { text: 'Dialog 弹出框', link: '/component/dialog' },
             { text: 'SwipeCell 滑动单元格', link: '/component/swipeCell' },
             { text: 'Rate 评分', link: '/component/rate' },
+            { text: 'FloatingPanel 浮动面板', link: '/component/floatingPanel' }
           ]
         },
         {
