@@ -8,7 +8,7 @@
     "build:examples": "pnpm -C examples build",
     "build:uv-ui": "pnpm -C packages build",
     "build": "pnpm build:docs && pnpm build:examples && pnpm build:uv-ui",
-    "publish": "pnpm -C packages publish"
+    "publish:uv-ui": "pnpm -C packages npmpublish"
   },
   "keywords": [],
   "author": "",

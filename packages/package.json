@@ -1,7 +1,7 @@
 {
   "name": "uv-ui",
   "private": false,
-  "version": "1.0.20",
+  "version": "1.0.21",
   "main": "components/index.js",
   "module": "components/index.js",
   "description": "基于vue3的移动端组件库",
@@ -9,7 +9,7 @@
     "prebuild": "node build-pre-action",
     "afterbuild": "node build-after-action",
     "build": "pnpm prebuild && vite build && pnpm changelog",
-    "publish": "npm publish && pnpm afterbuild",
+    "npmpublish": "npm publish && pnpm afterbuild",
     "lint": "eslint ./src/**/*.{js,jsx,vue,ts,tsx} --fix",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "plop": "plop"
