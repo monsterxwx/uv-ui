@@ -65,6 +65,7 @@ import uvCircleProgress from './circle-progress'
 import uvUploader from './uploader'
 import uvCascader from './cascader'
 import uvFloatingPanel from './floating-panel'
+import uvSliderVertify from './slider-vertify'
 
 const components = [
   uvButton,
@@ -131,7 +132,8 @@ const components = [
   uvCircleProgress,
   uvUploader,
   uvCascader,
-  uvFloatingPanel
+  uvFloatingPanel,
+  uvSliderVertify
 ]
 
 const install = (Vue) => {
@@ -205,7 +207,8 @@ export {
   uvCircleProgress,
   uvUploader,
   uvCascader,
-  uvFloatingPanel
+  uvFloatingPanel,
+  uvSliderVertify
 }
 
 export default install

@@ -258,6 +258,14 @@ export default [
     component: () => import('../../../packages/components/floating-panel/demo/index.vue')
   },
   {
+    path: '/slider-vertify',
+    name: 'slider-vertify',
+    meta: {
+      name: 'SliderVertify 滑块验证'
+    },
+    component: () => import('../../../packages/components/slider-vertify/demo/index.vue')
+  },
+  {
     path: '',
     meta: {
       title: '展示组件'
