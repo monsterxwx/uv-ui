@@ -34,7 +34,7 @@ export default {
           items: [
             { text: '安装', link: '/guide/installation' },
             { text: '快速开始', link: '/guide/quickStart' },
-            { text: '更新日志', link: '/guide/updateLog' }
+            { text: '更新日志', link: '/guide/CHANGELOG' }
           ]
         }
       ],
