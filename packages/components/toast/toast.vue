@@ -15,14 +15,13 @@
         />
       </div>
       <div
-        class="loading-icon"
+        class="uv-toast-loading"
         v-if="type==='loading'"
       >
-        <uv-icon
-          name="loading"
-          size="30"
-          color="#e6e6e6"
-        />
+        <div class="uv-toast-loading-item" />
+        <div class="uv-toast-loading-item" />
+        <div class="uv-toast-loading-item" />
+        <div class="uv-toast-loading-item" />
       </div>
       <div class="uv-toast-message">
         {{ message }}
@@ -70,6 +69,8 @@ export default {
   --uv-toast-value-border-radius: 4px;
   --uv-toast-message-font-size: 13px;
   --uv-toast-message-min-width: 70px;
+  --uv-toast-loading-size: 24px;
+  --uv-toast-loading-item-color: #1677ff;
 }
 .uv-toast {
   position: fixed;
@@ -91,23 +92,62 @@ export default {
     .uv-toast-value-icon {
       margin-bottom: 10px;
     }
-    .loading-icon {
+    .uv-toast-loading {
       position: relative;
-      animation: uv-toast-rotate 3s linear infinite;
-      margin-bottom: 10px;
+      display: inline-block;
+      margin: 10px 0;
+      width: 1em;
+      height: 1em;
+      font-size: var(--uv-toast-loading-size);
+      transform: rotate(45deg);
+      animation: uv-toast-loading-rotate 1.2s infinite linear;
+      .uv-toast-loading-item {
+        position: absolute;
+        display: block;
+        width: 0.5em;
+        height: 0.5em;
+        border-radius: 100%;
+        background-color: var(--uv-toast-loading-item-color);
+        opacity: 0.3;
+        transform: scale(0.75);
+        transform-origin: 50% 50%;
+        animation: uv-toast-loading-move 1s infinite linear alternate;
+        &:nth-child(1) {
+          top: 0;
+          inset-inline-start: 0;
+        }
+        &:nth-child(2) {
+          top: 0;
+          inset-inline-end: 0;
+          animation-delay: 0.4s;
+        }
+        &:nth-child(3) {
+          bottom: 0;
+          inset-inline-end: 0;
+          animation-delay: 0.8s;
+        }
+        &:nth-child(4) {
+          bottom: 0;
+          inset-inline-start: 0;
+          animation-delay: 1.2s;
+        }
+      }
+
+      @keyframes uv-toast-loading-move {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes uv-toast-loading-rotate {
+        to {
+          transform: rotate(405deg);
+        }
+      }
     }
     .uv-toast-message {
       min-width: var(--uv-toast-message-min-width);
       font-size: var(--uv-toast-message-font-size);
-    }
-  }
-
-  @keyframes uv-toast-rotate {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
     }
   }
 

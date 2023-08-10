@@ -54,10 +54,10 @@ export default {
     background-color: var(--uv-message-value-bg-color);
     box-shadow: var(--uv-message-value-box-shadow);
     transform: translateX(-50%);
-    animation: face var(--uv-message-animation-time);
+    animation: uv-message-face var(--uv-message-animation-time);
   }
 
-  @keyframes face {
+  @keyframes uv-message-face {
     0% {
       transform: translate(-50%, -100%);
     }
@@ -66,10 +66,10 @@ export default {
     }
   }
   .uv-message-value.remove {
-    animation: remove var(--uv-message-animation-remove-time);
+    animation: uv-message-remove var(--uv-message-animation-remove-time);
   }
 
-  @keyframes remove {
+  @keyframes uv-message-remove {
     0% {
       transform: translate(-50%, 0);
       opacity: 1;
