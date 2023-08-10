@@ -1,5 +1,3 @@
-import '../utils/index'
-import '../hooks/index'
 import uvButton from './button'
 import uvInput from './input'
 import uvIcon from './icon'
@@ -66,6 +64,7 @@ import uvUploader from './uploader'
 import uvCascader from './cascader'
 import uvFloatingPanel from './floating-panel'
 import uvSliderVertify from './slider-vertify'
+import uvQrCode from './qr-code'
 
 const components = [
   uvButton,
@@ -133,7 +132,8 @@ const components = [
   uvUploader,
   uvCascader,
   uvFloatingPanel,
-  uvSliderVertify
+  uvSliderVertify,
+  uvQrCode
 ]
 
 const install = (Vue) => {
@@ -208,7 +208,8 @@ export {
   uvUploader,
   uvCascader,
   uvFloatingPanel,
-  uvSliderVertify
+  uvSliderVertify,
+  uvQrCode
 }
 
 export default install

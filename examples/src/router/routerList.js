@@ -408,6 +408,14 @@ export default [
     component: () => import('../../../packages/components/water-mark/demo/index.vue')
   },
   {
+    path: '/qr-code',
+    name: 'qr-code',
+    meta: {
+      name: 'QrCode 二维码'
+    },
+    component: () => import('../../../packages/components/qr-code/demo/index.vue')
+  },
+  {
     path: '',
     meta: {
       title: '导航组件'
