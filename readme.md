@@ -11,7 +11,7 @@ npm install uv-ui
 
 ```
 import uvUI from 'uv-ui'
-import 'uv-ui/dist/es/style.css'
+import 'uv-ui/es/style.css'
 
 app.use(uvUI)
 ```
@@ -19,7 +19,7 @@ app.use(uvUI)
 #### 2.按需加载 用什么导入什么，样式需要先引入到main.js
 
 ```
-import 'uv-ui/dist/es/style.css'
+import 'uv-ui/es/style.css'
 ```
 
 预览地址：https://monsterwx.gitee.io/uv-ui/

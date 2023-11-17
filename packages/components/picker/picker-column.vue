@@ -164,6 +164,12 @@ const move = useThrottle((e) => {
 
 </script>
 
+<script>
+export default {
+  name: 'UvPickerColumn'
+}
+</script>
+
 <style lang="scss">
 :root {
   --uv-picker-content-item-font-size: 16px;
