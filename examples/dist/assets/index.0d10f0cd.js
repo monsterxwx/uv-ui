@@ -1,1 +1,0 @@
-import{d as t}from"./demo-block.87c192f2.js";import{c as a,d as r,h as e,i as o,f as s,a5 as c}from"./index.0b369b7e.js";const f={__name:"index",setup(i){return(l,n)=>(a(),r("div",null,[e(t,{title:"\u57FA\u672C\u4F7F\u7528"},{default:o(()=>[e(s(c))]),_:1})]))}};export{f as default};
