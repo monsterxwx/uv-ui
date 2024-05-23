@@ -271,9 +271,17 @@ function setCalendarData () {
       date++
     }
   }
+  let jTotal = 3
+  if (findIdx > -1) {
+    // 判断是否4行可以显示完全
+    const yushu = 7 * 5 - (calendarProps.target.totalDays + findIdx)
+    if (yushu < 0) {
+      jTotal = 4
+    }
+  }
   originData.push(...firstRow)
   // 设置后面五行的数据
-  for (let j = 0; j <= 4; j++) {
+  for (let j = 0; j <= jTotal; j++) {
     const rowData = []
     for (let k = 0; k <= 6; k++) {
       // 设置目标月份剩下的日期数据
@@ -355,6 +363,8 @@ export default {
   flex-direction: column;
   font-size: 14px;
   background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
   .uv-calendar-header {
     display: flex;
     flex-direction: column;
