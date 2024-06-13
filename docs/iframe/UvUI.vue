@@ -22,7 +22,7 @@ const { Layout } = DefaultTheme
 const compStore = useCompStore()
 
 const iframeSrc = computed(() => {
-  let src = 'https://monsterwx.gitee.io/uv-ui-example'
+  let src = 'https://monsterxwx.github.io/uv-ui-example'
   if (compStore.currentName) {
     src += '#' + compStore.currentName
   }
