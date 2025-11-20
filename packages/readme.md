@@ -23,8 +23,6 @@ app.use(uvUI)
 import 'uv-ui/es/style.css'
 ```
 
-预览地址：https://monsterwx.gitee.io/uv-ui/
+预览地址：<https://monsterwx.gitee.io/uv-ui/>
 
-github :https://github.com/monsterxwx/uv-ui
-
-gitee :https://gitee.com/monsterwx/uv-ui
+github :<https://github.com/monsterxwx/uv-ui>
