@@ -26,5 +26,3 @@ import 'uv-ui/es/style.css'
 预览地址：<https://monsterxwx.github.io/uv-ui/>
 
 github :<https://github.com/monsterxwx/uv-ui>
-
-gitee :<https://gitee.com/monsterwx/uv-ui>
