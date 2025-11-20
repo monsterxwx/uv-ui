@@ -5,7 +5,7 @@ hero:
   name: UV-UI 组件库
   text: 基于 Vue 3 的组件库
   image:
-    src: https://gitee.com/monsterwx/uv-ui/raw/master/docs/logo.png
+    src: /images/logo.png
     alt: logo
   actions:
     - theme: brand
@@ -18,11 +18,11 @@ hero:
 features:
   - icon: 🛠️
     title: 持续开发中
-    details: 用于Vue3组件库的学习
-  - icon: 🪨
+    details: 目前已有50+组件
+  - icon: 🚀
     title: 轻量小巧
     details: 整体组件只有几百k
   - icon: ⚙️
     title: 按需引入
-    details: 直接支持按需引入无需配置任何插件。
+    details: 直接支持按需引入无需配置任何插件
 ---

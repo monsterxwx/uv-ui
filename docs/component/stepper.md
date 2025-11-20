@@ -55,14 +55,6 @@ onMounted(()=>{
 <uv-stepper :min="-1" :max="5" v-model="value1" />
 ```
 
-## 显示可清除图标
-
-通过 `clearable` 设置
-
-```html
-<uv-search v-model="value" clearable />
-```
-
 ## props
 
 | 属性         |        含义        |  类型   | 默认值 |

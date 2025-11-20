@@ -12,6 +12,28 @@ onMounted(()=>{
 ## 基本使用
 
 ```html
+<uv-swipe :autoplay="3000">
+  <uv-swipe-item>
+    <div class="test color1">
+      1
+    </div>
+  </uv-swipe-item>
+  <uv-swipe-item>
+    <div class="test color2">
+      2
+    </div>
+  </uv-swipe-item>
+  <uv-swipe-item>
+    <div class="test color3">
+      3
+    </div>
+  </uv-swipe-item>
+</uv-swipe>
+```
+
+## 关闭自动轮播
+
+```html
 <uv-swipe>
   <uv-swipe-item>
     <div class="test color1">
@@ -31,18 +53,18 @@ onMounted(()=>{
 </uv-swipe>
 ```
 
-
- ## props
+## props
 
 | 属性     |     含义     |  类型  | 默认值 |
 | -------- | :----------: | :----: | -----: |
-| pageSize | 每页显示条数 | Number |     10 |
+| autoplay | 是否自动播放 | Number |    0 |
+| duration | 动画时间 | Number |    500 |
 
 ## events
 
 | 事件名称 |    含义    |        参数 |
 | -------- | :--------: | ----------: |
-| change   | 页数改变时 | 当前的index |
+| change   | 轮播改变时 | 当前的index |
 
 ## css变量
 
